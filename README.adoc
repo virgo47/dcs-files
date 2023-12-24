@@ -1,0 +1,58 @@
+:toc:
+= Bunch of DCS files
+
+Notes, configs, kneeboards, etc.
+
+== Setup tips
+
+* Curves in VKBDevCfg?
+* TODO
+
+== List of interesting config/ME resources
+
+* https://forum.dcs.world/topic/270080-lua-editing-for-additional-key-binds-tutorial-no-discussion-here-please/[LUA Editing for additional Key Binds Tutorial]
+with attached PDF document "How to Edit Control Binding Files".
+* TODO
+
+== Viewport resize/position
+
+2023-12-24 update:
+I don't bother anymore and leave the kneeboard in the default position for the plane.
+I can use https://dcskneeboardbuilder.com/[Kneeboard Builder], it is handy for KB preparation
+(which I don't use), but it needs to run to reposition the kneeboard to my liking.
+
+=== Manual change
+
+[WARNING]
+This may not pass integrity check!
+
+This needs to be done inside installation directory (not user config), under `Scripts\Aircrafts\_Common\Cockpit` in file `ViewportHandling.lua`.
+To place the kneeboard to the bottom left, modify the file starting with the first `default_width` appearance like so:
+
+[source,lua]
+----
+--[[ EDIT: Fixed to static values
+	local default_width  = w0 + (64 * zoom_value)
+
+	if default_width > h then
+	   default_width = h
+	end
+	
+	if default_width > 0.5 * w then
+	   default_width = 0.5 * w
+	end
+		
+	local default_height = default_width / aspect
+--]]
+	local default_width  = 768
+	local default_height = 1024
+
+	local default_y      = h - default_height
+  local default_x = 30 -- for left side controls to be on screen too
+--[[ EDIT: Fixed to static values
+	local default_x      = w - default_width - x0
+	if  is_left then
+		default_x   = x0
+	end
+--]]
+----

@@ -332,6 +332,17 @@ local diff = {
 			},
 			["name"] = "Zoom out slow",
 		},
+		["d7pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN23",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "F1 Cockpit view",
+		},
 		["d135pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
