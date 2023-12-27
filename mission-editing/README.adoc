@@ -1,0 +1,26 @@
+= Mission editing notes
+
+== Important notes
+
+* If you use `DO SCRIPT FILE` in the mission editor, reload the file and save the mission, to update the embedded script file.
+* Mission flags can use strings instead of numbers, which is more descriptive (although longer).
+* TODO
+
+== List of promising resources
+
+* https://wiki.hoggitworld.com/view/Simulator_Scripting_Engine_Documentation[Simulator Scripting Engine Documentation] (hoggitworld)
+* https://github.com/mrSkortch/MissionScriptingTools[Mission Scripting Tools (MIST)]
+(https://wiki.hoggitworld.com/view/Mission_Scripting_Tools_Documentation[docs on hoggit])
+
+== YouTube tutorials
+
+* https://youtu.be/WaUtdUaQVms[Introduction to Scripting in DCS (Iain Christie)] -
+spawning groups/units with MIST
+** https://youtu.be/o7xpEqaqTWw[part2] - OOP basics, reporting unit distance as a message,
+** https://youtu.be/OvtA1MWSQuk[part3] - example of `setTask` with bombing target,
+** part4
+
+== Lua notes
+
+Method and functions
+// TODO

@@ -1,3 +1,5 @@
+= Mods and OVGME
+
 These are mods that go to the DCS installation directory.
 
 Instead of applying them directly, use OVGME: https://wiki.hoggitworld.com/view/OVGME
@@ -12,3 +14,7 @@ h:\games\dcs-ovgme\dcs-install-mods\mods
 4. Enable the mod, its content will be copied to the installation directory.
 
 Now start the game and test it.
+
+NOTE that some mods go to the installation directory, but others may go to `Saved Games/<dcs>`.
+For these, create a separate OVGME profile with different directory, so you can switch easily.
+
