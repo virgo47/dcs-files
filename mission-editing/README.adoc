@@ -4,10 +4,11 @@
 
 * If you use `DO SCRIPT FILE` in the mission editor, reload the file and save the mission, to update the embedded script file.
 * Mission flags can use strings instead of numbers, which is more descriptive (although longer).
-* TODO
+* You can find examples of `DCS` object used, but this https://forum.dcs.world/topic/269939-dcs-control-api/?do=findComment&comment=5005078[only works with the server scripts].
 
 == List of promising resources
 
+* https://www.digitalcombatsimulator.com/en/support/faq/scripting_engine/[Official DCS FAQ about Scripting Engine] (probably not much updated, but should be still relevant)
 * https://wiki.hoggitworld.com/view/Simulator_Scripting_Engine_Documentation[Simulator Scripting Engine Documentation] (hoggitworld)
 * https://github.com/mrSkortch/MissionScriptingTools[Mission Scripting Tools (MIST)]
 (https://wiki.hoggitworld.com/view/Mission_Scripting_Tools_Documentation[docs on hoggit])
@@ -24,3 +25,15 @@ spawning groups/units with MIST
 
 Method and functions
 // TODO
+
+== Tips and tricks
+
+* To see the tooltip with command id in the Controls table edit `<dcs-install>\MissionEditor\MissionEditor.lua`.
+Find the line with `OPTIONS_ADD_COMMAND_CODES_TO_TOOLTIP` and change it to `true`.
+This likely needs to be repeated after each update.
+* Values of commands can be also found in `<dcs-install>\aircraft\<plane>\Cockpit\Scripts\clickabledata.lua`.
+This can differ for some planes, e.g. with multiple variants (L-39, C-101), but should be easy to locate.
+
+
+// TODO
+Study this function to schedule action: https://wiki.hoggitworld.com/view/DCS_func_scheduleFunction
