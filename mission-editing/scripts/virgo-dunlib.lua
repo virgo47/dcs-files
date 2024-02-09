@@ -37,18 +37,25 @@ end
 -- debug string for any value of any type, including tables
 -- Ignore indent parameter here, this is only used internally by debugTable function.
 -- Set includeMetatables to true if you want to report also metatables for tables.
-function dunlib.debug(obj, maxLevel, indent, includeMetatables)
+-- Set functionInfo to true if you want to see the source location of the function.
+function dunlib.debug(obj, maxLevel, indent, includeMetatables, functionInfo)
     maxLevel = maxLevel or 1
     indent = indent or 0
     if type(obj) == "table" then
         if next(obj) == nil then
             return tostring(obj) .. " (empty)"
         elseif maxLevel > 0 then
-            return tostring(obj) .. ":\n" .. dunlib.debugTable(obj, maxLevel - 1, indent + 1, includeMetatables)
+            return tostring(obj) .. ":\n" .. dunlib.debugTable(obj, maxLevel - 1, indent + 1, includeMetatables, functionInfo)
         else
             return tostring(obj)
         end
     elseif type(obj) == "function" then
+        if functionInfo then
+            local info = debug.getinfo(obj)
+            if info then
+                return string.format("%s defined in %s at line %d", tostring(obj), info.source, info.linedefined)
+            end
+        end
         return tostring(obj)
     else
         return tostring(obj) .. " (" .. type(obj) .. ")"
@@ -56,7 +63,7 @@ function dunlib.debug(obj, maxLevel, indent, includeMetatables)
 end
 
 -- debug string for table CONTENT only, use dunlib.debug for "table ..." header and indented content
-function dunlib.debugTable(obj, maxLevel, indent, includeMetatables)
+function dunlib.debugTable(obj, maxLevel, indent, includeMetatables, functionInfo)
     if type(obj) ~= "table" then
         return "NOT a table: " .. tostring(obj)
     end
@@ -76,7 +83,7 @@ function dunlib.debugTable(obj, maxLevel, indent, includeMetatables)
         local mt = getmetatable(obj)
         if mt then
             res = res .. string.rep("  ", indent) .. "<metatable>:\n" ..
-                    dunlib.debugTable(mt, maxLevel - 1, indent + 1, includeMetatables)
+                    dunlib.debugTable(mt, maxLevel - 1, indent + 1, includeMetatables, functionInfo)
         end
     end
     for _, k in ipairs(sortedKeys) do
@@ -89,7 +96,7 @@ function dunlib.debugTable(obj, maxLevel, indent, includeMetatables)
             res = res .. tostring(v) .. " (same table)"
         else
             -- debug call doesn't modify maxLevel/intent, it is modified inside for the next debugTable call
-            res = res .. dunlib.debug(v, maxLevel, indent, includeMetatables)
+            res = res .. dunlib.debug(v, maxLevel, indent, includeMetatables, functionInfo)
         end
     end
     return res
@@ -183,11 +190,75 @@ function print(str, inGameToAll)
         local CHUNK_LEN = 4000
         local chunks = {}
         for i = 1, #str, CHUNK_LEN do
-            local chunk = string.sub(str, i, i + CHUNK_LEN - 1) .. "..."
+            local chunk = string.sub(str, i, i + CHUNK_LEN - 1)
+            if i + CHUNK_LEN < #str then
+                chunk = chunk .. "..."
+            end
             table.insert(chunks, chunk)
         end
-        for i, chunk in ipairs(chunks) do
+        for _, chunk in ipairs(chunks) do
             env.info(chunk)
         end
+    end
+end
+
+----------------------------------------------------------------------------------------------------
+-- HIGHER LEVEL HELPER/DEBUG FUNCTIONS, mostly unit related:
+
+--[[
+Prints fuel information for the params.unit, the rest of params is optional:
+Example params:
+{
+    unit = world.getPlayer(), -- player unit for single-player mission
+    fullFuelAmount = 184 + 85, -- full internal fuel for P-51D
+    fuelUnits = "US gal",
+    messageRepeatSec = 10, -- if omitted, it will be one time message
+    maxRepetitions = 5, -- if present, repeated message stops after this count
+    messageDuration = 60, -- all durations in sec
+    interMessageEach = 60, -- in message count, not secs
+    interMessageDuration = 3600,
+    longMessageEach = 360, -- in message count, not secs
+    longMessageDuration = 18000
+}
+]]
+function dunlib.fuelInfo(params)
+    if not params.unit or not params.unit:isExist() then
+        return -- no more printing for this guy
+    end
+
+    params.counter = params.counter or 0
+
+    local secsInDay = timer.getAbsTime()
+    local hours = math.floor(secsInDay / 3600)
+    local minutes = math.floor((secsInDay % 3600) / 60)
+    local seconds = secsInDay % 60
+
+    local duration = params.messageDuration or 20 -- default 20s if not provided
+    if params.longMessageEach and params.longMessageDuration
+            and params.counter % params.longMessageEach == 0 then
+        duration = params.longMessageDuration
+    elseif params.interMessageEach and params.interMessageDuration
+            and params.counter % params.interMessageEach == 0 then
+        duration = params.interMessageDuration
+    end
+
+    local fuelRatio = params.unit:getFuel()
+    local fuelPercent = math.floor(fuelRatio * 100 + 0.5)
+
+    local msg
+    if params.fullFuelAmount then
+        msg = string.format("%02d:%02d:%02d - FUEL: %.2f %s (%d%%)",
+                hours, minutes, seconds, params.fullFuelAmount * fuelRatio, params.fuelUnits or "?", fuelPercent)
+    else
+        msg = string.format("%02d:%02d:%02d - FUEL: %d%%", hours, minutes, seconds, fuelPercent)
+    end
+    dunlib.messageUnit(params.unit, msg, duration)
+
+    if params.messageRepeatSec then
+        params.counter = params.counter + 1
+        if params.maxRepetitions and params.counter >= params.maxRepetitions then
+            return -- no more scheduling
+        end
+        timer.scheduleFunction(dunlib.fuelInfo, params, timer.getTime() + params.messageRepeatSec)
     end
 end

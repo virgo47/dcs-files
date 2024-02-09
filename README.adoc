@@ -12,9 +12,10 @@ Notes, configs, kneeboards, etc.
 
 * https://forum.dcs.world/topic/270080-lua-editing-for-additional-key-binds-tutorial-no-discussion-here-please/[LUA Editing for additional Key Binds Tutorial]
 with attached PDF document "How to Edit Control Binding Files".
-* TODO
+* https://forum.dcs.world/topic/158413-guide-enhancing-head-movement-on-trackir[Guide - Enhancing head movement on TrackIR]
+(by Rudel_chw) - this also menti
 
-== Viewport resize/position
+== Kneeboard viewport resize/position
 
 2023-12-24 update:
 I don't bother anymore and leave the kneeboard in the default position for the plane.
