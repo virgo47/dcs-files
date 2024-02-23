@@ -49,11 +49,29 @@ To place the kneeboard to the bottom left, modify the file starting with the fir
 	local default_height = 1024
 
 	local default_y      = h - default_height
-  local default_x = 30 -- for left side controls to be on screen too
+	local default_x = 30 -- for left side controls to be on screen too
 --[[ EDIT: Fixed to static values
 	local default_x      = w - default_width - x0
 	if  is_left then
 		default_x   = x0
 	end
 --]]
+----
+
+== Provided missions with included SnapViews
+
+In Mods/aircraft:
+
+----
+$ for i in */Missions/*/*.miz; do unzip -l "$i" | grep -iq SnapViews.lua && echo $i ; done
+FA-18C/Missions/QuickStart/IA-FA-18C-Syria-Gauntlet.miz
+Flaming Cliffs/Missions/Campaigns/CWW-Outro.miz
+P-47D-30/Missions/QuickStart/P-47D - Caucasus -Train Strafe.miz
+P-47D-30/Missions/QuickStart/P47D-IA-Caucasus-Low Level Hell.miz
+P-51D/Missions/QuickStart/P-5125 - Caucasus - Train Strafe.miz
+P-51D/Missions/QuickStart/P-5130 - Caucasus -Train Strafe.miz
+P-51D/Missions/QuickStart/P51D-IA-Caucasus-Low Level Hell.miz
+SpitfireLFMkIX/Missions/QuickStart/Spitfire - Caucasus - Train Strafe.miz
+SpitfireLFMkIX/Missions/QuickStart/Spitfire(CW) - Caucasus -Train Strafe.miz
+SpitfireLFMkIX/Missions/QuickStart/SPITFIRE-IA-Caucasus-Low Level Hell.miz
 ----

@@ -37,3 +37,8 @@ This can differ for some planes, e.g. with multiple variants (L-39, C-101), but 
 
 // TODO
 Study this function to schedule action: https://wiki.hoggitworld.com/view/DCS_func_scheduleFunction
+
+== My mission notes
+
+* *All - Cold start, before dawn - Kutaisi.miz* - just copy the current *All - Cold start - Kutaisi.miz*
+and change the time to 2016-11-21 07:45:00, or even add random weather with some wind.
