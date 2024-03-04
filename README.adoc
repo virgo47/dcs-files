@@ -13,7 +13,68 @@ Notes, configs, kneeboards, etc.
 * https://forum.dcs.world/topic/270080-lua-editing-for-additional-key-binds-tutorial-no-discussion-here-please/[LUA Editing for additional Key Binds Tutorial]
 with attached PDF document "How to Edit Control Binding Files".
 * https://forum.dcs.world/topic/158413-guide-enhancing-head-movement-on-trackir[Guide - Enhancing head movement on TrackIR]
-(by Rudel_chw) - this also menti
+(by Rudel_chw) - this also mentions (?) what
+
+== Aircraft types and names
+
+Aircraft in DCS are identified by various more or less precise names, starting with the e-shop
+name of the module (e.g. "DCS: P-47D Thunderbolt") which can contain multiple aircraft models,
+then the names used in the Mission Editor (e.g. "P-47D-30" and "P-47D-30 (Early)") and then
+the `type` name that can be found in the `Mods/aircraft/<module>/entry.lua` (e.g. "P-47D-30"
+and "P-47D-30bl1").
+
+It is not easy to see the mapping between these names, as this seems to be contained in the compiled
+Lua files like `CoreMods/WWII Units/P-47D-30/P-47D-30.lua` (mostly under `CoreMods/aircraft`).
+You need to use the `type` name in the `SnapView.lua` or for Kneeboard subdirectories.
+Type is also returned by the https://wiki.hoggitworld.com/view/DCS_func_getTypeName[Unit:getTypeName] method.
+
+The following table shows the type and ME names of the playable aircraft ordered by type
+(but grouped by module, only modules I know are shown):
+
+|===
+| Module | Type | Mission Editor name | Notes
+
+| A-10A for DCS World 2+| A-10A | Also in FC3
+| DCS: A-10C Warthog 2+| A-10C | Deprecated
+| DCS: A-10C Warthog | A-10C_2 | A-10C II |
+4+| A-10C II TODO
+.2+| DCS: C-101 Aviojet by AvioDev 2+| C-101CC |
+2+| C-101EB |
+| DCS: Christen Eagle II by Magnitude 3 LLC 2+| Christen Eagle II |
+| DCS: F-5E Tiger II by Belsimtek 2+| F-5E-3 |
+.3+| DCS: F-14 Tomcat by Heatblur Simulations | F-14A-95-GR | F-14A |
+2+| F-14A-135-GR |
+2+| F-14B |
+| F-15C for DCS World 2+| F-15C | Also in FC3
+| DCS: F-86F Sabre by Belsimtek | F-86F Sabre | F-86F |
+| DCS: F/A-18C | FA-18C_hornet | F/A-18C Lot 20 |
+4+| J-11A, see Su-27 for DCS World
+| DCS: Black Shark 3 | Ka-50_3 | Ka-50 III |
+.2+| DCS: L-39 Albatros 2+| L-39C |
+2+| L-39ZA |
+| DCS: Mi-8MTV2 Magnificent Eight by Belsimtek | Mi-8MT | Mi-8MTV2 |
+| DCS: Mi-24P Hind 2+| Mi-24P |
+| DCS: MiG-15bis by Belsimtek 2+| MiG-15bis |
+| DCS: MiG-21bis by Magnitude 3 LLC 2+| MiG-21Bis |
+.3+| MiG-29 for DCS World 2+| MiG-29A .3+| Also in FC3
+2+| MiG-29G
+2+| MiG-29S
+.3+| DCS: P-47D Thunderbolt 2+| P-47D-30 |
+| P-47D-30bl1 | P-47D-30 (Early) |
+2+| P-47D-40 |
+.2+| DCS: P-51D Mustang | P-51D | P-51D-25-NA |
+2+| P-51D-30-NA |    
+.2+| DCS: Spitfire LF Mk. IX | SpitfireLFMkIX | Spitfire LF Mk. IX |
+| SpitfireLFMkIXCW | Spitfire LF Mk. IX CW | Cropped wings variant    
+| Su-25 for DCS World 2+| Su-25 | Also in FC3
+| DCS World 2+| Su-25T | Plane included for free
+.2+| Su-27 for DCS World 2+| J-11A .2+| Also in FC3  
+2+| Su-27
+| Su-33 for DCS World 2+| Su-33 | Also in FC3
+| DCS World 2+| TF-51D | Plane included for free
+| DCS: UH-1H Huey by Belsimtek 2+| UH-1H | 
+| DCS: Yak-52 2+| Yak-52 | 
+|===
 
 == Kneeboard viewport resize/position
 
