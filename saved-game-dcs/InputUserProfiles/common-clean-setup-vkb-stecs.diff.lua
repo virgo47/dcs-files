@@ -343,6 +343,28 @@ local diff = {
 			},
 			["name"] = "F1 Cockpit view",
 		},
+		["d8pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN37",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "F2 Aircraft view",
+		},
+		["d15pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN38",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "F10 Theater map view",
+		},
 		["d135pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {

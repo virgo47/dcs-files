@@ -79,16 +79,16 @@ local diff = {
 						["curvature"] = {
 							[1] = 0,
 						},
-						["deadzone"] = 0.02,
+						["deadzone"] = 0,
 						["hardwareDetent"] = false,
 						["hardwareDetentAB"] = 0,
 						["hardwareDetentMax"] = 0,
 						["invert"] = true,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
-						["slider"] = true,
+						["slider"] = false,
 					},
-					["key"] = "JOY_Y",
+					["key"] = "JOY_X",
 				},
 			},
 			["name"] = "Throttle Lever, analog",
@@ -109,7 +109,7 @@ local diff = {
 						["saturationY"] = 1,
 						["slider"] = false,
 					},
-					["key"] = "JOY_Z",
+					["key"] = "JOY_Y",
 				},
 			},
 			["name"] = "Engine RPM / Propeller Pitch Control Lever, analog",
@@ -119,7 +119,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.39,
+							[1] = -0.25,
 						},
 						["deadzone"] = 0,
 						["hardwareDetent"] = false,
@@ -131,9 +131,6 @@ local diff = {
 						["slider"] = true,
 					},
 					["key"] = "JOY_RX",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
 				},
 			},
 			["name"] = "Wheel Brakes - axis",
@@ -300,17 +297,6 @@ local diff = {
 				},
 			},
 			["name"] = "SSKUA-1 Stall Warning System Switch, ON",
-		},
-		["d3030pnilu3030cd2vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN32",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Wheel Brake Lock",
 		},
 		["d3031pnilu3031cd6vd1vpnilvu0"] = {
 			["added"] = {
@@ -545,17 +531,6 @@ local diff = {
 				},
 			},
 			["name"] = "Zoom out slow",
-		},
-		["dnilp74u75cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN85",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Wheel Brakes",
 		},
 	},
 }

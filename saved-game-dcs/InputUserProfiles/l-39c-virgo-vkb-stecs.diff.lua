@@ -55,9 +55,9 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.38,
+							[1] = 0.2,
 						},
-						["deadzone"] = 0.18,
+						["deadzone"] = 0,
 						["hardwareDetent"] = false,
 						["hardwareDetentAB"] = 0,
 						["hardwareDetentMax"] = 0,
@@ -68,11 +68,35 @@ local diff = {
 					},
 					["key"] = "JOY_RY",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
 			["name"] = "Absolute Horizontal Shift Camera View",
+		},
+		["a2051cdnil"] = {
+			["added"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0.2,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
+					["key"] = "JOY_RX",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Absolute Vertical Shift Camera View",
 		},
 		["a2101cdnil"] = {
 			["added"] = {
@@ -251,7 +275,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN21",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -260,7 +284,7 @@ local diff = {
 		["d147pnilunilcdnilvd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN41",
+					["key"] = "JOY_BTN42",
 				},
 			},
 			["name"] = "Airbrake Switch - OPEN",
@@ -268,7 +292,7 @@ local diff = {
 		["d148pnilunilcdnilvd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN24",
+					["key"] = "JOY_BTN41",
 				},
 			},
 			["name"] = "Airbrake Switch - CLOSE",
@@ -277,12 +301,6 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN23",
-				},
-				[2] = {
-					["key"] = "JOY_BTN23",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
 				},
 			},
 			["name"] = "Zoom normal",
@@ -308,7 +326,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN2",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -656,7 +674,7 @@ local diff = {
 		["d73pnilu73cdnilvd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN42",
+					["key"] = "JOY_BTN24",
 				},
 			},
 			["name"] = "Airbrake Button",
@@ -666,7 +684,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -677,22 +695,22 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN17",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
 			["name"] = "AChS-1 Cockpit Chronograph Right Knob - Push",
 		},
-		["d83pnilunilcdnilvdnilvpnilvunil"] = {
+		["d7pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN10",
+					["key"] = "JOY_BTN23",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
-			["name"] = "Eject (3 times)",
+			["name"] = "F1 Cockpit view",
 		},
 		["d84pnilu85cdnilvdnilvpnilvunil"] = {
 			["name"] = "Weapon Fire Button",
@@ -793,7 +811,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN39",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -804,7 +822,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN40",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},

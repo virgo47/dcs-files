@@ -32,6 +32,50 @@ local diff = {
 				},
 			},
 		},
+		["d116pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F8",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Toggle Formation",
+		},
+		["d117pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F7",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Join Up Formation",
+		},
+		["d118pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F1",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Attack My Target",
+		},
+		["d119pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F5",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Cover Me",
+		},
 		["d122pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -71,6 +115,17 @@ local diff = {
 					["key"] = "N",
 					["reformers"] = {
 						[1] = "RShift",
+					},
+				},
+			},
+		},
+		["d146pnilunilcdnilvdnilvpnilvunil"] = {
+			["name"] = "Flaps Up",
+			["removed"] = {
+				[1] = {
+					["key"] = "F",
+					["reformers"] = {
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -123,6 +178,39 @@ local diff = {
 				},
 			},
 			["name"] = "F10 Theater map view",
+		},
+		["d165pnilunilcdnilvdnilvpnilvunil"] = {
+			["name"] = "Throttle Step Up Left",
+			["removed"] = {
+				[1] = {
+					["key"] = "PageUp",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
+		},
+		["d166pnilunilcdnilvdnilvpnilvunil"] = {
+			["name"] = "Throttle Step Down Left",
+			["removed"] = {
+				[1] = {
+					["key"] = "PageDown",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
+		},
+		["d1684pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F2",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Flight - Engage Bandits",
 		},
 		["d1698pnilunilcdnilvdnilvpnilvunil"] = {
 			["name"] = "Unload camera position to clipboard",
@@ -184,6 +272,14 @@ local diff = {
 			},
 		},
 		["d180pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "PageDown",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
 			["name"] = "Objects switching direction reverse ",
 			["removed"] = {
 				[1] = {
@@ -195,6 +291,14 @@ local diff = {
 			},
 		},
 		["d181pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "PageUp",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
 			["name"] = "Objects switching direction forward ",
 			["removed"] = {
 				[1] = {
@@ -293,6 +397,28 @@ local diff = {
 					},
 				},
 			},
+		},
+		["d267pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F10",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Request AWACS Home Airbase",
+		},
+		["d269pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F9",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Request AWACS Bogey Dope",
 		},
 		["d282pnilunilcdnilvdnilvpnilvunil"] = {
 			["name"] = "Ripple Interval Increase",
@@ -633,6 +759,28 @@ local diff = {
 				},
 			},
 		},
+		["d522pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F3",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Flight - Attack air defenses",
+		},
+		["d523pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F4",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Flight - Attack ground targets",
+		},
 		["d66pnilunilcdnilvdnilvpnilvunil"] = {
 			["name"] = "Throttle Step Up",
 			["removed"] = {
@@ -666,6 +814,14 @@ local diff = {
 			},
 		},
 		["d72pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
 			["name"] = "Flaps Up/Down",
 			["removed"] = {
 				[1] = {

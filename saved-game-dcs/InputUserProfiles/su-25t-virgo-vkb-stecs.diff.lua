@@ -80,15 +80,15 @@ local diff = {
 					["filter"] = {
 						["curvature"] = {
 							[1] = 0,
-							[2] = 0.11,
-							[3] = 0.16,
-							[4] = 0.21,
-							[5] = 0.27,
-							[6] = 0.34,
-							[7] = 0.42,
-							[8] = 0.52,
-							[9] = 0.64,
-							[10] = 0.8,
+							[2] = 0.15,
+							[3] = 0.17,
+							[4] = 0.18,
+							[5] = 0.2,
+							[6] = 0.23,
+							[7] = 0.28,
+							[8] = 0.36,
+							[9] = 0.48,
+							[10] = 0.7,
 							[11] = 1,
 						},
 						["deadzone"] = 0,
@@ -97,7 +97,7 @@ local diff = {
 						["hardwareDetentMax"] = 0,
 						["invert"] = false,
 						["saturationX"] = 1,
-						["saturationY"] = 1,
+						["saturationY"] = 0.7,
 						["slider"] = false,
 					},
 					["key"] = "JOY_RY",
@@ -111,15 +111,15 @@ local diff = {
 					["filter"] = {
 						["curvature"] = {
 							[1] = 0,
-							[2] = 0.11,
-							[3] = 0.16,
-							[4] = 0.21,
-							[5] = 0.27,
-							[6] = 0.34,
-							[7] = 0.42,
-							[8] = 0.52,
-							[9] = 0.64,
-							[10] = 0.8,
+							[2] = 0.15,
+							[3] = 0.17,
+							[4] = 0.18,
+							[5] = 0.2,
+							[6] = 0.23,
+							[7] = 0.28,
+							[8] = 0.36,
+							[9] = 0.48,
+							[10] = 0.7,
 							[11] = 1,
 						},
 						["deadzone"] = 0,
@@ -128,7 +128,7 @@ local diff = {
 						["hardwareDetentMax"] = 0,
 						["invert"] = false,
 						["saturationX"] = 1,
-						["saturationY"] = 1,
+						["saturationY"] = 0.7,
 						["slider"] = false,
 					},
 					["key"] = "JOY_RX",
@@ -139,6 +139,19 @@ local diff = {
 		["a2041cdnil"] = {
 			["added"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = true,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
 					["key"] = "JOY_SLIDER1",
 				},
 				[2] = {
@@ -341,6 +354,17 @@ local diff = {
 			},
 			["name"] = "HUD Color",
 		},
+		["d15pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN38",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "F10 Theater map view",
+		},
 		["d1629pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -394,6 +418,14 @@ local diff = {
 				},
 			},
 			["name"] = "HUD Color Filter On/Off",
+		},
+		["d280pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN49",
+				},
+			},
+			["name"] = "Cut Of Burst select",
 		},
 		["d281pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -630,7 +662,7 @@ local diff = {
 		["d79pnilu80cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN58",
+					["key"] = "JOY_BTN48",
 					["reformers"] = {
 						[1] = "Smod",
 					},
@@ -652,13 +684,10 @@ local diff = {
 		["d81pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN64",
-					["reformers"] = {
-						[1] = "Smod",
-					},
+					["key"] = "JOY_BTN48",
 				},
 			},
-			["name"] = "Salvo Mode",
+			["name"] = "Salvo Mode (Dual \"Vikhr\" launch)",
 		},
 		["d82pnilu171cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -691,6 +720,17 @@ local diff = {
 				},
 			},
 			["name"] = "Electro-Optical System On/Off",
+		},
+		["d8pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN37",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "F2 Aircraft view",
 		},
 		["d92pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -823,6 +863,72 @@ local diff = {
 				},
 			},
 			["name"] = "HUD Brightness down",
+		},
+		["dnilp93u215cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN61",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Trim Hat - ROLL LEFT",
+		},
+		["dnilp94u215cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN62",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Trim Hat - ROLL RIGHT",
+		},
+		["dnilp95u215cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN12",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Trim Hat - NOSE UP",
+		},
+		["dnilp96u215cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN13",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Trim Hat - NOSE DOWN",
+		},
+		["dnilp98u215cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN59",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Trim: Rudder Left",
+		},
+		["dnilp99u215cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN60",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Trim: Rudder Right",
 		},
 	},
 }

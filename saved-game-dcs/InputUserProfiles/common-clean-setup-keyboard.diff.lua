@@ -10,78 +10,6 @@ local diff = {
 				},
 			},
 		},
-		["dnilp212u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Down Left slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num1",
-				},
-			},
-		},
-		["dnilp35u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Down slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num2",
-				},
-			},
-		},
-		["dnilp211u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Down Right slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num3",
-				},
-			},
-		},
-		["dnilp32u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Left slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num4",
-				},
-			},
-		},
-		["dnilp36unilcdnilvdnilvpnilvunil"] = {
-			["name"] = "View Center",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num5",
-				},
-			},
-		},
-		["dnilp33u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Right slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num6",
-				},
-			},
-		},
-		["dnilp213u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Up Left slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num7",
-				},
-			},
-		},
-		["dnilp34u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Up slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num8",
-				},
-			},
-		},
-		["dnilp210u214cdnilvdnilvpnilvunil"] = {
-			["name"] = "View Up Right slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num9",
-				},
-			},
-		},
 		["d193pnilu194cdnilvdnilvpnilvunil"] = {
 			["name"] = "Aircraft Down",
 			["removed"] = {
@@ -111,6 +39,206 @@ local diff = {
 			["removed"] = {
 				[1] = {
 					["key"] = "Right",
+				},
+			},
+		},
+
+		-- View moved from non-mod Num-keys to LCtrl+NumX
+		["dnilp210u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num9",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num9",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Up Right slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num9",
+				},
+			},
+		},
+		["dnilp211u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num3",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num3",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Down Right slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num3",
+				},
+			},
+		},
+		["dnilp212u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num1",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num1",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Down Left slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num1",
+				},
+			},
+		},
+		["dnilp213u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num7",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num7",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Up Left slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num7",
+				},
+			},
+		},
+		["dnilp32u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num4",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num4",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Left slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num4",
+				},
+			},
+		},
+		["dnilp33u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num6",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num6",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Right slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num6",
+				},
+			},
+		},
+		["dnilp34u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num8",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num8",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Up slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num8",
+				},
+			},
+		},
+		["dnilp35u214cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num2",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num2",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Down slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num2",
+				},
+			},
+		},
+		["dnilp36unilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num5",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num5",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "View Center",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num5",
 				},
 			},
 		},
@@ -203,6 +331,23 @@ local diff = {
 				},
 			},
 			["name"] = "Custom Snap View  9",
+		},
+		["d237pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num0",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num0",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Cockpit panel view toggle",
 		},
 
 		-- Communications

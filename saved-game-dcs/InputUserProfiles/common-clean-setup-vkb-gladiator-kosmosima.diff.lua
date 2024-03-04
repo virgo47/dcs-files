@@ -72,12 +72,109 @@ local diff = {
 				},
 			},
 		},
+
+		-- Absolute camera shift view
+		["a2010cdnil"] = {
+			["added"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 0.4,
+						["slider"] = false,
+					},
+					["key"] = "JOY_RX",
+				},
+			},
+			["name"] = "Absolute Camera Horizontal View",
+		},
+		["a2011cdnil"] = {
+			["added"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 0.5,
+						["slider"] = false,
+					},
+					["key"] = "JOY_RY",
+				},
+			},
+			["name"] = "Absolute Camera Vertical View",
+		},
+
+		-- Self-centering zoom view axis on left Sw1
+		["a2012cdnil"] = {
+			["added"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = -0.02,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = true,
+					},
+					["key"] = "JOY_SLIDER1",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Zoom View",
+		},
 	},
+
 	["keyDiffs"] = {
+		-- View center have normal and CapsLock bindings
+		["d177pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN127",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN127",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Zoom normal",
+		},
+
 		["dnilp36unilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN127",
+				},
+				[2] = {
+					["key"] = "JOY_BTN127",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "View Center",
@@ -92,7 +189,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_DR",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -111,7 +208,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_UR",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -130,7 +227,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_UL",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -149,7 +246,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_DL",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -165,7 +262,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_L",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -176,7 +273,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_R",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -190,7 +287,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_D",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -209,7 +306,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_U",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -311,52 +408,30 @@ local diff = {
 			["name"] = "Custom Snap View  9",
 		},
 
-		-- Common LCtrl/LAlt camera controls
+		-- Common CapsLock-switch camera controls
 		["d491pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN20",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 				[2] = {
 					["key"] = "JOY_BTN10",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
 			["name"] = "Cockpit Camera Move Center",
-		},
-		["dnilp39u289cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_U",
-					["reformers"] = {
-						[1] = "LAlt",
-					},
-				},
-			},
-			["name"] = "Zoom in slow",
-		},
-		["dnilp40u290cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_D",
-					["reformers"] = {
-						[1] = "LAlt",
-					},
-				},
-			},
-			["name"] = "Zoom out slow",
 		},
 		["dnilp484u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN6",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -367,7 +442,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN8",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -378,13 +453,13 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 				[2] = {
 					["key"] = "JOY_BTN19",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -395,13 +470,13 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN7",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 				[2] = {
 					["key"] = "JOY_BTN17",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -412,7 +487,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN16",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -423,69 +498,21 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN18",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
 			["name"] = "Cockpit Camera Move Back",
 		},
-		["d491pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN20",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-				[2] = {
-					["key"] = "JOY_BTN10",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "Cockpit Camera Move Center",
-		},
-		["d158pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN3",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "F11 Jump to free camera",
-		},
-		["d177pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN127",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-				[2] = {
-					["key"] = "JOY_BTN127",
-					["reformers"] = {
-						[1] = "LAlt",
-					},
-				},
-				[3] = {
-					["key"] = "JOY_BTN127",
-					["reformers"] = {
-						[1] = "JOY_BTN2",
-					},
-				},
-			},
-			["name"] = "Zoom normal",
-		},
+
+		-- Zoom actions
 		["dnilp37u291cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_R",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -496,18 +523,44 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_L",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
 			["name"] = "Zoom out",
 		},
+		["dnilp39u289cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN_POV1_U",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Zoom in slow",
+		},
+		["dnilp40u290cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN_POV1_D",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Zoom out slow",
+		},
 		["d338pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN20",
+					["key"] = "JOY_BTN10",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -516,9 +569,10 @@ local diff = {
 		["dnilp334u335cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN16",
+					["key"] = "JOY_BTN6",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -527,9 +581,10 @@ local diff = {
 		["dnilp336u337cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN18",
+					["key"] = "JOY_BTN8",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -542,7 +597,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN29",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -553,7 +608,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN28",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -564,7 +619,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN27",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -575,7 +630,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN29",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -586,7 +642,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN28",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -597,7 +654,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN27",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -608,32 +666,33 @@ local diff = {
 		["d19pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN4",
+					["key"] = "JOY_BTN1",
 					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-				[2] = {
-					["key"] = "JOY_BTN4",
-					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
 					},
 				},
 			},
 			["name"] = "Lock View (cycle padlock)",
 		},
+		["d20pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN1",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Unlock view (stop padlock)",
+		},
 		["d185pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN5",
+					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-				[2] = {
-					["key"] = "JOY_BTN5",
-					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -644,13 +703,14 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN3",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 				[2] = {
 					["key"] = "JOY_BTN3",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -659,9 +719,10 @@ local diff = {
 		["d21pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN9",
+					["key"] = "JOY_BTN18",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -670,20 +731,46 @@ local diff = {
 		["d8pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN7",
+					["key"] = "JOY_BTN16",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
 			["name"] = "F2 Aircraft view",
 		},
+		["d180pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Objects switching direction reverse ",
+		},
+		["d181pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN17",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Objects switching direction forward ",
+		},
 		["d158pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN10",
+					["key"] = "JOY_BTN20",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -734,24 +821,6 @@ local diff = {
 				},
 			},
 			["name"] = "Rearming and Refueling Window",
-		},
-
-		-- Landing gear
-		["d430pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN25",
-				},
-			},
-			["name"] = "Landing Gear Handle, Up",
-		},
-		["d431pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN26",
-				},
-			},
-			["name"] = "Landing Gear Handle, Down",
 		},
 	},
 }

@@ -1,5 +1,24 @@
 local diff = {
 	["keyDiffs"] = {
+		["d1055pnilu1055cdnilvd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Home",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+			["name"] = "Turbo Start Button",
+			["removed"] = {
+				[1] = {
+					["key"] = "Home",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
+		},
 		["d1189pnilu1189cdnilvd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -175,6 +194,17 @@ local diff = {
 				},
 			},
 		},
+		["d182pnilunilcdnilvdnilvpnilvunil"] = {
+			["name"] = "Object exclude ",
+			["removed"] = {
+				[1] = {
+					["key"] = "Delete",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+		},
 		["d183pnilunilcdnilvdnilvpnilvunil"] = {
 			["name"] = "Objects all excluded - include",
 			["removed"] = {
@@ -251,6 +281,12 @@ local diff = {
 					["key"] = "Num0",
 					["reformers"] = {
 						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num0",
+					["reformers"] = {
+						[1] = "Smod",
 					},
 				},
 			},
@@ -464,12 +500,31 @@ local diff = {
 				},
 			},
 		},
+		["d3081pnilunilcd4vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "End",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+			["name"] = "Turbo Stop Switch - STOP/OFF",
+			["removed"] = {
+				[1] = {
+					["key"] = "End",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
+		},
 		["d3082pnilunilcd4vd-1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "Delete",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "LAlt",
 					},
 				},
 			},
@@ -488,7 +543,7 @@ local diff = {
 				[1] = {
 					["key"] = "Insert",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -507,7 +562,7 @@ local diff = {
 				[1] = {
 					["key"] = "Home",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -523,7 +578,7 @@ local diff = {
 				[1] = {
 					["key"] = "Delete",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -542,7 +597,7 @@ local diff = {
 				[1] = {
 					["key"] = "End",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -558,7 +613,7 @@ local diff = {
 				[1] = {
 					["key"] = "Insert",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "LAlt",
 					},
 				},
 			},
@@ -797,7 +852,7 @@ local diff = {
 				[1] = {
 					["key"] = "PageUp",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -816,7 +871,7 @@ local diff = {
 				[1] = {
 					["key"] = "PageDown",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -861,6 +916,17 @@ local diff = {
 				},
 			},
 			["name"] = "Right Pitot Heating Off Button",
+		},
+		["d3256pnilunilcd0vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Space",
+					["reformers"] = {
+						[1] = "RWin",
+					},
+				},
+			},
+			["name"] = "Flashlight",
 		},
 		["d396pnilu406cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -1348,6 +1414,12 @@ local diff = {
 						[1] = "LCtrl",
 					},
 				},
+				[2] = {
+					["key"] = "Num9",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
 			},
 			["name"] = "View Up Right slow",
 			["removed"] = {
@@ -1362,6 +1434,12 @@ local diff = {
 					["key"] = "Num3",
 					["reformers"] = {
 						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num3",
+					["reformers"] = {
+						[1] = "Smod",
 					},
 				},
 			},
@@ -1380,6 +1458,12 @@ local diff = {
 						[1] = "LCtrl",
 					},
 				},
+				[2] = {
+					["key"] = "Num1",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
 			},
 			["name"] = "View Down Left slow",
 			["removed"] = {
@@ -1394,6 +1478,12 @@ local diff = {
 					["key"] = "Num7",
 					["reformers"] = {
 						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num7",
+					["reformers"] = {
+						[1] = "Smod",
 					},
 				},
 			},
@@ -1535,6 +1625,12 @@ local diff = {
 						[1] = "LCtrl",
 					},
 				},
+				[2] = {
+					["key"] = "Num4",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
 			},
 			["name"] = "View Left slow",
 			["removed"] = {
@@ -1549,6 +1645,12 @@ local diff = {
 					["key"] = "Num6",
 					["reformers"] = {
 						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num6",
+					["reformers"] = {
+						[1] = "Smod",
 					},
 				},
 			},
@@ -1567,6 +1669,12 @@ local diff = {
 						[1] = "LCtrl",
 					},
 				},
+				[2] = {
+					["key"] = "Num8",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
 			},
 			["name"] = "View Up slow",
 			["removed"] = {
@@ -1583,6 +1691,12 @@ local diff = {
 						[1] = "LCtrl",
 					},
 				},
+				[2] = {
+					["key"] = "Num2",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
 			},
 			["name"] = "View Down slow",
 			["removed"] = {
@@ -1597,6 +1711,12 @@ local diff = {
 					["key"] = "Num5",
 					["reformers"] = {
 						[1] = "LCtrl",
+					},
+				},
+				[2] = {
+					["key"] = "Num5",
+					["reformers"] = {
+						[1] = "Smod",
 					},
 				},
 			},
