@@ -161,6 +161,13 @@ local diff = {
 						[1] = "Tmod",
 					},
 				},
+				[3] = {
+					["key"] = "JOY_BTN127",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Zoom normal",
 		},
@@ -515,6 +522,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN_POV1_R",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Zoom in",
 		},
@@ -525,6 +539,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN_POV1_L",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -539,6 +560,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN_POV1_U",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Zoom in slow",
 		},
@@ -549,6 +577,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN_POV1_D",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -563,6 +598,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN10",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Zoom external normal",
 		},
@@ -575,6 +617,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN6",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Zoom external in",
 		},
@@ -585,6 +634,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN8",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -634,6 +690,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN29",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Mouse Rate Fast",
 		},
@@ -646,6 +709,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN28",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Mouse Rate Slow",
 		},
@@ -656,6 +726,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN27",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -683,6 +760,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN1",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Unlock view (stop padlock)",
 		},
@@ -693,6 +777,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN9",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -713,6 +804,13 @@ local diff = {
 						[1] = "CapsLock",
 					},
 				},
+				[3] = {
+					["key"] = "JOY_BTN3",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "F2 Toggle local camera control",
 		},
@@ -723,6 +821,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN18",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -737,6 +842,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN16",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "F2 Aircraft view",
 		},
@@ -747,6 +859,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN19",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
@@ -761,6 +880,13 @@ local diff = {
 						[2] = "Tmod",
 					},
 				},
+				[2] = {
+					["key"] = "JOY_BTN17",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
+					},
+				},
 			},
 			["name"] = "Objects switching direction forward ",
 		},
@@ -771,6 +897,13 @@ local diff = {
 					["reformers"] = {
 						[1] = "CapsLock",
 						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN20",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "LCtrl",
 					},
 				},
 			},
