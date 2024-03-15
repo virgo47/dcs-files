@@ -7,8 +7,8 @@
 # Output overwrites any previous export, so move the previous PNGs to appropriate directory.
 #
 # Examples:
-# ./pdf-to-pngs.sh ~/Downloads/"DCS L-39 Checklists.pdf" l-39 3 4 5 7 8 9 10
-# ./pdf-to-pngs.sh ~/Downloads/"DCS P-47D Checklists.pdf" p-47 2 3 4 5 6 7 8 9 10 11
+# ./pdf-to-kneeboard.sh ~/Downloads/"DCS L-39 Checklists.pdf" l-39 3 4 5 7 8 9 10
+# ./pdf-to-kneeboard.sh ~/Downloads/"DCS P-47D Checklists.pdf" p-47 2 3 4 5 6 7 8 9 10 11
 # TODO other plane examples/reusable commands
 
 set -eu
@@ -24,6 +24,7 @@ shift
 
 for i in $*; do
   # 2> suppresses the invalid MiKTeX complaint about requiring Windows 10
-  pdftoppm -jpeg -r 380 -f $i -l $i "$pdf_in" -singlefile 2> /dev/null |
-    magick - -resize 800x -gravity center -crop 768x1024+0+0 +repage "$(printf "%02d" $i)-$common_name.png"
+  # -define png:color-type=2 assures 8-bit/color RGB and avoids grayscale, which causes red background in DCS 
+  pdftoppm -jpeg -r 380 -f $i "$pdf_in" -singlefile 2> /dev/null |
+    magick - -resize 800x -gravity center -crop 768x1024+0+0 +repage -define png:color-type=2 "$(printf "%02d" $i)-$common_name.png"
 done
