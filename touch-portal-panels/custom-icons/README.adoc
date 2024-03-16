@@ -1,0 +1,11 @@
+= Custom icons Photoshop notes
+
+== Properties notes
+
+Vertical switches - transform W/H, X/Y:
+
+* travel (long): 80/220, 88/18
+* travel (short up): 80/160, 88/18
+* custom stroke has the same transform properties as the travel
+* knob: 95/95, 81/... (up..center..down: long 18..81..143, short-up 18..51..83)
+* knob dark (bigger): 110/110, 73/... (up..center..down: long 18..?..128)
