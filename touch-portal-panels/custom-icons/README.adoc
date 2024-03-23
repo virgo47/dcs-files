@@ -1,5 +1,15 @@
 = Custom icons Photoshop notes
 
+== Naming conventions
+
+* *switch-v-center-grey* means it's a vertical (*v*) switch in a *center* position with a grey travel section
+* *switch-v-dark-up-green* is similar, but the switch knob (not specified above) is "dark" (and a bit larger)
+and the travel is green (kind of highlight)
+* *switch-vst-empty-brass-sgreen* is vertical short switch positioned at the top of the icon (*vst*) to make room
+for a label below, it is *empty* (no knob), brass travel highlight and an additional green stroke around (*sgreen*)
+* *switch-h-left-grey* is a horizontal switch (*h*), this is always position towards the top of the icon (a lot of
+room for a label), grey travel and normal knob positioned *left*
+
 == Properties notes
 
 Vertical switches - transform W/H, X/Y:
@@ -9,3 +19,4 @@ Vertical switches - transform W/H, X/Y:
 * custom stroke has the same transform properties as the travel
 * knob: 95/95, 81/... (up..center..down: long 18..81..143, short-up 18..51..83)
 * knob dark (bigger): 110/110, 73/... (up..center..down: long 18..?..128)
+r
