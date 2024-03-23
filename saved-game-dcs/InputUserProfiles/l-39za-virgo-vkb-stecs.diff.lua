@@ -236,19 +236,6 @@ local diff = {
 		["a3078cd3"] = {
 			["added"] = {
 				[1] = {
-					["filter"] = {
-						["curvature"] = {
-							[1] = 0,
-						},
-						["deadzone"] = 0,
-						["hardwareDetent"] = false,
-						["hardwareDetentAB"] = 0,
-						["hardwareDetentMax"] = 0,
-						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
-						["slider"] = false,
-					},
 					["key"] = "JOY_Z",
 					["reformers"] = {
 						[1] = "Smod",
@@ -297,7 +284,7 @@ local diff = {
 		["d147pnilunilcdnilvd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN41",
+					["key"] = "JOY_BTN42",
 				},
 			},
 			["name"] = "Airbrake Switch - OPEN",
@@ -305,7 +292,7 @@ local diff = {
 		["d148pnilunilcdnilvd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN24",
+					["key"] = "JOY_BTN41",
 				},
 			},
 			["name"] = "Airbrake Switch - CLOSE",
@@ -910,7 +897,7 @@ local diff = {
 		["d73pnilu73cdnilvd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN42",
+					["key"] = "JOY_BTN24",
 				},
 			},
 			["name"] = "Airbrake Button",

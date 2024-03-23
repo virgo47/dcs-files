@@ -17,7 +17,6 @@
 # ./update-saved-games-kneeboards.sh ../L-39C\,\ L-39ZA/
 # _sources-and-scripts/update-saved-games-kneeboards.sh "L-39C, L-39ZA"
 
-
 set -eu
 
 scripts_dir=$(cd $(dirname "$0") && pwd)

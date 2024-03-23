@@ -169,7 +169,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.2,
+							[1] = 0.15,
 						},
 						["deadzone"] = 0,
 						["hardwareDetent"] = false,
@@ -177,7 +177,7 @@ local diff = {
 						["hardwareDetentMax"] = 0,
 						["invert"] = true,
 						["saturationX"] = 1,
-						["saturationY"] = 1,
+						["saturationY"] = 0.6,
 						["slider"] = true,
 					},
 					["key"] = "JOY_SLIDER2",
@@ -367,21 +367,43 @@ local diff = {
 			},
 			["name"] = "CB UB-16 Rocket Firing Control Circuit Power Switch - ON",
 		},
-		["d3031pnilunilcd3vd-1vpnilvunil"] = {
+		["d3031pnilunilcd3vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN47",
+					["reformers"] = {
+						[1] = "Smod",
+				},
+			},
+			},
+			["name"] = "Missile Seeker Heating Circuit Power Switch - OFF",
+		},
+		["d3031pnilunilcd3vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN47",
 				},
-			},
-			["name"] = "CB Missile Seeker Heating Circuit Power Switch - ON/OFF",
 		},
-		["d3032pnilunilcd3vd-1vpnilvunil"] = {
+			["name"] = "Missile Seeker Heating Circuit Power Switch - ON",
+		},
+		["d3032pnilunilcd3vd0vpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN46",
+					["reformers"] = {
+						[1] = "Smod",
+					},
 				},
 			},
-			["name"] = "CB Missile Seeker Glowing Circuit Power Switch - ON/OFF",
+			["name"] = "Missile Seeker Glowing Circuit Power Switch - OFF",
+				},
+		["d3032pnilunilcd3vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN46",
+			},
+			},
+			["name"] = "Missile Seeker Glowing Circuit Power Switch - ON",
 		},
 		["d3033pnilunilcd21vd-1vpnilvunil"] = {
 			["added"] = {

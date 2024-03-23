@@ -5,7 +5,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.2,
+							[1] = 0.18,
 						},
 						["deadzone"] = 0,
 						["hardwareDetent"] = false,
@@ -26,7 +26,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.2,
+							[1] = 0.18,
 						},
 						["deadzone"] = 0,
 						["hardwareDetent"] = false,
@@ -113,16 +113,53 @@ local diff = {
 			},
 			["name"] = "Absolute Camera Vertical View",
 		},
-		["a3018cd1"] = {
+		["a2012cdnil"] = {
 			["added"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = -0.18,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = true,
+					},
+					["key"] = "JOY_SLIDER1",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Zoom View",
+		},
+		["a3027cd34"] = {
+			["added"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = true,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
 					["key"] = "JOY_Z",
 					["reformers"] = {
 						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "ASP-3 Glass Raise/Lower",
+			["name"] = "Intercom Volume Knob",
 		},
 		["a3028cd34"] = {
 			["added"] = {
@@ -169,6 +206,18 @@ local diff = {
 			},
 			["name"] = "Rearming and Refueling Window",
 		},
+		["d158pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN20",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "F11 Jump to free camera",
+		},
 		["d1665pnilu1667cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -208,6 +257,95 @@ local diff = {
 				},
 			},
 			["name"] = "Zoom normal",
+		},
+		["d180pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Objects switching direction reverse ",
+		},
+		["d181pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN17",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Objects switching direction forward ",
+		},
+		["d185pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN9",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "F2 Toggle camera position",
+		},
+		["d190pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN3",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN3",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "F2 Toggle local camera control",
+		},
+		["d19pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN1",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Lock View (cycle padlock)",
+		},
+		["d20pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN1",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Unlock view (stop padlock)",
+		},
+		["d21pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN18",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "F2 View own aircraft",
 		},
 		["d3013pnilunilcd1vd1vpnilvunil"] = {
 			["added"] = {
@@ -450,6 +588,87 @@ local diff = {
 			},
 			["name"] = "CB WEAPON Switch - ON",
 		},
+		["d321pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN29",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Mouse Rate Fast",
+		},
+		["d322pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN28",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Mouse Rate Slow",
+		},
+		["d323pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN27",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Mouse Rate Normal",
+		},
+		["d331pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN29",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Keyboard Rate Fast",
+		},
+		["d332pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN28",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Keyboard Rate Slow",
+		},
+		["d333pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN27",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Keyboard Rate Normal",
+		},
+		["d338pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN10",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Zoom external normal",
+		},
 		["d360pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -549,6 +768,23 @@ local diff = {
 			},
 			["name"] = "Custom Snap View  9",
 		},
+		["d491pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN20",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN10",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Cockpit Camera Move Center",
+		},
 		["d84pnilu85cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -572,6 +808,18 @@ local diff = {
 				},
 			},
 			["name"] = "Show controls indicator",
+		},
+		["d8pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN16",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "F2 Aircraft view",
 		},
 		["d93pnilu215cdnilvd1vpnilvu0"] = {
 			["added"] = {
@@ -605,43 +853,33 @@ local diff = {
 			},
 			["name"] = "Elevator Trimmer Switch - PULL(CLIMB)",
 		},
-		["dnilp3017unilcd1vdnilvp-0.1vunil"] = {
+		["d97pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN8",
+					["key"] = "JOY_BTN15",
 					["reformers"] = {
 						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "ASP-3NMU Gunsight Glass Lower",
+			["name"] = "Trimmer - Reset Position",
 		},
-		["dnilp3017unilcd1vdnilvp0.1vunil"] = {
+		["dnilp1372unilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN6",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
+					["key"] = "JOY_BTN26",
 				},
 			},
-			["name"] = "ASP-3NMU Gunsight Glass Raise",
+			["name"] = "Cockpit Lights Brightness Rheostat - CCW",
 		},
-		["dnilp36unilcdnilvdnilvpnilvunil"] = {
+		["dnilp1373unilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN127",
-				},
-				[2] = {
-					["key"] = "JOY_BTN127",
-					["reformers"] = {
-						[1] = "CapsLock",
-					},
+					["key"] = "JOY_BTN25",
 				},
 			},
-			["name"] = "View Center",
+			["name"] = "Cockpit Lights Brightness Rheostat - CW",
 		},
-
 		["dnilp210u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -718,6 +956,28 @@ local diff = {
 				},
 			},
 		},
+		["dnilp3017unilcd1vdnilvp-0.1vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN8",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "ASP-3NMU Gunsight Glass Lower",
+		},
+		["dnilp3017unilcd1vdnilvp0.1vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN6",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "ASP-3NMU Gunsight Glass Raise",
+		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -728,6 +988,30 @@ local diff = {
 				},
 			},
 			["name"] = "View Left slow",
+		},
+		["dnilp334u335cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN6",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Zoom external in",
+		},
+		["dnilp336u337cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN8",
+					["reformers"] = {
+						[1] = "CapsLock",
+						[2] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Zoom external out",
 		},
 		["dnilp33u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -778,7 +1062,20 @@ local diff = {
 				},
 			},
 		},
-
+		["dnilp36unilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN127",
+				},
+				[2] = {
+					["key"] = "JOY_BTN127",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "View Center",
+		},
 		["dnilp37u291cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -827,225 +1124,83 @@ local diff = {
 			},
 			["name"] = "Zoom out slow",
 		},
-		["d338pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN10",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Zoom external normal",
-		},
-		["dnilp334u335cdnilvdnilvpnilvunil"] = {
+		["dnilp484u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN6",
 					["reformers"] = {
 						[1] = "CapsLock",
-						[2] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Zoom external in",
+			["name"] = "Cockpit Camera Move Up",
 		},
-		["dnilp336u337cdnilvdnilvpnilvunil"] = {
+		["dnilp485u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN8",
 					["reformers"] = {
 						[1] = "CapsLock",
-						[2] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Zoom external out",
+			["name"] = "Cockpit Camera Move Down",
 		},
-
-		-- Keyboard/Mouse rate
-		["d331pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN29",
-					["reformers"] = {
-						[1] = "CapsLock",
-					},
-				},
-			},
-			["name"] = "Keyboard Rate Fast",
-		},
-		["d332pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN28",
-					["reformers"] = {
-						[1] = "CapsLock",
-					},
-				},
-			},
-			["name"] = "Keyboard Rate Slow",
-		},
-		["d333pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN27",
-					["reformers"] = {
-						[1] = "CapsLock",
-					},
-				},
-			},
-			["name"] = "Keyboard Rate Normal",
-		},
-		["d321pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN29",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Mouse Rate Fast",
-		},
-		["d322pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN28",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Mouse Rate Slow",
-		},
-		["d323pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN27",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Mouse Rate Normal",
-		},
-		["d19pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN1",
-					["reformers"] = {
-						[1] = "CapsLock",
-					},
-				},
-			},
-			["name"] = "Lock View (cycle padlock)",
-		},
-		["d20pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN1",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Unlock view (stop padlock)",
-		},
-		["d185pnilunilcdnilvdnilvpnilvunil"] = {
+		["dnilp486u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN9",
 					["reformers"] = {
 						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "F2 Toggle camera position",
-		},
-		["d190pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN3",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
 					},
 				},
 				[2] = {
-					["key"] = "JOY_BTN3",
+					["key"] = "JOY_BTN19",
 					["reformers"] = {
 						[1] = "CapsLock",
 					},
 				},
 			},
-			["name"] = "F2 Toggle local camera control",
+			["name"] = "Cockpit Camera Move Left",
 		},
-		["d21pnilunilcdnilvdnilvpnilvunil"] = {
+		["dnilp487u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN18",
+					["key"] = "JOY_BTN7",
 					["reformers"] = {
 						[1] = "CapsLock",
-						[2] = "Tmod",
+					},
+				},
+				[2] = {
+					["key"] = "JOY_BTN17",
+					["reformers"] = {
+						[1] = "CapsLock",
 					},
 				},
 			},
-			["name"] = "F2 View own aircraft",
+			["name"] = "Cockpit Camera Move Right",
 		},
-		["d8pnilunilcdnilvdnilvpnilvunil"] = {
+		["dnilp488u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN16",
 					["reformers"] = {
 						[1] = "CapsLock",
-						[2] = "Tmod",
 					},
 				},
 			},
-			["name"] = "F2 Aircraft view",
+			["name"] = "Cockpit Camera Move Forward",
 		},
-		["d180pnilunilcdnilvdnilvpnilvunil"] = {
+		["dnilp489u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN19",
+					["key"] = "JOY_BTN18",
 					["reformers"] = {
 						[1] = "CapsLock",
-						[2] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Objects switching direction reverse ",
-		},
-		["d181pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN17",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "Objects switching direction forward ",
-		},
-		["d158pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN20",
-					["reformers"] = {
-						[1] = "CapsLock",
-						[2] = "Tmod",
-					},
-				},
-			},
-			["name"] = "F11 Jump to free camera",
+			["name"] = "Cockpit Camera Move Back",
 		},
 	},
 }

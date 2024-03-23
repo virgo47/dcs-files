@@ -297,6 +297,17 @@ local diff = {
 				},
 			},
 		},
+		["d3001pnilu3001cd33vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "G",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Reset G-Limits",
+		},
 		["d3001pnilunilcd100vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -1144,6 +1155,14 @@ local diff = {
 			},
 		},
 		["d74pnilu75cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "W",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
 			["name"] = "Wheel Brake On",
 			["removed"] = {
 				[1] = {
@@ -1191,6 +1210,17 @@ local diff = {
 					["reformers"] = {
 						[1] = "LShift",
 						[2] = "LAlt",
+					},
+				},
+			},
+		},
+		["d82pnilu171cdnilvdnilvpnilvunil"] = {
+			["name"] = "Jettison Weapons",
+			["removed"] = {
+				[1] = {
+					["key"] = "W",
+					["reformers"] = {
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -1338,6 +1368,30 @@ local diff = {
 					["key"] = ".",
 					["reformers"] = {
 						[1] = "RCtrl",
+					},
+				},
+			},
+		},
+		["dnilp1372unilcdnilvdnilvpnilvunil"] = {
+			["name"] = "Cockpit Lights Brightness Rheostat - CCW",
+			["removed"] = {
+				[1] = {
+					["key"] = "Y",
+					["reformers"] = {
+						[1] = "RAlt",
+						[2] = "RCtrl",
+					},
+				},
+			},
+		},
+		["dnilp1373unilcdnilvdnilvpnilvunil"] = {
+			["name"] = "Cockpit Lights Brightness Rheostat - CW",
+			["removed"] = {
+				[1] = {
+					["key"] = "Y",
+					["reformers"] = {
+						[1] = "RAlt",
+						[2] = "RShift",
 					},
 				},
 			},
