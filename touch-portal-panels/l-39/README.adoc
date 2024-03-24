@@ -1,0 +1,77 @@
+= L-39 Touch Portal panel
+
+* Pages to import: link:../pages/dcs-l39-pages.tpz2[dcs-l39-pages.tpz2]
+* Import event for ft->m conversion as well: link:../pages/dcs-ft2m-event.tpe[dcs-ft2m-event.tpe]
+
+Remote links:
+
+* DCS user file TODO[DCS-COINS: L-39C/ZA Dashboard]
+// TODO update with fresh links
+* Forum comment https://forum.dcs.world/topic/207264-touch-portal-app/page/12/#comment-5125334
+
+Main page:
+
+image::_dcs-l39-page-main-demo.png[]
+
+Alt page (click on the :
+
+image::_dcs-l39-page-main-demo.png[]
+
+== User file info
+
+* Name: +
+DCS-COINS: L-39C/ZA Dashboard
+
+* Summary:
++
+....
+Two-page control "panel" for Touch Portal Android application, powered by DCS-COINS plugin.
+Contains the Main page for most occasions and the Alt page for startup/engine/emergency/checks.
+....
+
+* Description:
++
+....
+License/conditions:
+- The dashboard itself and original icons are distributed under Unlicense: https://en.wikipedia.org/wiki/Unlicense
+- Some buttons use Flight Simulation Pack iconpack: https://www.touch-portal.com/assetsdb/assets-details.php?id=19&name=Flight%20Simulation%20Pack&type=iconpack
+
+Requirements:
+- DCS-COINS from 2024-03-13 was used: https://www.digitalcombatsimulator.com/en/files/3319022/
+- Touch Portal 4.1: https://www.touch-portal.com/
+- Touch Portal on Android requires a paid Pro Upgrade (~14 USD)
+
+Installation:
+- DCS-COINS and Touch Portal must be already installed and working.
+- Download and extract the file.
+- In Touch Portal go to the Events tab first, click on + icon, "Import Event" and import the file dcs-ft2m-event.tpe.
+- Go back to the Pages tab, click the cog wheel next to the page selector and choose "Import page..."
+- Select the file dcs-l39-pages.tpz2 and click "Open".
+- Navigate the following dialogs, there should be no problems on the first import.
+- NOTE: Repeated imports will ask about the conflicting values, DO NOT add them as new assets. Currently, TP does not have an option to choose "Do not import" for all the existing values, it's probably faster to remove the values first, but even that is annoying (Values tab, selected all L-39/l39 values with Ctrl, then delete them). Sorry about that, but it is already better than before because it was not possible to import a two-page dashboard with shared values at all.
+
+The ideas behind this page:
+- Definitely use a tablet, a mobile phone is not suitable for any serious page.
+- I wanted to control both L-39C and ZA variants from a single page. I could make two separate pages (maybe I will), but most of the controls are shared.
+- Controls with green strokes around them are ZA only, so they are easy to distinguish.
+- Controls are roughly positioned as in the cockpit (some more true to C, others to ZA variant).
+- Main switches are in L-39C layout, two ZA switches are added under them on the right.
+- Armament buttons are kinda ZA layout, but the left vertical panel and the pedestal are merged. But everything is there, even Deblock guns, which otherwise has no control shortcut in the game! So now you can shoot at planes even under 400 km/h (not a standard procedure though).
+- You can also control various knobs like light intensity. This is only one way because Touch Portal does not provide the other direction.
+- Heading is true, in the L-39 fashion, speed and altitude are metric. Altitude meters are calculated with the provided event, which must be imported, otherwise that part does not work.
+
+Usage notes:
+
+- To switch between Main and Alt pages, press the heading/speed/altitude "button".
+- RESET Critical Buttons can be used to the flip first 10 main switches + some other stuff (like the Flight recorder) on and off, to help you sync the page with the current flying condition. It's not perfect, but better than nothing. This only changes the state on the TP page, no action is sent to the cockpit, so it's quite safe. (The status of all switches is NOT sent by DCS/DCS-BIOS when you enter the cockpit, so there is no perfect sync at the start.)
+- Similarly, you can fix flaps and gear state by tapping on them. Again, this does not affect the cockpit.
+
+I hope you will find the page useful. Let me know if you have any problems with it. If you want to change something you're free to do so - it's up to you, I like it this way.
+....
+
+* Tags: +
+Touch Portal, DCS-COINS, L-39, control panel, dashboard, Android
+
+== Other notes
+
+* Engine related buttons on the Alt page are still old-style, may be restyled eventually.

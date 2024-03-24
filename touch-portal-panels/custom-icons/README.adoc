@@ -19,4 +19,3 @@ Vertical switches - transform W/H, X/Y:
 * custom stroke has the same transform properties as the travel
 * knob: 95/95, 81/... (up..center..down: long 18..81..143, short-up 18..51..83)
 * knob dark (bigger): 110/110, 73/... (up..center..down: long 18..?..128)
-r
