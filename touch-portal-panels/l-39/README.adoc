@@ -1,13 +1,12 @@
 = L-39 Touch Portal panel
 
-* Pages to import: link:../pages/dcs-l39-pages.tpz2[dcs-l39-pages.tpz2]
-* Import event for ft->m conversion as well: link:../pages/dcs-ft2m-event.tpe[dcs-ft2m-event.tpe]
+* Pages to import: https://github.com/virgo47/dcs-files/raw/main/touch-portal-panels/pages/dcs-l39-pages.tpz2[dcs-l39-pages.tpz2]
+* Import event for ft->m conversion as well: https://raw.githubusercontent.com/virgo47/dcs-files/main/touch-portal-panels/pages/dcs-ft2m-event.tpe[dcs-ft2m-event.tpe]
 
 Remote links:
 
-* DCS user file TODO[DCS-COINS: L-39C/ZA Dashboard]
-// TODO update with fresh links
-* Forum comment https://forum.dcs.world/topic/207264-touch-portal-app/page/12/#comment-5125334
+* DCS user file: https://www.digitalcombatsimulator.com/en/files/3336442/[DCS-COINS: L-39C/ZA Dashboard]
+* Forum comment: https://forum.dcs.world/topic/207264-touch-portal-app/page/16/#comment-5403433
 
 Main page:
 
@@ -34,7 +33,6 @@ Contains the Main page for most occasions and the Alt page for startup/engine/em
 ....
 License/conditions:
 - The dashboard itself and original icons are distributed under Unlicense: https://en.wikipedia.org/wiki/Unlicense
-- Some buttons use Flight Simulation Pack iconpack: https://www.touch-portal.com/assetsdb/assets-details.php?id=19&name=Flight%20Simulation%20Pack&type=iconpack
 
 Requirements:
 - DCS-COINS from 2024-03-13 was used: https://www.digitalcombatsimulator.com/en/files/3319022/
@@ -57,7 +55,8 @@ The ideas behind this page:
 - Controls are roughly positioned as in the cockpit (some more true to C, others to ZA variant).
 - Main switches are in L-39C layout, two ZA switches are added under them on the right.
 - Armament buttons are kinda ZA layout, but the left vertical panel and the pedestal are merged. But everything is there, even Deblock guns, which otherwise has no control shortcut in the game! So now you can shoot at planes even under 400 km/h (not a standard procedure though).
-- You can also control various knobs like light intensity. This is only one way because Touch Portal does not provide the other direction.
+- Momentary buttons are emulated as toggles (Touch Portal doesn't have press-and-hold), unless a short press is enough. E.g. Warning lights test button works as toggle, but Explosive charge for the gun works as a short press. Turbo and Engine Start buttons work as 2s press.
+- You can also control various knobs with sliders, e.g. light intensity, radio volume, etc. This is only one way because Touch Portal does not provide the other direction.
 - Heading is true, in the L-39 fashion, speed and altitude are metric. Altitude meters are calculated with the provided event, which must be imported, otherwise that part does not work.
 
 Usage notes:
@@ -65,8 +64,13 @@ Usage notes:
 - To switch between Main and Alt pages, press the heading/speed/altitude "button".
 - RESET Critical Buttons can be used to the flip first 10 main switches + some other stuff (like the Flight recorder) on and off, to help you sync the page with the current flying condition. It's not perfect, but better than nothing. This only changes the state on the TP page, no action is sent to the cockpit, so it's quite safe. (The status of all switches is NOT sent by DCS/DCS-BIOS when you enter the cockpit, so there is no perfect sync at the start.)
 - Similarly, you can fix flaps and gear state by tapping on them. Again, this does not affect the cockpit.
+- Check the YouTube video explaining the Touch Portal with this dashboard example: https://youtu.be/3rL1EsVrLeI
 
 I hope you will find the page useful. Let me know if you have any problems with it. If you want to change something you're free to do so - it's up to you, I like it this way.
+
+History:
+- 2024-.....: All custom icons, including engine panel buttons and covers, various sync fixes (mostly buttons/switches with covers), minor placement tuning.
+- 2024-03-24: Initial version for TPv4, not all icons were custom, some cockpit sync issues.
 ....
 
 * Tags: +
