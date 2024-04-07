@@ -103,7 +103,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.24,
+							[1] = -0.3,
 						},
 						["deadzone"] = 0,
 						["hardwareDetent"] = false,
@@ -115,9 +115,6 @@ local diff = {
 						["slider"] = true,
 					},
 					["key"] = "JOY_RX",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
 				},
 			},
 			["name"] = "Wheel Brake",
@@ -373,18 +370,18 @@ local diff = {
 					["key"] = "JOY_BTN47",
 					["reformers"] = {
 						[1] = "Smod",
+					},
 				},
 			},
-			},
-			["name"] = "Missile Seeker Heating Circuit Power Switch - OFF",
+			["name"] = "CB Missile Seeker Heating Circuit Power Switch - OFF",
 		},
 		["d3031pnilunilcd3vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN47",
 				},
-		},
-			["name"] = "Missile Seeker Heating Circuit Power Switch - ON",
+			},
+			["name"] = "CB Missile Seeker Heating Circuit Power Switch - ON",
 		},
 		["d3032pnilunilcd3vd0vpnilvunil"] = {
 			["added"] = {
@@ -395,15 +392,15 @@ local diff = {
 					},
 				},
 			},
-			["name"] = "Missile Seeker Glowing Circuit Power Switch - OFF",
-				},
+			["name"] = "CB Missile Seeker Glowing Circuit Power Switch - OFF",
+		},
 		["d3032pnilunilcd3vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN46",
+				},
 			},
-			},
-			["name"] = "Missile Seeker Glowing Circuit Power Switch - ON",
+			["name"] = "CB Missile Seeker Glowing Circuit Power Switch - ON",
 		},
 		["d3033pnilunilcd21vd-1vpnilvunil"] = {
 			["added"] = {

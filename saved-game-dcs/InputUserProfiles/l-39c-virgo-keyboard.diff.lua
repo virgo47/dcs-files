@@ -303,6 +303,17 @@ local diff = {
 				},
 			},
 		},
+		["d3001pnilu3001cd33vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "G",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Reset G-Limits",
+		},
 		["d3001pnilunilcd100vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -336,6 +347,15 @@ local diff = {
 				},
 			},
 			["name"] = "SARPP Flight Recorder Switch - ON/OFF",
+			["removed"] = {
+				[1] = {
+					["key"] = "D",
+					["reformers"] = {
+						[1] = "RCtrl",
+						[2] = "RShift",
+					},
+				},
+			},
 		},
 		["d3005pnilunilcd100vd1vpnilvunil"] = {
 			["added"] = {
@@ -354,6 +374,14 @@ local diff = {
 			},
 		},
 		["d3013pnilunilcd2vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "L",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
 			["name"] = "Canopy Lock Handle - LOCK/OPEN",
 			["removed"] = {
 				[1] = {
@@ -365,15 +393,15 @@ local diff = {
 			},
 		},
 		["d3014pnilunilcd1vd1vpnilvunil"] = {
-			["added"] = {
+			["name"] = "ASP-3NMU Gunsight Color Filter, ON/OFF",
+			["removed"] = {
 				[1] = {
-					["key"] = "Right",
+					["key"] = "L",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "RAlt",
 					},
 				},
 			},
-			["name"] = "ASP-3NMU Gunsight Color Filter, ON/OFF",
 		},
 		["d3015pnilunilcd37vd1vpnilvunil"] = {
 			["name"] = "Landing Gear Handle, Neutral",
@@ -386,16 +414,38 @@ local diff = {
 				},
 			},
 		},
-		["d3015pnilunilcd6vd-1vpnilvunil"] = {
-			["name"] = "RT-12 JPT Regulator Manual Disable Switch Cover - OPEN/CLOSE",
-			["removed"] = {
+		["d3018pnilunilcd6vd-1vpnilvunil"] = {
+			["added"] = {
 				[1] = {
-					["key"] = "T",
+					["key"] = "Left",
 					["reformers"] = {
-						[1] = "LShift",
+						[1] = "RCtrl",
 					},
 				},
 			},
+			["name"] = "RT-12 JPT Regulator Test Switch - I",
+		},
+		["d3018pnilunilcd6vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Down",
+					["reformers"] = {
+						[1] = "RCtrl",
+					},
+				},
+			},
+			["name"] = "RT-12 JPT Regulator Test Switch - OFF",
+		},
+		["d3018pnilunilcd6vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Right",
+					["reformers"] = {
+						[1] = "RCtrl",
+					},
+				},
+			},
+			["name"] = "RT-12 JPT Regulator Test Switch - II",
 		},
 		["d3019pnilunilcd6vd-1vpnilvunil"] = {
 			["added"] = {
@@ -415,6 +465,15 @@ local diff = {
 				},
 			},
 			["name"] = "Pitot Tube Selector Lever - RIGHT",
+			["removed"] = {
+				[1] = {
+					["key"] = "P",
+					["reformers"] = {
+						[1] = "LShift",
+						[2] = "LAlt",
+					},
+				},
+			},
 		},
 		["d3023pnilunilcd37vd1vpnilvunil"] = {
 			["added"] = {
@@ -423,6 +482,15 @@ local diff = {
 				},
 			},
 			["name"] = "Pitot Tube Selector Lever - LEFT",
+			["removed"] = {
+				[1] = {
+					["key"] = "P",
+					["reformers"] = {
+						[1] = "LShift",
+						[2] = "LCtrl",
+					},
+				},
+			},
 		},
 		["d3031pnilunilcd21vd-1vpnilvunil"] = {
 			["added"] = {
@@ -431,6 +499,15 @@ local diff = {
 				},
 			},
 			["name"] = "RKL-41 ADF Dial Selector Switch - FAR/NEAR",
+			["removed"] = {
+				[1] = {
+					["key"] = "B",
+					["reformers"] = {
+						[1] = "RCtrl",
+						[2] = "RShift",
+					},
+				},
+			},
 		},
 		["d3032pnilu3032cd20vd1vpnilvu0"] = {
 			["added"] = {
@@ -892,6 +969,14 @@ local diff = {
 				},
 			},
 			["name"] = "Left Pitot Heating On Button",
+			["removed"] = {
+				[1] = {
+					["key"] = "P",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
 		},
 		["d3148pnilu3148cd4vd1vpnilvu0"] = {
 			["added"] = {
@@ -900,6 +985,14 @@ local diff = {
 				},
 			},
 			["name"] = "Left Pitot Heating Off Button",
+			["removed"] = {
+				[1] = {
+					["key"] = "P",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
 		},
 		["d3149pnilu3149cd4vd1vpnilvu0"] = {
 			["added"] = {
@@ -908,6 +1001,14 @@ local diff = {
 				},
 			},
 			["name"] = "Right Pitot Heating On Button",
+			["removed"] = {
+				[1] = {
+					["key"] = "P",
+					["reformers"] = {
+						[1] = "RCtrl",
+					},
+				},
+			},
 		},
 		["d3150pnilu3150cd4vd1vpnilvu0"] = {
 			["added"] = {
@@ -916,6 +1017,14 @@ local diff = {
 				},
 			},
 			["name"] = "Right Pitot Heating Off Button",
+			["removed"] = {
+				[1] = {
+					["key"] = "P",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
 		},
 		["d3256pnilunilcd0vd1vpnilvunil"] = {
 			["added"] = {
@@ -1128,6 +1237,14 @@ local diff = {
 				},
 			},
 			["name"] = "ADF Switch - ON/OFF",
+			["removed"] = {
+				[1] = {
+					["key"] = "I",
+					["reformers"] = {
+						[1] = "RAlt",
+					},
+				},
+			},
 		},
 		["d66pnilunilcdnilvdnilvpnilvunil"] = {
 			["name"] = "Thrust Step Up",
@@ -1173,6 +1290,14 @@ local diff = {
 			},
 		},
 		["d74pnilu75cdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "W",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
 			["name"] = "Wheel Brake On",
 			["removed"] = {
 				[1] = {
@@ -1259,6 +1384,17 @@ local diff = {
 				},
 			},
 		},
+		["d82pnilu171cdnilvdnilvpnilvunil"] = {
+			["name"] = "Jettison Weapons",
+			["removed"] = {
+				[1] = {
+					["key"] = "W",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
+		},
 		["d835pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -1274,6 +1410,17 @@ local diff = {
 					["key"] = "P",
 					["reformers"] = {
 						[1] = "RShift",
+					},
+				},
+			},
+		},
+		["d838pnilunilcdnilvd0.1vpnilvunil"] = {
+			["name"] = "Engine Launch Method Switch - PRESERV",
+			["removed"] = {
+				[1] = {
+					["key"] = "L",
+					["reformers"] = {
+						[1] = "LCtrl",
 					},
 				},
 			},
@@ -1326,7 +1473,7 @@ local diff = {
 				[1] = {
 					["key"] = "F",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -1559,26 +1706,26 @@ local diff = {
 			},
 		},
 		["dnilp3005unilcd1vdnilvp-1vunil"] = {
-			["added"] = {
+			["name"] = "ASP-3NMU Gunsight Brightness Knob Decrease",
+			["removed"] = {
 				[1] = {
-					["key"] = "Down",
+					["key"] = "O",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "RAlt",
 					},
 				},
 			},
-			["name"] = "ASP-3NMU Gunsight Brightness Knob Decrease",
 		},
 		["dnilp3005unilcd1vdnilvp1vunil"] = {
-			["added"] = {
+			["name"] = "ASP-3NMU Gunsight Brightness Knob, Increase",
+			["removed"] = {
 				[1] = {
-					["key"] = "Up",
+					["key"] = "O",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "RCtrl",
 					},
 				},
 			},
-			["name"] = "ASP-3NMU Gunsight Brightness Knob, Increase",
 		},
 		["dnilp3009unilcd1vdnilvp-0.5vunil"] = {
 			["name"] = "ASP-3NMU Gunsight Target Wingspan Adjustment Dial, Decrease",
@@ -1597,25 +1744,12 @@ local diff = {
 			},
 		},
 		["dnilp3010unilcd1vdnilvp-0.7vunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "G",
-				},
-			},
 			["name"] = "ASP-3NMU Gunsight Target Distance, Decrease",
 			["removed"] = {
 				[1] = {
 					["key"] = ".",
 				},
 			},
-		},
-		["dnilp3010unilcd1vdnilvp0.7vunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "T",
-				},
-			},
-			["name"] = "ASP-3NMU Gunsight Target Distance, Increase",
 		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {

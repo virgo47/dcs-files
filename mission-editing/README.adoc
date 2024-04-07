@@ -20,6 +20,7 @@ spawning groups/units with MIST
 ** https://youtu.be/o7xpEqaqTWw[part2] - OOP basics, reporting unit distance as a message,
 ** https://youtu.be/OvtA1MWSQuk[part3] - example of `setTask` with bombing target,
 ** part4
+* https://youtu.be/MGhyQ7eVDnE[Advanced Cockpit-based Triggers in the DCS Mission Editor Tutorial] by Reflected
 
 == Lua notes
 

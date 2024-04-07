@@ -103,7 +103,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.24,
+							[1] = -0.3,
 						},
 						["deadzone"] = 0,
 						["hardwareDetent"] = false,
@@ -115,9 +115,6 @@ local diff = {
 						["slider"] = true,
 					},
 					["key"] = "JOY_RX",
-					["reformers"] = {
-						[1] = "Tmod",
-					},
 				},
 			},
 			["name"] = "Wheel Brake",
@@ -188,19 +185,6 @@ local diff = {
 		["a3041cd21"] = {
 			["added"] = {
 				[1] = {
-					["filter"] = {
-						["curvature"] = {
-							[1] = 0,
-						},
-						["deadzone"] = 0,
-						["hardwareDetent"] = false,
-						["hardwareDetentAB"] = 0,
-						["hardwareDetentMax"] = 0,
-						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
-						["slider"] = false,
-					},
 					["key"] = "JOY_Z",
 					["reformers"] = {
 						[1] = ".",
@@ -212,19 +196,6 @@ local diff = {
 		["a3042cd21"] = {
 			["added"] = {
 				[1] = {
-					["filter"] = {
-						["curvature"] = {
-							[1] = 0,
-						},
-						["deadzone"] = 0,
-						["hardwareDetent"] = false,
-						["hardwareDetentAB"] = 0,
-						["hardwareDetentMax"] = 0,
-						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
-						["slider"] = false,
-					},
 					["key"] = "JOY_Z",
 					["reformers"] = {
 						[1] = ",",

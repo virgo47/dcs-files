@@ -43,25 +43,12 @@ local diff = {
 			["name"] = "Roll",
 		},
 		["a2003cdnil"] = {
-			["changed"] = {
+			["name"] = "Rudder",
+			["removed"] = {
 				[1] = {
-					["filter"] = {
-						["curvature"] = {
-							[1] = 0.25,
-						},
-						["deadzone"] = 0,
-						["hardwareDetent"] = false,
-						["hardwareDetentAB"] = 0,
-						["hardwareDetentMax"] = 0,
-						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
-						["slider"] = false,
-					},
 					["key"] = "JOY_RZ",
 				},
 			},
-			["name"] = "Rudder",
 		},
 		["a2004cdnil"] = {
 			["name"] = "Thrust",
