@@ -1,0 +1,20 @@
+BACK_AIR_COND|back_air_cond|Back Conditioning Shutoff Switch, OPEN/FRONT PILOT CONTROL/CLOSE|1|0|UpTo2|1
+L39ZA_FRONT_ENG_START_MODE|l39za_front_eng_start_mode|L39ZA FRONT Engine Start Mode Switch|1|0|UpTo2|1
+FRONT_RT12_TEST|front_rt12_test|Front RT-12 JPT Regulator Test Switch I/OFF/II|1|0|UpTo2|1
+FRONT_TEST_SSP|front_test_ssp|Front Fire Warning Signal Test Switch I/OFF/II|1|0|UpTo2|1
+FRONT_GMK_CRS_SEL|front_gmk_crs_sel|Front GMK-1AE GMC Course Selector Switch, CCW/OFF/CW|1|0|UpTo2|1
+FRONT_GMK_TEST|front_gmk_test|Front GMK-1AE GMC Test Switch, 0/OFF/300|1|0|UpTo2|1
+FRONT_HELMET_MODE|front_helmet_mode|Front Helmet Heating Mode Switch, AUTO/OFF/ON|1|0|UpTo2|1
+FRONT_RSBN_MODE|front_rsbn_mode|Front RSBN Mode Switch, LANDING/NAVIGATION/GLIDE PATH|1|0|UpTo2|1
+FRONT_RSBN_SET_AZ|front_rsbn_set_az|Front RSBN Initial Azimuth|1|0|UpTo2|1
+FRONT_RSBN_SET_RANGE|front_rsbn_set_range|Front RSBN Initial Range|1|0|UpTo2|1
+BACK_INST_LIGHTS|back_inst_lights|Back Instrument Lighting Switch, Red/OFF/White|1|0|UpTo2|1
+BACK_LAND_LIGHTS|back_land_lights|Back Taxi and Landing Lights Control Switch, TAXI/OFF/LANDING|1|0|UpTo2|1
+FRONT_INST_LIGHTS|front_inst_lights|Front Instrument Lighting Switch, Red/OFF/White|1|0|UpTo2|1
+FRONT_LAND_LIGHTS|front_land_lights|Front Taxi and Landing Lights Control Switch, TAXI/OFF/LANDING|1|0|UpTo2|1
+FRONT_NAV_LIGHTS_FLASH|front_nav_lights_flash|Front Navigation Lights Mode Control Switch, FLICKER/OFF/FIXED|1|0|UpTo2|1
+BACK_RKL_LOOP_SW|back_rkl_loop_sw|Back RKL-41 ADF Loop Switch, LEFT/OFF/RIGHT|1|0|UpTo2|1
+FRONT_RKL_LOOP_SW|front_rkl_loop_sw|Front RKL-41 ADF Loop Switch, LEFT/OFF/RIGHT|1|0|UpTo2|1
+BACK_BOMB_EMERG_JETT|back_bomb_emerg_jett|Back Arm/Safe Bombs Emergency Jettison Switch, LIVE/BOMBS/BLANK|1|0|UpTo2|1
+FRONT_BOMB_REL_SEL|front_bomb_rel_sel|Front Missile/Bomb Release Selector Switch, PORT(Left)/STARB-BOTH(Right for Missiles/Both)|4|0|OffOn|ON
+FRONT_ROCKET_MODE|front_rocket_mode|Front Rockets Firing Mode Selector Switch, AUT./2RS/4RS|1|0|UpTo2|2

@@ -1,4 +1,4 @@
-(Obviously, all the source material is property of Eagle Dynamics, etc.)
+(Obviously, all the source material for this directory is property of Eagle Dynamics, etc.)
 
 Pictures taken from e-shop module pictures, cut to square and resized to 300x300.
 

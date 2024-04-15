@@ -1,0 +1,37 @@
+= Touch Portal dashboards with DCS-COINS
+
+* DCS-COINS download: https://www.digitalcombatsimulator.com/en/files/3319022/
+* Discussion: https://forums.eagle.ru/topic/207264-touch-portal-app/page/2/
+
+== Adjustments when upgrading
+
+* If the new DCS-COINS uses new version of DCS-BIOS, remove the existing `~/Saved Games/<dcs>/Scripts/DCS-BIOS`.
+Typically, you don't have to change the `Export.lua`.
+After this, start the COINS setup which will install the new/compatible DCS-BIOS.
+
+* The default PP files (under `Munt.G_DCS-COINS\acdb`) have some parameters not quite right:
+** In `CommonData.pp` you may want to disable `ANGULAR_VELOCITY_` parameters (add `#` around `text`)
+which generate tons of events that makes the debugging (`DCS-COINS -v`) harder.
+** In `CommonData.pp` enable `IAS_EU` parameter (remove `#` around `text`) to get speed in km/h.
+** In `L-39.pp.mods` default positions of some switches (mostly 3-way) are off, the fix was proposed
+https://forum.dcs.world/topic/207264-touch-portal-app/?do=findComment&comment=5413430(here).
+
+Xoomigo about the PP record structure:
+====
+* Aircraft Parameter ID
+* TP State ID
+* TP State Description (DCS-BIOS description)
+* Action Type
+** 0: No action
+** 1: "set_state"
+** 2: "fixed_step" DEC INC by 1
+** 3: "variable_step" -<num> +<num>|"suggested_step":<num>
+** 4: "action": arg:"TOGGLE"
+** 5: "hold"/"set_state"
+** 6: "connector/slider control/variable_step" (superset of "3")
+* Action Step - increment/decrement value (if applicable)
+* Enumerated list of options/Range of values [Note: if `#` is used around this, the parameter is disabled]
+* TP Default (Starting) value
+
+"UpTo2" specifies range from 0 to 2. Based on the option sequence in DCS-BIOS description, it should be 0 for "TAXI", 1 for "OFF" and "2" for "LANDING" - but I have found that it's not always the case.
+====

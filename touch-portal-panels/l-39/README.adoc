@@ -35,7 +35,7 @@ License/conditions:
 - The dashboard itself and original icons are distributed under Unlicense: https://en.wikipedia.org/wiki/Unlicense
 
 Requirements:
-- DCS-COINS from 2024-03-13 was used: https://www.digitalcombatsimulator.com/en/files/3319022/
+- DCS-COINS 2024-04-11b was used: https://www.digitalcombatsimulator.com/en/files/3319022/
 - Touch Portal 4.1: https://www.touch-portal.com/
 - Touch Portal on Android requires a paid Pro Upgrade (~14 USD)
 
@@ -47,17 +47,18 @@ Installation:
 - Select the file dcs-l39-pages.tpz2 and click "Open".
 - Navigate the following dialogs, there should be no problems on the first import.
 - NOTE: Repeated imports will ask about the conflicting values, DO NOT add them as new assets. Currently, TP does not have an option to choose "Do not import" for all the existing values, it's probably faster to remove the values first, but even that is annoying (Values tab, selected all L-39/l39 values with Ctrl, then delete them). Sorry about that, but it is already better than before because it was not possible to import a two-page dashboard with shared values at all.
+- If heading/speed/altitude does not work (even after importing the event) check the Troubleshooting section lower! 
 
 The ideas behind this page:
-- Definitely use a tablet, a mobile phone is not suitable for any serious page.
+- Use a tablet, a mobile phone is not suitable for any serious page.
 - I wanted to control both L-39C and ZA variants from a single page. I could make two separate pages (maybe I will), but most of the controls are shared.
 - Controls with green strokes around them are ZA only, so they are easy to distinguish.
 - Controls are roughly positioned as in the cockpit (some more true to C, others to ZA variant).
 - Main switches are in L-39C layout, two ZA switches are added under them on the right.
 - Armament buttons are kinda ZA layout, but the left vertical panel and the pedestal are merged. But everything is there, even Deblock guns, which otherwise has no control shortcut in the game! So now you can shoot at planes even under 400 km/h (not a standard procedure though).
-- Momentary buttons are emulated as toggles (Touch Portal doesn't have press-and-hold), unless a short press is enough. E.g. Warning lights test button works as toggle, but Explosive charge for the gun works as a short press. Turbo and Engine Start buttons work as 2s press.
+- Momentary buttons are emulated as toggles (Touch Portal doesn't have press-and-hold) unless a short press is enough. E.g. Warning lights test button works as a toggle, but the Explosive charge for the gun works as a short press. Turbo and Engine Start buttons work as 2s press.
 - You can also control various knobs with sliders, e.g. light intensity, radio volume, etc. This is only one way because Touch Portal does not provide the other direction.
-- Heading is true, in the L-39 fashion, speed and altitude are metric. Altitude meters are calculated with the provided event, which must be imported, otherwise that part does not work.
+- Heading is true, in the L-39 fashion, speed and altitude are metric. Altitude meters are calculated with the provided event, which must be imported, otherwise that part does not work. You can modify the button for knots and feet if you want. If it doesn't work right (shows strange text), see the Troubleshooting section lower.
 
 Usage notes:
 
@@ -66,10 +67,19 @@ Usage notes:
 - Similarly, you can fix flaps and gear state by tapping on them. Again, this does not affect the cockpit.
 - Check the YouTube video explaining the Touch Portal with this dashboard example: https://youtu.be/3rL1EsVrLeI
 
-I hope you will find the page useful. Let me know if you have any problems with it. If you want to change something you're free to do so - it's up to you, I like it this way.
+Troubleshooting:
+- If heading/speed/altitude does not work, and the ft2m event is imported, it is because by default the value for metric speed (IAS_EU parameter) is disabled in DCS-COINS. You can either modify the button Event section to use the US value (enabled by default), or remove the line altogether - or enable it:
+-- Go to your DCS-COINS directory (unpacked), and then into Munt.G_DCS-COINS\acdb subdir.
+-- Open CommonData.pp in a text editor and remove # (hash chars) around "text" on a line with `IAS_EU` parameter, so it looks like this (the "text" type designation is case-insensitive):
+IAS_EU|ias_eu|Indicated Airspeed KM H|0|0|Text|0
+-- Now start the DCS-COINS setup, check the selected modules (should be still the same) and regenerate the TP plugin.
+-- Import the plugin again into your Touch Portal.
+- Some switches sometimes get to the wrong initial position when the mission starts, and it may take two changes before the TP page (dashboard) synchronizes with the cockpit (one change coming from DCS event should be enough). This is an inherent limitation of the sync process and the defaults from DCS-COINS PP files. Not everything is always synchronized on entering the cockpit - and the defaults can't be good for all kinds of mission starts.
+
+I hope you will find the Touch Portal page useful. Let me know if you have any problems with it. If you want to change something you're free to do so - it's up to you, I like it this way.
 
 History:
-- 2024-.....: All custom icons, including engine panel buttons and covers, various sync fixes (mostly buttons/switches with covers), minor placement tuning.
+- 2024-04-11: All custom icons, including engine panel buttons and covers, various sync fixes (mostly buttons/switches with covers), minor placement tuning. Fixed minor C/ZA inconsistencies (mainly Engine Start Regime switch). Requires DCS-COINS 2024-04-11b.
 - 2024-03-24: Initial version for TPv4, not all icons were custom, some cockpit sync issues.
 ....
 
@@ -78,4 +88,4 @@ Touch Portal, DCS-COINS, L-39, control panel, dashboard, Android
 
 == Other notes
 
-* Engine related buttons on the Alt page are still old-style, may be restyled eventually.
+* No known issues right now...
