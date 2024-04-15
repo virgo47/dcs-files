@@ -27,6 +27,13 @@ spawning groups/units with MIST
 Method and functions
 // TODO
 
+== Triggers, Conditions
+
+* https://wiki.hoggitworld.com/view/DCS_editor_triggerBasics[DCS Editor Trigger Basics], also includes workflow diagrams of the trigger types.
+* Using `FLAG IS TRUE` condition and `X:START WAIT USER RESPONSE` to trigger two flags on and off seems to be prone to malfunction when the Space key is pressed faster than once a second. 
+// TODO why? What are the states of the flags?
+// TODO Let's add some debug functions to F10 other menu
+
 == Tips and tricks
 
 * To see the tooltip with command id in the Controls table edit `<dcs-install>\MissionEditor\MissionEditor.lua`.
@@ -34,10 +41,14 @@ Find the line with `OPTIONS_ADD_COMMAND_CODES_TO_TOOLTIP` and change it to `true
 This likely needs to be repeated after each update.
 * Values of commands can be also found in `<dcs-install>\aircraft\<plane>\Cockpit\Scripts\clickabledata.lua`.
 This can differ for some planes, e.g. with multiple variants (L-39, C-101), but should be easy to locate.
-
+* Space, Backspace with `X:START WAIT USER RESPONSE`: https://forum.dcs.world/topic/248153-about-the-xstart-wait-user-response/
 
 // TODO
 Study this function to schedule action: https://wiki.hoggitworld.com/view/DCS_func_scheduleFunction
+
+== Sounds
+
+* For my custom SFX see `dcs/dcs-virgo-sfx` Reaper project (elsewhere). 
 
 == My mission notes
 
