@@ -3,6 +3,7 @@
 -- Always start with "library" creation if not present - the next line:
 dunlib = dunlib or {}
 
+--region MESSAGES
 -- For all message related functions, unit can be Unit object or unitId (number).
 function dunlib.clearMessagesUnit(unit)
     local unitId = unit.className_ == "Unit" and unit:getID() or unit
@@ -33,7 +34,9 @@ function dunlib.messageUnitDelayed(unit, text, delay, duration, clearView)
         dunlib.messageUnit(unit, text, duration, clearView)
     end, {}, timer.getTime() + (delay or 2))
 end
+--endregion
 
+--region DEBUG, PRINT, INTERPOLATE
 -- debug string for any value of any type, including tables
 -- Ignore indent parameter here, this is only used internally by debugTable function.
 -- Set includeMetatables to true if you want to report also metatables for tables.
@@ -78,7 +81,7 @@ function dunlib.debugTable(obj, maxLevel, indent, includeMetatables, functionInf
     end
     table.sort(sortedKeys)
 
-    res = ""
+    local res = ""
     if includeMetatables then
         local mt = getmetatable(obj)
         if mt then
@@ -130,7 +133,7 @@ function dunlib.debugLocals()
     return res
 end
 
--- Interpolates string with #{key} replacing keys for their values using the replacements table.
+-- Interpolates string template with #{key} replacing keys for their values using the replacements table.
 -- Key can appear multiple times in the string.
 -- Function also removes newlines preceded by \, if you want that, use \\ and two newlines.
 function dunlib.interpolate(string, replacements)
@@ -201,7 +204,36 @@ function print(str, inGameToAll)
         end
     end
 end
+--endregion
 
+--region FLAGS
+-- Toggles flag from 0 to 1 and vice versa, if the flag does not exists, it is set to 1 (true).
+function dunlib.toggleFlag(flagName)
+    local current = trigger.misc.getUserFlag(flagName) or 0
+    trigger.action.setUserFlag(flagName, current == 0 and 1 or 0)
+end
+
+-- Returns string with flag values for provided flags.
+function dunlib.debugFlags(...)
+    local args = {...}
+    if type(args[1]) == "table" then
+        args = args[1]
+    end
+
+    local res = ""
+    for _, flagName in ipairs(args) do
+        if #res > 0 then
+            res = res .. "\n"
+        end
+        local flagValue = trigger.misc.getUserFlag(flagName)
+        res = res .. flagName .. ": " .. flagValue
+    end
+
+    return res
+end
+--endregion
+
+--region VARIOUS
 ----------------------------------------------------------------------------------------------------
 -- HIGHER LEVEL HELPER/DEBUG FUNCTIONS, mostly unit related:
 
@@ -262,3 +294,4 @@ function dunlib.fuelInfo(params)
         timer.scheduleFunction(dunlib.fuelInfo, params, timer.getTime() + params.messageRepeatSec)
     end
 end
+--endregion
