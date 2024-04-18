@@ -287,7 +287,7 @@ function cm:onEvent(event)
     local playerName = initiatorUnit:getPlayerName()
     if not playerName then
         return
-    end -- not a player
+    end -- not a player/client
 
     local msg = dunlib.interpolate(
             cm.messageTable[event.initiator:getTypeName()] or cm.defaultIntroMessage(event),
