@@ -155,9 +155,8 @@ end
 -- cm = current mission
 cm = {}
 
--- TODO How about some message templating? E.g. to insert player name.
 cm.messageTable = {}
--- ]] on new line leaves one blank line... but it's not actually that bad.
+-- ]] on a new line leaves one blank line... but it's not actually that bad.
 cm.messageTable["L-39C"] = [[
 VFR LANDING:
 
@@ -265,10 +264,9 @@ Now you can leave the plane...
 ]]
 cm.messageTable["P-51D-30-NA"] = cm.messageTable["P-51D"]
 
-function cm.defaultIntroMessage(event)
-    return "Sorry, no instructions for " .. event.initiator:getTypeName() .. ".\n" ..
-            "Get it down somehow..."
-end
+cm.defaultMessage = [[ 
+Sorry, no instructions for #{typeName}.\nGet it down somehow...
+]]
 
 function cm:onEvent(event)
     -- it works with PLAYER event, but not with S_BIRTH (yet), why?
@@ -290,8 +288,10 @@ function cm:onEvent(event)
     end -- not a player/client
 
     local msg = dunlib.interpolate(
-            cm.messageTable[event.initiator:getTypeName()] or cm.defaultIntroMessage(event),
-            {})
+            cm.messageTable[event.initiator:getTypeName()] or cm.defaultMessage,
+            {
+                typeName = event.initiator:getTypeName(),
+            }) -- TODO expand table of possible replacements
     -- 3s delay, show for 10 mins, true for clear view
     dunlib.messageUnitDelayed(initiatorUnit, msg, 3, 600, true)
 end

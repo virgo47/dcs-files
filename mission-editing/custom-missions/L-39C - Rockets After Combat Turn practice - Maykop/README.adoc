@@ -1,0 +1,110 @@
+= L-39C Rocket delivery after combat turn practice
+
+This is a practice mission for the circuit flown over the rocket delivery target range,
+in particular for the final combat turn.
+
+From the mission design perspective I wanted to be able to toggle the instruction message.
+In the end the sequence goes like this:
+
+* First, the mission is active-paused and the intro message is delivered.
+This message will disappear in 90 s from now no matter what (or sooner if hide is triggered before that).
+* Press Space to show the main instructions for the mission, e.g. combat turn in this case.
+* Next Space will unpause the mission (instruction message stays on).
+* Any subsequent Space will toggle the instruction message off and on ad lib.
+
+== Messages
+
+Intro message:
+----
+GET READY:
+- Adjust the barometric altimeter to the radar altimeter (~600m), QFE 744.19 (Maykop aerodrome) [PgUp/Dn]
+- ARMS on (should be already) [S.C1.U]
+- ASP-FKP on (gunsight, should be already) [Tmod+S.A3.X to toggle]
+- UB-16 on (rockets, should be already) [T.CSL.R]
+- Rockets amount switch as needed (typically 4RS) [T.CSL.D]
+- Gunsight deflection angle 2.00° [TGEnc1]
+- Gunsihght GYRO-FIXED switch to GYRO [Tmod+S.A3.L to toggle]
+- Target base: set 17m [ThmbWhl]
+- Enter minimum distance [TGEnc2]
+
+There's an enemy bunker at the runway threshold which you can practice on.
+
+Press [Space] to show the manoeuvre instructions, then again to unpause the mission Subsequent Space presses will toggle the message with manoeuvre instructions.
+----
+
+Instruction message:
+----
+PROCEDURE
+Flyover:
+- 600 m AGL, 500 km/h
+- wait for 20 s (after flying over the target)
+"On the first" turn:
+- 60° bank, 600 m AGL, 500 km/h
+On the opposite course:
+- pitch –10°, n1 MAX (RPM MAX)
+- 300 m AGL, 600 km/h
+Combat turn:
+- when the target is in the middle of your wingtip tank
+- pitch to 20°, when 10–15° start the 60° roll with the rate 15°/s 
+- at 900–950 m AGL increase roll to 100–120° as needed for the dive on the target along the attack course
+- max AGL 1100–1200 m, speed no less than 350 km/h
+On attack ingress course:
+- dive with pitch –20±5°, RPM 95%
+- for sideslip, adjust the with opposite roll
+With reticle on the target:
+- toggle the combat trigger (safety OFF)
+- enter the maximum distance to the gunsight
+- 500 m AGL, press trigger for 1 second
+Dive exit:
+- at 440 m AGL, start pulling up with G 3.5–4
+- RPM to MAX
+- safety ON
+- climb with 10-15° pitch to 600 m AGL, speed 500 km/h
+Repeat from Flyover as needed.
+
+NOTE: When on the reverse course, you should be about 2.5 km from the runway, with the road towards Hanskaya under you a bit to the right. If you're further, then the 60° bank turn in 500 km/h was not tight enough or the speed was higher. 
+----
+
+== Mission briefing
+
+Situation:
+----
+The place is: Maykop-Khanksaya, but that doesn't matter.
+The plane is: L-39C
+The practice is: Rockets Deployment after Combat Turn
+Why? For Kursant mission #4!
+----
+
+Blue task:
+----
+To learn the combat turn before rocket deployment:
+- You start over the runway at 600 m AGL in the ideal starting speed 500 km/h.
+- Read the instructions for the manoeuvre after the mission start.
+
+Parameters of the attack and the combat turn are taken from the Kursant mission briefing.
+
+Conditions for firing rockets with dive angle of 20°:
+- Depression angle set to 2°00’ on the gunsight
+- AGL while flying over target is 600 m
+- AGL for beginning the combat turn is 300 m
+- AGL to start the attack dive is 1100–1200 m
+- Airspeed for dive entry is 350–400 km/h
+- Slant distance for opening fire is 1460 m
+- AGL for opening fire is 500 m
+- AGL to start the dive exit is 440 m
+- Gs during dive exit is 3.5–4 G
+- AGL minimum of level flight after dive exit is no less than 250 m
+
+To clarify:
+The picture of the attack pattern says AGL=900-950m, but that is when you should start tighten your turn even more (up to 120°), but the maximum combat turn height - as stated above - is 1100–1200 m AGL, with speed of 350–400 km/h.
+----
+
+== Related research about toggling a message with space
+
+Check related forum threads:
+
+Repeated toggling a message with flags using Space gets stuck
+https://forum.dcs.world/topic/347161-repeated-toggling-a-message-with-flags-using-space-gets-stuck/#comment-5417450
+
+Does repeated X: START WAIT USER RESPONSE consume more and more resources?
+https://forum.dcs.world/topic/347212-does-repeated-x-start-wait-user-response-consume-more-and-more-resources/#comment-5417441

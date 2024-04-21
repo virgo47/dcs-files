@@ -1,3 +1,5 @@
+-- See https://forum.dcs.world/topic/347161-repeated-toggling-a-message-with-flags-using-space-gets-stuck/?do=findComment&comment=5417450
+-- This is generally an overkill for plane specific missions which are better to use single Player slot.
 dunlib = dunlib or {}
 
 function dunlib.debugFlags(...)
@@ -21,7 +23,7 @@ end
 cm = cm or {}
 
 cm.messageTable = {}
--- ]] on new line leaves one blank line... but it's not actually that bad.
+-- ]] on a new line leaves one blank line... but it's not actually that bad.
 cm.messageTable["TF-51D"] = [[
 Propeller info
 ]]
