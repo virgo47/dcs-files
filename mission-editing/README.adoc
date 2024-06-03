@@ -1,3 +1,4 @@
+:toc:
 = Mission editing notes
 
 == Important notes
@@ -26,6 +27,13 @@ spawning groups/units with MIST
 
 Method and functions
 // TODO
+
+== Kneeboards
+
+Kneeboards must be added manually to the MIZ file under `KNEEBOARD/IMAGES`.
+Airframe-specific kneeboards can be added under `KNEEBAORD/<type>/IMAGE` where type is internal
+type (e.g. `FA-18C_hornet`), not the one seen in the Mission editor (see the link:../README.adoc[main README]).
+Note that the folder casing inside the MIZ file *matters* (as mentioned https://forum.dcs.world/topic/179746-kneeboard-for-specific-missions/?do=findComment&comment=3521521[in this forum post]).
 
 == Triggers, Conditions
 

@@ -287,10 +287,11 @@ function cm:onEvent(event)
         return
     end -- not a player/client
 
+    local typeName = event.initiator:getTypeName()
     local msg = dunlib.interpolate(
-            cm.messageTable[event.initiator:getTypeName()] or cm.defaultMessage,
+            cm.messageTable[typeName] or cm.defaultMessage,
             {
-                typeName = event.initiator:getTypeName(),
+                typeName = typeName,
             }) -- TODO expand table of possible replacements
     -- 3s delay, show for 10 mins, true for clear view
     dunlib.messageUnitDelayed(initiatorUnit, msg, 3, 600, true)

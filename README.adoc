@@ -18,14 +18,14 @@ with attached PDF document "How to Edit Control Binding Files".
 == Aircraft types and names
 
 Aircraft in DCS are identified by various more or less precise names, starting with the e-shop
-name of the module (e.g. "DCS: P-47D Thunderbolt") which can contain multiple aircraft models,
-then the names used in the Mission Editor (e.g. "P-47D-30" and "P-47D-30 (Early)") and then
+name of the module (e.g. "DCS: P-47D Thunderbolt") which can contain multiple aircraft models.
+Then there are names used in the Mission Editor (e.g. "P-47D-30" and "P-47D-30 (Early)") and then
 the `type` name that can be found in the `Mods/aircraft/<module>/entry.lua` (e.g. "P-47D-30"
 and "P-47D-30bl1").
 
 It is not easy to see the mapping between these names, as this seems to be contained in the compiled
 Lua files like `CoreMods/WWII Units/P-47D-30/P-47D-30.lua` (mostly under `CoreMods/aircraft`).
-You need to use the `type` name in the `SnapView.lua` or for Kneeboard subdirectories.
+You need to use the `type` name in the `SnapView.lua` or for `KNEEBOARD` subdirectories in MIZ files.
 Type is also returned by the https://wiki.hoggitworld.com/view/DCS_func_getTypeName[Unit:getTypeName] method.
 
 The following table shows the type and ME names of the playable aircraft ordered by type
