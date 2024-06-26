@@ -1,6 +1,6 @@
 local diff = {
 	["axisDiffs"] = {
--- Removal of wrong defaults
+		-- Removal of wrong defaults
 		["a2001cdnil"] = {
 			["name"] = "Pitch",
 			["removed"] = {
@@ -34,7 +34,7 @@ local diff = {
 			},
 		},
 
--- Two engine thrust
+		-- Two engine thrust
 		["a2005cdnil"] = {
 			["added"] = {
 				[1] = {
@@ -78,7 +78,7 @@ local diff = {
 			["name"] = "Thrust Right",
 		},
 
--- TDC (thumb stick)
+		-- TDC (thumb stick)
 		["a2033cdnil"] = {
 			["added"] = {
 				[1] = {
@@ -122,7 +122,7 @@ local diff = {
 			["name"] = "TDC Slew Vertical",
 		},
 
--- Base/distance (mostly FC3-relevant)
+		-- Base/distance (mostly FC3-relevant)
 		["a2041cdnil"] = {
 			["added"] = {
 				[1] = {
@@ -132,7 +132,7 @@ local diff = {
 			["name"] = "Base/Distance",
 		},
 
--- Wheel brake
+		-- Wheel brake
 		["a2101cdnil"] = {
 			["added"] = {
 				[1] = {
@@ -158,7 +158,7 @@ local diff = {
 			["name"] = "Wheel Brake",
 		},
 
--- Absolute camera shift with Smod and thumb-stick
+		-- Absolute camera shift with Smod and thumb-stick
 		["a2049cdnil"] = {
 			["added"] = {
 				[1] = {
@@ -209,9 +209,9 @@ local diff = {
 		},
 	},
 
--- KEYS/BUTTONS
+	-- KEYS/BUTTONS
 	["keyDiffs"] = {
--- Removal of default view/fire/etc. bindings
+		-- Removal of default view/fire/etc. bindings
 		["dnilp210u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Up Right slow",
 			["removed"] = {
@@ -285,7 +285,7 @@ local diff = {
 			},
 		},
 
--- Newly added zoom/view/snap bindings:
+		-- Newly added zoom/view/snap bindings:
 		["d177pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -370,7 +370,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN21",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -433,7 +433,7 @@ local diff = {
 			["name"] = "Custom Snap View  6",
 		},
 
--- The rest is mostly FC3 related
+		-- The rest is mostly FC3 related
 		["d100pnilu1627cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -577,7 +577,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN17",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -588,7 +588,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN16",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -615,7 +615,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -703,7 +703,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN8",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},
@@ -714,7 +714,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN48",
 					["reformers"] = {
-						[1] = "Tmod",
+						[1] = "Smod",
 					},
 				},
 			},

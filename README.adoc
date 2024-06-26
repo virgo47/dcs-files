@@ -36,8 +36,8 @@ The following table shows the type and ME names of the playable aircraft ordered
 
 | A-10A for DCS World 2+| A-10A | Also in FC3
 | DCS: A-10C Warthog 2+| A-10C | Deprecated
-| DCS: A-10C Warthog | A-10C_2 | A-10C II |
-4+| A-10C II TODO
+| DCS: A-10C II Tank Killer | A-10C_2 | A-10C II |
+| DCS: AJS-37 Viggen by Heatblur Simulations 2+| AJS37 |
 .2+| DCS: C-101 Aviojet by AvioDev 2+| C-101CC |
 2+| C-101EB |
 | DCS: Christen Eagle II by Magnitude 3 LLC 2+| Christen Eagle II |
