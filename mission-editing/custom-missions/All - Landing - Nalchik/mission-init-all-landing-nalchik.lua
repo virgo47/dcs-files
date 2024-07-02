@@ -20,7 +20,10 @@ end
 -- delay and duration in seconds
 function dunlib.messageUnitDelayed(unit, text, delay, duration, clearView)
     timer.scheduleFunction(function()
-        dunlib.messageUnit(unit, text, duration, clearView)
+        -- exists check just in case the unit disappeared during the timer delay
+        if (unit:isExist()) then
+            dunlib.messageUnit(unit, text, duration, clearView)
+        end
     end, {}, timer.getTime() + (delay or 2))
 end
 
@@ -157,32 +160,20 @@ cm = {}
 
 cm.messageTable = {}
 -- ]] on a new line leaves one blank line... but it's not actually that bad.
-cm.messageTable["L-39C"] = [[
+cm.messageTable["AJS37"] = [[
 VFR LANDING:
 
-You're starting 17 km from the RWY threshold at Nalchik.
-
-OPTIONAL:
-
-1) Contact ATC (change radio channel to #2), declare approach; ATC will respond with QFE.
-Ignore any direction instructions, continue head on.
-2) Set Altimeter based on the QFE (722.79).
-3) Set/check RMI to RWY heading (done here).
+You're starting 11 nm from the RWY threshold at Nalchik.
 
 PLAN:
 
-15 km: 600 m, 330 km/h, extend gear, landing lights
-12 km: 600 m, 280 km/h, flaps at 25
-6 km: 300 m, 280 km/h, flaps to 44
-Outer NDB: 260 m, 260 km/h
-Inner NDB: 60-80 m, 230 km/h
-RWY threshold: 10 m, 210 km/h
+1. 
 ]]
-cm.messageTable["L-39ZA"] = cm.messageTable["L-39C"]
 cm.messageTable["F-15C"] = [[
 VFR LANDING:
 
 You're starting 11 nm from the RWY threshold at Nalchik.
+TODO: Mode NAV or ILS, 
 
 OPTIONAL:
 
@@ -202,9 +193,32 @@ just below the horizon - about half a degree), and pull the throttle to idle.
 5. When you touch down, pull back to a 13 degree pitch attitude for aerobraking.
 6. When you slow below 100 knots, lower the nose and apply wheel brakes to come to a stop.
 
-outer NDB: 2.1 nm, AGL 700 ft, MSL 2110 ft
-inner NDB: 0.7 nm, AGL 230 ft, MSL 1640 ft
+Outer NDB: 2.1 nm, AGL 700 ft, MSL 2110 ft
+Inner NDB: 0.7 nm, AGL 230 ft, MSL 1640 ft
 ]]
+cm.messageTable["L-39C"] = [[
+VFR LANDING:
+
+You're starting 17 km from the RWY threshold at Nalchik.
+
+OPTIONAL:
+
+1) Contact ATC (radio channel #2), declare approach; ATC will respond with QFE.
+Ignore any direction instructions, continue head on.
+2) Set Altimeter based on the QFE (722.79).
+3) Set/check RMI to RWY heading (done here).
+
+PLAN:
+
+15 km: 600 m, 330 km/h, extend gear, landing lights
+12 km: 600 m, 280 km/h, flaps at 25
+6 km: 300 m, 280 km/h, flaps to 44
+Outer NDB: 260 m, 260 km/h
+Inner NDB: 60-80 m, 230 km/h
+RWY threshold: 10 m, 210 km/h
+Touchdown speed: 180 km/h
+]]
+cm.messageTable["L-39ZA"] = cm.messageTable["L-39C"]
 cm.messageTable["MiG-21Bis"] = [[
 VFR LANDING:
 

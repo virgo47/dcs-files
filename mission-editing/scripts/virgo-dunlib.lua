@@ -31,7 +31,10 @@ end
 -- delay and duration in seconds
 function dunlib.messageUnitDelayed(unit, text, delay, duration, clearView)
     timer.scheduleFunction(function()
-        dunlib.messageUnit(unit, text, duration, clearView)
+        -- exists check just in case the unit disappeared during the timer delay
+        if (unit:isExist()) then
+            dunlib.messageUnit(unit, text, duration, clearView)
+        end
     end, {}, timer.getTime() + (delay or 2))
 end
 --endregion
