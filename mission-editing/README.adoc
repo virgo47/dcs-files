@@ -44,9 +44,13 @@ Note that the folder casing inside the MIZ file *matters* (as mentioned https://
 
 == Tips and tricks
 
-* To see the tooltip with command id in the Controls table edit `<dcs-install>\MissionEditor\MissionEditor.lua`.
-Find the line with `OPTIONS_ADD_COMMAND_CODES_TO_TOOLTIP` and change it to `true`.
-This likely needs to be repeated after each update.
+* To see the tooltip with command id in the Controls table edit `<saved-games-dcs>\Config\autoexec.cfg` (create it if it does not exist) and add to it:
++
+----
+input = {
+  command_code_tooltips = true,
+}
+----
 * Values of commands can be also found in `<dcs-install>\aircraft\<plane>\Cockpit\Scripts\clickabledata.lua`.
 This can differ for some planes, e.g. with multiple variants (L-39, C-101), but should be easy to locate.
 * Space, Backspace with `X:START WAIT USER RESPONSE`: https://forum.dcs.world/topic/248153-about-the-xstart-wait-user-response/
