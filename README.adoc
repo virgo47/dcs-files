@@ -42,19 +42,23 @@ The following table shows the type and ME names of the playable aircraft ordered
 2+| C-101EB |
 | DCS: Christen Eagle II by Magnitude 3 LLC 2+| Christen Eagle II |
 | DCS: F-5E Tiger II by Belsimtek 2+| F-5E-3 |
+| F-5E Flaming Cliffs | F-5E-3_FC | F-5E FC | Part of FC2024
 .3+| DCS: F-14 Tomcat by Heatblur Simulations | F-14A-95-GR | F-14A |
 2+| F-14A-135-GR |
 2+| F-14B |
 | F-15C for DCS World 2+| F-15C | Also in FC3
 | DCS: F-86F Sabre by Belsimtek | F-86F Sabre | F-86F |
+| F-86F Flaming Cliffs | F-86F_FC | F-86F FC | Part of FC2024
 | DCS: F/A-18C | FA-18C_hornet | F/A-18C Lot 20 |
 4+| J-11A, see Su-27 for DCS World
 | DCS: Black Shark 3 | Ka-50_3 | Ka-50 III |
 .2+| DCS: L-39 Albatros 2+| L-39C |
 2+| L-39ZA |
+| DCS: M-2000C by RAZBAM 2+| M-2000C |
 | DCS: Mi-8MTV2 Magnificent Eight by Belsimtek | Mi-8MT | Mi-8MTV2 |
 | DCS: Mi-24P Hind 2+| Mi-24P |
 | DCS: MiG-15bis by Belsimtek 2+| MiG-15bis |
+| MiG-15bis Flaming Cliffs | MiG-15bis_FC | MiG-15bis FC | Part of FC2024
 | DCS: MiG-21bis by Magnitude 3 LLC 2+| MiG-21Bis |
 .3+| MiG-29 for DCS World 2+| MiG-29A .3+| Also in FC3
 2+| MiG-29G

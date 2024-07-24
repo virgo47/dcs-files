@@ -43,6 +43,7 @@ local diff = {
 			},
 			["name"] = "Roll",
 		},
+--[[ With TPR pedals no need for this, it actually can mess up with things when fixed with a screw on the joystick:
 		["a2003cdnil"] = {
 			["changed"] = {
 				[1] = {
@@ -64,6 +65,7 @@ local diff = {
 			},
 			["name"] = "Rudder",
 		},
+]]
 		["a2004cdnil"] = {
 			["name"] = "Thrust",
 			["removed"] = {

@@ -43,6 +43,160 @@ local diff = {
 			},
 		},
 
+		-- UNSORTED
+		["d177pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num-",
+				},
+			},
+			["name"] = "Zoom normal",
+			["removed"] = {
+				[1] = {
+					["key"] = "NumEnter",
+				},
+			},
+		},
+		["d237pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "NumEnter",
+				},
+			},
+			["name"] = "Cockpit panel view toggle",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num0",
+					["reformers"] = {
+						[1] = "RCtrl",
+					},
+				},
+			},
+		},
+
+		-- Common comms shortcuts
+		["d118pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F1",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Attack My Target",
+		},
+		["d1684pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F2",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Flight - Engage Bandits",
+		},
+		["d522pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F3",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Flight - Attack air defenses",
+		},
+		["d523pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F4",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Flight - Attack ground targets",
+		},
+		["d119pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F5",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Cover Me",
+		},
+		["d117pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F7",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Join Up Formation",
+		},
+		["d116pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F8",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Toggle Formation",
+		},
+		["d269pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F9",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Request AWACS Bogey Dope",
+		},
+		["d267pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F10",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Request AWACS Home Airbase",
+		},
+		["d268pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F11",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Request AWACS Available Tanker",
+		},
+		["d1760pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "F12",
+					["reformers"] = {
+						[1] = "Smod",
+					},
+				},
+			},
+			["name"] = "Tanker - Ready for precontact",
+		},
+
 		-- View moved from non-mod Num-keys to LCtrl+NumX
 		["dnilp210u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -60,11 +214,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Up Right slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num9",
-				},
-			},
 		},
 		["dnilp211u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -82,11 +231,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Down Right slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num3",
-				},
-			},
 		},
 		["dnilp212u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -104,11 +248,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Down Left slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num1",
-				},
-			},
 		},
 		["dnilp213u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -126,11 +265,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Up Left slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num7",
-				},
-			},
 		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -148,11 +282,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Left slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num4",
-				},
-			},
 		},
 		["dnilp33u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -170,11 +299,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Right slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num6",
-				},
-			},
 		},
 		["dnilp34u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -192,11 +316,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Up slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num8",
-				},
-			},
 		},
 		["dnilp35u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -214,11 +333,6 @@ local diff = {
 				},
 			},
 			["name"] = "View Down slow",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num2",
-				},
-			},
 		},
 		["dnilp36unilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -243,11 +357,44 @@ local diff = {
 			},
 		},
 
-		-- Snap views
+		-- Snap views (mostly for use with CapsLock "setup mode")
+		["d236pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "Num+",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Save Cockpit Angles",
+		},
+		["d237pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "NumEnter",
+				},
+			},
+			["name"] = "Cockpit panel view toggle",
+			["removed"] = {
+				[1] = {
+					["key"] = "Num0",
+					["reformers"] = {
+						[1] = "RCtrl",
+					},
+				},
+			},
+		},
 		["d396pnilu406cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num0",
+				},
+				[2] = {
+					["key"] = "Num0",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  0",
@@ -256,6 +403,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num1",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  1",
@@ -264,6 +414,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num2",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  2",
@@ -272,6 +425,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num3",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  3",
@@ -280,6 +436,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num4",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  4",
@@ -288,22 +447,20 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num5",
-				},
-			},
-			["name"] = "Custom Snap View  5",
-			["removed"] = {
-				[1] = {
-					["key"] = "Num5",
 					["reformers"] = {
-						[1] = "LWin",
+						[1] = "CapsLock",
 					},
 				},
 			},
+			["name"] = "Custom Snap View  5",
 		},
 		["d402pnilu406cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num6",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  6",
@@ -312,6 +469,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num7",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  7",
@@ -320,6 +480,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num8",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  8",
@@ -328,83 +491,12 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "Num9",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
 				},
 			},
 			["name"] = "Custom Snap View  9",
-		},
-		["d237pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "Num0",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-				[2] = {
-					["key"] = "Num0",
-					["reformers"] = {
-						[1] = "Smod",
-					},
-				},
-			},
-			["name"] = "Cockpit panel view toggle",
-		},
-
-		-- Communications
-		["d268pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "Num.",
-					["reformers"] = {
-						[1] = "JOY_BTN2",
-					},
-				},
-			},
-			["name"] = "Request AWACS Available Tanker",
-		},
-		["d269pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "Num0",
-					["reformers"] = {
-						[1] = "JOY_BTN2",
-					},
-				},
-			},
-			["name"] = "Request AWACS Bogey Dope",
-		},
-		["d1684pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "Num1",
-					["reformers"] = {
-						[1] = "JOY_BTN2",
-					},
-				},
-			},
-			["name"] = "Flight - Engage Bandits",
-		},
-		["d118pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "Num2",
-					["reformers"] = {
-						[1] = "JOY_BTN2",
-					},
-				},
-			},
-			["name"] = "Attack My Target",
-		},
-		["d119pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "Num3",
-					["reformers"] = {
-						[1] = "JOY_BTN2",
-					},
-				},
-			},
-			["name"] = "Cover Me",
 		},
 
 		-- Kneeboard
