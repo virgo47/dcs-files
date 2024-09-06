@@ -343,6 +343,17 @@ local diff = {
 			},
 			["name"] = "F1 Cockpit view",
 		},
+		["d83pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN10",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
+				},
+			},
+			["name"] = "Eject (3 times)",
+		},
 		["d8pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {

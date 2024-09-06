@@ -15,5 +15,8 @@ return {
 
         {down = device_commands.Button_10, cockpit_device_id = devices.WEAPON_SYS, value_down = 0, name = _('Armament Selector Switch 2.75'), category = {_('Armament System'), _('Custom')}},
         {down = device_commands.Button_10, cockpit_device_id = devices.WEAPON_SYS, value_down = -1, name = _('Armament Selector Switch 7.62'), category = {_('Armament System'), _('Custom')}},
+
+        -- By default only for keyboard
+        {down = device_commands.Button_1, cockpit_device_id = devices.EXTERNAL_CARGO_VIEW, value_down = 1, name = _('Cargo View'), category = _('View', _('Custom'))},
     }
 }

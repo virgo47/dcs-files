@@ -43,25 +43,12 @@ local diff = {
 			["name"] = "Flight Control Cyclic Roll",
 		},
 		["a2003cdnil"] = {
-			["changed"] = {
+			["name"] = "Flight Control Yaw (pedals)",
+			["removed"] = {
 				[1] = {
-					["filter"] = {
-						["curvature"] = {
-							[1] = 0.25,
-						},
-						["deadzone"] = 0,
-						["hardwareDetent"] = false,
-						["hardwareDetentAB"] = 0,
-						["hardwareDetentMax"] = 0,
-						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
-						["slider"] = false,
-					},
 					["key"] = "JOY_RZ",
 				},
 			},
-			["name"] = "Flight Control Yaw (pedals)",
 		},
 		["a2010cdnil"] = {
 			["added"] = {
@@ -105,6 +92,30 @@ local diff = {
 			},
 			["name"] = "Absolute Camera Vertical View",
 		},
+		["a2012cdnil"] = {
+			["added"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = -0.14,
+						},
+						["deadzone"] = 0,
+						["hardwareDetent"] = false,
+						["hardwareDetentAB"] = 0,
+						["hardwareDetentMax"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = true,
+					},
+					["key"] = "JOY_SLIDER1",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
+			},
+			["name"] = "Zoom View",
+		},
 		["a2087cdnil"] = {
 			["name"] = "Flight Control Collective",
 			["removed"] = {
@@ -112,6 +123,14 @@ local diff = {
 					["key"] = "JOY_Z",
 				},
 			},
+		},
+		["a3014cd21"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_Z",
+				},
+			},
+			["name"] = "C1611 Intercom Volume Knob",
 		},
 	},
 	["keyDiffs"] = {
@@ -124,7 +143,7 @@ local diff = {
 					},
 				},
 			},
-			["name"] = "Info Bar - SHOW/HIDE",
+			["name"] = "Info bar toggle",
 		},
 		["d1560pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -140,9 +159,10 @@ local diff = {
 		["d158pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN10",
+					["key"] = "JOY_BTN20",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -153,16 +173,11 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN127",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 				[2] = {
-					["key"] = "JOY_BTN127",
-					["reformers"] = {
-						[1] = "LAlt",
-					},
-				},
-				[3] = {
 					["key"] = "JOY_BTN127",
 					["reformers"] = {
 						[1] = "Tmod",
@@ -171,18 +186,35 @@ local diff = {
 			},
 			["name"] = "Zoom normal",
 		},
+		["d180pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+			["name"] = "Objects switching direction reverse ",
+		},
+		["d181pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN17",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+			["name"] = "Objects switching direction forward ",
+		},
 		["d185pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN5",
+					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-				[2] = {
-					["key"] = "JOY_BTN5",
-					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -193,13 +225,14 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN3",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 				[2] = {
 					["key"] = "JOY_BTN3",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -208,9 +241,9 @@ local diff = {
 		["d19pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN4",
+					["key"] = "JOY_BTN1",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -219,9 +252,10 @@ local diff = {
 		["d20pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN4",
+					["key"] = "JOY_BTN1",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -230,9 +264,10 @@ local diff = {
 		["d21pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN9",
+					["key"] = "JOY_BTN18",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -246,58 +281,54 @@ local diff = {
 			},
 			["name"] = "External Cargo Pilot Unhook",
 		},
-		["d3002pnilu3002cd2vd1vpnilvu0"] = {
+		["d3003pnilunilcd32vd-1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN22",
+					["key"] = "JOY_BTN7",
 					["reformers"] = {
-						[1] = "LAlt",
-						[2] = "LCtrl",
+						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Fuel Indicator Test",
+			["name"] = "Flexible Sight Backup Lamp",
 		},
-		["d3003pnilu3003cd15vd-1vpnilvu0"] = {
+		["d3003pnilunilcd32vd0vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN15",
+					["key"] = "JOY_BTN10",
 					["reformers"] = {
-						[1] = "LAlt",
-						[2] = "LCtrl",
+						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Caution Panel Test/Reset Switch Test",
+			["name"] = "Flexible Sight Lamp Off",
 		},
-		["d3004pnilu3004cd13vd1vpnilvu0"] = {
+		["d3003pnilunilcd32vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN15",
+					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Radar Altimeter, Test",
+			["name"] = "Flexible Sight Main Lamp",
 		},
-		["d3004pnilu3004cd41vd1vpnilvu0"] = {
+		["d3003pnilunilcd41vd1vpnilvunil"] = {
 			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN21",
-				},
-			},
-			["name"] = "Pilot Trimmer",
-			["removed"] = {
 				[1] = {
 					["key"] = "JOY_BTN3",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
 				},
 			},
+			["name"] = "Trimmer reset",
 		},
 		["d3005pnilunilcd32vd0vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN3",
+					["key"] = "JOY_BTN22",
 					["reformers"] = {
 						[1] = "Tmod",
 					},
@@ -308,7 +339,7 @@ local diff = {
 		["d3005pnilunilcd49vd0vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN3",
+					["key"] = "JOY_BTN22",
 				},
 			},
 			["name"] = "Pilot Sight Armed/Docked",
@@ -320,6 +351,30 @@ local diff = {
 				},
 			},
 			["name"] = "Pilot Sight Switch",
+		},
+		["d3008pnilunilcd9vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN18",
+				},
+			},
+			["name"] = "Armament Switch Off",
+		},
+		["d3008pnilunilcd9vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN20",
+				},
+			},
+			["name"] = "Armament Switch Safe",
+		},
+		["d3008pnilunilcd9vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN16",
+				},
+			},
+			["name"] = "Armament Switch Armed",
 		},
 		["d3009pnilu3009cd21vd0.5vpnilvu0"] = {
 			["added"] = {
@@ -345,47 +400,73 @@ local diff = {
 				},
 			},
 		},
-		["d3023pnilu3023cd3vd1vpnilvu0"] = {
+		["d3021pnilunilcd9vd-1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN15",
+					["key"] = "JOY_BTN18",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Fire Detector Test",
+			["name"] = "Armament Selector Down",
 		},
-		["d3037pnilunilcd7vd-1vpnilvunil"] = {
+		["d3021pnilunilcd9vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN29",
+					["key"] = "JOY_BTN16",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
 				},
 			},
-			["name"] = "Search light Stow",
+			["name"] = "Armament Selector Up",
 		},
-		["d3037pnilunilcd7vd0vpnilvunil"] = {
+		["d3022pnilunilcd9vd-1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN27",
+					["key"] = "JOY_BTN19",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
 				},
 			},
-			["name"] = "Search light Off",
+			["name"] = "Rocket Pair Decrease",
 		},
-		["d3037pnilunilcd7vd1vpnilvunil"] = {
+		["d3022pnilunilcd9vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN28",
+					["key"] = "JOY_BTN17",
+					["reformers"] = {
+						[1] = "Tmod",
+					},
 				},
 			},
-			["name"] = "Search light On",
+			["name"] = "Rocket Pair Increase",
+		},
+		["d3024pnilunilcd9vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+				},
+			},
+			["name"] = "Gun Selector Switch Down",
+		},
+		["d3024pnilunilcd9vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN17",
+				},
+			},
+			["name"] = "Gun Selector Switch Up",
 		},
 		["d321pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN29",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -396,7 +477,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN28",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -407,7 +489,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN27",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -418,7 +501,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN29",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -429,7 +512,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN28",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -440,7 +523,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN27",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -449,9 +532,10 @@ local diff = {
 		["d338pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN20",
+					["key"] = "JOY_BTN10",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -570,63 +654,19 @@ local diff = {
 		["d491pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN10",
+					["key"] = "JOY_BTN20",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 				[2] = {
-					["key"] = "JOY_BTN20",
+					["key"] = "JOY_BTN10",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
 			["name"] = "Cockpit Camera Move Center",
-		},
-		["d511pnilu515cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN14",
-				},
-			},
-			["name"] = "Search light Left",
-		},
-		["d512pnilu515cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN12",
-				},
-			},
-			["name"] = "Search light Right",
-		},
-		["d513pnilu515cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN13",
-				},
-			},
-			["name"] = "Search light Retract",
-		},
-		["d514pnilu515cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN11",
-				},
-			},
-			["name"] = "Search light Extend",
-		},
-		["d83pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN2",
-					["reformers"] = {
-						[1] = "LAlt",
-						[2] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "Leave Helicopter (3 times)",
 		},
 		["d851pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
@@ -642,9 +682,10 @@ local diff = {
 		["d8pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN7",
+					["key"] = "JOY_BTN16",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -658,7 +699,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_DR",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -677,7 +718,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_UR",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -696,7 +737,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_UL",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -715,7 +756,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_DL",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -726,27 +767,43 @@ local diff = {
 				},
 			},
 		},
-		["dnilp3002unilcd18vdnilvp-1vunil"] = {
+		["dnilp3002unilcd32vdnilvp-0.5vunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN13",
+					["key"] = "JOY_BTN8",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Altimeter Pilot, Pressure Decrease",
+			["name"] = "Flexible Sight Intensity Decrease",
 		},
-		["dnilp3002unilcd18vdnilvp1vunil"] = {
+		["dnilp3002unilcd32vdnilvp0.5vunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN11",
+					["key"] = "JOY_BTN6",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "Tmod",
 					},
 				},
 			},
-			["name"] = "Altimeter Pilot, Pressure Increase",
+			["name"] = "Flexible Sight Intensity Increase",
+		},
+		["dnilp3002unilcd49vdnilvp-0.5vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN9",
+				},
+			},
+			["name"] = "Pilot Sight Intensity Decrease",
+		},
+		["dnilp3002unilcd49vdnilvp0.5vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN7",
+				},
+			},
+			["name"] = "Pilot Sight Intensity Increase",
 		},
 		["dnilp3004unilcd49vdnilvp-0.5vunil"] = {
 			["added"] = {
@@ -764,80 +821,12 @@ local diff = {
 			},
 			["name"] = "Pilot Sight Elevation Increase",
 		},
-		["dnilp3005unilcd13vdnilvp-0.1vunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN13",
-					["reformers"] = {
-						[1] = "LAlt",
-						[2] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "Radar Altimeter, Low Altitude Decrease",
-		},
-		["dnilp3005unilcd13vdnilvp0.1vu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN11",
-					["reformers"] = {
-						[1] = "LAlt",
-						[2] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "Radar Altimeter, Low Altitude Increase",
-		},
-		["dnilp3006unilcd13vdnilvp-0.1vunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN13",
-					["reformers"] = {
-						[1] = "LAlt",
-					},
-				},
-			},
-			["name"] = "Radar Altimeter, Hight Altitude Decrease",
-		},
-		["dnilp3006unilcd13vdnilvp0.1vu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN11",
-					["reformers"] = {
-						[1] = "LAlt",
-					},
-				},
-			},
-			["name"] = "Radar Altimeter, Hight Altitude Increase",
-		},
-		["dnilp3007unilcd10vdnilvp-1vunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN12",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "GMC Manual Heading Increase",
-		},
-		["dnilp3007unilcd10vdnilvp1vunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN14",
-					["reformers"] = {
-						[1] = "LCtrl",
-					},
-				},
-			},
-			["name"] = "GMC Manual Heading Decrease",
-		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_L",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -846,9 +835,10 @@ local diff = {
 		["dnilp334u335cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN16",
+					["key"] = "JOY_BTN6",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -857,9 +847,10 @@ local diff = {
 		["dnilp336u337cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN18",
+					["key"] = "JOY_BTN8",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -870,7 +861,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_R",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -884,7 +875,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_D",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -903,7 +894,7 @@ local diff = {
 				[2] = {
 					["key"] = "JOY_BTN_POV1_U",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -919,6 +910,12 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN127",
 				},
+				[2] = {
+					["key"] = "JOY_BTN127",
+					["reformers"] = {
+						[1] = "CapsLock",
+					},
+				},
 			},
 			["name"] = "Center View",
 			["removed"] = {
@@ -932,7 +929,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_R",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -943,7 +941,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_L",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -954,7 +953,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_U",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -965,7 +965,8 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_D",
 					["reformers"] = {
-						[1] = "LAlt",
+						[1] = "CapsLock",
+						[2] = "Tmod",
 					},
 				},
 			},
@@ -976,7 +977,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN6",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -987,7 +988,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN8",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -996,15 +997,15 @@ local diff = {
 		["dnilp486u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN19",
+					["key"] = "JOY_BTN9",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 				[2] = {
-					["key"] = "JOY_BTN9",
+					["key"] = "JOY_BTN19",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -1013,15 +1014,15 @@ local diff = {
 		["dnilp487u490cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN17",
+					["key"] = "JOY_BTN7",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 				[2] = {
-					["key"] = "JOY_BTN7",
+					["key"] = "JOY_BTN17",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -1032,7 +1033,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN16",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},
@@ -1043,7 +1044,7 @@ local diff = {
 				[1] = {
 					["key"] = "JOY_BTN18",
 					["reformers"] = {
-						[1] = "LCtrl",
+						[1] = "CapsLock",
 					},
 				},
 			},

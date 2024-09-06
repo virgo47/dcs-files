@@ -25,7 +25,7 @@ local diff = {
 				[1] = {
 					["key"] = "MOUSE_BTN2",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -36,7 +36,7 @@ local diff = {
 				[1] = {
 					["key"] = "MOUSE_BTN1",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -52,7 +52,7 @@ local diff = {
 				[1] = {
 					["key"] = "MOUSE_BTN4",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -63,7 +63,7 @@ local diff = {
 				[1] = {
 					["key"] = "MOUSE_BTN3",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 				[2] = {

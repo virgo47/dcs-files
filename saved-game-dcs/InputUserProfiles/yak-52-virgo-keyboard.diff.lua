@@ -5,7 +5,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num8",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -16,7 +16,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num7",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -27,7 +27,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num2",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -38,7 +38,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num3",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -89,7 +89,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num1",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -108,7 +108,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num9",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -224,7 +224,7 @@ local diff = {
 				[1] = {
 					["key"] = "Num0",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -311,7 +311,7 @@ local diff = {
 				[1] = {
 					["key"] = "Delete",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -330,7 +330,7 @@ local diff = {
 				[1] = {
 					["key"] = "Insert",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -501,7 +501,7 @@ local diff = {
 				[1] = {
 					["key"] = "End",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},
@@ -566,7 +566,7 @@ local diff = {
 				[1] = {
 					["key"] = "Home",
 					["reformers"] = {
-						[1] = "T2",
+						[1] = "Tmod",
 					},
 				},
 			},

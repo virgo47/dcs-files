@@ -1,0 +1,53 @@
+= UH-1H training notes
+
+== Aerodrome radio messages
+
+Readback is a confirmation of a critical message, which is repeated back with my call-sign at the end.
+
+Startup and taxi:
+
+* Pilot: "Krymsk Tower, Virgo request startup."
+* ATC: "Virgo, Krymsk Tower, startup approved." +
+or "Virgo, Krymsk Tower, startup approved, expect runway [XX]."
+* (N/A) "Krymsk Tower, Virgo, request ATIS information."
+* (N/A) "Virgo, Krymsk Tower, ATIS information [Alpha] is current, wind [direction/speed], visibility [XX], temperature [XX], altimeter [XX.XX], runway [XX] in use."
+* Pilot: "Krymsk Tower, Virgo, ready to taxi."
+* ATC: "Virgo, Krymsk Tower, taxi to runway [XX] via taxiway [YY]."
+* Readback: "Taxi to runway [XX] via taxiway [YY], Virgo."
+
+Takeoff solo:
+
+* Pilot: "Krymsk Tower, Virgo holding short of runway [XX], ready for takeoff."
+* "Virgo, Krymsk Tower, line up and wait, runway [XX]." +
+or "Virgo, Krymsk Tower, cleared for takeoff runway [XX], wind [XX]."
+* Readback: "Line up and wait, runway [XX], Virgo." +
+or "Cleared for takeoff, runway [XX], Virgo."
+
+Takeoff formation:
+
+* "Krymsk Tower, Virgo holding short of runway [XX], request line-up and wait for formation."
+* "Virgo, Krymsk Tower, line-up and wait runway [XX]." +
+or "Krymsk Tower, Virgo formation ready for takeoff."
+* "Krymsk Tower, Virgo flight of [number of helicopters], ready for takeoff, runway [XX]."
+* "Virgo flight, Krymsk Tower, cleared for takeoff, runway [XX], wind [wind information]."
+
+Rolling start:
+
+* "Virgo flight, run 'em up." (Increase power.)
+* Acknowledged by wingmen: "Two." "Three." Etc.
+* "Virgo flight, rolling."
+
+Departure:
+
+* Leader: "Krymsk Departure, Virgo flight, airborne, passing [altitude], climbing to [altitude]."
+* ATC: "Virgo flight, Krymsk Departure, radar contact, climb to [altitude], proceed on course."
+* Leader: "Climb to [altitude], proceeding on course, Virgo flight."
+
+Pattern:
+
+Landing:
+
+== Standard turn
+
+* 360° turn in 2 minutes.
+* With 80kt keep 12.5° bank.
