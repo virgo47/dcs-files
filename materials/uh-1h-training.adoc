@@ -1,5 +1,15 @@
 = UH-1H training notes
 
+Message structure:
+
+* Who are you talking to ("Krymsk Tower")
+* Who are you ("Virgo")
+* Where are you (...?)
+* Current information (?)
+* Intention ("request startup")
+
+Word "CLEARED" is only use by the tower "for take off", "to land" or "for touch and go".
+
 == Aerodrome radio messages
 
 Readback is a confirmation of a critical message, which is repeated back with my call-sign at the end.

@@ -1,0 +1,39 @@
+ADF_GAIN|adf_gain|ADF Gain|6|3200|=ictr(65535)|100
+INT_VOL|int_vol|Intercom Volume|6|3200|=ictr(65535)|100
+UHF_VOL|uhf_vol|UHF Volume Control|6|3200|=ictr(65535)|100
+VHFFM_VOL|vhffm_vol|VHF FM Volume Control|6|3200|=ictr(65535)|100
+UHF_SQUELCH_SW|uhf_squelch_sw|UHF Squelch Switch|4|0|OffOn|ON
+
+TODO:
+THROTTLE|throttle|Throttle Axis|6|3200|=ictr(65535)|100
+THROTTLE2|throttle2|Copilot Throttle Axis|6|3200|=ictr(65535)|100
+
+WISHLIST:
+DCS-BIOS UHF_PRESET has both input and output, can we get output somehow?
+This would inform the dashboard about UHF preset changes and enable to show it.
+
+TODO not working, why? But probably not practical on a slider: ADF_TUNE|adf_tune|ADF Tune|6|3200|=ctr(65535)|0
+TODO requires pulling the knob first and is hardly usable on slider (not precise): CLOCK_ADJUST|clock_adjust|Adjustment Dial|6|3200|=ctr(65535)|0
+TODO very narrow range around 32k, also, it's ROLL (BIOS bug): ADI_PITCH_TRIM|adi_pitch_trim|ADI Pitch Trim Knob|6|3200|=ctr(65535)|0
+TODO works fine, probably not useful for TP though: ADI_PITCH_TRIM_CPLT|adi_pitch_trim_cplt|Copilot ADI Pitch Trim Knob|6|3200|=ctr(65535)|0
+TODO very narrow range around 32k, also, it's PITCH (BIOS bug): ADI_ROLL_TRIM|adi_roll_trim|ADI Roll Trim Knob|6|3200|=ctr(65535)|0
+TODO slider only makes it go up, not useful: ALT_ADJ_CPLT|alt_adj_cplt|Copilot Altimeter Pressure Adjustment|6|3200|=ctr(65535)|0
+TODO slider only makes it go up, not useful: ALT_ADJ_PLT|alt_adj_plt|Pilot Altimeter Pressure Adjustment|6|3200|=ctr(65535)|0
+TODO useless on slider, only goes up: CRS_KNOB|crs_knob|CDI CRS Selector Knob|6|3200|=ctr(65535)|0
+TODO useless on slider, only goes up: HDG_SET|hdg_set|HDG SET Knob|6|3200|=ctr(65535)|0
+TODO useless on slider, only goes up: HDG_SYNC|hdg_sync|Compass Synchronizing|6|3200|=ctr(65535)|0
+TODO useless on slider, only goes up: RADAR_ALT_HI|radar_alt_hi|Radar Altimeter High Setting|6|3200|=ctr(65535)|0
+TODO useless on slider, only goes up:RADAR_ALT_LO|radar_alt_lo|Radar Altimeter Low Setting|6|3200|=ctr(65535)|0
+
+# seems to work when messing with IFF, is it not modelled?
+TODO works, but useless: IFF_REPLY_DIM|iff_reply_dim|IFF Reply Dim|6|3200|=ctr(65535)|0
+TODO works, but useless: IFF_TEST_DIM|iff_test_dim|TEST Reply Dim|6|3200|=ctr(65535)|0
+
+
+Why this does not support gt/lt and similar, but only eq/neq?
+TORQUE_PRESS|torque_press|Torque Pressure|0|0|=pct(65535)max(91)|0
+
+Common - how can I convert feet to m? This does not work:
+ALT_MSL_FT|alt_msl_m|Altitude MSL (m)|0|0|=int(65535)*(0.3048)|0
+Naive approach with repeating the the same BIOS param ID (ALT_MSL_FT)
+but introducing a new TP ID with calculation.

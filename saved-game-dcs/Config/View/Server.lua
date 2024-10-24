@@ -225,6 +225,7 @@ ViewSettings["F-5E-3"] = {
 	}, -- Arcade
 }
 
+-- Axis mapping minus-to-plus: x - back-to-front, y - down-to-up, z - left-to-right
 ViewSettings["F-16C_50"] = {
 	Cockpit = {
 		[1] = {-- player slot 1
@@ -235,7 +236,7 @@ ViewSettings["F-16C_50"] = {
 			EyePoint               = {0.05000,0.100000,0.000000},
 			ShoulderSize		   = 0.25,
 			Allow360rotation	   = false,
-			limits_6DOF            = {x = {-0.15,0.35},y ={-0.26,0.16},z = {-0.3,0.3},roll = 90.000000},
+			limits_6DOF            = {x = {-0.15,0.35},y ={-0.35,0.20},z = {-0.3,0.3},roll = 90.000000},
 		},
 	}, -- Cockpit
 	Chase = {

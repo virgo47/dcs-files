@@ -1,7 +1,36 @@
-URL: TODO
-=================== copy from here ============================
+= UH-1H Touch Portal panel
+
+// TODO
+* Pages to import: https://github.com/virgo47/dcs-files/raw/main/touch-portal-panels/pages/dcs-uh1h-page.tpz2[dcs-uh1h-page.tpz2]
+
+Remote links:
+
+// TODO fix links
+* DCS user file: https://www.digitalcombatsimulator.com/en/files/3336442/[DCS-COINS: UH-1H Dashboard]
+* Forum comment: https://forum.dcs.world/topic/207264-touch-portal-app/page/16/#comment-5403433
+
+The page:
+
+// TODO fix, take a new one without meters
+image::_dcs-uh1h-page-demo.png[]
+
+== User file info
+
+* Name: +
 DCS-COINS: UH-1H Huey Dashboard
 
+// TODO
+* Summary:
++
+....
+Two-page control "panel" for Touch Portal Android application, powered by DCS-COINS plugin.
+Contains the Main page for most occasions and the Alt page for startup/engine/emergency/checks.
+....
+
+// TODO
+* Description:
++
+....
 Note, that there is also UH-1H Dashboard by Munt.G: https://www.digitalcombatsimulator.com/en/files/3320621/
 
 This dashboard is more cramped, containing also various sliders for knobs like light intensity, volumes, etc.
@@ -28,8 +57,9 @@ Description:
 
 Known issues:
 - TODO
+....
 
-================== copy to here ===============================
+// TODO thorough review, this is all OLD info
 Technical notes:
 - Actions Door Left/Right control the copilot/pilot door, not the gunners door.
 In DCS there seems to be no shortcuts for this, only Ctrl+C to control both doors.
@@ -51,3 +81,8 @@ Another example is VHFCOMM_PWR which is simply labeled "Power" - ridiculous (and
 - Also, radio volumes are generally inverted (max is 0), so I inverted colors for container and value.
 The sliders go from top to bottom with labels on top, so it's still annoying.
 It is still nice that we can map those "step volumes" (e.g. VHF COMM) to sliders.
+
+
+== Other notes
+
+* No known issues right now...

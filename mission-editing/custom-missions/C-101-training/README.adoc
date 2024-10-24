@@ -1,0 +1,18 @@
+= Changes to training missions
+
+Describe generic changes to make missions faster.
+Describe when waiting is necessary (warning/caution reset would be skipped without it).
+
+https://github.com/DCS-Skunkworks/dcs-bios/blob/master/Scripts/DCS-BIOS/lib/modules/aircraft_modules/C-101.lua[C-101 parameters] that are not in modules Lua files.
+They can be discovered with ModelViewer, but it's tedious.
+
+== #1 Cold start
+
+
+(Press Backspace to skip to AFTER START procedure.)
+(Press Backspace to skip this test.)
+skip-start
+remove highlight
+34
+99
+100

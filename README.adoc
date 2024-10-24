@@ -47,9 +47,11 @@ The following table shows the type and ME names of the playable aircraft ordered
 2+| F-14A-135-GR |
 2+| F-14B |
 | F-15C for DCS World 2+| F-15C | Also in FC3
+| DCS: F-16C Viper | F-16C_50 | F-16CM bl.50 |
+| DCS: F/A-18C | FA-18C_hornet | F/A-18C Lot 20 |
 | DCS: F-86F Sabre by Belsimtek | F-86F Sabre | F-86F |
 | F-86F Flaming Cliffs | F-86F_FC | F-86F FC | Part of FC2024
-| DCS: F/A-18C | FA-18C_hornet | F/A-18C Lot 20 |
+| DCS: I-16 by OctopusG 2+| I-16 |
 4+| J-11A, see Su-27 for DCS World
 | DCS: Black Shark 3 | Ka-50_3 | Ka-50 III |
 .2+| DCS: L-39 Albatros 2+| L-39C |
