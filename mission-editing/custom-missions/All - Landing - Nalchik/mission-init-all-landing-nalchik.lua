@@ -167,7 +167,7 @@ You're starting 11 nm from the RWY threshold at Nalchik.
 
 PLAN:
 
-1. 
+1. TODO
 ]]
 cm.messageTable["F-15C"] = [[
 VFR LANDING:
@@ -182,19 +182,44 @@ Ignore any direction instructions, continue head on.
 
 DCS F-15C doesn't have QFE setting, add aerodrome elevation 1410 ft to all altitude readings!
 
-A visual landing in Eagle is simple in concept:
-1. Decelerate to under 250 knots, and then lower your gear and flaps.
-2. When your AOA (angle of attack) reaches about 20, use your stick to hold it between 20-22, \
-and use your throttle to control your altitude.
-3. When the runway is 3 degrees below the horizon, adjust the throttle to place the velocity \
+A visual landing in the Eagle is simple in concept:
+1. Decelerate to 250 knots - recommended holding speed.
+2. Lower the gear and flaps.
+3. When the AOA (angle of attack) reaches about 20, use the stick to hold it between 20-22, \
+and use the throttle to control the altitude.
+4. When the runway is 3 degrees below the horizon, adjust the throttle to place the velocity \
 vector near the beginning of the runway, so that you follow a 3 degree glide path to the runway.
-4. When you're seconds from touchdown, flare (pull up on the stick until the velocity vector is \
+5. When you're seconds from touchdown, flare (pull up on the stick until the velocity vector is \
 just below the horizon - about half a degree), and pull the throttle to idle.
-5. When you touch down, pull back to a 13 degree pitch attitude for aerobraking.
-6. When you slow below 100 knots, lower the nose and apply wheel brakes to come to a stop.
+6. When you touch down, pull back to a 13 degree pitch attitude for aerobraking.
+7. When you slow below 100 knots, lower the nose and apply wheel brakes to come to a stop.
 
 Outer NDB: 2.1 nm, AGL 700 ft, MSL 2110 ft
 Inner NDB: 0.7 nm, AGL 230 ft, MSL 1640 ft
+]]
+cm.messageTable["F-16C_50"] = [[
+You're starting 11 nm from the RWY threshold at Nalchik.
+
+VFR LANDING:
+
+A visual landing in the Viper is simple in concept:
+1. Decelerate to below 300 kt (max M 0.65) and lower the landing gear. There is no flaps control for normal situations. \
+You can land with or without air brakes extended.
+2. After the landing gear extends, AOA Bracket appears on the HUD. \
+Try to align the Flight Path Marker (FPM) and the upper part of the bracket with the runway threshold. \
+At the same time, the FPM should be aligned with the Command Steering Symbol (a small circle with the line pointing up).
+3. Fly to position the 2.5° Pitch Ladder Line on the RWY threshold. \
+Align it with the FPM while keeping the FPM inside the bracket with the throttle (speed).
+4. Before touchdown, position the FPM 300–500 ft forward, keep 11–13° AOA.
+5. Idle the throttle and touch down with a maximum AOA of 13°. \
+Don't exceed 15° AOA to avoid striking air brakes or the tail (nozzle).
+6. Maintain aerobraking with up to 13° AOA until the speed falls under 100 kt, then lower the nosewheel.
+7. Apply moderate to heavy braking, fully open the speedbrakes and pull stick fully aft.
+8. Engage nosewheel steering (NWS) under 30 kt, unless required earlier. \
+Avoid hard turns above 10 kt.
+
+NOTE: MAN RNG/UNCAGE knob can be depressed to declutter the HUD. \
+This moves heading tape to the top and removes roll and ILS indicators.
 ]]
 cm.messageTable["L-39C"] = [[
 VFR LANDING:
@@ -228,7 +253,7 @@ How cool is this!
 TODO
 ]]
 cm.messageTable["P-51D"] = [[
-Set your course to 229°, which is the magnetic direction of the runway.
+Set the course to 229°, which is the magnetic direction of the runway.
 
 Radio A is set to 136 MHz for Nalchik, you can contact them for Inbound.
 Set QFE 28.46 to match the aerodrome elevation of 1410 ft (430 m).
@@ -238,7 +263,7 @@ Don't fly under 15" of manifold pressure (MP) to avoid spark plug foul.
 
 1. Flyover upwind low, then brake away and up to the direction specified for the aerodrome, or away \
 from the wind. There is no wind today, so you can choose whatever direction you want.
-You can open your canopy during the turn under around 200 mph.
+You can open the canopy during the turn under around 200 mph.
 You can use 10-20° flaps to bleed some speed if necessary.
 2. Set RPM to 2700.
 3. You should end up at 1000' downwind with the wingtip touching the runway.
@@ -281,7 +306,6 @@ cm.messageTable["P-51D-30-NA"] = cm.messageTable["P-51D"]
 cm.defaultMessage = [[ 
 Sorry, no instructions for #{typeName}.\nGet it down somehow...
 ]]
-
 function cm:onEvent(event)
     -- it works with PLAYER event, but not with S_BIRTH (yet), why?
     if event.id ~= world.event.S_BIRTH and event.id ~= world.event.S_EVENT_PLAYER_ENTER_UNIT then
@@ -317,3 +341,4 @@ world.addEventHandler(cm)
 --print("LOCAL:\n" .. li)
 --print("PARAMS...:\n" .. dunlib.debug({ ... }, 2, nil, true))
 --print("_G:\n" .. dunlib.debug(_G))
+

@@ -249,6 +249,29 @@ ViewSettings["F-16C_50"] = {
 	}, -- Arcade
 }
 
+ViewSettings["I-16"] = {
+	Cockpit = {
+		{
+			CockpitLocalPoint      = {-1.532, 0.811, 0},  -- -1.462
+			CameraViewAngleLimits  = {20.000000,140.000000},
+			CameraAngleRestriction = {false,90.000000,0.500000},
+			CameraAngleLimits      = {200,-90.000000,90.000000},
+			EyePoint               = {0.05000,0.100000,0.000000},
+			ShoulderSize		   = 0.25,
+			Allow360rotation	   = false,
+			limits_6DOF            = {x = {-0.15,0.45},y ={-0.45,0.10},z = {-0.180,0.180},roll = 90.000000},
+		}
+	}, -- Cockpit
+	Chase = {
+		LocalPoint      = {-5.0,1.0,3.0},
+		AnglesDefault   = {0.000000,0.000000},
+	}, -- Chase
+	Arcade = {
+		LocalPoint      = {-21.500000,5.618000,0.000000},
+		AnglesDefault   = {0.000000,-8.000000},
+	}, -- Arcade
+}
+
 local viewSettingsMustang = {
 	Cockpit = {
 	[1] = {-- player slot 1

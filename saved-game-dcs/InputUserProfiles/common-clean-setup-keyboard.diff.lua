@@ -374,6 +374,25 @@ local diff = {
 		},
 
 		-- Various
+		["d122pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "S",
+					["reformers"] = {
+						[1] = "RWin",
+					},
+				},
+			},
+			["name"] = "Sound On/Off",
+			["removed"] = {
+				[1] = {
+					["key"] = "S",
+					["reformers"] = {
+						[1] = "LCtrl",
+					},
+				},
+			},
+		},
 	},
 }
 return diff
