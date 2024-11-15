@@ -18,5 +18,8 @@ return {
 
         -- By default only for keyboard
         {down = device_commands.Button_1, cockpit_device_id = devices.EXTERNAL_CARGO_VIEW, value_down = 1, name = _('Cargo View'), category = _('View', _('Custom'))},
+
+        -- TODO
+        -- cmsrs safe/armed separate
     }
 }

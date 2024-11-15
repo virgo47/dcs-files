@@ -1,14 +1,33 @@
 = UH-1H training notes
 
-Message structure:
+Communication structure:
 
-* Who are you talking to ("Krymsk Tower")
-* Who are you ("Virgo")
-* Where are you (...?)
-* Current information (?)
-* Intention ("request startup")
+* Pilot: Request/intentions
+* ATC: Instructions
+* Pilot: Confirmation
+
+Request structure (pilot):
+
+* Who you are talking to ("Krymsk Tower")
+* Who you are ("Virgo" or "Angel flight")
+* Where you are
+* What is your Request and Intention ("request startup, ...")
+* With what Information (?)
+
+Instructions (ATC):
+
+* [Your callsign]
+* [ATC callsign]
+* Instructions, e.g. "taxi to 04 via alpha".
+
+Confirmation:
+
+* Repeat instructions, e.g. "taxiing to 04 via alpha"
+* Who you are (callsign, or abbreviated callsign, e.g. type + tail number)
 
 Word "CLEARED" is only use by the tower "for take off", "to land" or "for touch and go".
+
+Video with ground control/tower comms examples: https://youtu.be/mcAn_elsWG0
 
 == Aerodrome radio messages
 
@@ -24,6 +43,18 @@ or "Virgo, Krymsk Tower, startup approved, expect runway [XX]."
 * Pilot: "Krymsk Tower, Virgo, ready to taxi."
 * ATC: "Virgo, Krymsk Tower, taxi to runway [XX] via taxiway [YY]."
 * Readback: "Taxi to runway [XX] via taxiway [YY], Virgo."
+
+Hover check:
+
+* Pilot: "(Krymsk) Tower, Virgo, at [Location on Airfield], request hover check." +
+Location can be specified in number of ways, depending on the size of the airport, specific surroundings, etc.
+For example:
+** "at spot 3"
+** "at the departure end of runway 04",
+** "near runway 27 and taxiway Bravo",
+** "north of runway 09 on the grass",
+** or even "near the fuel pumps".
+* ATC: "[Callsign], hover check approved, maintain position."
 
 Takeoff solo:
 
