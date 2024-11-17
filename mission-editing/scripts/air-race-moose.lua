@@ -2,7 +2,6 @@
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
 -- Uses MOOSE
--- TODO spectator support: for any non racing print low unit altitude warning for the race zone
 
 -- INITIAL SETUP, this is the stuff you can configure
 
@@ -44,7 +43,7 @@ local refDistance = 1000 -- use the same value for both points
 -- "Time preciser" will be true only if all three above are set:
 local timePreciser = (startRefPoint and endRefPoint and refDistance) ~= nil
 
-local spectatorsWarningAgl = killAboveAGL * 3 -- in meters
+local spectatorsWarningAgl = killAboveAGL * 2 -- in meters
 -- Reported warning altitude is rounded to tens ft up (conversion factor is divided by 10 already):
 local spectatorsWarningReportedAglRoundedFeet = math.ceil(spectatorsWarningAgl * 0.328084) * 10
 local spectatorsWarningMessage = "Spectators should stay at least " .. spectatorsWarningReportedAglRoundedFeet .. " feet above the course to avoid disturbing the participants."
@@ -111,27 +110,24 @@ local function mapSize(map)
 end
 
 local function showDebugMessage(group)
-    if next(currentRacers) == nil then
-        MESSAGE:New("No racers... " .. tostring(mapSize(spectators)) .. " spectator(s).", 10, nil):ToGroup(group)
-    else
-        local resultText = "DEBUG:\n\nkillZoneBehavior = " .. tostring(killZoneBehavior)
-                .. "\nracerGroupPrefix = " .. tostring(racerGroupPrefix)
-                .. "\ntimePreciser = " .. tostring(timePreciser)
-                .. "\n# of racingCheckZones = " .. tostring(racingCheckZones and #racingCheckZones)
-                .. "\n# of killZones = " .. tostring(killZones and #killZones)
-                .. "\n# of spectators = " .. tostring(mapSize(spectators))
-                .. "\n\nPLAYERS:"
-        for _, racerData in pairs(currentRacers) do
-            resultText = resultText .. "\n\nID: " .. tostring(_)
-                    .. "\n  playerName: " .. tostring(racerData.playerName)
-                    .. "\n  groupName: " .. tostring(racerData.groupName)
-                    .. "\n  startTs: " .. tostring(racerData.startTs)
-            if racerData.disqualified then
-                resultText = resultText .. "\n  DISQUALIFIED"
-            end
+    local resultText = "DEBUG:\n\nkillZoneBehavior = " .. tostring(killZoneBehavior)
+            .. "\nracerGroupPrefix = " .. tostring(racerGroupPrefix)
+            .. "\ntimePreciser = " .. tostring(timePreciser)
+            .. "\n# of racingCheckZones = " .. tostring(racingCheckZones and #racingCheckZones)
+            .. "\n# of killZones = " .. tostring(killZones and #killZones)
+            .. "\n# of spectators = " .. tostring(mapSize(spectators))
+            .. "\nspectator warning AGL = " .. tostring(spectatorsWarningAgl) .. " m => ~" .. tostring(spectatorsWarningReportedAglRoundedFeet) .. " ft"
+            .. "\n\nPLAYERS:"
+    for _, racerData in pairs(currentRacers) do
+        resultText = resultText .. "\n\nID: " .. tostring(_)
+                .. "\n  playerName: " .. tostring(racerData.playerName)
+                .. "\n  groupName: " .. tostring(racerData.groupName)
+                .. "\n  startTs: " .. tostring(racerData.startTs)
+        if racerData.disqualified then
+            resultText = resultText .. "\n  DISQUALIFIED"
         end
-        MESSAGE:New(resultText .. "\n", 20, nil, true):ToGroup(group)
     end
+    MESSAGE:New(resultText .. "\n", 20, nil, true):ToGroup(group)
 end
 
 local function changeKillZoneBehavior(newKillZoneBehavior, group)
@@ -405,10 +401,15 @@ local function mainRaceLoop()
     end
 
     -- Printing warning to spectators potentially disturbing the racers:
-    for _, spectator in pairs(spectators) do
-        local unit = spectator.unit
-        if unit:IsInZone(racingZone) and unit:GetAltitude(true) > spectatorsWarningAgl then
-            MESSAGE:New(spectatorsWarningMessage, 2, nil, true):ToUnit(unit)
+    if spectatorsWarningAgl and spectatorsWarningMessage then
+        for _, spectator in pairs(spectators) do
+            local unit = spectator.unit
+            if unit:IsInZone(racingZone) and unit:GetAltitude(true) < spectatorsWarningAgl then
+                MESSAGE:New(spectatorsWarningMessage, 2, nil, true):ToUnit(unit)
+                if aglWarningSound then
+                    USERSOUND:New(aglWarningSound):ToUnit(unit)
+                end
+            end
         end
     end
 end
