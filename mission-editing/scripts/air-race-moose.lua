@@ -8,6 +8,7 @@
 local debugLog = true -- debug info to log file
 local debugMessages = false -- debug messages to all players
 local debugMenu = true -- Race Debug F10 menu item
+local logTailSize = 20 -- number of last log messages that can be shown via F10 debug item
 if debugLog then
     env.info("RACE Script start")
 end
@@ -48,6 +49,13 @@ local spectatorsWarningAgl = killAboveAGL * 2 -- in meters
 local spectatorsWarningReportedAglRoundedFeet = math.ceil(spectatorsWarningAgl * 0.328084) * 10
 local spectatorsWarningMessage = "Spectators should stay at least " .. spectatorsWarningReportedAglRoundedFeet .. " feet above the course to avoid disturbing the participants."
 
+-- Restart support requires a trigger in the ME and a restart zone:
+local restartZone = ZONE:FindByName("restart-zone")
+local restartTimeoutSeconds = 10
+-- add ONCE trigger with FLAG IS TRUE for this flag name with action END MISSION, winner NEUTRAL
+local restartTriggerFlag = "restart"
+local restartTriggered = false
+
 -- -------------------------------------------------------------------
 -- DON'T CHANGE FROM HERE BELOW, UNLESS YOU KNOW WHAT YOU'RE DOING :-)
 -- ADDITIONAL SETUP
@@ -73,16 +81,40 @@ SET_ZONE:New():FilterPrefixes(killZonePrefix):FilterOnce():ForEachZone(function(
     end
 end)
 
+local lastRaceLoopTs -- updated on every main race loop function for debug purposes
+
+local restartTs -- used by "restart voting", see usages lower
+
 -- COMMON FUNCTIONS
+
+-- INTERNAL LOG buffer
+local logTail = {}
+
+function addLogTail(log)
+    table.insert(logTail, log)
+    if #logTail > logTailSize then
+        table.remove(logTail, 1)
+    end
+end
+
+function displayLogTail(group)
+    local resultText = ""
+    for i = 1, #logTail do
+        resultText = resultText .. logTail[i] .. "\n"
+    end
+    MESSAGE:New(resultText, 30, nil):ToGroup(group)
+end
 
 -- Prints debug message to log or as a message to all, depending on the debug flags above.
 local function raceDebug(message)
+    message = "RACE " .. tostring(message)
     if debugLog then
         env.info(message)
     end
     if debugMessages then
         MESSAGE:New(message, 5):ToAll()
     end
+    addLogTail(message)
 end
 
 local function showRaceLeaderboard(group)
@@ -102,6 +134,10 @@ local function showRaceLeaderboard(group)
 end
 
 local function mapSize(map)
+    if not map then
+        return 0
+    end
+
     local count = 0
     for _ in pairs(map) do
         count = count + 1
@@ -117,12 +153,14 @@ local function showDebugMessage(group)
             .. "\n# of killZones = " .. tostring(killZones and #killZones)
             .. "\n# of spectators = " .. tostring(mapSize(spectators))
             .. "\nspectator warning AGL = " .. tostring(spectatorsWarningAgl) .. " m => ~" .. tostring(spectatorsWarningReportedAglRoundedFeet) .. " ft"
+            .. "\nlast race loop check/now = " .. tostring(lastRaceLoopTs) .. "/" .. tostring(timer.getAbsTime()) .. ") s"
             .. "\n\nPLAYERS:"
     for _, racerData in pairs(currentRacers) do
         resultText = resultText .. "\n\nID: " .. tostring(_)
                 .. "\n  playerName: " .. tostring(racerData.playerName)
                 .. "\n  groupName: " .. tostring(racerData.groupName)
                 .. "\n  startTs: " .. tostring(racerData.startTs)
+                .. "\n  checkpoints " .. tostring(mapSize(racerData.zoneCheck)) .. " of " .. tostring(#racingCheckZones)
         if racerData.disqualified then
             resultText = resultText .. "\n  DISQUALIFIED"
         end
@@ -165,7 +203,11 @@ function clientSet:OnEventPlayerEnterUnit(eventData)
     local groupName = eventData.IniGroupName
     local clientId = eventData.IniPlayerUCID or eventData.IniPlayerName
 
-    raceDebug("RACE Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. eventData.id .. ")")
+    raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. eventData.id .. ")")
+    if not clientId then
+        raceDebug("No clientId in enter handler for unit " .. tostring(unit and unit:GetTypeName()))
+        return
+    end
 
     -- Check if the group name starts with the desired prefix
     if groupName and string.sub(groupName, 1, #racerGroupPrefix) == racerGroupPrefix then
@@ -191,6 +233,7 @@ function clientSet:OnEventPlayerEnterUnit(eventData)
         MENU_GROUP_COMMAND:New(group, "Kill zones: disable", nil, changeKillZoneBehavior, nil, group)
         MENU_GROUP_COMMAND:New(group, "Kill zones: set to kill", nil, changeKillZoneBehavior, 1, group)
         MENU_GROUP_COMMAND:New(group, "Kill zones: set to disqualify", nil, changeKillZoneBehavior, 2, group)
+        MENU_GROUP_COMMAND:New(group, "Race debug log tail", nil, displayLogTail, group)
     end
 end
 
@@ -208,14 +251,14 @@ function clientSet:OnEventPlayerLeaveUnit(eventData)
     local playerName = eventData.IniPlayerName
     local clientId = eventData.IniPlayerUCID or eventData.IniPlayerName
 
-    raceDebug("RACE Player leave: " .. tostring(playerName) .. " (event.id: " .. eventData.id .. ")")
+    raceDebug("Player leave: " .. tostring(playerName) .. " (event.id: " .. eventData.id .. ")")
 
     -- This can be nil, especially because this leave event is triggered twice for whatever reason.
     racerData = currentRacers[clientId]
 
     if racerData then
         if racerData.startTs then
-            raceDebug("RACE Sadly, player " .. tostring(playerName) .. " left during the race...")
+            raceDebug("Sadly, player " .. tostring(playerName) .. " left during the race...")
         end
         currentRacers[clientId] = nil
     end
@@ -283,13 +326,13 @@ local function approximateTimeBetween(lastTs, lastPosRefDistance, now, currentRe
 
     -- distance difference/speed of the unit is too small, we can just use current time
     if distanceDiff < 1 then
-        raceDebug("RACE approximateTimeBetween - small distance difference, using NOW")
+        raceDebug("approximateTimeBetween - small distance difference, using NOW")
         return now
     end
 
     local timeDiff = now - lastTs
     local distFractionAfterLine = math.abs(currentRefDistance - refDistance) / distanceDiff
-    raceDebug("RACE approximateTimeBetween: timeDiff=" .. tostring(timeDiff) .. ", lastPosRefDistance=" .. tostring(lastPosRefDistance)
+    raceDebug("approximateTimeBetween: timeDiff=" .. tostring(timeDiff) .. ", lastPosRefDistance=" .. tostring(lastPosRefDistance)
             .. ", currentRefDistance=" .. tostring(currentRefDistance) .. ", distFractionAfterLine=" .. tostring(distFractionAfterLine))
 
     -- Interpolate to approximate the time when the racer would have crossed the start line
@@ -297,14 +340,17 @@ local function approximateTimeBetween(lastTs, lastPosRefDistance, now, currentRe
 end
 
 local function mainRaceLoop()
+    local now = timer.getAbsTime()
+    lastRaceLoopTs = now
+
     for _, racerData in pairs(currentRacers) do
-        local now = timer.getAbsTime()
         -- If startTs is initialized we compute the approximate time inside the zone.
         -- The default time without "time preciser" is rounded to seconds - this is also printed to the player every cycle.
         local timeInsideSeconds = racerData.startTs and math.floor(now - racerData.startTs + 0.5)
         local unit = racerData.unit
         local unitPos = unit:GetPointVec3()
         local formattedTime = tostring(timeInsideSeconds)
+        local checkZoneSoundPlayed = false -- this var ensures that the check zone sound plays at least for one cycle
 
         local insideRacingZone = unit:IsInZone(racingZone)
         if insideRacingZone then
@@ -322,6 +368,7 @@ local function mainRaceLoop()
                                 racerData.zoneCheck[checkZone] = true
                                 if checkZoneSound then
                                     USERSOUND:New(checkZoneSound):ToUnit(unit)
+                                    checkZoneSoundPlayed = true
                                 end
                             end
                         end
@@ -346,7 +393,7 @@ local function mainRaceLoop()
                         disqualify(racerData)
                     elseif warningAboveAGL and unit:GetAltitude(true) > warningAboveAGL then
                         MESSAGE:New("WARNING: Reduce your altitude immediately!", 2, nil, true):ToUnit(unit)
-                        if aglWarningSound then
+                        if aglWarningSound and not checkZoneSoundPlayed then
                             USERSOUND:New(aglWarningSound):ToUnit(unit)
                         end
                     end
@@ -379,6 +426,9 @@ local function mainRaceLoop()
             racerData.disqualified = nil
         end
 
+        racerData.lastTs = now
+        racerData.lastPos = unitPos
+
         -- We check kill-zones after the racing zone, so we can rely on the updated value of "startTs" (or lack thereof).
         if not racerData.disqualified then
             if killZoneBehavior == 1 or killZoneBehavior == 2 then
@@ -395,9 +445,6 @@ local function mainRaceLoop()
                 end
             end
         end
-
-        racerData.lastTs = now
-        racerData.lastPos = unitPos
     end
 
     -- Printing warning to spectators potentially disturbing the racers:
@@ -410,6 +457,38 @@ local function mainRaceLoop()
                     USERSOUND:New(aglWarningSound):ToUnit(unit)
                 end
             end
+        end
+    end
+
+    -- if restart "voting" is enabled/set-up properly
+    if restartTimeoutSeconds and restartZone and restartTriggerFlag then
+        local racersTotal = 0
+        local racersInRestartZone = 0
+        for _, racerData in pairs(currentRacers) do
+            racersTotal = racersTotal + 1
+
+            local unit = racerData.unit
+            if unit:IsInZone(restartZone) then
+                racersInRestartZone = racersInRestartZone + 1
+                MESSAGE:New("You feel something strange around here...", 2, nil, true):ToUnit(unit)
+            end
+        end
+        -- ~3/5 quorum of active racers (not spectators) is needed for restart
+        if racersTotal > 0 and racersInRestartZone / racersTotal > 0.59 then
+            if not restartTs then
+                restartTs = now + restartTimeoutSeconds
+            elseif now > restartTs then
+                MESSAGE:New("Restart imminent!", 10):ToAll()
+                trigger.action.setUserFlag(restartTriggerFlag, true)
+                restartTriggered = true
+            else
+                MESSAGE:New("Restarting in " .. math.ceil(restartTs - now) .. " seconds!", 2):ToAll()
+            end
+        elseif not restartTriggered then
+            if restartTs then
+                MESSAGE:New("Restart aborted...", 10):ToAll()
+            end
+            restartTs = nil
         end
     end
 end
