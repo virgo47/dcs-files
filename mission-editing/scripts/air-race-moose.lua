@@ -182,6 +182,7 @@ end
 
 -- EVENT SETUP
 
+-- On MP servers this seems to include non-client slots as well, we will handle it in event handlers.
 local clientSet = SET_CLIENT:New():FilterOnce()
 
 -- Enable handling of the events on the client set
@@ -197,17 +198,17 @@ function clientSet:OnEventBirth(eventData)
 end
 
 function clientSet:OnEventPlayerEnterUnit(eventData)
-    local unit = eventData.IniUnit
     local playerName = eventData.IniPlayerName
-    local group = eventData.IniGroup
-    local groupName = eventData.IniGroupName
-    local clientId = eventData.IniPlayerUCID or eventData.IniPlayerName
-
-    raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. eventData.id .. ")")
-    if not clientId then
-        raceDebug("No clientId in enter handler for unit " .. tostring(unit and unit:GetTypeName()))
+    -- On MP servers this may be called for non-client slots as well, we just ignore it.
+    if not playerName then
         return
     end
+    local unit = eventData.IniUnit
+    local group = eventData.IniGroup
+    local groupName = eventData.IniGroupName
+    local clientId = eventData.IniPlayerUCID or playerName
+
+    raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. eventData.id .. ")")
 
     -- Check if the group name starts with the desired prefix
     if groupName and string.sub(groupName, 1, #racerGroupPrefix) == racerGroupPrefix then
@@ -237,7 +238,6 @@ function clientSet:OnEventPlayerEnterUnit(eventData)
     end
 end
 
--- 2024-11-16 12:09:33.755 INFO    SCRIPTING (Main): MOOSE error in MENU COMMAND function: [string "l10n/DEFAULT/Moose_dev_2024_06_22.lua"]:17940: attempt to call method 'F' (a nil value)
 function clientSet:OnEventDead(eventData)
     self:OnEventPlayerLeaveUnit(eventData)
 end
@@ -249,7 +249,11 @@ end
 -- Define what happens when a player leaves a unit
 function clientSet:OnEventPlayerLeaveUnit(eventData)
     local playerName = eventData.IniPlayerName
-    local clientId = eventData.IniPlayerUCID or eventData.IniPlayerName
+    -- On MP servers this may be called for non-client slots as well, we just ignore it.
+    if not playerName then
+        return
+    end
+    local clientId = eventData.IniPlayerUCID or playerName
 
     raceDebug("Player leave: " .. tostring(playerName) .. " (event.id: " .. eventData.id .. ")")
 
