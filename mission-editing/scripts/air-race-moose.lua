@@ -7,8 +7,9 @@
 
 local debugLog = true -- debug info to log file
 local debugMessages = false -- debug messages to all players
-local debugMenu = true -- Race Debug F10 menu item
-local logTailSize = 20 -- number of last log messages that can be shown via F10 debug item
+local debugMenu = true -- Race Debug F10 menu items
+local logFinishResults = true -- Logs every finished race to dcs.log
+local logTailSize = 30 -- number of last log messages that can be shown via F10 debug item
 if debugLog then
     env.info("RACE Script start")
 end
@@ -91,7 +92,7 @@ local restartTs -- used by "restart voting", see usages lower
 local logTail = {}
 
 function addLogTail(log)
-    table.insert(logTail, log)
+    table.insert(logTail, tostring(timer.getAbsTime()) .. ": " .. log)
     if #logTail > logTailSize then
         table.remove(logTail, 1)
     end
@@ -117,19 +118,23 @@ local function raceDebug(message)
     addLogTail(message)
 end
 
+local function leaderboardText()
+    local resultText = "RACE RESULTS"
+    for unitType, results in pairs(ladder) do
+        resultText = resultText .. "\n\nCategory " .. unitType .. ":\n---------------------------------------------------------------------------------------\n"
+        for i, result in ipairs(results) do
+            local formattedTime = timePreciser and string.format("%.2f", result.time) or tostring(result.time)
+            resultText = resultText .. "  " .. tostring(i) .. ". " .. result.player .. " ... " .. formattedTime .. " s\n"
+        end
+    end
+    return resultText
+end
+
 local function showRaceLeaderboard(group)
     if next(ladder) == nil then
         MESSAGE:New("No race results yet...", 10, nil):ToGroup(group)
     else
-        local resultText = "RACE RESULTS"
-        for unitType, results in pairs(ladder) do
-            resultText = resultText .. "\n\nCategory " .. unitType .. ":\n---------------------------------------------------------------------------------------\n"
-            for i, result in ipairs(results) do
-                local formattedTime = timePreciser and string.format("%.2f", result.time) or tostring(result.time)
-                resultText = resultText .. "  " .. tostring(i) .. ". " .. result.player .. " ... " .. formattedTime .. " s\n"
-            end
-        end
-        MESSAGE:New(resultText, 30, nil):ToGroup(group)
+        MESSAGE:New(leaderboardText(), 30, nil):ToGroup(group)
     end
 end
 
@@ -183,7 +188,7 @@ end
 -- EVENT SETUP
 
 -- On MP servers this seems to include non-client slots as well, we will handle it in event handlers.
-local clientSet = SET_CLIENT:New():FilterOnce()
+local clientSet = SET_CLIENT:New():FilterOnce() -- FilterStart() doesn't seem to make a difference
 
 -- Enable handling of the events on the client set
 clientSet:HandleEvent(EVENTS.PlayerEnterUnit) -- this one is for single-player (or multi-player host)
@@ -330,14 +335,20 @@ local function approximateTimeBetween(lastTs, lastPosRefDistance, now, currentRe
 
     -- distance difference/speed of the unit is too small, we can just use current time
     if distanceDiff < 1 then
-        raceDebug("approximateTimeBetween - small distance difference, using NOW")
+        -- Enable only when debugging approximation, otherwise we don't want it in the log:
+        --raceDebug("approximateTimeBetween - small distance difference, using NOW")
+        return now
+    elseif (currentRefDistance > refDistance) == (lastPosRefDistance > refDistance) then
+        -- Enable only when debugging approximation, otherwise we don't want it in the log:
+        --raceDebug("No reference line crossing detected - unexpected entry position, using NOW")
         return now
     end
 
     local timeDiff = now - lastTs
     local distFractionAfterLine = math.abs(currentRefDistance - refDistance) / distanceDiff
-    raceDebug("approximateTimeBetween: timeDiff=" .. tostring(timeDiff) .. ", lastPosRefDistance=" .. tostring(lastPosRefDistance)
-            .. ", currentRefDistance=" .. tostring(currentRefDistance) .. ", distFractionAfterLine=" .. tostring(distFractionAfterLine))
+    -- Enable only when debugging approximation, otherwise we don't want it in the log:
+    --raceDebug("approximateTimeBetween: timeDiff=" .. tostring(timeDiff) .. ", lastPosRefDistance=" .. tostring(lastPosRefDistance)
+    --        .. ", currentRefDistance=" .. tostring(currentRefDistance) .. ", distFractionAfterLine=" .. tostring(distFractionAfterLine))
 
     -- Interpolate to approximate the time when the racer would have crossed the start line
     return now - timeDiff * distFractionAfterLine
@@ -403,7 +414,7 @@ local function mainRaceLoop()
                     end
                 end
             end
-        else
+        else -- not insideRacingZone
             if racerData.startTs and unit:IsAlive() then
                 -- the unit is NOT in zone, but has startTs - this means it's just left the zone
                 if hasEnteredAllZones(racerData.zoneCheck) then
@@ -414,13 +425,23 @@ local function mainRaceLoop()
                         timeInsideSeconds = correctedNow - racerData.startTs
                         formattedTime = string.format("%.2f", timeInsideSeconds)
                     end
-                    MESSAGE:New(racerData.playerName .. " (of " .. racerData.groupName .. ") finished in: " .. formattedTime .. " seconds", 20):ToAll()
+                    local finishMessage = racerData.playerName .. " (of " .. racerData.groupName .. ") finished in: " .. formattedTime .. " seconds"
+                    if killZoneBehavior ~= 1 then
+                        finishMessage = finishMessage .. ", killZoneBehavior=" .. tostring(killZoneBehavior)
+                    end
+                    MESSAGE:New(finishMessage, 20):ToAll()
                     USERSOUND:New(finishRaceSound):ToUnit(unit)
 
-                    addResultToLadder(unit:GetTypeName(), {
-                        player = racerData.playerName,
-                        time = timeInsideSeconds,
-                    })
+                    -- We only update log/leaderboard if the kill zone behavior is one of the competitive ones:
+                    if killZoneBehavior == 1 or killZoneBehavior == 2 then
+                        if logFinishResults then
+                            env.info("RACE FINISH: player " .. racerData.playerName .. ", type " .. unit:GetTypeName() .. " (group " .. racerData.groupName .. "): " .. formattedTime .. " s")
+                        end
+                        addResultToLadder(unit:GetTypeName(), {
+                            player = racerData.playerName,
+                            time = timeInsideSeconds,
+                        })
+                    end
                 else
                     MESSAGE:New("You didn't go through the whole course, this attempt does not count.", 6, nil, true):ToUnit(unit)
                 end
@@ -438,7 +459,7 @@ local function mainRaceLoop()
             if killZoneBehavior == 1 or killZoneBehavior == 2 then
                 for _, zone in ipairs(killZones) do
                     if unit:IsInZone(zone) then
-                        raceDebug("Player " .. racerData.playerName .. " in kill zone " .. zone:GetName())
+                        --raceDebug("Player " .. racerData.playerName .. " in kill zone " .. zone:GetName()) -- pollutes the log
                         if not insideRacingZone and killZoneBehavior == 2 then
                             MESSAGE:New("You are inside a kill zone (outside the racing area)...", 2, nil, true):ToUnit(unit)
                         else
@@ -482,6 +503,7 @@ local function mainRaceLoop()
             if not restartTs then
                 restartTs = now + restartTimeoutSeconds
             elseif now > restartTs then
+                env.info("RACE RESTARTING - dumping leaderboard:\n" .. leaderboardText())
                 MESSAGE:New("Restart imminent!", 10):ToAll()
                 trigger.action.setUserFlag(restartTriggerFlag, true)
                 restartTriggered = true
@@ -503,3 +525,44 @@ SCHEDULER:New(nil, mainRaceLoop, {}, 0, 1)
 if debugLog then
     env.info("RACE Script end")
 end
+
+-- TODO remove when not needed
+-- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
+local eventHandler = {}
+
+-- some events are used for single-player, some for multi-player, it's a mess
+local allowedEvents = {
+    [world.event.S_EVENT_BIRTH] = "Birth",
+    [world.event.S_EVENT_PLAYER_ENTER_UNIT] = "Player Enter Unit",
+    [world.event.S_EVENT_CRASH] = "Crash",
+    [world.event.S_EVENT_DEAD] = "Dead",
+    [world.event.S_EVENT_PLAYER_LEAVE_UNIT] = "Player Leave Unit",
+}
+
+function eventHandler:onEvent(event)
+    if not event or not allowedEvents[event.id] then
+        return
+    end
+
+    local initiatorUnit = event.initiator
+    local playerName = initiatorUnit and initiatorUnit.getPlayerName and initiatorUnit:getPlayerName()
+    local playerId
+
+    if playerName then
+        local playerList = net.get_player_list()
+        for _, id in ipairs(playerList) do
+            if net.get_player_info(id, "name") == playerName then
+                playerId = id
+                break
+            end
+        end
+    end
+
+    raceDebug("EVENT " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown")
+            .. ", player " .. tostring(playerName)
+            .. ", type " .. tostring(initiatorUnit and initiatorUnit:getTypeName())
+            .. ", unit " .. tostring(initiatorUnit and initiatorUnit:getName())
+            .. ", UCID " .. tostring(playerName and net.get_player_info(playerId, "ucid")))
+end
+
+world.addEventHandler(eventHandler)
