@@ -187,91 +187,105 @@ end
 
 -- EVENT SETUP
 
--- On MP servers this seems to include non-client slots as well, we will handle it in event handlers.
-local clientSet = SET_CLIENT:New():FilterOnce() -- FilterStart() doesn't seem to make a difference
+-- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
+local eventHandler = {}
 
--- Enable handling of the events on the client set
-clientSet:HandleEvent(EVENTS.PlayerEnterUnit) -- this one is for single-player (or multi-player host)
-clientSet:HandleEvent(EVENTS.Birth) -- this one works for multi-player
-clientSet:HandleEvent(EVENTS.PlayerLeaveUnit) -- this one works fine for both environments
-clientSet:HandleEvent(EVENTS.Dead) -- to cover dedicated MP
-clientSet:HandleEvent(EVENTS.Crash) -- to cover dedicated MP
+-- some events are used for single-player, some for multi-player, it's a mess
+local allowedEvents = {
+    [world.event.S_EVENT_BIRTH] = "Birth",
+    [world.event.S_EVENT_PLAYER_ENTER_UNIT] = "Player Enter Unit",
+    [world.event.S_EVENT_CRASH] = "Crash",
+    [world.event.S_EVENT_DEAD] = "Dead",
+    [world.event.S_EVENT_PLAYER_LEAVE_UNIT] = "Player Leave Unit",
+}
 
--- Define what happens when a player enters a unit (or birth in MP)
-function clientSet:OnEventBirth(eventData)
-    self:OnEventPlayerEnterUnit(eventData)
-end
-
-function clientSet:OnEventPlayerEnterUnit(eventData)
-    local playerName = eventData.IniPlayerName
-    -- On MP servers this may be called for non-client slots as well, we just ignore it.
-    if not playerName then
+function eventHandler:onEvent(event)
+    if not event or not allowedEvents[event.id] then
         return
     end
-    local unit = eventData.IniUnit
-    local group = eventData.IniGroup
-    local groupName = eventData.IniGroupName
-    local clientId = eventData.IniPlayerUCID or playerName
 
-    raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. eventData.id .. ")")
-
-    -- Check if the group name starts with the desired prefix
-    if groupName and string.sub(groupName, 1, #racerGroupPrefix) == racerGroupPrefix then
-        -- Initialize data structure for the client/unit - this is used in mainRaceLoop function.
-        currentRacers[clientId] = {
-            playerName = playerName,
-            groupName = groupName,
-            unit = unit,
-        }
-    else
-        spectators[clientId] = {
-            playerName = playerName,
-            groupName = groupName,
-            unit = unit,
-        }
-    end
-
-    -- Menu for checking leaderboard is added to any group when the client joins.
-    -- There seems to be no similar functionality on the unit level, so it's best to have 1 unit in each group.
-    MENU_GROUP_COMMAND:New(group, "Race Leaderboard", nil, showRaceLeaderboard, group)
-    if debugMenu then
-        MENU_GROUP_COMMAND:New(group, "Race Debug", nil, showDebugMessage, group)
-        MENU_GROUP_COMMAND:New(group, "Kill zones: disable", nil, changeKillZoneBehavior, nil, group)
-        MENU_GROUP_COMMAND:New(group, "Kill zones: set to kill", nil, changeKillZoneBehavior, 1, group)
-        MENU_GROUP_COMMAND:New(group, "Kill zones: set to disqualify", nil, changeKillZoneBehavior, 2, group)
-        MENU_GROUP_COMMAND:New(group, "Race debug log tail", nil, displayLogTail, group)
-    end
-end
-
-function clientSet:OnEventDead(eventData)
-    self:OnEventPlayerLeaveUnit(eventData)
-end
-
-function clientSet:OnEventCrash(eventData)
-    self:OnEventPlayerLeaveUnit(eventData)
-end
-
--- Define what happens when a player leaves a unit
-function clientSet:OnEventPlayerLeaveUnit(eventData)
-    local playerName = eventData.IniPlayerName
-    -- On MP servers this may be called for non-client slots as well, we just ignore it.
+    local initiatorUnit = event.initiator
+    local playerName = initiatorUnit and initiatorUnit.getPlayerName and initiatorUnit:getPlayerName()
     if not playerName then
+        raceDebug("EVENT IGNORED " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown")
+                .. ": initiatorUnit " .. tostring(initiatorUnit) .. ", playerName " .. tostring(playerName))
         return
     end
-    local clientId = eventData.IniPlayerUCID or playerName
 
-    raceDebug("Player leave: " .. tostring(playerName) .. " (event.id: " .. eventData.id .. ")")
-
-    -- This can be nil, especially because this leave event is triggered twice for whatever reason.
-    racerData = currentRacers[clientId]
-
-    if racerData then
-        if racerData.startTs then
-            raceDebug("Sadly, player " .. tostring(playerName) .. " left during the race...")
+    local playerId
+    local playerList = net.get_player_list()
+    for _, id in ipairs(playerList) do
+        if net.get_player_info(id, "name") == playerName then
+            playerId = id
+            break
         end
-        currentRacers[clientId] = nil
+    end
+
+    local unitName = initiatorUnit and initiatorUnit.getName and initiatorUnit:getName()
+    local typeInfo = initiatorUnit.getTypeName and tostring(initiatorUnit:getTypeName()) or ("class " .. tostring(initiatorUnit.className_))
+    local ucid = playerId and net.get_player_info(playerId, "ucid")
+    local clientId = ucid or playerName
+    if not initiatorUnit or not unitName or not clientId then
+        raceDebug("EVENT IGNORED " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown")
+                .. ": playerName " .. tostring(playerName)
+                .. ", UCID " .. tostring(ucid)
+                .. ", unitName " .. tostring(unitName)
+                .. ", typeInfo " .. tostring(typeInfo))
+        return
+    end
+
+    -- All the ignored cases should be handled by now...
+    local client = CLIENT:FindByName(unitName)
+    local unit = client:GetClientGroupUnit()
+    local group = client:GetGroup()
+    local groupName = client:GetClientGroupName()
+
+    if event.id == world.event.S_EVENT_BIRTH or event.id == world.event.S_EVENT_PLAYER_ENTER_UNIT then
+        raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. event.id .. ")")
+
+        -- Check if the group name starts with the desired prefix
+        if groupName and string.sub(groupName, 1, #racerGroupPrefix) == racerGroupPrefix then
+            -- Initialize data structure for the client/unit - this is used in mainRaceLoop function.
+            currentRacers[clientId] = {
+                playerName = playerName,
+                groupName = groupName,
+                unit = unit,
+            }
+        else
+            spectators[clientId] = {
+                playerName = playerName,
+                groupName = groupName,
+                unit = unit,
+            }
+        end
+
+        -- Menu for checking leaderboard is added to any group when the client joins.
+        -- There seems to be no similar functionality on the unit level, so it's best to have 1 unit in each group.
+        MENU_GROUP_COMMAND:New(group, "Race Leaderboard", nil, showRaceLeaderboard, group)
+        if debugMenu then
+            MENU_GROUP_COMMAND:New(group, "Race Debug", nil, showDebugMessage, group)
+            MENU_GROUP_COMMAND:New(group, "Kill zones: disable", nil, changeKillZoneBehavior, nil, group)
+            MENU_GROUP_COMMAND:New(group, "Kill zones: set to kill", nil, changeKillZoneBehavior, 1, group)
+            MENU_GROUP_COMMAND:New(group, "Kill zones: set to disqualify", nil, changeKillZoneBehavior, 2, group)
+            MENU_GROUP_COMMAND:New(group, "Race debug log tail", nil, displayLogTail, group)
+        end
+    else
+        -- exit events branch
+        raceDebug("Player leave: " .. tostring(playerName) .. " (event.id: " .. event.id .. ")")
+
+        -- This can be nil, especially because this leave event is triggered twice for whatever reason.
+        racerData = currentRacers[clientId]
+
+        if racerData then
+            if racerData.startTs then
+                raceDebug("Sadly, player " .. tostring(playerName) .. " left during the race...")
+            end
+            currentRacers[clientId] = nil
+        end
     end
 end
+
+world.addEventHandler(eventHandler)
 
 -- REPEATED CHECKS and related functions
 
@@ -526,54 +540,3 @@ SCHEDULER:New(nil, mainRaceLoop, {}, 0, 1)
 if debugLog then
     env.info("RACE Script end")
 end
-
--- TODO remove when not needed
--- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
-local eventHandler = {}
-
--- some events are used for single-player, some for multi-player, it's a mess
-local allowedEvents = {
-    [world.event.S_EVENT_BIRTH] = "Birth",
-    [world.event.S_EVENT_PLAYER_ENTER_UNIT] = "Player Enter Unit",
-    [world.event.S_EVENT_CRASH] = "Crash",
-    [world.event.S_EVENT_DEAD] = "Dead",
-    [world.event.S_EVENT_PLAYER_LEAVE_UNIT] = "Player Leave Unit",
-}
-
-function eventHandler:onEvent(event)
-    if not event or not allowedEvents[event.id] then
-        return
-    end
-
-    local initiatorUnit = event.initiator
-    local playerName = initiatorUnit and initiatorUnit.getPlayerName and initiatorUnit:getPlayerName()
-    local playerId
-
-    if playerName then
-        local playerList = net.get_player_list()
-        for _, id in ipairs(playerList) do
-            if net.get_player_info(id, "name") == playerName then
-                playerId = id
-                break
-            end
-        end
-    end
-
-    local msg = "EVENT " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown") .. ": "
-    if initiatorUnit then
-        local typeInfo = initiatorUnit.getTypeName and tostring(initiatorUnit:getTypeName()) or ("class " .. tostring(initiatorUnit.className_))
-        local unitName = initiatorUnit and initiatorUnit.getName and initiatorUnit:getName()
-        msg = msg .. "player " .. tostring(playerName)
-                .. ", type " .. typeInfo
-                .. ", unit " .. tostring(unitName)
-                .. ", UCID " .. tostring(playerId and net.get_player_info(playerId, "ucid"))
-        if unitName then
-            msg = msg .. ", CLIENT: " .. tostring(CLIENT:FindByName(unitName))
-        end
-    else
-        msg = msg .. "initiator nil!"
-    end
-    raceDebug(msg)
-end
-
-world.addEventHandler(eventHandler)
