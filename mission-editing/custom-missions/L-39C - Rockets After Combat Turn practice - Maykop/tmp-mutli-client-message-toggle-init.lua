@@ -44,8 +44,8 @@ end
 
 -- event handler detecting new player/client
 function cm:onEvent(event)
-    -- it works with PLAYER event, but not with S_BIRTH (yet), why?
-    if event.id ~= world.event.S_BIRTH and event.id ~= world.event.S_EVENT_PLAYER_ENTER_UNIT then
+    -- it works with PLAYER event, but not with S_EVENT_BIRTH (yet), why?
+    if event.id ~= world.event.S_EVENT_BIRTH and event.id ~= world.event.S_EVENT_PLAYER_ENTER_UNIT then
         return
     end
 
