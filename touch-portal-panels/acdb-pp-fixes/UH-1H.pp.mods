@@ -28,12 +28,3 @@ TODO useless on slider, only goes up:RADAR_ALT_LO|radar_alt_lo|Radar Altimeter L
 # seems to work when messing with IFF, is it not modelled?
 TODO works, but useless: IFF_REPLY_DIM|iff_reply_dim|IFF Reply Dim|6|3200|=ctr(65535)|0
 TODO works, but useless: IFF_TEST_DIM|iff_test_dim|TEST Reply Dim|6|3200|=ctr(65535)|0
-
-
-Why this does not support gt/lt and similar, but only eq/neq?
-TORQUE_PRESS|torque_press|Torque Pressure|0|0|=pct(65535)max(91)|0
-
-Common - how can I convert feet to m? This does not work:
-ALT_MSL_FT|alt_msl_m|Altitude MSL (m)|0|0|=int(65535)*(0.3048)|0
-Naive approach with repeating the the same BIOS param ID (ALT_MSL_FT)
-but introducing a new TP ID with calculation.

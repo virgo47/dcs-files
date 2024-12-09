@@ -1,17 +1,14 @@
 = UH-1H Touch Portal panel
 
-// TODO
-* Pages to import: https://github.com/virgo47/dcs-files/raw/main/touch-portal-panels/pages/dcs-uh1h-page.tpz2[dcs-uh1h-page.tpz2]
+* Page to import: https://github.com/virgo47/dcs-files/raw/main/touch-portal-panels/pages/dcs-uh1h-page.tpz2[dcs-uh1h-page.tpz2]
 
 Remote links:
 
-// TODO fix links
-* DCS user file: https://www.digitalcombatsimulator.com/en/files/3336442/[DCS-COINS: UH-1H Dashboard]
-* Forum comment: https://forum.dcs.world/topic/207264-touch-portal-app/page/16/#comment-5403433
+* DCS user file: https://www.digitalcombatsimulator.com/en/files/3342493/[DCS-COINS: UH-1H Dashboard]
+* Forum comment: https://forum.dcs.world/topic/207264-touch-portal-app/page/20/#comment-5562421
 
 The page:
 
-// TODO fix, take a new one without meters
 image::_dcs-uh1h-page-demo.png[]
 
 == User file info
@@ -19,70 +16,62 @@ image::_dcs-uh1h-page-demo.png[]
 * Name: +
 DCS-COINS: UH-1H Huey Dashboard
 
-// TODO
 * Summary:
 +
 ....
-Two-page control "panel" for Touch Portal Android application, powered by DCS-COINS plugin.
-Contains the Main page for most occasions and the Alt page for startup/engine/emergency/checks.
+UH-1H control "panel" for Touch Portal Android application, powered by DCS-COINS plugin.
 ....
 
-// TODO
 * Description:
 +
 ....
-Note, that there is also UH-1H Dashboard by Munt.G: https://www.digitalcombatsimulator.com/en/files/3320621/
-
-This dashboard is more cramped, containing also various sliders for knobs like light intensity, volumes, etc.
-
 License/conditions:
-- Dashboard itself and original icons are distributed under Unlicense: https://en.wikipedia.org/wiki/Unlicense
-- Many buttons use Flight Simulation Pack iconpack: https://www.touch-portal.com/assetsdb/assets-details.php?id=19&name=Flight%20Simulation%20Pack&type=iconpack
+- The dashboard itself and original icons are distributed under Unlicense: https://en.wikipedia.org/wiki/Unlicense
 
 Requirements:
-- DCS-COINS 3 (version from 2023-09-09 was used): https://www.digitalcombatsimulator.com/en/files/3319022/
-- Touch Portal 3: https://www.touch-portal.com/
-- Touch Portal on Android requires paid Pro Upgrade (~14 USD)
+- DCS-COINS: https://www.digitalcombatsimulator.com/en/files/3319022/
+- Touch Portal 4.3: https://www.touch-portal.com/
+- Touch Portal on Android requires a paid Pro Upgrade (~14 USD)
 
 Installation:
 - DCS-COINS and Touch Portal must be already installed and working.
-- Download and extract the TPZ file.
-- In Touch Portal click the cog next to the page selector.
-- Click "Import Page".
-- Select the extracted TPZ file and click "Open".
-- Navigate the following dialogs (mostly "OK" or "Yes").
+- Download and extract the file.
+- In Touch Portal go to the Pages tab, click the cog wheel next to the page selector and choose "Import page..."
+- Select the file dcs-uh1h-page.tpz2 and click "Open".
+- Navigate the following dialogs, there should be no problems on the first import.
+- NOTE: Repeated imports will ask about the conflicting values, DO NOT add them as new assets. Currently, TP does not have an option to choose "Do not import" for all the existing values, it's probably faster to remove the `dcs-uh1h-*` values first.
 
 Description:
-- TODO
+- The panel covers the following cockpit sections:
+-- Top row: Warning/caution lights (top of the instrument panel) and related switches (from caution panel), and IFF master knob.
+-- Left part: Intercom, radios, and navigation, including volume sliders.
+Brassy switches are the intercom switches (originally in row), #4 is missing as it has no use.
+I believe you can figure out the rest.
+-- Central part: Indicators for 6 most important gauges, including color changes depending on the value range, arranged in reverse L shape.
+Inside this are engine related switches (governor, fuel, de-ice), and misc control panel switches (hyd cont, force trim and chip detector) - all from the central pedestal.
+-- Lower central part is a mix of compass and marker beacon sensing switches, and marker beacon volume, and ADF mode and gain.
+-- Bottom part from the right contains armament controls, and countermeasures controls.
+Note that Flare Dispense switch is momentary, but toggles in this panel - this releases the flare every other second. (You likely have this on HOTAS binding anyway, so use that for momentary action.)
+Disp-Cont releases all the flares rapidly, but you need to tap it twice - to open the cover first. You can't close the cover from the panel, you have to do it in the actual in-game cockpit.
+-- Finally, the four right columns mirror the overhead console pretty much exactly.
+The Main-Gen switch is split to two elements, the left square button doing the reset.
+- The panel default values are prepared for the cold setup, use the auxiliary RESET button in the top row to switch the panel switches to the "hot" setup. This does not change anything in DCS, only the Touch Portal button states.
+- Heading is true, speed is IAS (but not affected by the downwash, unlike the Airspeed indicator), altitude is MSL.
 
 Known issues:
-- TODO
+- Sliders don't update when you move the knobs in the cockpit. This is a known TP/COINS limitation.
+- One of the volumes goes upside-down, but this should be fixed by the next DCS-COINS update.
+
+Note that there is also UH-1H Dashboard by Munt.G: https://www.digitalcombatsimulator.com/en/files/3320621/
+This dashboard is more cramped, containing also various sliders for knobs like light intensity, volumes, etc.
+
+Source repository: https://github.com/virgo47/dcs-files/tree/main/touch-portal-panels
+
+History:
+- 2024-12-08: Initial version published
 ....
 
-// TODO thorough review, this is all OLD info
-Technical notes:
-- Actions Door Left/Right control the copilot/pilot door, not the gunners door.
-In DCS there seems to be no shortcuts for this, only Ctrl+C to control both doors.
-On the other hand, DCS-BIOS/COINS don't offer Open/Close Left/Right Gunner Door shortcuts.
--- not sure what DOOR_L-PTR|door_l-ptr|Door Left|4|0|OpenClose|OPEN this does - it indicates Open whatever the door does
--- DOOR_POS_L|door_pos_l|Door Position Left|0|0|=pct(65535)|0 - this one indicates position (probably angle) of the front door
-- Dome Light switch actions are described as 2=GREEN and 0=WHITE, but in fact, value 2 is WHITE and 0 is GREEN (DCS-BIOS bug probably)
-- Many actions are VERY POORLY named - the names are non-specific and often duplicate.
-One can only hope the order of the actions from PP file is respected - e.g. for various volumes:
-----
-BEACON_VOL|beacon_vol|Marker Beacon Volume|6|3200|=ctr(65535)|0
-INT_VOL|int_vol|Intercom Volume|6|3200|=ctr(65535)|0
-UHF_VOL|uhf_vol|Volume Control|6|3200|=ctr(65535)|0
-VHFCOMM_VOL|vhfcomm_vol|Volume Control (step size less than 8192 may not work)|6|8192|=ctr(65535)|0
-VHFFM_VOL|vhffm_vol|Volume Control|6|3200|=ctr(65535)|0
-VHFNAV_VOL|vhfnav_vol|Volume Control (step size less than 8192 may not work)|6|8192|=ctr(65535)|0
-----
-Another example is VHFCOMM_PWR which is simply labeled "Power" - ridiculous (and confusing).
-- Also, radio volumes are generally inverted (max is 0), so I inverted colors for container and value.
-The sliders go from top to bottom with labels on top, so it's still annoying.
-It is still nice that we can map those "step volumes" (e.g. VHF COMM) to sliders.
+* Tags: +
+Touch Portal, DCS-COINS, UH-1H, Huey, control panel, dashboard, Android
 
-
-== Other notes
-
-* No known issues right now...
+// == Other notes

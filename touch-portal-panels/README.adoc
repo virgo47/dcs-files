@@ -1,7 +1,12 @@
 = Touch Portal dashboards with DCS-COINS
 
 * DCS-COINS download: https://www.digitalcombatsimulator.com/en/files/3319022/
-* Discussion: https://forums.eagle.ru/topic/207264-touch-portal-app/page/2/
+* Discussion: https://forum.dcs.world/topic/207264-touch-portal-app/page/2/#findComment-4769257
+* My L-39 dashboard: https://www.digitalcombatsimulator.com/en/files/3336442/
+* My UH-1H dashboard: https://www.digitalcombatsimulator.com/en/files/3342493/
+
+All stuff from this repository is absolutely free to use under the public domain Unlicense.
+Do whatever you want with it - pages, pictures, icons, PSD files, whatever.
 
 == Adjustments when upgrading
 
@@ -9,12 +14,8 @@
 Typically, you don't have to change the `Export.lua`.
 After this, start the COINS setup which will install the new/compatible DCS-BIOS.
 
-* The default PP files (under `Munt.G_DCS-COINS\acdb`) have some parameters not quite right:
-** In `CommonData.pp` you may want to disable `ANGULAR_VELOCITY_` parameters (add `#` around `text`)
-which generate tons of events that makes the debugging (`DCS-COINS -v`) harder.
-** In `CommonData.pp` enable `IAS_EU` parameter (remove `#` around `text`) to get speed in km/h.
-** In `L-39.pp.mods` default positions of some switches (mostly 3-way) are off, the fix was proposed
-https://forum.dcs.world/topic/207264-touch-portal-app/?do=findComment&comment=5413430(here).
+* You can adjust the default PP files (under `Munt.G_DCS-COINS\acdb`) if you need to.
+You can comment it (ignore it) with `#` around values range (see record structure lower), or change the default position.
 
 Xoomigo about the PP record structure:
 ====
