@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en" class="bx-core bx-win bx-no-touch bx-no-retina bx-firefox"><head>
+        <title>DCS 2.8.7.42583 Open Beta</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=0.7">
+        <link rel="icon" href="https://www.digitalcombatsimulator.com/images/favicon.ico">
+                                                		                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="openbeta-2.8.7.42583_files/ui.design-tokens.min.css" type="text/css" rel="stylesheet">
+<link href="openbeta-2.8.7.42583_files/ui.font.opensans.min.css" type="text/css" rel="stylesheet">
+<link href="openbeta-2.8.7.42583_files/main.popup.bundle.min.css" type="text/css" rel="stylesheet">
+<link href="openbeta-2.8.7.42583_files/window.css" type="text/css" rel="stylesheet">
+<link href="openbeta-2.8.7.42583_files/page_cd33235e9829984b508ed7dba5dd0de7_v1.css" type="text/css" rel="stylesheet">
+<link href="openbeta-2.8.7.42583_files/template_71b0ebdbd119cd88e7657200323df14b_v1.css" type="text/css" data-template-style="true" rel="stylesheet">
+<script async="" src="openbeta-2.8.7.42583_files/tag.js"></script><script async="" src="openbeta-2.8.7.42583_files/google-analytics_analytics_002.js"></script><script type="text/javascript" async="" src="openbeta-2.8.7.42583_files/ba.js"></script><script type="text/javascript">if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess) {BX.message[i]=mess[i];} return true;}};</script>
+<script type="text/javascript">(window.BX||top.BX).message({'JS_CORE_LOADING':'Loading...','JS_CORE_WINDOW_CLOSE':'Close','JS_CORE_WINDOW_EXPAND':'Expand','JS_CORE_WINDOW_NARROW':'Restore','JS_CORE_WINDOW_SAVE':'Save','JS_CORE_WINDOW_CANCEL':'Cancel','JS_CORE_H':'h','JS_CORE_M':'m','JS_CORE_S':'s','JS_CORE_NO_DATA':'- No data -','JSADM_AI_HIDE_EXTRA':'Hide extra items','JSADM_AI_ALL_NOTIF':'All notifications','JSADM_AUTH_REQ':'Authentication is required!','JS_CORE_WINDOW_AUTH':'Log In','JS_CORE_IMAGE_FULL':'Full size','JS_CORE_WINDOW_CONTINUE':'Continue'});</script>
+
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/core.min.js"></script>
+
+<script>BX.setJSList(['/bitrix/js/main/core/core_ajax.js','/bitrix/js/main/core/core_promise.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/loadext/loadext.js','/bitrix/js/main/loadext/extension.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/includes/js/includes.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/ui/polyfill/closest/js/closest.js','/bitrix/js/main/polyfill/fill/main.polyfill.fill.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/core/core.js','/bitrix/js/main/polyfill/intersectionobserver/js/intersectionobserver.js','/bitrix/js/main/lazyload/dist/lazyload.bundle.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/parambag/dist/parambag.bundle.js']);
+</script>
+<script type="text/javascript">(window.BX||top.BX).message({'pull_server_enabled':'Y','pull_config_timestamp':'1626118451','pull_guest_mode':'N','pull_guest_user_id':'0'});(window.BX||top.BX).message({'PULL_OLD_REVISION':'This page must be reloaded to ensure proper site functioning and to continue work.'});</script>
+<script type="text/javascript">(window.BX||top.BX).message({'LANGUAGE_ID':'en','FORMAT_DATE':'MM/DD/YYYY','FORMAT_DATETIME':'MM/DD/YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'0','UTF_MODE':'Y','SITE_ID':'s1','SITE_DIR':'/','USER_ID':'1530539','SERVER_TIME':'1692279797','USER_TZ_OFFSET':'0','USER_TZ_AUTO':'Y','bitrix_sessid':'22af7510b3388921887eaefe30546b40'});</script>
+
+
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/kernel_main_v1.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/dexie3.bundle.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/core_ls.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/core_frame_cache.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/protobuf.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/model.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/rest.client.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/pull.client.min.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/main.popup.bundle.min.js"></script>
+<script type="text/javascript">BX.setJSList(['/bitrix/js/main/core/core_fx.js','/bitrix/js/main/session.js','/bitrix/js/main/pageobject/pageobject.js','/bitrix/js/main/core/core_window.js','/bitrix/js/main/core/core_tooltip.js','/bitrix/js/main/date/main.date.js','/bitrix/js/main/core/core_date.js','/bitrix/js/main/utils.js','/bitrix/js/main/core/core_uf.js','/bitrix/js/main/core/core_dd.js','/local/templates/dcs/components/bitrix/main.share/.default/script.js','/js/jquery.min.js','/js/fancybox/jquery.fancybox.js','/js/jquery.confirm.min.js','/local/templates/dcs/bootstrap/js/bootstrap.min.js','/js/jquery.debounce.js','/local/templates/dcs/components/bitrix/sale.basket.basket.line/.default/script.js','/bitrix/components/bitrix/search.title/script.js']);</script>
+<script type="text/javascript">BX.setCSSList(['/local/templates/dcs/components/bitrix/news/changelog/bitrix/news.list/index/style.css','/local/templates/dcs/components/bitrix/news/changelog/bitrix/news.detail/.default/style.css','/local/templates/dcs/components/bitrix/main.share/.default/style.css','/local/templates/dcs/bootstrap/css/bootstrap.min.css','/js/fancybox/jquery.fancybox.css','/local/templates/dcs/components/bitrix/system.auth.form/login/style.css','/local/templates/dcs/components/bitrix/search.title/.default/style.css','/local/templates/dcs/styles.css','/local/templates/dcs/template_styles.css']);</script>
+<script type="text/javascript">
+BX.message({"SessExpired": 'Your session has been terminated due to inactivity for 1440 min. The new information on this page will not be saved. Please copy your data before closing or refreshing the page.'});
+bxSession.Expand('22af7510b3388921887eaefe30546b40.a87dfaee86f0bf669b04bf392968476b044eebcded68e302533151275df5b68e');
+</script>
+<script type="text/javascript">
+					(function () {
+						"use strict";
+
+						var counter = function ()
+						{
+							var cookie = (function (name) {
+								var parts = ("; " + document.cookie).split("; " + name + "=");
+								if (parts.length == 2) {
+									try {return JSON.parse(decodeURIComponent(parts.pop().split(";").shift()));}
+									catch (e) {}
+								}
+							})("BITRIX_CONVERSION_CONTEXT_s1");
+
+							if (cookie && cookie.EXPIRE >= BX.message("SERVER_TIME"))
+								return;
+
+							var request = new XMLHttpRequest();
+							request.open("POST", "/bitrix/tools/conversion/ajax_counter.php", true);
+							request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+							request.send(
+								"SITE_ID="+encodeURIComponent("s1")+
+								"&sessid="+encodeURIComponent(BX.bitrix_sessid())+
+								"&HTTP_REFERER="+encodeURIComponent(document.referrer)
+							);
+						};
+
+						if (window.frameRequestStart === true)
+							BX.addCustomEvent("onFrameDataReceived", counter);
+						else
+							BX.ready(counter);
+					})();
+				</script>
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/" hreflang="en">
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/ru/news/changelog/openbeta/2.8.7.42583/" hreflang="ru">
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/de/news/changelog/openbeta/2.8.7.42583/" hreflang="de">
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/cn/news/changelog/openbeta/2.8.7.42583/" hreflang="cn">
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/fr/news/changelog/openbeta/2.8.7.42583/" hreflang="fr">
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/it/news/changelog/openbeta/2.8.7.42583/" hreflang="it">
+<link rel="alternate" href="https://www.digitalcombatsimulator.com/es/news/changelog/openbeta/2.8.7.42583/" hreflang="es">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/">
+<meta property="og:title" content="DCS 2.8.7.42583 Open Beta">
+<meta property="og:description" content="">
+<script type="text/javascript">BX.bind(window, "load", function(){BX.PULL.start();});</script>
+<script type="text/javascript">
+            var ALXerrorSendMessages={
+                'head':'You found an error in the text',
+                'footer':'Send error message',
+                'comment':'Comment (optional)',
+                'TitleForm':'The error message',
+                'ButtonSend':'Send',
+                'LongText':'Error! You selected too much text.',
+                'LongText2':'Please try again.',
+                'cancel':'Cancel',
+                'senderror':'Error sending message!',
+                'close':'Close',
+                'text_ok':'Message sent.',
+                'text_ok2':'Thank you for your attention!'
+            }
+            </script>
+<script type="text/javascript" async="" src="openbeta-2.8.7.42583_files/error.js"></script>
+
+
+
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/template_a7d064f763f4ec15a3f07228ba8d06dc_v1.js"></script>
+<script type="text/javascript" src="openbeta-2.8.7.42583_files/page_a77389ec172796b7619a767e7d7943a2_v1.js"></script>
+<script type="text/javascript">var _ba = _ba || []; _ba.push(["aid", "ec4e610cef9504dc3ad737bd0300464f"]); _ba.push(["host", "www.digitalcombatsimulator.com"]); (function() {var ba = document.createElement("script"); ba.type = "text/javascript"; ba.async = true;ba.src = (document.location.protocol == "https:" ? "https://" : "http://") + "bitrix.info/ba.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ba, s);})();</script>
+
+
+        <!--[if lt IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".fancybox").fancybox({helpers:{overlay:{locked:false}}});
+                $(".confirm").confirm({
+                    post: true,
+                    confirmButtonClass: "btn btn-primary",
+                    cancelButtonClass: "btn btn-default"
+                });
+            });
+        </script>
+                    <script async="" src="openbeta-2.8.7.42583_files/google-analytics_analytics_004.js"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-0PEB8NMGB5');
+            </script>
+                        <script src="openbeta-2.8.7.42583_files/google-analytics_analytics.js"></script>
+            <script type="text/javascript">
+                window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1007522769');
+            </script>
+            <script type="text/javascript">
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-PWZLVB5');
+            </script>
+            <script async="" src="openbeta-2.8.7.42583_files/google-analytics_analytics_003.js"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'AW-648324159');
+            </script>
+            <style type="text/css">.fancybox-margin{margin-right:17px;}</style></head>
+<body data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="">
+    <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(20852101, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/20852101" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZLVB5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div id="panel"></div>
+    <div class="navbar navbar-inverse" role="navigation" id="roof">
+        <div class="container">
+            <a href="https://www.digitalcombatsimulator.com/en" class="navbar-brand"><img src="openbeta-2.8.7.42583_files/dcs-world-logo.svg" alt="Digital Combat Simulator World"></a>
+            <div class="pull-right navbar-lang"><a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-en.png" alt="English"></a>
+<a href="https://www.digitalcombatsimulator.com/ru/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-ru.png" alt="Russian"></a>
+<a href="https://www.digitalcombatsimulator.com/de/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-de.png" alt="German"></a>
+<a href="https://www.digitalcombatsimulator.com/cn/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-cn.png" alt="Chinese"></a>
+<a href="https://www.digitalcombatsimulator.com/fr/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-fr.png" alt="French"></a>
+<a href="https://www.digitalcombatsimulator.com/it/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-it.png" alt="Italian"></a>
+<a href="https://www.digitalcombatsimulator.com/es/news/changelog/openbeta/2.8.7.42583/"><img src="openbeta-2.8.7.42583_files/lang-es.png" alt="Spanish"></a></div>
+            <div class="pull-right navbar-user">
+                <span id="login-line"> 
+<a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/?logout=yes">Logout</a> /
+<a href="https://www.digitalcombatsimulator.com/en/personal/?backurl=%2Fen%2Fnews%2Fchangelog%2Fopenbeta%2F2.8.7.42583%2F">Profile</a>
+        </span>
+<div id="bx_auth_popup_form" style="display:none;" class="bx_login_popup_form">
+<form class="form-horizontal bx_auth_form" name="system_auth_form" method="post" target="_top" action="/en/news/changelog/openbeta/2.8.7.42583/" data-bitwarden-watching="1">
+    <input type="hidden" name="AUTH_FORM" value="Y">
+    <input type="hidden" name="TYPE" value="AUTH">
+        <input type="hidden" name="backurl" value="/en/news/changelog/openbeta/2.8.7.42583/">
+            <div class="row">
+                <div class="form-group">
+            <label for="USER_LOGIN" class="col-xs-3 control-label">Login</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="USER_LOGIN" name="USER_LOGIN" maxlength="255">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="USER_PASSWORD" class="col-xs-3 control-label">Password</label>
+            <div class="col-xs-8">
+                <input type="password" class="form-control" id="USER_PASSWORD" name="USER_PASSWORD" maxlength="255">
+            </div>
+            <div class="col-xs-1" id="lock-icon">
+                            </div>
+        </div>
+                    </div>
+    <div class="row text-center">
+        <div class="col-xs-6"><input type="submit" name="Login" class="btn btn-primary" value="Authorize"></div>
+        <div class="col-xs-6">
+              <a href="" rel="nofollow">Forgot your password?</a>
+              <a href="" rel="nofollow">Register</a>
+        </div>
+    </div>
+</form></div>
+<script>
+function openAuthorizePopup()
+{
+    var obPopupWin = BX.PopupWindowManager.create("AuthorizePopup", null, {
+        autoHide: true,
+        offsetLeft: 0,
+        offsetTop: 0,
+        overlay : true,
+        closeByEsc: true,
+        titleBar: false,
+		closeIcon: {},
+		content:'<div style="width:500px;height:250px; text-align: center;"><span style="position:absolute;left:50%; top:50%"><img src="/local/templates/dcs/components/bitrix/system.auth.form/.default/images/wait.gif"/></span></div>'
+	});
+    obPopupWin.popupContainer.className = 'popup-window-login';
+    obPopupWin.setContent(BX("bx_auth_popup_form"));
+    obPopupWin.show();
+    document.system_auth_form.USER_LOGIN.focus();
+}
+</script>
+                /
+                <script>
+    var obEshopBasket = new JSEshopBasket("/local/templates/dcs/components/bitrix/sale.basket.basket.line/.default/ajax.php", "s1", "en");
+</script>
+<span id="bx_cart_block">
+<!--'start_frame_cache_bx_cart_block'--><a href="https://www.digitalcombatsimulator.com/en/personal/cart/">Cart</a>: <span id="bx_cart_num">empty</span><!--'end_frame_cache_bx_cart_block'--></span>            </div>
+        </div>
+    </div>
+
+    <div class="navbar navbar-inverse" role="navigation" id="top-menu">
+        <div class="container">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-list" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+<ul class="collapse navbar-collapse nav navbar-nav navbar-left" id="top-menu-list">
+<li><a href="https://www.digitalcombatsimulator.com/en/index.php">Home</a></li>
+<li class="dropdown active"><a href="https://www.digitalcombatsimulator.com/en/news/">News</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/news/changelog/">Changelog</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/news/newsletters/">Newsletters</a></li>
+</ul></li><li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/">Products</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/world/">DCS World</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/planes/">Planes</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/helicopters/">Helicopters</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/terrains/">Terrains</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/campaigns/">Campaigns</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/products/other/">Other</a></li>
+</ul></li><li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/downloads/">Downloads</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/downloads/world/">DCS World</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/downloads/texture_templates/">Texture templates</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/downloads/documentation/">Documentation</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/downloads/screenshots/">Screenshots</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/files/">User files</a></li>
+</ul></li><li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/shop/">E-Shop</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/shop/modules/">Modules</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/shop/terrains/">Terrains</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/shop/bundles/">Bundles</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/shop/campaigns/">Сampaigns</a></li>
+</ul></li><li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/support/">Support</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/links/">Useful Links</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/support/">User support</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/support/faq">Technical questions</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/support/miles_rules">Miles rules</a></li>
+<li class="dropdown"><a href="https://www.digitalcombatsimulator.com/en/support/license">License Agreement</a></li>
+</ul></li><li><a href="https://forum.dcs.world/" target="_blank">Forums</a></li>
+</ul>
+<div class="menu-clear-left"></div>            	    <div id="title-search" class="search-box hidden-xs hidden-sm">
+    <form class="form-title-search" action="/en/search/">
+    <div class="input-group form-title-search">
+        <input id="title-search-input" type="text" name="q" placeholder="Search here" size="20" maxlength="50" autocomplete="off" class="form-control">
+        <span class="input-group-btn">
+        <input name="s" type="submit" value="Search" class="btn btn-search">
+        </span>
+    </div>
+    </form>
+    </div>
+<script>
+   var jsControl = 
+        new JCTitleSearch({
+            'AJAX_PAGE' : '/en/news/changelog/openbeta/2.8.7.42583/',
+            'CONTAINER_ID': 'title-search',
+            'INPUT_ID': 'title-search-input',
+            'MIN_QUERY_LEN': 2
+        });
+</script>
+        </div>
+    </div>
+<div class="container">
+        <h1>DCS 2.8.7.42583 Open Beta</h1>
+        <div id="crumbs"><a href="https://www.digitalcombatsimulator.com/en/" title="Home">Home</a>&nbsp;&gt;&nbsp;<a href="https://www.digitalcombatsimulator.com/en/news/" title="News">News</a>&nbsp;&gt;&nbsp;<a href="https://www.digitalcombatsimulator.com/en/news/changelog/" title="Changelog">Changelog</a>&nbsp;&gt;&nbsp;<a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/" title="Open Beta changelog">Open Beta changelog</a>&nbsp;&gt;&nbsp;<span id="current">DCS 2.8.7.42583 Open Beta</span></div>    	<div class="row">
+	<div class="col-md-3" id="changelog-sidebar">
+		<div class="row">
+			<div class="col-xs-12">
+				    <div class="row margin-bottom">
+    <b><a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/">Open Beta changelog</a></b>
+	        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.8.43489/">DCS 2.8.8.43489 Open Beta</a> - <i>16.08.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42718/">DCS 2.8.7.42718 Open Beta</a> - <i>28.07.2023</i>
+                    </div>
+        <div>
+            <u>            <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/">DCS 2.8.7.42583 Open Beta</a> - <i>24.07.2023</i>
+            </u>        </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.6.41363/">DCS 2.8.6.41363 Open Beta</a> - <i>22.06.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.6.41066/">DCS 2.8.6.41066 Open Beta</a> - <i>08.06.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.5.40170/">DCS 2.8.5.40170 Open Beta</a> - <i>18.05.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.4.39731/">DCS 2.8.4.39731 Open Beta</a> - <i>04.05.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.4.39313/">DCS 2.8.4.39313 Open Beta</a> - <i>23.04.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.4.39259.1/">DCS 2.8.4.39259.1 Open Beta</a> - <i>21.04.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.4.38947/">DCS 2.8.4.38947 Open Beta</a> - <i>13.04.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.3.38090/">DCS 2.8.3.38090 Open Beta</a> - <i>22.03.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.3.37854.1/">DCS 2.8.3.37854.1 Open Beta</a> - <i>17.03.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.3.37556/">DCS 2.8.3.37556 Open Beta</a> - <i>10.03.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35759/">DCS 2.8.2.35759 Open Beta</a> - <i>27.01.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/">DCS 2.8.2.35632 Open Beta</a> - <i>25.01.2023</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.1.34667.2/">DCS 2.8.1.34667.2 Open Beta</a> - <i>23.12.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.1.34667.1/">DCS 2.8.1.34667.1 Open Beta</a> - <i>22.12.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.1.34437/">DCS 2.8.1.34437 Open Beta</a> - <i>16.12.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.0.33006/">DCS 2.8.0.33006 Open Beta</a> - <i>18.11.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.0.32937/">DCS 2.8.0.32937 Open Beta</a> - <i>17.11.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.0.32235.1/">DCS 2.8.0.32235.1 Open Beta</a> - <i>02.11.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.0.32066/">DCS 2.8.0.32066 Open Beta</a> - <i>28.10.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.18.30765/">DCS 2.7.18.30765 Open Beta</a> - <i>30.09.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.18.30348/">DCS 2.7.18.30348 Open Beta</a> - <i>21.09.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.17.29493/">DCS 2.7.17.29493 Open Beta</a> - <i>02.09.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.17.29140/">DCS 2.7.17.29140 Open Beta</a> - <i>24.08.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.16.28157/">DCS 2.7.16.28157 Open Beta</a> - <i>29.07.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.16.28111/">DCS 2.7.16.28111 Open Beta</a> - <i>28.07.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.16.27869/">DCS 2.7.16.27869 Open Beta</a> - <i>21.07.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.15.26783/">DCS 2.7.15.26783 Open Beta</a> - <i>22.06.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.15.25026/">DCS 2.7.15.25026 Open Beta</a> - <i>08.06.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.14.24228/">DCS 2.7.14.24228 Open Beta</a> - <i>25.05.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.14.23966/">DCS 2.7.14.23966 Open Beta</a> - <i>18.05.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.12.23362/">DCS 2.7.12.23362 Open Beta</a> - <i>28.04.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.11.22211/">DCS 2.7.11.22211 Open Beta</a> - <i>06.04.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.11.22041/">DCS 2.7.11.22041 Open Beta</a> - <i>30.03.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.11.21408.1/">DCS 2.7.11.21408.1 Open Beta</a> - <i>17.03.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.10.19473/">DCS 2.7.10.19473 Open Beta</a> - <i>07.02.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.10.19402/">DCS: 2.7.10.19402 Open Beta</a> - <i>04.02.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.10.18996/">DCS: 2.7.10.18996 Open Beta</a> - <i>27.01.2022</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.9.18080/">DCS 2.7.9.18080 Open Beta</a> - <i>29.12.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.9.17830/">DCS 2.7.9.17830 Open Beta</a> - <i>23.12.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.8.16140/">DCS 2.7.8.16140 Open Beta</a> - <i>18.11.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.7.15038/">DCS 2.7.7.15038 Open Beta</a> - <i>28.10.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.7.14727/">DCS 2.7.7.14727 Open Beta</a> - <i>20.10.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.6.13436/">DCS 2.7.6.13436 Open Beta</a> - <i>29.09.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.6.13133/">DCS 2.7.6.13133 Open Beta</a> - <i>22.09.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.6.12852/">DCS 2.7.6.12852 Open Beta</a> - <i>17.09.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.5.10869/">DCS 2.7.5.10869 Open Beta</a> - <i>11.08.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.4.9847/">DCS 2.7.4.9847 Open Beta</a> - <i>23.07.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.4.9632/">DCS 2.7.4.9632 Open Beta</a> - <i>21.07.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.3.8494/">DCS 2.7.3.8494 Open Beta</a> - <i>30.06.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.2.8165.2/">DCS 2.7.2.8165.2 Open Beta</a> - <i>23.06.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.2.7910.1/">DCS 2.7.2.7910.1 Open Beta</a> - <i>16.06.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.1.7139/">DCS 2.7.1.7139 Open Beta</a> - <i>03.06.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.1.7029/">DCS 2.7.1.7029 Open Beta</a> - <i>02.06.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.1.6709/">DCS 2.7.1.6709 Open Beta</a> - <i>27.05.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.1.6430/">DCS 2.7.1.6430 Open Beta</a> - <i>20.05.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.0.5659/">DCS 2.7.0.5659 Open Beta</a> - <i>05.05.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.0.5118/">DCS 2.7.0.5118 Open Beta</a> - <i>22.04.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.7.0.4625/">DCS 2.7.0.4625 Open Beta</a> - <i>14.04.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.61527.3/">DCS 2.5.6.61527.3 Open Beta</a> - <i>04.03.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.61527.2/">DCS 2.5.6.61527.2 Open Beta</a> - <i>02.03.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.61527.1/">DCS 2.5.6.61527.1 Open Beta</a> - <i>24.02.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.61527/">DCS 2.5.6.61527 Open Beta</a> - <i>17.02.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.60966/">DCS 2.5.6.60966 Open Beta</a> - <i>03.02.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.60720/">DCS 2.5.6.60720 Open Beta</a> - <i>28.01.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.60645/">DCS 2.5.6.60645 Open Beta</a> - <i>27.01.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.59625.1/">DCS 2.5.6.59625.1 Open Beta</a> - <i>04.01.2021</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.59625/">DCS 2.5.6.59625 Open Beta</a> - <i>23.12.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.59398/">DCS 2.5.6.59398 Open Beta</a> - <i>17.12.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.58125/">DCS 2.5.6.58125 Open Beta</a> - <i>23.11.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.57949/">DCS 2.5.6.57949 Open Beta</a> - <i>18.11.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.57530/">DCS 2.5.6.57530 Open Beta</a> - <i>10.11.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.57264/">DCS 2.5.6.57264 Open Beta</a> - <i>04.11.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.55960/">DCS 2.5.6.55960 Open Beta</a> - <i>07.10.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.55847/">DCS 2.5.6.55847 Open Beta </a> - <i>02.10.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.55743/">DCS 2.5.6.55743 Open Beta</a> - <i>30.09.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.55363/">DCS 2.5.6.55363 Open Beta</a> - <i>23.09.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.54046/">DCS 2.5.6.54046 Open Beta</a> - <i>26.08.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.53756/">DCS 2.5.6.53756 Open Beta</a> - <i>18.08.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.52437/">DCS 2.5.6.52437 Open Beta</a> - <i>21.07.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.52196/">DCS 2.5.6.52196 Open Beta</a> - <i>15.07.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.50979/">DCS 2.5.6.50979 Open Beta</a> - <i>17.06.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.50793/">DCS 2.5.6.50793 Open Beta</a> - <i>11.06.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.50726/">DCS 2.5.6.50726 Open Beta</a> - <i>10.06.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.50321/">DCS 2.5.6.50321 Open Beta</a> - <i>02.06.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.49798/">DCS 2.5.6.49798 Open Beta</a> - <i>27.05.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.49718/">DCS 2.5.6.49718 Open Beta</a> - <i>26.05.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.49314/">DCS 2.5.6.49314 Open Beta</a> - <i>19.05.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.47404/">DCS 2.5.6.47404 Open Beta</a> - <i>22.04.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.47224/">DCS 2.5.6.47224 Open Beta</a> - <i>16.04.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.45915/">DCS 2.5.6.45915 Open Beta</a> - <i>30.03.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.45317/">DCS 2.5.6.45317 Open Beta</a> - <i>19.03.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.44266/">DCS 2.5.6.44266 Open Beta</a> - <i>03.03.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.43872/">DCS 2.5.6.43872 Open Beta</a> - <i>20.02.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.6.43453/">DCS 2.5.6.43453 Open Beta</a> - <i>13.02.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.41962/">DCS 2.5.5.41962 Open Beta</a> - <i>14.01.2020</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.41371/">DCS 2.5.5.41371 Open Beta</a> - <i>19.12.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.41318/">DCS 2.5.5.41318 Open Beta</a> - <i>19.12.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.41256/">DCS 2.5.5.41256 Open Beta</a> - <i>18.12.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.40647/">DCS 2.5.5.40647 Open Beta</a> - <i>05.12.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.40603/">DCS 2.5.5.40603 Open Beta</a> - <i>04.12.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.40269/">DCS 2.5.5.40269 Open Beta</a> - <i>27.11.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.39384/">DCS 2.5.5.39384 Open Beta</a> - <i>13.11.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.39262/">DCS 2.5.5.39262 Open Beta</a> - <i>12.11.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.39003/">DCS 2.5.5.39003 Open Beta</a> - <i>06.11.2019</i>
+                    </div>
+        <div>
+                        <a href="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.5.5.38756/">DCS 2.5.5.38756 Open Beta</a> - <i>31.10.2019</i>
+                    </div>
+    </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9" id="changelog-content">
+<div class="row well changelog">
+    <div class="col-xs-12">
+                    <p>
+	 Introduced a new campaign: UH-1H The Huey Last Show Campaign by SorelRo
+</p>
+<h4>DCS World</h4>
+<ul>
+	<li>MP. New feature. Slot types filtering feature added to client</li>
+	<li>MP. Server restart leads to client being timed out or client DCS hang - fixed</li>
+	<li>MP. Key combo does not work in the role selection window in MP - fixed</li>
+	<li>ME. New feature “copy settings” button. You can now copy settings 
+and properties between aircraft in your group, different groups, or all 
+of the same type of aircraft on the map.</li>
+	<li>ME. GUI Error when try to create new payload - fixed</li>
+	<li>ME. GUI Error when try to open fuse adjustment panel in some case - fixed</li>
+	<li>ME. GUI Error when try to Copy settings in some case - fixed</li>
+	<li>AI ground units will now attack enemy trains</li>
+	<li>AI ground. The cause of collision and intersection of ground unit shapes has been eliminated</li>
+	<li>AI aircraft. Overloaded OH-58D cannot take off - fixed</li>
+	<li>AI aircraft. B-52H will not use all flares on the one incoming hostile missile</li>
+	<li>AI aircraft. Some planes suspension nose / tail gear animation corrected</li>
+	<li>AI aircraft. Il-76, Il-78, A-50, MQ-9 Reaper, E-3A, MiG-31, MiG-23MLD, Tornado GR4/IDS,&nbsp;Su-25, damage model fixed.</li>
+	<li>AI aircraft. After task Embarking, the helicopter remains on ground - fixed</li>
+	<li>AI aircraft. AI-launched laser guided weapons keep track of target while no one is lasing them after launch - fixed</li>
+	<li>Engine. When camera gets close to the water, the horizon line in the distance seems to disappear - fixed</li>
+	<li>Weapons. Added a small random trajectory spread of cruise and 
+anti-ship missiles so that they do not fly exactly one after the other 
+and do not collide.&nbsp;</li>
+	<li>Engine. Rewritten and optimized screenshot taking. Allow screenshots to be taken more than 1 per second.</li>
+	<li>Cameras. Corrected default camera position for the F4 view</li>
+	<li>L-39. Corrupt damage models - fixed</li>
+	<li>Corrected inaccurate terrain shadows appearing in some cases</li>
+	<li>Weapons. Some weapons pass through terrain and objects without exploding - fixed</li>
+	<li>Screen flickers black in some case - fixed</li>
+	<li>Exploded bridge has an ugly explosion crater - fixed</li>
+	<li>Authorization. Failed auth resets users options for the module - fixed</li>
+	<li>Encyclopedia. Wrong Harrier entry - fixed</li>
+	<li>Weapons. Kh-59 missile changes direction when target is already dead - fixed</li>
+	<li>Weapons. Arleigh Burke -Tomahawk wings are deployed too soon during launch - fixed</li>
+	<li>CTD when Mi-8 is destroyed with a specific payload - fixed</li>
+	<li>ATC comms mix up between maps - fixed</li>
+</ul>
+<h4>DCS: F/A-18C by Eagle Dynamics</h4>
+<ul>
+	<li>Improved target hold mechanism in STT.</li>
+	<li>Fixed: &nbsp;TDC Cursor not shown after switching from A/A to ACM&nbsp;</li>
+	<li>Fixed: Trains on ground radars</li>
+	<li>Fixed: Radar Range in VS on AZ/EL Page</li>
+	<li>Fixed: ARC-210 modulation set in ME is not respected</li>
+	<li>Fixed: Entering STT from VS results in azimuth vs velocity, STT should always be azimuth vs range</li>
+	<li>Fixed: VS detects and locks aircraft set to Late Activation before they activate</li>
+	<li>Fixed: Targeting pods loses point track on weapon change&nbsp;</li>
+	<li>Fixed: Auto bomb mode sometimes ignores countdown.</li>
+	<li>Fixed: AGM-84D Harpoon does not self destruct at correct distance when used in BOL HTP</li>
+	<li>Fixed: AGM-84D Harpoon Search distances are not relative to HTP even though HSI indications show correctly</li>
+	<li>Update "Mission Qual" and "Weapons Qual" to standard ED graphics</li>
+</ul>
+<h4>DCS: F-16C Viper by Eagle Dynamics</h4>
+<ul>
+	<li>Improved target hold mechanism in STT.</li>
+	<li>Added Thrustmaster Viper TQS Default Profile</li>
+	<li>Fixed:MAN AUTO waypoint sequencing control.</li>
+	<li>Fixed:New Ground Emitter sound played when missile inbound&nbsp;</li>
+	<li>Fixed: TGP+GBU38 = 15-20m Miss. Note: 3 Second laser or AGR required before release for increased accuracy.</li>
+</ul>
+<h4>DCS: AH-64D by Eagle Dynamics</h4>
+<ul>
+	<li>Altitude Hold logic corrections</li>
+	<li>Added mixed AGM-114 loadout</li>
+	<li>Fixed: George enter VRS too often</li>
+	<li>Fixed: Uses gun limit depending on the cockpit, not on the actual trigger pressed</li>
+	<li>Fixed: George refuses to fire gun after first engagement</li>
+	<li>Fixed: Extra symbols on EUFD</li>
+	<li>Fixed: George AI as pilot loses height for no reason</li>
+	<li>Fixed: IAT inertial track behavior for primary tracked target</li>
+	<li>Fixed: VR Collective issues - Collective raises with no user input.</li>
+	<li>Fixed: INU alignment resets when APU is turned on from External Power</li>
+	<li>Fixed: Ground power GPS alignment can be broken with APU start</li>
+	<li>Fixed: PLT and CP/G TADS Desync issue - Slaved TADS</li>
+	<li>Fixed: MPD Brightness knobs not working cold and dark with input pushes</li>
+	<li>Fixed: Flat tires are not fixed with repair.</li>
+	<li>Fixed: CPG joins after APU start - no sync of engine start or rotors</li>
+	<li>Fixed: Multicrew Hold mode indications not Syncing</li>
+	<li>Fixed: JTAC and player uses Laser Hellfire instead of Radar Hellfire in 9 line dialog</li>
+</ul>
+<h4>DCS: Mi-24P Hind by Eagle Dynamics</h4>
+<ul>
+	<li>Added: subtitle for Petrovich AI for target miss</li>
+	<li>Added: Petrovich AI interface for ASO-2V panel control has new 
+function: Long Left (disables Petrovich auto-dropping flares/chaff if he
+ see missile threat)</li>
+	<li>Improved: joystick axis controls and VR/head-tracker decouple for Mi-24P door gun</li>
+	<li>Improved: bomb struts are removed from pylons for weapons which don't need them</li>
+	<li>Improved: Petrovich AI will not use flares/chaff if there is weight on wheels of helicopter</li>
+	<li>Improved: Weapon release button cover opens automatically when weapon release is pressed</li>
+	<li>Fixed: More than one R-60M goes off rail sometimes if RS button cover is open</li>
+	<li>Fixed: DISS-15 system works without power</li>
+	<li>Fixed: Petrovich AI does not move sight to the designated position first time after switching on "Observe"</li>
+</ul>
+<h4>DCS: F-86F Sabre by Eagle Dynamics</h4>
+<ul>
+	<li>Fixed: Radar ranging for gunsight reticle.</li>
+</ul>
+<h4>DCS: F-5E Tiger II by Eagle Dynamics</h4>
+<ul>
+	<li>Fixed: TACAN morse code can be heard although TACAN volume is OFF&nbsp;</li>
+	<li>Fixed: &nbsp;Radar gunsight solution incorrect&nbsp;</li>
+	<li>Fixed: Radar doesn't return to acquisition phase after target lost in dogfight modes</li>
+</ul>
+<h4>DCS: A-10C II Tank killer by Eagle Dynamics</h4>
+<ul>
+	<li>Fixed. Two AIM-9 have launched from one point if manually selected</li>
+	<li>Fixed. Volume now can be regulated using Channel knob while being 
+on the Menu page. Volume can also be changed for the guard receiver</li>
+	<li>Fixed. ARC-210 modulation set in ME is not respected</li>
+	<li>Fixed. CDU reruns BIT test when hitting "PREV" key after first startup</li>
+	<li>Added. Wheel chocks</li>
+	<li>Added. AN/ALQ-184 Long Pod</li>
+	<li>Added. Copy Feature for UFC and CDU</li>
+</ul>
+<h4>DCS: Bf 109K-4 Kurfurst by Eagle Dynamics</h4>
+<ul>
+	<li>Unsupported ‘Signal Starter Crew’ command removed</li>
+	<li>Added wheel chocks</li>
+</ul>
+<h4>DCS: FW 190A-8 Anton by Eagle Dynamics</h4>
+<ul>
+	<li>Added wheel chocks</li>
+</ul>
+<h4>DCS: FW 190D-9 Dora by Eagle Dynamics</h4>
+<ul>
+	<li>Added wheel chocks</li>
+	<li>Official template now available to download&nbsp;<a href="https://www.digitalcombatsimulator.com/en/downloads/texture_templates/">here</a></li>
+</ul>
+<h4>DCS: AV-8B N/A by RAZBAM Simulations</h4>
+<ul>
+	<li>Fixed: Radio Microphone Keybind behaviour</li>
+</ul>
+<h4>DCS: MiG-19P by RAZBAM Simulations</h4>
+<ul>
+	<li>Updated: Temporarily disabled Radar Dynamic Terrain for VR due to compatibility issues.</li>
+</ul>
+<h4>DCS: F-15E Suite 4+ by RAZBAM Simulations&nbsp;</h4>
+<ul>
+	<li>Fixed: INS ALignment too sensitive to movement</li>
+	<li>Fixed: Rear Cockpit Throttle Mic switch keyboard bind</li>
+	<li>Fixed: Radio Presets Channels cannot be updated in cockpit</li>
+	<li>Fixed: CTD when selecting OFF Missile</li>
+	<li>Fixed: fuel flow NaN crash at Mach 1.4 in release builds</li>
+	<li>Fixed: Rear cockpit HOTAS for TGP</li>
+	<li>Fixed: Gun Funnel position</li>
+	<li>Fixed: TACAN information now synchronised between cockpits</li>
+	<li>Fixed: Corrected issue with unpredictable trim behaviour at high Mach</li>
+	<li>Fixed: ILS information now synchronised between cockpits</li>
+	<li>Fixed: scratchpad flashing after successful TGP PB17 use</li>
+	<li>Fixed: Master Arm ON required for Emergency Jet</li>
+	<li>Fixed: Error when entering SP number without route</li>
+	<li>Fixed: HUD N-F Box visibility</li>
+	<li>Fixed: radar Auto ACQ min range</li>
+	<li>Fixed: stores drag calculation incorrectly using PACS configuration instead of actual loadout</li>
+	<li>Fixed: radar debug window visible on release</li>
+	<li>Fixed: broken Mark Points</li>
+	<li>Fixed: Invalid values shown on HUD</li>
+	<li>Fixed: scintillation option</li>
+	<li>Fixed: HRM Patch window selection bugs</li>
+	<li>Fixed: radar antenna limit bugs</li>
+	<li>Fixed: glitchy RBM noise pattern</li>
+	<li>Fixed: Radio 1 and Radio 2 active frequency not syncing</li>
+	<li>Fixed: Emergency canopy jettison not repairing</li>
+	<li>Fixed: Correction for NVGs not removable if active and removed by ground crew</li>
+	<li>Fixed: Oil Pressure caution flickering during engine startup sometimes</li>
+	<li>Fixed: Corrected missing ejection delay when ejection mode is NORM</li>
+	<li>Fixed: Missing texture on WSO helmet in USAF 492nd AF91 Low Vis Clean livery.</li>
+	<li>Fixed: Livery inaccuracy with Seymour Johnson &nbsp;333 FGS and 336 FGS texture.</li>
+	<li>Fixed: Livery inaccuracy with the Mountain Home 75 2018 Anniversary texture.</li>
+	<li>Fixed: Corrected spelling error for the 492nd liveries.</li>
+	<li>Fixed: Ejection Pilot model standing lower than the surface.</li>
+	<li>Fixed: Uneven Intake Ramps.</li>
+	<li>Fixed: Damage Model missing Shells.</li>
+	<li>Fixed: excessive CPU use with HRM Patch in multi crew when not in command</li>
+	<li>Fixed: JFS stutter sound heard from other aircraft starting up or shutting down in multiplayer</li>
+	<li>Fixed: Glitches when entering Lat/Lon coordinates on UFC</li>
+	<li>Fixed: Exiting GUNS should stay in A/A master mode</li>
+	<li>Fixed: Multicrew desync issues</li>
+	<li>Fixed: Some tones, such as Landing Gear Warning tone, could play even with no power</li>
+	<li>Fixed: WSO backup ADI not caged for cold start</li>
+	<li>Fixed: Removed graphical glitch from WSO seat when controls being hidden</li>
+	<li>Fixed: INS alignment &amp; sync issues</li>
+	<li>Fixed: instant SH alignment</li>
+	<li>Fixed: HUD INS message when INS set to OFF</li>
+	<li>Fixed: Fuel flow and fuel quantity indication going to 0 or largely negative when going past Mach 1.4</li>
+	<li>Fixed: WSO RHC AAI switch (IFF working only once)</li>
+	<li>Fixed: compatibility with older processors without AVX support</li>
+	<li>Fixed: TSD map behaviour during INS alignment</li>
+	<li>Fixed: HRM window selection gimbal limit &amp; blind zone bugs&nbsp;</li>
+	<li>Fixed: ugly RBM noise at max gain / GC0</li>
+	<li>Fixed: NAVFLIR not available for WSO in Multi Crew</li>
+	<li>Updated: Collision Model</li>
+	<li>Updated: External Model + LODS</li>
+	<li>Updated: Cockpit Model + Textures</li>
+	<li>Updated: Removed unjettisonable ACMI pod from missions</li>
+	<li>Updated: INS alignment &amp; sync</li>
+	<li>Updated: Increased IFF range to 100NM</li>
+	<li>Updated: AA Gunsight (WIP)</li>
+	<li>Updated: Lowered the GS boresight</li>
+	<li>Updated: Improve abrupt aerodynamic inputs for in-air crosswind starts</li>
+	<li>Updated: Revert pitch CAS gear handle input change (WIP)</li>
+	<li>Updated: Kneeboard page</li>
+	<li>Updated: Flight Control minor correction to more closely match mech checks</li>
+	<li>Updated: Minor tweaking to lateral aero coefficients at very small sideslips</li>
+	<li>Updated: Gear configuration values</li>
+	<li>Updated: Set alpha signal for roll and yaw CAS when weight on wheels from maintenance diagram</li>
+	<li>Updated: Provide a consistent normalised value of IDLE and MIL RPM to AI Sounder DLL</li>
+	<li>Updated: Ejection Pilots are now using separate textures.</li>
+	<li>Updated: Pilot Visor</li>
+	<li>Improved: Stores drag count tuning improvement against performance charts</li>
+	<li>Improved: FM based on automated testing</li>
+	<li>Improved YAW CAS to avoid out of phase control feedback loops causing oscillations</li>
+	<li>Improved: Adjusted stabilator to more closely match control surface checks</li>
+	<li>Improved: multi-cockpit canopy animation synchronisation</li>
+	<li>Improved: HRM TTGo reliability</li>
+	<li>Improved: HUD repeater rendering and included it in RCD images</li>
+	<li>Improved: radar CPU performance</li>
+	<li>Improved: kinematic consistency between seats during multi-cockpit</li>
+	<li>Improved: Adjusted ECS airflow sound gains</li>
+	<li>Improved: TGP power switch now goes to STBY for engine on mission starts</li>
+	<li>Added: TACAN Volume Ctrl</li>
+	<li>Added: ILS Volume Ctrl</li>
+	<li>Added: TEWS Volume Ctrl</li>
+	<li>Added: WPN Volume Ctrl</li>
+	<li>Added: Ground Crew can change GBUs Laser Codes</li>
+	<li>Added: Radio 1 and 2 MC Synchronisation</li>
+	<li>Added: SSE2, SSE4, AVX support</li>
+	<li>Added: RWR synchronisation</li>
+	<li>Added: HUD Control Synchronisation</li>
+	<li>Added: A/G radar band controls</li>
+	<li>Added: improved roll and yaw keyboard control</li>
+	<li>Added: Information message for emergency CAS disengage and JFS bottle refill</li>
+	<li>Added: MIC switch to ON during Auto Start sequence</li>
+	<li>Added: More Pilot Visors</li>
+	<li>Added: Livery options for hiding ECM on left vertical fin without Turkey Feathers.</li>
+	<li>Added: kneeboard indication of the alignment method to use</li>
+	<li>Added: NVG brightness adjust controls</li>
+	<li>Added: AAI &amp; EID Synced&nbsp;</li>
+	<li>Added: HRM active antennas scintillation</li>
+	<li>Added: A/G radar channel/band controls</li>
+</ul>
+<h4>DCS: JF-17 by Deka Ironwork Simulations</h4>
+<ul>
+	<li>Fixed: FPM behaviour on MFCD radar page</li>
+</ul>
+<h4>DCS: SA-342 Gazelle by Polychop Simulations</h4>
+<ul>
+	<li>Improved: Engine performance and torque limitations adjusted
+	<ul>
+		<li>This is a continuous iterative process and there may be further changes in the future</li>
+	</ul>
+ </li>
+	<li>Improved: SAS behaviour adjusted</li>
+	<li>Improved: Adjusted visual rotor speed</li>
+	<li>Improved: Auto-hover improved
+	<ul>
+		<li>Heading slave to camera still WIP</li>
+	</ul>
+ </li>
+	<li>Improved: Autorotation behaviour</li>
+	<li>Improved: Starter switch can now correctly be placed in ‘OFF/ARRET’ position once fuel is flowing</li>
+	<li>Fixed: Fuel mass bugs</li>
+	<li>Fixed: Mistral reticle not showing</li>
+	<li>Fixed: RWR Crash</li>
+	<li>Fixed: FFB cyclic trim implementation</li>
+	<li>Fixed: Lateral force improvements</li>
+	<li>Fixed: Removed pilot sight clickable when sight is not visible</li>
+	<li>Fixed: Overtemp issues</li>
+	<li>Fixed: Bort numbers were not functional</li>
+	<li>Added: Replaced HOT3 missiles with ED weapon</li>
+	<li>Added: basic sling loading
+	<ul>
+		<li>Helper UI to be added later</li>
+	</ul>
+ </li>
+	<li>Added: Periscope now has laser range finder</li>
+	<li>Added: Pilot sight will be hidden when spawning without any weapons equipped</li>
+	<li>Added: Mistral missiles are now able to lock on to ground targets when heat contrast is high enough.</li>
+	<li>Added: keybinds for radar altimeter (joystick)</li>
+	<li>Added: High detail community liveries by Mispunt: Olive Drab for US, UK, The Netherlands and Greece.</li>
+	<li>Added: High detail community liveries by Shaft, Peet and Mispunt: Armee HRI and Armee HRI Daguet for France.</li>
+</ul>
+<h4>DCS Mirage F1 by Aerges</h4>
+<p>
+	 Optical Sight improvements and fixes:
+</p>
+<ul>
+	<li>The Optical Sight target symbol doesn’t disappear anymore when it is near its movement limits.</li>
+	<li>The Optical Sight attitude reticle displayed part is limited now by
+ ~75 degrees of total angle in pitch (it is the physical display limit 
+of the pitch ribbon).</li>
+	<li>Optical Sight 'Normal' and 'Simplified' attitude scales are 
+implemented on a single ribbon now, with a visible animation when the 
+scale type is changed.</li>
+	<li>Implemented animated transition between the 'radar command bar' and
+ the 'gun firing reticle' symbols. These symbols are physically placed 
+on the same reticle ('Moving reticle').</li>
+</ul>
+<p>
+	 Other systems fixes:
+</p>
+<ul>
+	<li>Fixed IDN mode switch initial position in F1EE: The animation 
+position didn't match the internal value, so the indicator moves now 
+correctly after selecting the first mode switch position.</li>
+	<li>Added timer to weight on wheels sensors to avoid the antislip kicking in when the wheels were not yet fully in the air.</li>
+	<li>Fixed an error in the VOR/ILS test - direction of the horizontal needle movement was inverted.</li>
+	<li>Fixed Standby Horizon initialization pitch error at hot start.</li>
+	<li>Fixed R550 timeout logic at missile station selection - now the 
+'hardwired' 34 seconds timeout (gyros spool up timeout by a timer relay)
+ is applied only when the "Matra 550 or SW missile" switch is turned ON.</li>
+	<li>Fixed the initialization of the mechanical clock hours hand when the aircraft start time is more than 12:00 PM.</li>
+</ul>
+<p>
+	 3D model and textures:
+</p>
+<ul>
+	<li>Adjusted spherical Indicator airplane symbol.</li>
+</ul>
+<p>
+	 Miscellaneous:
+</p>
+<ul>
+	<li>Implemented mirrors position control by mouse axis, in addition to the existing clickable 'on/off' action.</li>
+	<li>Cockpit mirrors now can be toggled On/Off by 'Toggle Mirrors' key.</li>
+	<li>Fixed left mirror, it doesn't freeze anymore at certain view angles.</li>
+</ul>
+<p>
+	 Training missions:
+</p>
+<ul>
+	<li>Updated startup training mission: Highlighted NWS high sensitivity 
+button. Specified that the "I" key on the keyboard sets the throttle to 
+idle.</li>
+	<li>Updated the taxi, takeoff and climb training mission: Added the 
+need to press the U + V pushbutton in the radio selector unit. Improved 
+the TACAN in T/R mode trigger, no need to reset the T/R position.</li>
+	<li>Landing training mission minor fixes.</li>
+	<li>Updated ground attack training missions: The sight is set in NORMAL mode instead of APP mode. Modified sight depression figures.</li>
+	<li>Added Sinai missions (Quick Start and Single Player for both Mirage F1CE and Mirage F1EE).</li>
+</ul>
+<h4>DCS: C-101 Aviojet by AvioDev</h4>
+<ul>
+	<li>Fixed the initialization of the mechanical clock hours hand when the aircraft start time is more than 12:00 PM.</li>
+	<li>Fixed clock hands animation: minutes and chronometer minutes hands were mixed up with each other.</li>
+</ul>
+<h4>DCS AJS-37 Viggen by Heatblur Simulations</h4>
+<ul>
+	<li>NEW: Added Quickstart Missions for DCS: Sinai map.</li>
+	<li>RB-05 Overhaul:</li>
+	<li>Fixed RB-05 only able to be steered with radar in A0.</li>
+	<li>Fixed launched RB-05s automatically setting radar to A0 (without moving the switch).</li>
+	<li>Fixed subsequent launches sending the first missile to Valhalla.</li>
+	<li>Fixed steering commands being sent to the missile beyond 30s.</li>
+	<li>Fixed Black Screen during EP13 operation.</li>
+	<li>Set the default position of manual fuel regulator to AUTO.</li>
+</ul>
+<h4>DCS F-14 Tomcat by Heatblur Simulations</h4>
+<ul>
+	<li>New: Added Quickstart Missions for DCS: Sinai map.</li>
+	<li>Improved AIM-54 loft.&nbsp;</li>
+	<li>Improved AIM-54 notch behavior.&nbsp;</li>
+	<li>Fixed laser issues with painted objects.</li>
+	<li>Possible fix to INS readout bug on TID.</li>
+	<li>Refined gearing ratio between pedals and commanded NWS angle for better ground control.</li>
+	<li>Reduced pitch trim actuator speed by 25%.</li>
+	<li>Reduced carrier catapult shot speed target by 15 knots to be more realistic.</li>
+	<li>Increased possibility of compressor stall in MCB region while MCB is inactive (CB pulled) by 300%.</li>
+	<li>Increased volume of DLC deploy sound.</li>
+</ul>
+<h4>DCS: Black Shark 3 by Eagle Dynamics</h4>
+<ul>
+	<li>Shkval. Inaccurate aiming to target from memory - tuned embedded 
+INS+DNS algorithms, the error won't drastically increase on hover 
+(filtered input more precisely)</li>
+	<li>Sound. Correct startup sound procedure, add compressor's sounds, 
+adjust zones for APU, turbine, compressors and other sounds. Improve the
+ overall sound outside the helicopter.</li>
+	<li>INS. Alignment in some condition can't make IMU precision better that a certain threshold - fixed</li>
+</ul>
+<h4>DCS: P-51D Mustang by Eagle Dynamics</h4>
+<ul>
+	<li>P-51 Challenge Campaign. Updated clouds, seasons, skins, time of days</li>
+</ul>
+<h4>DCS: Syria Map by Ugra Media</h4>
+<ul>
+	<li>Added lighting with new real-time technology</li>
+	<li>Added right-hand traffic in Cyprus</li>
+	<li>Added kneeboard (tablet)</li>
+	<li>Mission generator updated</li>
+	<li>Added helicopter landing sites on GUI map</li>
+	<li>Added parking places for big planes</li>
+	<li>Improved and optimised urban development models</li>
+	<li>Improved models of airfield hangars</li>
+	<li>Improved models of original objects</li>
+	<li>Added destruction models for Aleppo power plant and Lafarge factory</li>
+	<li>Improved scenes of original buildings in Haifa, Beirut, Adan and Damascus</li>
+	<li>Trees in the forest have been optimised</li>
+	<li>Simplified tree collisions</li>
+	<li>Added parking areas for MiG-23 Marj Ruhayyil, Shayrat, Tiyas</li>
+	<li>Fixed frequency settings at Gazipasa, Rene Mouawad, Ramat David, Ercan, Beirut and HATAY</li>
+	<li>Fixed taxiways at Tal Siman, Beirut</li>
+	<li>Fixed lighting for Sanliurfa, Adana, Khmeimim, Haifa</li>
+	<li>Corrected the signs at Akrotir, Incirlik</li>
+	<li>Removed objects from Rene Mouawad car parks</li>
+	<li>Removed objects from Kingsfield glide slope</li>
+	<li>Fixed bugs in vector data and scenes</li>
+	<li>Map description updated</li>
+	<li>Added objects at road and railroad crossings</li>
+	<li>Two types of fuel stations added</li>
+	<li>Two types of roadside cafes added</li>
+	<li>Improved motor vehicles and ships</li>
+	<li>New trains have been added</li>
+	<li>Cars for right-hand traffic have been added</li>
+	<li>Improved city and field assemblies</li>
+	<li>Improved road and railroad assemblies</li>
+</ul>
+<h4>DCS: South Atlantic Map by RAZBAM</h4>
+<ul>
+	<li>New - Major switch in technology used across all city blocks across the whole map</li>
+	<li>New - All new POIs for Cities (ongoing) First City is Punta Arenas and Ushuaia</li>
+	<li>New - Complete redesign of city blocks using all new models which are in keeping of the region</li>
+	<li>New - Major tree distribution adjustments to get rid of tree patterns across the whole map</li>
+	<li>New - Major re-work of roads across all Cities across the whole map with new blocks, textures, models, layout etc</li>
+	<li>Adjusted - adjusted many models to reduce poly count and improve textures and performance</li>
+	<li>New - Rural areas have also been given some love with new villages</li>
+	<li>Adjusted - Reduced surface file size to within ED recommendations</li>
+	<li>Fix- Reduced the street lighting on (Route National 3) near Rio Gallegos airfield (Discord feedback)</li>
+	<li>New - Added Deep water port for Rio Grande</li>
+	<li>New - Added hidden airfield in the north for small aircraft. Happy hunting</li>
+</ul>
+<h4>DCS Campaigns</h4>
+<p>
+	 DCS: F-14A Zone 5 Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Jester will automatically navigate</li>
+	<li>Jester will automatically handle the radio</li>
+	<li>Randomized wild cards for better replayability</li>
+	<li>Randomized threats at the EW range for better replayability</li>
+	<li>Safety trigger added to avoid radio anomalies</li>
+	<li>Workarounds for overlapping radio messages blocking each other</li>
+	<li>Smoother trigger solutions</li>
+	<li>Documentation and graphics update</li>
+</ul>
+<p>
+	 DCS: F-14A Fear the Bones Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Jester will automatically navigate</li>
+	<li>Jester will automatically switch radio channels</li>
+	<li>Workarounds for overlapping radio messages blocking each other</li>
+	<li>Smoother trigger solutions</li>
+	<li>Documentation and graphics update</li>
+</ul>
+<p>
+	 DCS: F-14 Speed &amp; Angels Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Safety trigger added to avoid radio anomalies</li>
+	<li>Mortality not enforced</li>
+</ul>
+<p>
+	 P-51D: The Blue Nosed Bastards of Bodney Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Minor trigger zone fixes</li>
+</ul>
+<p>
+	 F-5E Aggressors Basic Fighter Maneuvers Campaign by Maple Flag Missions
+</p>
+<ul>
+	<li>Updated planner with range boundaries and updated range diagrams and kneeboard pages.</li>
+	<li>Added aircraft threat profiles to briefing.</li>
+	<li>Minor trigger tweaks to improve game play.</li>
+</ul>
+<p>
+	 DCS: F/A-18C Flaming Sunrise Campaign by Sandman Simulations
+</p>
+<ul>
+	<li>All missions – AI voice overs replaced by human actors</li>
+</ul>
+<p>
+	 Bf 109 K-4 Jagdflieger Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Mortality not enforced</li>
+	<li>ATC frequencies fixed again</li>
+</ul>
+<p>
+	 DCS: Fw 190 A-8 Horrido! Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Mortality not enforced</li>
+</ul>
+<p>
+	 DCS: Mosquito FB VI - V for Victory Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Mortality not enforced</li>
+</ul>
+<p>
+	 DCS: Spitfire Beware! Beware! Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Mortality not enforced</li>
+</ul>
+<p>
+	 Spitfire IX The Big Show Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Mortality not enforced</li>
+	<li>ATC frequencies fixed again</li>
+</ul>
+<p>
+	 DCS: UH-1H Paradise Lost Campaign by Reflected Simulations
+</p>
+<ul>
+	<li>Mortality not enforced</li>
+</ul>
+<p>
+	 DCS: F/A-18C Inherent Resolve Campaign by Looking Glass
+</p>
+<ul>
+	<li>Updated mission for IR</li>
+	<li>The Damned: Added extra audio for flight refuelling and rejoins. Fixed recoveries so units RTB and land properly.</li>
+</ul>
+<p>
+	 DCS: MAD Campaign by Stone Sky
+</p>
+<ul>
+	<li>All missions for SA-342 Gazelle set weapons and fixed minor bugs</li>
+</ul>
+<p>
+	 DCS: MAD AH-64D Campaign by Stone Sky
+</p>
+<ul>
+	<li>New AGM-114L Hellfire missiles have been added to combat missions and minor bugs have been fixed</li>
+</ul>
+<p>
+	 DCS: A-10C Operation Agile Spear Campaign by Combat King Simulations
+</p>
+<ul>
+	<li>Mission 1: AI Wingman not responding to menu commands. Fixed.</li>
+	<li>Mission 4: AI Medevac helo's not following flight plan. Fixed - maybe. Thanks David Reiff.</li>
+	<li>Mission 5: Player's aircraft is now available to start the mission.
+ Fixed. Thanks to Scylla and CrystalnEntity. &nbsp;Also, added 
+directional arrows to help with taxing in the dark and adjusted the 
+amount of devastation the strike package wrought.</li>
+	<li>Mission 7: Vehicles were previously on the taxiway blocking access to the active runway. Fixed. Thanks David Reiff.</li>
+</ul>
+<p>
+	 DCS: UH-1H Worlds Apart - Spring 2025 Campaign by Low-Level-Heaven Mission Development
+</p>
+<ul>
+	<li>Mission 2: Pathfinding issue solved (several time related 
+safeguard's implemented / as well as Radio F-10 menu option if really 
+necessary)&nbsp;</li>
+	<li>Mission 4: No Pathfinding issue found (time related safeguard has been already implemented).&nbsp;</li>
+	<li>Additional Radio F-10 menu option added to bridge that part.&nbsp;</li>
+</ul>
+<p>
+	 DCS: F/A-18C Rise of the Persian Lion Campaign by Badger633
+</p>
+<ul>
+	<li>Missions 13: Adjustment to help reduce A2A refuel collision.</li>
+</ul>
+<p>
+	 DCS: F/18C Raven One Campaign by Baltic Dragon
+</p>
+<ul>
+	<li>Mission 01:&nbsp;
+	<ul>
+		<li>fixed issue with Saint climbing too late</li>
+		<li>fixed issues with cut off comms</li>
+		<li>fixed issue with Saint's altitude during RTB</li>
+	</ul>
+ </li>
+	<li>Mission 03:
+	<ul>
+		<li>Improved Smoke's fuel management</li>
+		<li>Smoke will now correctly refuel</li>
+		<li>Smoke will correctly perform show of force</li>
+		<li>Smoke will correctly engage all other targets (including the jeep)</li>
+		<li>Fixed problems on deck on RTB</li>
+	</ul>
+ </li>
+	<li>Mission 04:
+	<ul>
+		<li>fixed issue with Raven 11 stuck on the catapult</li>
+	</ul>
+ </li>
+	<li>Mission 08:
+	<ul>
+		<li>changed weather settings, the speed boats should be much better visible in NVGs now</li>
+		<li>added green-tinted kneeboard for night operations</li>
+	</ul>
+ </li>
+	<li>Mission 09:
+	<ul>
+		<li>Fixed issue with Mirages taking fuel from the tanker</li>
+		<li>Fixed issue with leisure boat not moving from the pier</li>
+	</ul>
+ </li>
+	<li>Mission 10:
+	<ul>
+		<li>Fixed issue with several flights orbiting over Mother after takeoff instead of going to their anchor points</li>
+	</ul>
+ </li>
+	<li>Mission 14:
+	<ul>
+		<li>Completely re-worked the startup and takeoff sequence (all flights should now take off correctly)</li>
+		<li>Reworked zones and altitudes to ease the "Thunderstorm" condition</li>
+		<li>Added "mission complete" message before jumping to M15</li>
+	</ul>
+ </li>
+</ul>
+<p>
+	 DCS: F/A-18C Raven One Dominant Fury Campaign by Baltic Dragon
+</p>
+<ul>
+	<li>Mission 10:
+	<ul>
+		<li>updated triggers for Sluggo attacking SA-6</li>
+		<li>added Link16 settings</li>
+	</ul>
+ </li>
+	<li>Mission 12:
+	<ul>
+		<li>fixed problem with Iranian corvette hitting the pier</li>
+		<li>added Link16 settings</li>
+	</ul>
+ </li>
+</ul>
+<p>
+	 DCS: F-14B Operation Sandworm Campaign by Sandman Simulations
+</p>
+<ul>
+	<li>All missions: AI voice overs replaced by human actors</li>
+	<li>All missions: AI aircrafts chatter when not supposed - FIXED</li>
+	<li>Mission 3: Interceptors not reacting as supposed - FIXED</li>
+</ul>                <br>
+                    <div class="row margin-top">
+    <div class="share-title col-xs-1 width-auto no-padding">Share:</div>
+	<div id="share-dialog1" class="col-xs-8 no-padding">
+		<ul class="list-inline no-margin-bottom"><li class="no-padding"><script>
+if (__function_exists('fbs_click') == false) 
+{
+function fbs_click(url, title) 
+{ 
+window.open('http://www.facebook.com/share.php?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'sharer','toolbar=0,status=0,width=626,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://www.facebook.com/share.php?u=https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/&amp;t=DCS%202.8.7.42583%20Open%20Beta" onclick="return fbs_click('https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/', 'DCS 2.8.7.42583 Open Beta');" target="_blank" class="post-fb-link" title="Facebook"></a>
+</li><li class="no-padding"><script>
+if (__function_exists('twitter_click_1') == false) 
+{
+function twitter_click_1(longUrl) 
+{ 
+window.open('http://twitter.com/home/?status='+encodeURIComponent(longUrl)+encodeURIComponent(' DCS 2.8.7.42583 Open Beta'),'sharer','toolbar=0,status=0,width=726,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://twitter.com/home/?status=https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/+DCS%202.8.7.42583%20Open%20Beta" onclick="return twitter_click_1('https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/');" target="_blank" class="post-twitter-link" title="Twitter"></a>
+</li><li class="no-padding"><script>
+if (__function_exists('vk_click') == false) 
+{
+function vk_click(url) 
+{ 
+window.open('http://vkontakte.ru/share.php?url='+encodeURIComponent(url),'sharer','toolbar=0,status=0,width=626,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://vkontakte.ru/share.php?url=https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/" onclick="return vk_click('https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.7.42583/');" target="_blank" class="post-vk-link" title="Vkontakte"></a>
+</li></ul>    </div>
+	</div>
+	            </div>
+</div>
+	</div>
+</div>
+</div>
+        <div id="social-buttons-block" class="row">
+        <div class="col-xs-12">
+            <div class="container">           
+    FOLLOW US
+    <ul id="follow-list">
+        <li>
+            <a href="https://www.facebook.com/eagle.dynamics" target="_blank">
+                <img src="openbeta-2.8.7.42583_files/facebook.png" alt="Facebook">
+            </a>
+        </li>
+        <li>
+            <a href="https://discord.gg/eagledynamics" target="_blank">
+                <img src="openbeta-2.8.7.42583_files/discord.png" alt="Discord">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/digitalcombatsimulator" target="_blank">
+                <img src="openbeta-2.8.7.42583_files/instagram.png" alt="Instagram">
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/eagledynamics" target="_blank">
+                <img src="openbeta-2.8.7.42583_files/twitter.png" alt="Twitter">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/user/eagledynamicstv" target="_blank">
+                <img src="openbeta-2.8.7.42583_files/youtube.png" alt="YouTube">
+            </a>
+        </li>
+    </ul>
+</div>        </div>
+    </div>
+        <div class="row" id="awards-block">
+        <div class="col-xs-12">
+                        <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic1.png" alt="IGN.COM Editors' Choice award" title="IGN.COM Editors' Choice award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic2.png" alt="Computer Active Buy It! 5 stars award" title="Computer Active Buy It! 5 stars award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic3.png" alt="PC Gamer Editor's Choice 5 stars award" title="PC Gamer Editor's Choice 5 stars award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic4.png" alt="'Tipp der Redaktion' from the German magazine FS Magazin" title="'Tipp der Redaktion' from the German magazine FS Magazin">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic5.png" alt="Eurogamer award" title="Eurogamer award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic6.png" alt="PC Pilot Classic Product award" title="PC Pilot Classic Product award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic7.png" alt="PC Pilot Platinum award" title="PC Pilot Platinum award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic8.png" alt="Microsim award" title="Microsim award">
+            </div>
+            <div class="img-link">
+                <img src="openbeta-2.8.7.42583_files/pic9.png" alt="Swedish award" title="Swedish award">
+            </div>
+        </div>
+    </div> 
+        <footer>
+            <ul class="main-list">
+<li><div class="bottom-block">
+<p><a href="https://www.digitalcombatsimulator.com/en/products/">Products</a></p>
+<ul class="inner">
+<li><a href="https://www.digitalcombatsimulator.com/en/products/world/">DCS World</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/products/planes/">Planes</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/products/helicopters/">Helicopters</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/products/terrains/">Terrains</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/products/campaigns/">Campaigns</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/products/other/">Other</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="https://www.digitalcombatsimulator.com/en/downloads/">Downloads</a></p>
+<ul class="inner">
+<li><a href="https://www.digitalcombatsimulator.com/en/downloads/world/">DCS World</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/downloads/texture_templates/">Texture templates</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/downloads/documentation/">Documentation</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/downloads/screenshots/">Screenshots</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/files/">User files</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="https://www.digitalcombatsimulator.com/en/support/">Support</a></p>
+<ul class="inner">
+<li><a href="https://www.digitalcombatsimulator.com/en/links/">Useful Links</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/support/">Tickets</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/support/faq">Technical questions</a></li>
+<li><a href="https://forum.dcs.world/" target="_blank">Forums</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/contacts">Contacts</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="https://www.digitalcombatsimulator.com/en/legal/">Legal</a></p>
+<ul class="inner">
+<li><a href="https://www.digitalcombatsimulator.com/en/legal/">Legal information</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/legal/gdpr.php">Privacy policy EU</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/legal/terms_of_service.php">Terms of service</a></li>
+<li><a href="https://www.digitalcombatsimulator.com/en/legal/privacy_policy.php">Privacy and cookie policy</a></li>
+</ul></div></li></ul> 
+        </footer>
+
+        
+        <div id="ground" class="row">
+            <div class="col-md-7 hidden-sm hidden-xs error"><small>Found a typo? Select it with your mouse and press Ctrl+Enter.</small></div>
+            <div class="col-sm-12 col-md-5 copyright"><small>© 1991-2023, Eagle Dynamics SA</small></div>
+        </div>
+        <div id="bx-composite-banner"></div>
+        
+<div class="popup-window" id="altasib_ErrorWindow_ok" style="display: none; position: absolute; left: 0px; top: 0px; z-index: 1000 !important;"><div id="popup-window-content-altasib_ErrorWindow_ok" class="popup-window-content">        <div id="altasib_SendErrorOk">                <div width="100%" class="no-bootom-border" style="padding-top:8px !important;"><span style="color:green;font-size:20px"><b>                Message sent.</b></span><span style="font-size:12px;color:#7d7d7d"><br><br>Thank you for your attention!</span></div>        </div></div><span class="popup-window-close-icon" style="right: 20px; top: 10px;"></span><div class="popup-window-buttons"><span class="popup-window-button webform-button-link-cancel" id="">Close</span></div></div><div class="popup-window-overlay" id="popup-window-overlay-altasib_ErrorWindow_ok" style="width: 1181px; height: 10639px; z-index: 995 !important; background-color: black;"></div><div class="popup-window popup-window-with-titlebar" id="altasib_ErrorWindow" style="display: none; position: absolute; left: 0px; top: 0px; z-index: 1050 !important;"><div class="popup-window-titlebar" id="popup-window-titlebar-altasib_ErrorWindow" style="cursor: move;"><div class="altasib_ErrorTitleBar">Send error message</div></div><div id="popup-window-content-altasib_ErrorWindow" class="popup-window-content"><div id="send-error">        <br><span style="font-size:13px;color: #777"><b>You found an error in the text:</b></span>        <div style="border:1px solid #d1d1d1;background-color:#fafafa;width:470px;max-width: 100%;padding:8px;margin:7px 0px 13px 0px;min-height:55px;color:#7d7d7d;font-size:12px;box-sizing:content-box;">        <span id="error_start"></span><font color="red" id="error_body"></font><span id="error_end"></span>        </div>        <small style="color:#7d7d7d">Comment (optional):</small>        <div style="width:470px;max-width: 100%;min-height:55px;padding:8px;border:1px solid #4b4b4b;margin:3px 0px 3px 0px;box-sizing:content-box;"><textarea name="comment" id="error-comment" rows="3" cols="5" style="width:100%;border:0px;min-height:55px;padding:0px;min-height:55px;"></textarea></div></div></div><span class="popup-window-close-icon popup-window-titlebar-close-icon" style="right: 20px; top: 10px;"></span><div class="popup-window-buttons"><span class="popup-window-button popup-window-button-accept" id="">Send</span><span class="popup-window-button popup-window-button-link webform-button-link-cancel" id="">Cancel</span></div></div><div class="popup-window-overlay" id="popup-window-overlay-altasib_ErrorWindow" style="width: 1181px; height: 10639px; z-index: 1045 !important; background-color: black;"></div><div class="title-search-result"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

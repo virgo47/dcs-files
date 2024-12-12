@@ -1,0 +1,1144 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>DCS 2.8.2.35632 Open Beta</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=0.7">
+        <link rel="icon" href="/images/favicon.ico">
+                                                		                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" data-skip-moving="true">(function(w, d) {var v = w.frameCacheVars = {'CACHE_MODE':'HTMLCACHE','storageBlocks':[],'dynamicBlocks':{'iIjGFB':'3188c99ea81a','bx_cart_block':'007b8eda3031'},'AUTO_UPDATE':true,'AUTO_UPDATE_TTL':'120','version':'2'};var inv = false;if (v.AUTO_UPDATE === false){if (v.AUTO_UPDATE_TTL && v.AUTO_UPDATE_TTL > 0){var lm = Date.parse(d.lastModified);if (!isNaN(lm)){var td = new Date().getTime();if ((lm + v.AUTO_UPDATE_TTL * 1000) >= td){w.frameRequestStart = false;w.preventAutoUpdate = true;return;}inv = true;}}else{w.frameRequestStart = false;w.preventAutoUpdate = true;return;}}var r = w.XMLHttpRequest ? new XMLHttpRequest() : (w.ActiveXObject ? new w.ActiveXObject("Microsoft.XMLHTTP") : null);if (!r) { return; }w.frameRequestStart = true;var m = v.CACHE_MODE; var l = w.location; var x = new Date().getTime();var q = "?bxrand=" + x + (l.search.length > 0 ? "&" + l.search.substring(1) : "");var u = l.protocol + "//" + l.host + l.pathname + q;r.open("GET", u, true);r.setRequestHeader("BX-ACTION-TYPE", "get_dynamic");r.setRequestHeader("X-Bitrix-Composite", "get_dynamic");r.setRequestHeader("BX-CACHE-MODE", m);r.setRequestHeader("BX-CACHE-BLOCKS", v.dynamicBlocks ? JSON.stringify(v.dynamicBlocks) : "");if (inv){r.setRequestHeader("BX-INVALIDATE-CACHE", "Y");}try { r.setRequestHeader("BX-REF", d.referrer || "");} catch(e) {}if (m === "APPCACHE"){r.setRequestHeader("BX-APPCACHE-PARAMS", JSON.stringify(v.PARAMS));r.setRequestHeader("BX-APPCACHE-URL", v.PAGE_URL ? v.PAGE_URL : "");}r.onreadystatechange = function() {if (r.readyState != 4) { return; }var a = r.getResponseHeader("BX-RAND");var b = w.BX && w.BX.frameCache ? w.BX.frameCache : false;if (a != x || !((r.status >= 200 && r.status < 300) || r.status === 304 || r.status === 1223 || r.status === 0)){var f = {error:true, reason:a!=x?"bad_rand":"bad_status", url:u, xhr:r, status:r.status};if (w.BX && w.BX.ready && b){BX.ready(function() {setTimeout(function(){BX.onCustomEvent("onFrameDataRequestFail", [f]);}, 0);});}w.frameRequestFail = f;return;}if (b){b.onFrameDataReceived(r.responseText);if (!w.frameUpdateInvoked){b.update(false);}w.frameUpdateInvoked = true;}else{w.frameDataString = r.responseText;}};r.send();var p = w.performance;if (p && p.addEventListener && p.getEntries && p.setResourceTimingBufferSize){var e = 'resourcetimingbufferfull';var h = function() {if (w.BX && w.BX.frameCache && w.BX.frameCache.frameDataInserted){p.removeEventListener(e, h);}else {p.setResourceTimingBufferSize(p.getEntries().length + 50);}};p.addEventListener(e, h);}})(window, document);</script>
+
+
+<link href="/bitrix/js/ui/design-tokens/dist/ui.design-tokens.min.css?167752342322029" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/js/ui/fonts/opensans/ui.font.opensans.min.css?16680629542320" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/js/main/popup/dist/main.popup.bundle.min.css?168613151826598" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/js/altasib.errorsend/css/window.css?1686139095910" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/cache/css/s1/dcs/page_cd33235e9829984b508ed7dba5dd0de7/page_cd33235e9829984b508ed7dba5dd0de7_v1.css?16874127532005" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/cache/css/s1/dcs/template_fb4b5da16366ed81a03abe09b013f17c/template_fb4b5da16366ed81a03abe09b013f17c_v1.css?1687451415145343" type="text/css"  data-template-style="true" rel="stylesheet" />
+<script type="text/javascript">if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess) {BX.message[i]=mess[i];} return true;}};</script>
+<script type="text/javascript">(window.BX||top.BX).message({'JS_CORE_LOADING':'Loading...','JS_CORE_WINDOW_CLOSE':'Close','JS_CORE_WINDOW_EXPAND':'Expand','JS_CORE_WINDOW_NARROW':'Restore','JS_CORE_WINDOW_SAVE':'Save','JS_CORE_WINDOW_CANCEL':'Cancel','JS_CORE_H':'h','JS_CORE_M':'m','JS_CORE_S':'s','JS_CORE_NO_DATA':'- No data -','JSADM_AI_HIDE_EXTRA':'Hide extra items','JSADM_AI_ALL_NOTIF':'All notifications','JSADM_AUTH_REQ':'Authentication is required!','JS_CORE_WINDOW_AUTH':'Log In','JS_CORE_IMAGE_FULL':'Full size','JS_CORE_WINDOW_CONTINUE':'Continue'});</script>
+
+<script type="text/javascript" src="/bitrix/js/main/core/core.min.js?1686131534219752"></script>
+
+<script>BX.setJSList(['/bitrix/js/main/core/core_ajax.js','/bitrix/js/main/core/core_promise.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/loadext/loadext.js','/bitrix/js/main/loadext/extension.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/includes/js/includes.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/ui/polyfill/closest/js/closest.js','/bitrix/js/main/polyfill/fill/main.polyfill.fill.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/core/core.js','/bitrix/js/main/polyfill/intersectionobserver/js/intersectionobserver.js','/bitrix/js/main/lazyload/dist/lazyload.bundle.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/parambag/dist/parambag.bundle.js']);
+</script>
+<script type="text/javascript">(window.BX||top.BX).message({'pull_server_enabled':'Y','pull_config_timestamp':'1626118451','pull_guest_mode':'N','pull_guest_user_id':'0'});(window.BX||top.BX).message({'PULL_OLD_REVISION':'This page must be reloaded to ensure proper site functioning and to continue work.'});</script>
+<script type="text/javascript">(window.BX||top.BX).message({'LANGUAGE_ID':'en','FORMAT_DATE':'MM/DD/YYYY','FORMAT_DATETIME':'MM/DD/YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'0','UTF_MODE':'Y','SITE_ID':'s1','SITE_DIR':'/'});</script>
+
+
+<script type="text/javascript"  src="/bitrix/cache/js/s1/dcs/kernel_main/kernel_main_v1.js?1687412578178399"></script>
+<script type="text/javascript" src="/bitrix/js/ui/dexie/dist/dexie3.bundle.min.js?166806295988295"></script>
+<script type="text/javascript" src="/bitrix/js/main/core/core_ls.min.js?14338437987365"></script>
+<script type="text/javascript" src="/bitrix/js/main/core/core_frame_cache.min.js?168613153411210"></script>
+<script type="text/javascript" src="/bitrix/js/pull/protobuf/protobuf.min.js?159586336176433"></script>
+<script type="text/javascript" src="/bitrix/js/pull/protobuf/model.min.js?159586336114190"></script>
+<script type="text/javascript" src="/bitrix/js/rest/client/rest.client.min.js?16025798699240"></script>
+<script type="text/javascript" src="/bitrix/js/pull/client/pull.client.min.js?168613147148309"></script>
+<script type="text/javascript" src="/bitrix/js/main/popup/dist/main.popup.bundle.min.js?168613150665670"></script>
+<script type="text/javascript">BX.setJSList(['/bitrix/js/main/core/core_fx.js','/bitrix/js/main/pageobject/pageobject.js','/bitrix/js/main/core/core_window.js','/bitrix/js/main/session.js','/bitrix/js/main/core/core_tooltip.js','/bitrix/js/main/core/core_uf.js','/bitrix/js/main/date/main.date.js','/bitrix/js/main/core/core_date.js','/bitrix/js/main/utils.js','/local/templates/dcs/components/bitrix/main.share/.default/script.js','/js/jquery.min.js','/js/fancybox/jquery.fancybox.js','/js/jquery.confirm.min.js','/local/templates/dcs/bootstrap/js/bootstrap.min.js','/js/jquery.debounce.js','/local/templates/dcs/components/bitrix/sale.basket.basket.line/.default/script.js','/bitrix/components/bitrix/search.title/script.js']);</script>
+<script type="text/javascript">BX.setCSSList(['/local/templates/dcs/components/bitrix/news/changelog/bitrix/news.list/index/style.css','/local/templates/dcs/components/bitrix/news/changelog/bitrix/news.detail/.default/style.css','/local/templates/dcs/components/bitrix/main.share/.default/style.css','/local/templates/dcs/bootstrap/css/bootstrap.min.css','/js/fancybox/jquery.fancybox.css','/local/modules/eagle/js/css/steam.css','/local/templates/dcs/components/bitrix/system.auth.form/login/style.css','/local/templates/dcs/components/bitrix/search.title/.default/style.css','/local/templates/dcs/styles.css','/local/templates/dcs/template_styles.css']);</script>
+<script type="text/javascript">
+					(function () {
+						"use strict";
+
+						var counter = function ()
+						{
+							var cookie = (function (name) {
+								var parts = ("; " + document.cookie).split("; " + name + "=");
+								if (parts.length == 2) {
+									try {return JSON.parse(decodeURIComponent(parts.pop().split(";").shift()));}
+									catch (e) {}
+								}
+							})("BITRIX_CONVERSION_CONTEXT_s1");
+
+							if (cookie && cookie.EXPIRE >= BX.message("SERVER_TIME"))
+								return;
+
+							var request = new XMLHttpRequest();
+							request.open("POST", "/bitrix/tools/conversion/ajax_counter.php", true);
+							request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+							request.send(
+								"SITE_ID="+encodeURIComponent("s1")+
+								"&sessid="+encodeURIComponent(BX.bitrix_sessid())+
+								"&HTTP_REFERER="+encodeURIComponent(document.referrer)
+							);
+						};
+
+						if (window.frameRequestStart === true)
+							BX.addCustomEvent("onFrameDataReceived", counter);
+						else
+							BX.ready(counter);
+					})();
+				</script>
+<link rel="alternate" href="/en/news/changelog/openbeta/2.8.2.35632/" hreflang="en" />
+<link rel="alternate" href="/ru/news/changelog/openbeta/2.8.2.35632/" hreflang="ru" />
+<link rel="alternate" href="/de/news/changelog/openbeta/2.8.2.35632/" hreflang="de" />
+<link rel="alternate" href="/cn/news/changelog/openbeta/2.8.2.35632/" hreflang="cn" />
+<link rel="alternate" href="/fr/news/changelog/openbeta/2.8.2.35632/" hreflang="fr" />
+<link rel="alternate" href="/it/news/changelog/openbeta/2.8.2.35632/" hreflang="it" />
+<link rel="alternate" href="/es/news/changelog/openbeta/2.8.2.35632/" hreflang="es" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/" />
+<meta property="og:title" content="DCS 2.8.2.35632 Open Beta" />
+<meta property="og:description" content="" />
+<script type="text/javascript">
+            var ALXerrorSendMessages={
+                'head':'You found an error in the text',
+                'footer':'Send error message',
+                'comment':'Comment (optional)',
+                'TitleForm':'The error message',
+                'ButtonSend':'Send',
+                'LongText':'Error! You selected too much text.',
+                'LongText2':'Please try again.',
+                'cancel':'Cancel',
+                'senderror':'Error sending message!',
+                'close':'Close',
+                'text_ok':'Message sent.',
+                'text_ok2':'Thank you for your attention!'
+            }
+            </script>
+<script type='text/javascript' async src='/bitrix/js/altasib.errorsend/error.js'></script>
+
+
+
+<script type="text/javascript"  src="/bitrix/cache/js/s1/dcs/template_a7d064f763f4ec15a3f07228ba8d06dc/template_a7d064f763f4ec15a3f07228ba8d06dc_v1.js?1687412459173867"></script>
+<script type="text/javascript"  src="/bitrix/cache/js/s1/dcs/page_a77389ec172796b7619a767e7d7943a2/page_a77389ec172796b7619a767e7d7943a2_v1.js?1687412628556"></script>
+<script type="text/javascript">var _ba = _ba || []; _ba.push(["aid", "ec4e610cef9504dc3ad737bd0300464f"]); _ba.push(["host", "www.digitalcombatsimulator.com"]); (function() {var ba = document.createElement("script"); ba.type = "text/javascript"; ba.async = true;ba.src = (document.location.protocol == "https:" ? "https://" : "http://") + "bitrix.info/ba.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ba, s);})();</script>
+
+
+        <!--[if lt IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".fancybox").fancybox({helpers:{overlay:{locked:false}}});
+                $(".confirm").confirm({
+                    post: true,
+                    confirmButtonClass: "btn btn-primary",
+                    cancelButtonClass: "btn btn-default"
+                });
+            });
+        </script>
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PEB8NMGB5"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-0PEB8NMGB5');
+            </script>
+                        <script src="https://www.googletagmanager.com/gtag/js?id=AW-1007522769"></script>
+            <script type="text/javascript">
+                window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1007522769');
+            </script>
+            <script type="text/javascript">
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-PWZLVB5');
+            </script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-648324159"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'AW-648324159');
+            </script>
+            </head>
+<body>
+    <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(20852101, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/20852101" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZLVB5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div id="panel"></div>
+    <div class="navbar navbar-inverse" role="navigation" id="roof">
+        <div class="container">
+            <a href="/en" class="navbar-brand"><img src="/images/dcs-world-logo.svg?v2" alt="Digital Combat Simulator World"></a>
+            <div class="pull-right navbar-lang"><a href="/en/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-en.png" alt="English"></a>
+<a href="/ru/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-ru.png" alt="Russian"></a>
+<a href="/de/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-de.png" alt="German"></a>
+<a href="/cn/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-cn.png" alt="Chinese"></a>
+<a href="/fr/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-fr.png" alt="French"></a>
+<a href="/it/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-it.png" alt="Italian"></a>
+<a href="/es/news/changelog/openbeta/2.8.2.35632/"><img src="/local/templates/dcs/images/lang-es.png" alt="Spanish"></a></div>
+            <div class="pull-right navbar-user">
+                <div id="bxdynamic_iIjGFB_start" style="display:none"></div><span id="login-line"> 
+<a href="javascript:void(0)" onclick="openAuthorizePopup()">Login</a>
+</span>
+<div id="bx_auth_popup_form" style="display:none;" class="bx_login_popup_form">
+<form class="form-horizontal bx_auth_form" name="system_auth_form" method="post" target="_top" action="/en/news/changelog/openbeta/2.8.2.35632/">
+    <input type="hidden" name="AUTH_FORM" value="Y" />
+    <input type="hidden" name="TYPE" value="AUTH" />
+        <input type="hidden" name="backurl" value="/en/news/changelog/openbeta/2.8.2.35632/" />
+            <div class="row">
+                <div class="form-group">
+            <label for="USER_LOGIN" class="col-xs-3 control-label">Login</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="USER_LOGIN" name="USER_LOGIN" maxlength="255">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="USER_PASSWORD" class="col-xs-3 control-label">Password</label>
+            <div class="col-xs-8">
+                <input type="password" class="form-control" id="USER_PASSWORD" name="USER_PASSWORD" maxlength="255">
+            </div>
+            <div class="col-xs-1" id="lock-icon">
+                            </div>
+        </div>
+                             <div class="form-group"><div class="col-xs-7 col-xs-offset-3"><input type="checkbox" id="AUTH_USER_REMEMBER" name="USER_REMEMBER" value="Y" checked/>&nbsp;<label for="AUTH_USER_REMEMBER">Remember me</label></div></div>
+            </div>
+    <div class="row text-center">
+        <div class="col-xs-6"><input type="submit" name="Login" class="btn btn-primary" value="Authorize" /></div>
+        <div class="col-xs-6">
+              <a href="/en/auth/?forgot_password=yes" rel="nofollow">Forgot your password?</a>
+              <a href="/en/auth/?register=yes" rel="nofollow">Register</a>
+        </div>
+    </div>
+</form></div>
+<script>
+function openAuthorizePopup()
+{
+    var obPopupWin = BX.PopupWindowManager.create("AuthorizePopup", null, {
+        autoHide: true,
+        offsetLeft: 0,
+        offsetTop: 0,
+        overlay : true,
+        closeByEsc: true,
+        titleBar: false,
+		closeIcon: {},
+		content:'<div style="width:500px;height:250px; text-align: center;"><span style="position:absolute;left:50%; top:50%"><img src="/local/templates/dcs/components/bitrix/system.auth.form/.default/images/wait.gif"/></span></div>'
+	});
+    obPopupWin.popupContainer.className = 'popup-window-login';
+    obPopupWin.setContent(BX("bx_auth_popup_form"));
+    obPopupWin.show();
+    document.system_auth_form.USER_LOGIN.focus();
+}
+</script>
+<div id="bxdynamic_iIjGFB_end" style="display:none"></div>                /
+                <script>
+    var obEshopBasket = new JSEshopBasket("/local/templates/dcs/components/bitrix/sale.basket.basket.line/.default/ajax.php", "s1", "en");
+</script>
+<span id="bx_cart_block">
+<a href="/en/personal/cart/">Cart</a>: <span id="bx_cart_num">empty</span></span>            </div>
+        </div>
+    </div>
+
+    <div class="navbar navbar-inverse" role="navigation" id="top-menu" >
+        <div class="container">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-list" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+<ul class="collapse navbar-collapse nav navbar-nav navbar-left" id="top-menu-list">
+<li><a href="/en/index.php">Home</a></li>
+<li class="dropdown active"><a href="/en/news/">News</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/news/changelog/">Changelog</a></li>
+<li class="dropdown"><a href="/en/news/newsletters/">Newsletters</a></li>
+</ul></li><li class="dropdown"><a href="/en/products/">Products</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/products/world/">DCS World</a></li>
+<li class="dropdown"><a href="/en/products/planes/">Planes</a></li>
+<li class="dropdown"><a href="/en/products/helicopters/">Helicopters</a></li>
+<li class="dropdown"><a href="/en/products/terrains/">Terrains</a></li>
+<li class="dropdown"><a href="/en/products/campaigns/">Campaigns</a></li>
+<li class="dropdown"><a href="/en/products/other/">Other</a></li>
+</ul></li><li class="dropdown"><a href="/en/downloads/">Downloads</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/downloads/world/">DCS World</a></li>
+<li class="dropdown"><a href="/en/downloads/texture_templates/">Texture templates</a></li>
+<li class="dropdown"><a href="/en/downloads/documentation/">Documentation</a></li>
+<li class="dropdown"><a href="/en/downloads/screenshots/">Screenshots</a></li>
+<li class="dropdown"><a href="/en/files/">User files</a></li>
+</ul></li><li class="dropdown"><a href="/en/shop/">E-Shop</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/shop/modules/">Modules</a></li>
+<li class="dropdown"><a href="/en/shop/terrains/">Terrains</a></li>
+<li class="dropdown"><a href="/en/shop/bundles/">Bundles</a></li>
+<li class="dropdown"><a href="/en/shop/campaigns/">Сampaigns</a></li>
+</ul></li><li class="dropdown"><a href="/en/support/">Support</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/links/">Useful Links</a></li>
+<li class="dropdown"><a href="/en/support/">User support</a></li>
+<li class="dropdown"><a href="/en/support/faq">Technical questions</a></li>
+<li class="dropdown"><a href="/en/support/miles_rules">Miles rules</a></li>
+<li class="dropdown"><a href="/en/support/license">License Agreement</a></li>
+</ul></li><li><a href="https://forum.dcs.world" target="_blank">Forums</a></li>
+</ul>
+<div class="menu-clear-left"></div>            	    <div id="title-search" class="search-box hidden-xs hidden-sm">
+    <form class="form-title-search" action="/en/search/">
+    <div class="input-group form-title-search">
+        <input id="title-search-input" type="text" name="q" value="" placeholder="Search here" size="20" maxlength="50" autocomplete="off" class="form-control" />
+        <span class="input-group-btn">
+        <input name="s" type="submit" value="Search" class="btn btn-search" />
+        </span>
+    </div>
+    </form>
+    </div>
+<script>
+   var jsControl = 
+        new JCTitleSearch({
+            'AJAX_PAGE' : '/en/news/changelog/openbeta/2.8.2.35632/',
+            'CONTAINER_ID': 'title-search',
+            'INPUT_ID': 'title-search-input',
+            'MIN_QUERY_LEN': 2
+        });
+</script>
+        </div>
+    </div>
+<div class="container">
+        <h1>DCS 2.8.2.35632 Open Beta</h1>
+        <div id="crumbs"><a href="/en/" title="Home">Home</a>&nbsp;&gt;&nbsp;<a href="/en/news/" title="News">News</a>&nbsp;&gt;&nbsp;<a href="/en/news/changelog/" title="Changelog">Changelog</a>&nbsp;&gt;&nbsp;<a href="/en/news/changelog/openbeta/" title="Open Beta changelog">Open Beta changelog</a>&nbsp;&gt;&nbsp;<span id="current">DCS 2.8.2.35632 Open Beta</span></div>    	<div class="row">
+	<div class="col-md-3" id="changelog-sidebar">
+		<div class="row">
+			<div class="col-xs-12">
+				    <div class="row margin-bottom">
+    <b><a href="/en/news/changelog/openbeta/">Open Beta changelog</a></b>
+	        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.6.41363/">DCS 2.8.6.41363 Open Beta</a> - <i>22.06.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.6.41066/">DCS 2.8.6.41066 Open Beta</a> - <i>08.06.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.5.40170/">DCS 2.8.5.40170 Open Beta</a> - <i>18.05.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.4.39731/">DCS 2.8.4.39731 Open Beta</a> - <i>04.05.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.4.39313/">DCS 2.8.4.39313 Open Beta</a> - <i>23.04.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.4.39259.1/">DCS 2.8.4.39259.1 Open Beta</a> - <i>21.04.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.4.38947/">DCS 2.8.4.38947 Open Beta</a> - <i>13.04.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.3.38090/">DCS 2.8.3.38090 Open Beta</a> - <i>22.03.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.3.37854.1/">DCS 2.8.3.37854.1 Open Beta</a> - <i>17.03.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.3.37556/">DCS 2.8.3.37556 Open Beta</a> - <i>10.03.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.2.35759/">DCS 2.8.2.35759 Open Beta</a> - <i>27.01.2023</i>
+                    </div>
+        <div>
+            <u>            <a href="/en/news/changelog/openbeta/2.8.2.35632/">DCS 2.8.2.35632 Open Beta</a> - <i>25.01.2023</i>
+            </u>        </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.1.34667.2/">DCS 2.8.1.34667.2 Open Beta</a> - <i>23.12.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.1.34667.1/">DCS 2.8.1.34667.1 Open Beta</a> - <i>22.12.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.1.34437/">DCS 2.8.1.34437 Open Beta</a> - <i>16.12.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.0.33006/">DCS 2.8.0.33006 Open Beta</a> - <i>18.11.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.0.32937/">DCS 2.8.0.32937 Open Beta</a> - <i>17.11.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.0.32235.1/">DCS 2.8.0.32235.1 Open Beta</a> - <i>02.11.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.8.0.32066/">DCS 2.8.0.32066 Open Beta</a> - <i>28.10.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.18.30765/">DCS 2.7.18.30765 Open Beta</a> - <i>30.09.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.18.30348/">DCS 2.7.18.30348 Open Beta</a> - <i>21.09.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.17.29493/">DCS 2.7.17.29493 Open Beta</a> - <i>02.09.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.17.29140/">DCS 2.7.17.29140 Open Beta</a> - <i>24.08.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.16.28157/">DCS 2.7.16.28157 Open Beta</a> - <i>29.07.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.16.28111/">DCS 2.7.16.28111 Open Beta</a> - <i>28.07.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.16.27869/">DCS 2.7.16.27869 Open Beta</a> - <i>21.07.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.15.26783/">DCS 2.7.15.26783 Open Beta</a> - <i>22.06.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.15.25026/">DCS 2.7.15.25026 Open Beta</a> - <i>08.06.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.14.24228/">DCS 2.7.14.24228 Open Beta</a> - <i>25.05.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.14.23966/">DCS 2.7.14.23966 Open Beta</a> - <i>18.05.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.12.23362/">DCS 2.7.12.23362 Open Beta</a> - <i>28.04.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.11.22211/">DCS 2.7.11.22211 Open Beta</a> - <i>06.04.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.11.22041/">DCS 2.7.11.22041 Open Beta</a> - <i>30.03.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.11.21408.1/">DCS 2.7.11.21408.1 Open Beta</a> - <i>17.03.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.10.19473/">DCS 2.7.10.19473 Open Beta</a> - <i>07.02.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.10.19402/">DCS: 2.7.10.19402 Open Beta</a> - <i>04.02.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.10.18996/">DCS: 2.7.10.18996 Open Beta</a> - <i>27.01.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.9.18080/">DCS 2.7.9.18080 Open Beta</a> - <i>29.12.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.9.17830/">DCS 2.7.9.17830 Open Beta</a> - <i>23.12.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.8.16140/">DCS 2.7.8.16140 Open Beta</a> - <i>18.11.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.7.15038/">DCS 2.7.7.15038 Open Beta</a> - <i>28.10.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.7.14727/">DCS 2.7.7.14727 Open Beta</a> - <i>20.10.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.6.13436/">DCS 2.7.6.13436 Open Beta</a> - <i>29.09.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.6.13133/">DCS 2.7.6.13133 Open Beta</a> - <i>22.09.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.6.12852/">DCS 2.7.6.12852 Open Beta</a> - <i>17.09.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.5.10869/">DCS 2.7.5.10869 Open Beta</a> - <i>11.08.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.4.9847/">DCS 2.7.4.9847 Open Beta</a> - <i>23.07.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.4.9632/">DCS 2.7.4.9632 Open Beta</a> - <i>21.07.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.3.8494/">DCS 2.7.3.8494 Open Beta</a> - <i>30.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.2.8165.2/">DCS 2.7.2.8165.2 Open Beta</a> - <i>23.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.2.7910.1/">DCS 2.7.2.7910.1 Open Beta</a> - <i>16.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.1.7139/">DCS 2.7.1.7139 Open Beta</a> - <i>03.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.1.7029/">DCS 2.7.1.7029 Open Beta</a> - <i>02.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.1.6709/">DCS 2.7.1.6709 Open Beta</a> - <i>27.05.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.1.6430/">DCS 2.7.1.6430 Open Beta</a> - <i>20.05.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.0.5659/">DCS 2.7.0.5659 Open Beta</a> - <i>05.05.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.0.5118/">DCS 2.7.0.5118 Open Beta</a> - <i>22.04.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.7.0.4625/">DCS 2.7.0.4625 Open Beta</a> - <i>14.04.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.61527.3/">DCS 2.5.6.61527.3 Open Beta</a> - <i>04.03.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.61527.2/">DCS 2.5.6.61527.2 Open Beta</a> - <i>02.03.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.61527.1/">DCS 2.5.6.61527.1 Open Beta</a> - <i>24.02.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.61527/">DCS 2.5.6.61527 Open Beta</a> - <i>17.02.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.60966/">DCS 2.5.6.60966 Open Beta</a> - <i>03.02.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.60720/">DCS 2.5.6.60720 Open Beta</a> - <i>28.01.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.60645/">DCS 2.5.6.60645 Open Beta</a> - <i>27.01.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.59625.1/">DCS 2.5.6.59625.1 Open Beta</a> - <i>04.01.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.59625/">DCS 2.5.6.59625 Open Beta</a> - <i>23.12.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.59398/">DCS 2.5.6.59398 Open Beta</a> - <i>17.12.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.58125/">DCS 2.5.6.58125 Open Beta</a> - <i>23.11.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.57949/">DCS 2.5.6.57949 Open Beta</a> - <i>18.11.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.57530/">DCS 2.5.6.57530 Open Beta</a> - <i>10.11.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.57264/">DCS 2.5.6.57264 Open Beta</a> - <i>04.11.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.55960/">DCS 2.5.6.55960 Open Beta</a> - <i>07.10.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.55847/">DCS 2.5.6.55847 Open Beta </a> - <i>02.10.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.55743/">DCS 2.5.6.55743 Open Beta</a> - <i>30.09.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.55363/">DCS 2.5.6.55363 Open Beta</a> - <i>23.09.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.54046/">DCS 2.5.6.54046 Open Beta</a> - <i>26.08.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.53756/">DCS 2.5.6.53756 Open Beta</a> - <i>18.08.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.52437/">DCS 2.5.6.52437 Open Beta</a> - <i>21.07.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.52196/">DCS 2.5.6.52196 Open Beta</a> - <i>15.07.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.50979/">DCS 2.5.6.50979 Open Beta</a> - <i>17.06.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.50793/">DCS 2.5.6.50793 Open Beta</a> - <i>11.06.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.50726/">DCS 2.5.6.50726 Open Beta</a> - <i>10.06.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.50321/">DCS 2.5.6.50321 Open Beta</a> - <i>02.06.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.49798/">DCS 2.5.6.49798 Open Beta</a> - <i>27.05.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.49718/">DCS 2.5.6.49718 Open Beta</a> - <i>26.05.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.49314/">DCS 2.5.6.49314 Open Beta</a> - <i>19.05.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.47404/">DCS 2.5.6.47404 Open Beta</a> - <i>22.04.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.47224/">DCS 2.5.6.47224 Open Beta</a> - <i>16.04.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.45915/">DCS 2.5.6.45915 Open Beta</a> - <i>30.03.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.45317/">DCS 2.5.6.45317 Open Beta</a> - <i>19.03.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.44266/">DCS 2.5.6.44266 Open Beta</a> - <i>03.03.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.43872/">DCS 2.5.6.43872 Open Beta</a> - <i>20.02.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.6.43453/">DCS 2.5.6.43453 Open Beta</a> - <i>13.02.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.41962/">DCS 2.5.5.41962 Open Beta</a> - <i>14.01.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.41371/">DCS 2.5.5.41371 Open Beta</a> - <i>19.12.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.41318/">DCS 2.5.5.41318 Open Beta</a> - <i>19.12.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.41256/">DCS 2.5.5.41256 Open Beta</a> - <i>18.12.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.40647/">DCS 2.5.5.40647 Open Beta</a> - <i>05.12.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.40603/">DCS 2.5.5.40603 Open Beta</a> - <i>04.12.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.40269/">DCS 2.5.5.40269 Open Beta</a> - <i>27.11.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.39384/">DCS 2.5.5.39384 Open Beta</a> - <i>13.11.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.39262/">DCS 2.5.5.39262 Open Beta</a> - <i>12.11.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.39003/">DCS 2.5.5.39003 Open Beta</a> - <i>06.11.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/openbeta/2.5.5.38756/">DCS 2.5.5.38756 Open Beta</a> - <i>31.10.2019</i>
+                    </div>
+    </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9" id="changelog-content">
+<div class="row well changelog">
+    <div class="col-xs-12">
+                    <p>Introducing new campaigns:</p>
+<ul>
+    <li>DCS: F-14 Speed &amp; Angels Campaign by Reflected.</li>
+    <li>DCS: MAD AH-64D Campaign by Stone Sky.</li>
+</ul>
+<h4>DCS World</h4>
+<ul>
+    <li>Weapon. MIM-104 missile guidance error has decreased.</li>
+    <li>Weapon. BLU-97/B penetration warhead and damage effect has increased.</li>
+    <li>Weapon. CBU-87 with HOF 300 had no effect on tanks. This has been adjusted so it will at least damage them now (see F10 view damage levels).</li>
+    <li>Weapon. Corrected nozzle flame of rockets at the moment of launch.</li>
+    <li>Weapon. AMRAAM fixed an issue with Home on Jam (HOJ) mode.</li>
+    <li>Fixed liveries name for ground units (this fixes seasonal textures for some units).</li>
+    <li>Added Ropucha-class landing ship BDK-775.</li>
+    <li>Removed dust effect when ships are firing.</li>
+    <li>Fixed incorrect unit direction when mounted on a ship.</li>
+    <li>New sounds for AK-series, M249, L94A1, PKT, 2A72, 2A42, M242, GSh-6-30K, M240C, ZU-23-2, ZU-23-4, Rheinmetall Mk20, KPVT, 2A38, Vulcan, Oerlikon-KDA, L21A1, Utes, MG3, M2 Browning.</li>
+    <li>Fixed inability for submarines to attack ships.</li>
+    <li>Fixed crash when the &quot;Unit AI set life&quot; trigger is used for EWR AN/FPS-117.</li>
+    <li>Fixed stuck SON-9 radar when aircraft fly directly overhead it at high altitude.</li>
+    <li>AI Aircraft. Removed old and unusable Kh-28 missile from payloads from the Su-17.</li>
+    <li>F10 map. Big Smoke is always shown on the F10 map regardless of 'show' setting - fixed.</li>
+    <li>AI Aircraft. Corrected damage and collision model of the CH-53.</li>
+    <li>AI Aircraft. F-15C cannot AAR in right turn - fixed.</li>
+    <li>AI Aircraft. Incorrect negative AOA of slow planes in formations appears in some cases - fixed.</li>
+    <li>Crash when vehicle destroyed during task Embarking - fixed.</li>
+    <li>AI Aircraft. Su-34 damage model corrected.</li>
+    <li>MP. Server panel, players pool. Added clients counter.</li>
+    <li>All weapons still visible on multiple weapon mount if base runs out of that weapon - fixed.</li>
+    <li>Resource manager of air bases has been corrected.</li>
+    <li>Scripts. StaticObject.getByName fails if the unit name contains a dot - fixed.</li>
+    <li>ME. Ka-50. GUI Error when you press delete on INU Fix Point (NAV target point) - fixed.</li>
+    <li>ME. Ka-50. Comment in NAV target point remains from last mission - fixed.</li>
+    <li>Weapons. Jettisoned racks don't die when hitting the ground/sea - fixed.</li>
+    <li>SA-19 Tunguska. The power of warheads has been reduced so that it cannot destroy tanks.</li>
+    <li>Input controls adjustment window now preserves user state layout and selection during the mission session for convenience.</li>
+    <li>Module Manager now allows to uninstall and install Caucasus terrain.</li>
+</ul>
+<p><b>Note:</b> Initial implementation of improved bomb fusing options for mk-x series bombs. Please note this is a WIP and will not function for multiple racked weapons. Some options may not yet be fully implemented.</p>
+<h4>DCS: F-16C Viper by Eagle Dynamics</h4>
+<ul>
+    <li><a href="https://youtu.be/vjQI2eXuKbI">Added ALT GEAR Handle</a>.</li>
+    <li><a href="https://youtu.be/vjQI2eXuKbI">Added Animated Tail Hook</a>.</li>
+    <li><a href="https://youtu.be/vjQI2eXuKbI">Updates/Corrections to ALR-56M RWR</a>.</li>
+    <li>Training Missions covering F-16C 2022 improvements.</li>
+    <li>Fixed: FCR CATA movement during bank angle.</li>
+    <li>Fixed: AGM-65 boresight alignment accuracy. If boresighting a Maverick to the Targeting Pod on the ground, you must first set the GND JETT switch to ENABLE and the Master Arm switch to ARM or SIMULATE. As much as possible, boresight directly ahead of the aircraft and at least 1 nm away to avoid parallax errors.</li>
+    <li>Fixed: FPM doesn't act as expected with Drift Cut Out selected.</li>
+    <li>Fixed: Rudder pedals animation is incorrect.</li>
+    <li>Fixed: Erratic Active Timer when using DTT SAM.</li>
+    <li>Fixed: Changing Modes in DGFT Mode breaks lock.</li>
+    <li>Fixed: TGP A-A Mode does not return to -3 elevation in front of the aircraft.</li>
+    <li>Fixed: FCR symbology error when locking recently re-spawned aircraft.</li>
+    <li>Fixed: Fuel leak rate after damage.</li>
+    <li>Fixed: Radar Air to Ground Antenna Elevation Bug.</li>
+    <li>Fixed: TMS right behaviour with FCR as SOI and no targets.</li>
+    <li>Fixed: CRUS/HOME steerpoint cannot be entered directly.</li>
+    <li>Fixed: CCRP HUD symbology issues when REL ANG set to zero. Now possible.</li>
+    <li>Fixed: TGP designated JDAM target point now has a miss error average of 5 metres.</li>
+    <li>Fixed: CRUS EDR page is incorrectly calculating time to Bingo.</li>
+    <li>Fixed: Preset VHF FM frequency in ME adds a digit on COMM 2 DED page.</li>
+    <li>Instant Action Missions Update.</li>
+</ul>
+<h4>DCS F-14 Tomcat by Heatblur Simulations</h4>
+<ul>
+    <li>Fixed wheel chocks appearing in wrong place after moving the aircraft and setting them again.</li>
+    <li>Fixed Op Reforger Mission 5 TALDs not working for Pontiac.</li>
+    <li>Updated Quickstart F-14A_IA_NTTR_Zone5 by Reflected Simulations.</li>
+    <li>Fixed Quickstart Training Day stuck at checkpoint issue.</li>
+    <li>Fixed Quickstart Training Day tanker TACAN.</li>
+</ul>
+<h4>DCS: F/A-18C Hornet by Eagle Dynamics</h4>
+<ul>
+    <li>Fixed: Potential crash when pressing the TDC.</li>
+    <li><a href="https://youtu.be/UQI40xib78s">Updates/Corrections to ALR-67 RWR</a>.</li>
+    <li>Added Pilot Salute for humans.</li>
+    <li>Fixed: AUTO bombing inaccurate at different weapon release air speeds.</li>
+    <li>Fixed: DDI SOI Diamond becomes very difficult to see when zoomed in using the FLIR.</li>
+    <li>Fixed: GPS-guided bombs can be launched without a target in TOO mode.</li>
+    <li>Fixed: Threat circle flashes on briefly when WPDSG is selected.</li>
+    <li>Instant Action Missions Update.</li>
+</ul>
+<h4>DCS: AH-64D by Eagle Dynamics</h4>
+<ul>
+    <li>Added TADS IAT MP sync.</li>
+    <li>Add Israeli AH-64D livery created by ZedTank.</li>
+    <li>Add patches for Pilots.</li>
+    <li>Fixed: IHADSS image scale incorrect.</li>
+    <li>Fixed: CPG DMS Autopage button state is de-synced in multicrew.</li>
+    <li>Fixed: Selecting GUN on cyclic WAS was reverting MANRNG &gt; value to default value.</li>
+    <li>Fixed: George spaming &quot;Lost Target&quot; messages.</li>
+    <li>Fixed: The Free Air Temperature gauge should not have backlighting.</li>
+    <li>Fixed: The standby Magnetic Compass lighting should be controlled by STBY INST knob.</li>
+    <li>Fixed: HMD Grayscale page coop synchronisation.</li>
+    <li>Fixed: BACK SCATTER message should have a space.</li>
+    <li>Instant Action Missions Update.</li>
+</ul>
+<h4>DCS Ka-50 Black Shark 3 by Eagle Dynamics</h4>
+<ul>
+    <li>Tuned INS alignment process. Manual alignment precision is now much higher and close to the hot start and auto-alignment precision.</li>
+    <li>Autopilot auto-turn won't be dependent on INS anymore. It only aims for decreasing Shkval deviation from zero (for all roll angles).</li>
+    <li>Fixed a bug of wrong switching from inertial mode to ADC after 60 minutes of inertial mode work.</li>
+    <li>Hot start INS alignment precision made it a bit worse to match a cold start manual INS alignment precision.</li>
+    <li>Remade INS alignment options and settings in mission editor.</li>
+    <li>3D. Corrected nose textures.</li>
+    <li>3D. Rotor blades animation corrected.</li>
+    <li>3D. Motion blur of rotors head corrected.</li>
+    <li>3D. Added night texture of external cockpit model.</li>
+    <li>Cockpit. R-828 texture ambient occlusion corrected.</li>
+    <li>VR. Add the option to choose HMS render eye.</li>
+    <li>Startup sounds updated.</li>
+    <li>Renamed cockpit hints for HSI knobs.</li>
+    <li>ABRIS. The English ABRIS charts setup shows two Russian items - fixed.</li>
+</ul>
+<h4>DCS: Mi-24P Hind by Eagle Dynamics</h4>
+<ul>
+    <li>Fixed: Mirrors and thermometer are not seen in external view.</li>
+    <li>Fixed: Aiming station - zoom IN / OUT binds not working.</li>
+    <li>Fixed: Rotor shaft animation.</li>
+</ul>
+<h4>DCS: F-86F Sabre by Eagle Dynamics</h4>
+<ul>
+    <li>Fixed: the V-8 slaved directional (gyro) indicator can not be rotated with the mouse.</li>
+    <li>Fixed: Ammunition capacity error - ammo changed to 300 rounds per gun.</li>
+</ul>
+<h4>DCS: F-5E Tiger II by Eagle Dynamics</h4>
+<ul>
+    <li>Fixed:TACAN / ADF directional arrow remains fixed and does not rotate.</li>
+    <li>Fixed: EGT reaches nearly 800c at start up.</li>
+</ul>
+<h4>DCS: A-10A by Eagle Dynamics</h4>
+<ul>
+    <li>Added PBR textures, made some fixes.</li>
+</ul>
+<h4>DCS: A-10C II Tank Killer by Eagle Dynamics</h4>
+<ul>
+    <li>Minor fix to textures of both aircraft.</li>
+    <li>A-10C. Position lights don't flash. Fixed.</li>
+    <li>A-10C II. Position lights remain when the wing is destroyed. Fixed</li>
+</ul>
+<p><b>Note:</b> It is our plan to release ARC-210 radio with UHF and VHF functions in the February 2023 update.</p>
+<h4>DCS: Spitfire LF Mk. IX by Eagle Dynamics</h4>
+<ul>
+    <li>Oil temperature gauge now shows the actual OAT on cold aircraft.</li>
+    <li>Oil and coolant temperatures are tuned according to real WWII in flight tests (WIP).</li>
+</ul>
+<h4>DCS: Mosquito FB VI by Eagle Dynamics</h4>
+<ul>
+    <li>Added new single player missions without units from the WWII Assets pack.</li>
+</ul>
+<h4>DCS Mirage F1 by Aerges</h4>
+<ul>
+    <li>Added Mirage F1EE. Including new ALR-300 RWR, air to air refuelling and Inertial Navigation System.</li>
+</ul>
+<p>FM:</p>
+<ul>
+    <li>Slight adjustment (reduction) in low supersonic drag.</li>
+    <li>Slight reduction of drag coefficient at subsonic speeds to better match the performance data.</li>
+    <li>Reduced payload supersonic drag.</li>
+    <li>Adjusted Magic, SW and SAMP 400 drag coefficients.</li>
+    <li>Rolling moment induced by external payload lift now accounted for.</li>
+    <li>Improved wake behaviour (reduced influence on the roll of the aircraft).</li>
+    <li>Slight increase in lateral stability at high aoa to better match SME feedback.</li>
+</ul>
+<p>Control system:</p>
+<ul>
+    <li>Default neutral point of non-FFB sticks changed to increase pitch-up zone, thus reducing sensitivity in pitch and increasing usable stick range in most situations.</li>
+    <li>Modified internal pitch curve (AMEDEE system). Pitch is now less sensitive at high deflection values.</li>
+    <li>Reduced effects of ARTHUR and Dashpot systems (stick force emulation) on pitch control. Now the ARTHUR and Dashpot model can be toggled in the Special Options menu.</li>
+    <li>Flight controls now require hydraulic pressure to move.</li>
+    <li>Rudder trembling problem solved.</li>
+    <li>Adjusted nose wheel steering curves to make it both more responsive and easier to control (still WIP).</li>
+</ul>
+<p>Engine:</p>
+<ul>
+    <li>Flying backwards or having significant tail wind with RPM below 7000 might turn the engine off.</li>
+    <li>Moving the throttle to idle before the RPM are above 300 may lead to fire or over-temperature due to accumulation of fuel faster than before (IMPORTANT).</li>
+    <li>Engine stall can now be caused by moving the RPM back and forth too fast or engaging the afterburner at very high AoA or outside the flight envelope.</li>
+    <li>Engine stall RPM oscillations are now less severe.</li>
+    <li>Engine temperature in overspeed corrected to what is indicated in the manuals (&lt;= 735 &ordm;C).</li>
+    <li>Engine starter sound starts 2 seconds earlier than before.</li>
+    <li>Throttle is clickable now near idle detent position. When clicked it is set to idle cut-off position.</li>
+</ul>
+<p>Radar:</p>
+<ul>
+    <li>Radar cover keyboard/joystick command will not take effect anymore when the radar cover add/remove function is disabled (aircraft is not on the ground, or canopy is closed).</li>
+    <li>Removed sound from the radar cover clickable action.</li>
+    <li>Radar antenna elevation/altitude difference function is fixed.</li>
+    <li>Altitude difference is correctly updated now when a target is tracked.</li>
+    <li>Radar strobe is now positioned at the last known target azimuth/range when the target track was lost.</li>
+    <li>The radar tracked target closing velocity (relative velocity) scale is correctly calibrated now in the range of -450 to 1800 knots, with the gap of -150 to 0 knots.</li>
+    <li>Fixed radar antenna orientation when scanning with nonzero delta elevation set.</li>
+    <li>Fixed 1 line scan antenna orientation.</li>
+    <li>Adjusted antenna local scan origin position.</li>
+    <li>Fixed the radar TL mode scan center position (-5 degrees from FRL), and TL scan area size - it was too wide.</li>
+    <li>Radar strobe position is now shown in IDN even when a target is not locked.</li>
+    <li>Fixed radar elevation digits texture issues.</li>
+</ul>
+<p>Other features and improvements:</p>
+<ul>
+    <li>Added Matra S530F &lsquo;Supermatra&rsquo; missile.</li>
+    <li>FFB sticks are now automatically detected by the code.</li>
+    <li>Armament panel lights brightness is now regulated by light/day switch and rheostat.</li>
+    <li>Armament panel light on/off is now dependent on sight being on.</li>
+    <li>Reduced maximum light brightness of indicators in night mode.</li>
+    <li>Updated controls indicator stick axes display: pitch trim position is added to the stick pitch position.</li>
+    <li>AWACS 'Declare' command is functional now.</li>
+    <li>Fixed Radio Selector Panel pushbuttons not holding in 'pushed' position, when activated by keyboard or joystick.</li>
+    <li>Added the option to load empty fuel tanks at mission start.</li>
+    <li>Corrected fuel tank masses.</li>
+    <li>Fixed maximum fuel weights of F1EE, and F1B/BE AI.</li>
+    <li>Added general and particular gyroscope failures.</li>
+    <li>Backup horizon will be caged now once the cage knob is pulled, disregarding the knob rotation.</li>
+    <li>Adjusted braking power.</li>
+    <li>Brake light now illuminates always when braking (not only when the gear is up).</li>
+    <li>Brake nominal pressure now has the correct value of 210 bar.</li>
+    <li>Fixed CADS not affecting autopilot, ARTHUR and shock-cones (&ldquo;souris&rdquo;) behaviour.</li>
+    <li>Updated liveries.</li>
+    <li>Improved cockpit darkness.</li>
+    <li>Auto startup sequence: Added the item &quot;Ejection handle safety pin - Removed (out of sequence)&quot;.</li>
+    <li>Auto shutdown sequence:<ul>
+            <li>Added &quot;Ejection handle safety pin - Installed (out of sequence)&quot;.</li>
+            <li>Fixed &quot;UHF radio - Off&quot; and &quot;V/UHF radio - Off&quot;.</li>
+        </ul>
+    </li>
+</ul>
+<p>Documentation:</p>
+<ul>
+    <li>Added Mirage F1 Flight Manual (CE + EE annex).</li>
+    <li>Added Mirage F1CE Manual de Vuelo (CE translation into Spanish).</li>
+</ul>
+<p>Missions:</p>
+<ul>
+    <li>Added Mirage F1EE Single Player and Instant Action missions for all maps except Normandy and The Channel.</li>
+</ul>
+<h4>DCS: JF-17 by Deka Ironwork Simulations</h4>
+<ul>
+    <li>Completed: cockpit textures with more weathering.</li>
+    <li>Completed: external textures (template will come soon).</li>
+    <li>Updated: rocket loadout of each pylon in SMS shows rocket name if fully loaded, otherwise the number of remaining rockets.</li>
+    <li>Updated: sd10/ld10 pylon drag.</li>
+    <li>Updated: bingo fuel should only trigger a warning on HUD, no mode change.</li>
+    <li>Added: more input controls (throttle step etc).</li>
+    <li>Fixed: SSLC/SS gunsight display bug on HUD.</li>
+    <li>Fixed: target distance on HUD.</li>
+    <li>Fixed: empty rocket pod should appear in SMS, and not affect FCS config unless jettison.</li>
+    <li>Fixed: cockpit animation in external model.</li>
+    <li>Fixed: campaign 02 bug.</li>
+    <li>Fixed: brief image.</li>
+</ul>
+<h4>DCS: WWII Assets pack by Eagle Dynamics</h4>
+<ul>
+    <li>Ju-88. Fixes to the model and textures.</li>
+    <li>Ju-88. Added bombs in the main bombs bay.</li>
+</ul>
+<h4>DCS: Combined Arms by Eagle Dynamics</h4>
+<ul>
+    <li>Firefighting Vehicle AA-7.2/60, Refueler ATZ-5, Refueler ATZ-60 Tractor, S-75 Tractor, Refueler.</li>
+    <li>TZ-22 Tractors are all drivable now.</li>
+    <li>Fixed front armour M1A2 Abrams.</li>
+    <li>Fixed driver position for &ldquo;Tachanka&rdquo; units.</li>
+    <li>Fixed crash when giving artillery second target.</li>
+</ul>
+<h4>DCS: South Atlantic Map by Razbam</h4>
+<ul>
+    <li>New - Franco Bianco Airfield.</li>
+    <li>New - Grass Airfield Goose Green.</li>
+    <li>New - club grass airfield for Hipico.</li>
+    <li>New - Various Settlement have been created across the map (still ongoing).</li>
+    <li>Corrected - ILS Glideslope at Rio Gallegos facing wrong way corrected.</li>
+    <li>Adjusted - lakes have been added / corrected across the map.</li>
+    <li>Adjusted - fleshed out terrain including vegetation maps around New Airfields.</li>
+    <li>Adjusted - changed the F10 map colours to be more in keeping with the region.</li>
+    <li>Adjusted - Rio Turbio NDB map display frequency.</li>
+    <li>Adjusted - tidied up some of the tiles around the new Airfields.</li>
+    <li>Adjusted - airfield Puerto Williams changed runway elevation to reflect the real airfield (different on both approaches).</li>
+    <li>Adjusted - updated Radar returns for object.</li>
+</ul>
+<h4>Campaigns</h4>
+<p style="margin-bottom: 0;">The Museum Relic Campaign by Apache600</p>
+<ul style="margin-top: 0;">
+    <li>Mission 7: Fixed wind so A.I. takeoff on correct runway. MiG-15, custom Kneeboards now appear.</li>
+    <li>Mission 8.2: MiG-15, A.I. Wingman fail safe added to properly destroys his targets.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: Fw 190 A-8 Horrido! Campaign by Reflected Simulations</p>
+<ul style="margin-top: 0;">
+    <li>2 Bonus missions added using the FW-190D-9.</li>
+    <li>Bomber speeds adjusted to historically accurate levels.</li>
+    <li>More accurate Luftwaffe formations.</li>
+    <li>FW-190 skin roughmets updated for a more realistic shine.</li>
+    <li>Clear prop! Argument adjusted for new values.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: P-47D Wolfpack Campaign by Reflected Simulations</p>
+<ul style="margin-top: 0;">
+    <li>More accurate Luftwaffe formations.</li>
+    <li>FW-190 skin roughmets updated for a more realistic shine.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: Spitfire Beware! Beware! Campaign by Reflected Simulations</p>
+<ul style="margin-top: 0;">
+    <li>More accurate Luftwaffe formations.</li>
+    <li>FW-190 skin roughmets updated for a more realistic shine.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: F-14A Zone 5 Campaign by Reflected Simulations</p>
+<ul style="margin-top: 0;">
+    <li>AAR logic fine tuned to prevent accidental triggers.</li>
+    <li>Mission 12: fixed a few static misplacements.</li>
+</ul>
+<p style="margin-bottom: 0;">Mi-8MTV2 and Ka-50: Memory of a Hero Campaign by Stone Sky</p>
+<ul style="margin-top: 0;">
+    <li>All missions with Ka-50 have been updated for the Ka-50-3 module.</li>
+    <li>Added new environment: ships, ground personnel.</li>
+    <li>Fixed minor bugs</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: Mi-8MTV2 Crew Part 1 Campaign by Stone Sky</p>
+<ul style="margin-top: 0;">
+    <li>All missions updated.</li>
+    <li>Added new environment: ships, ground personnel.</li>
+    <li>Fixed minor bugs.</li>
+    <li>Updated weather conditions (halo, clouds).</li>
+</ul>
+<p style="margin-bottom: 0;">Black Shark 2 Republic Campaign by ED</p>
+<ul style="margin-top: 0;">
+    <li>In the campaign package was added copy of original campaign with player&rsquo;s aircraft Ka-50 III.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: Ka-50 2 Pandemic Campaign by Armen Murazyan</p>
+<ul style="margin-top: 0;">
+    <li>In the campaign package was added copy of original campaign with player&rsquo;s aircraft Ka-50 III.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: A-10C Iron Flag Part I Campaign by Baltic Dragon</p>
+<ul style="margin-top: 0;">
+    <li>Mission 05: Updated startup / initial radio check sequence.</li>
+    <li>Mission 10: Fixed issue with departure comms playing when still on the runway. Small text updates. Added message for player to hold short of the runway and wait for Biff.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: F/A-18C Raven One Campaign by Baltic Dragon</p>
+<ul style="margin-top: 0;">
+    <li>Mission 02: Fixed issue with Smoke not cutting away or flying into space after he is told to cut away.</li>
+    <li>Mission 05: Fixed possible issue with tanker following player on RTB.</li>
+    <li>Mission 08: Fixed problem with Raven 12 refusing to take off.</li>
+    <li>Mission 09: Fixed problem with Venom part playing out where helos arrive (double trigger).</li>
+    <li>Mission 11: Fixed the issue with Saint flight orbiting around the carrier after takeoff.</li>
+</ul>
+<p style="margin-bottom: 0;">DCS: F/A-18C Raven One: Dominant Fury Campaign by Baltic Dragon</p>
+<ul style="margin-top: 0;">
+    <li>Mission 03: Updated triggers for recorder to only detect AUTO mode and added information about it to the briefing.</li>
+    <li>Mission 05: Reverted player to cold start. Updated &quot;lights on&quot; trigger: mission will now progress if player only turns on position lights. Fixed wingman not reporting switches safe.</li>
+    <li>Mission 12: Enemy frigate won't shoot at player's missile anymore.</li>
+    <li>Mission 13: Added safeguard for AI SEAD flights (they often failed to destroy their targets).</li>
+    <li>Mission 14: (only long version needs uploading, not M14S). Adjusted difficulty level for the Clementines in the landing zone (it should be easier to pass the mission now). Fixed possible bug with Olive not detaching when feet dry (happens only in long version of the mission).</li>
+</ul>
+<p style="margin-bottom: 0;">F/A-18C Serpent&rsquo;s Head 2 Campaign by Badger633</p>
+<ul style="margin-top: 0;">
+    <li>All Missions: Winds adjusted.</li>
+</ul>
+<p style="margin-bottom: 0;">F/A-18C Rise of the Persian Lion Campaign by Badger633</p>
+<ul style="margin-top: 0;">
+    <li>All Missions: Winds adjusted.</li>
+    <li>Mission 6: 410 going home fixed.</li>
+    <li>Mission 8: Fix hatchet and 410 going home.</li>
+</ul>
+<p style="margin-bottom: 0;">F/A-18C Rise of the Persian Lion II Campaign by Badger633</p>
+<ul style="margin-top: 0;">
+    <li>All Missions: Winds adjusted / Mission brief added to Kneeboards / Briefs updated / Printable Kneeboards updated.</li>
+    <li>Mission 1: Voice conflict fixed.</li>
+    <li>Mission 2: WP1 zone adjusted, and message added.</li>
+    <li>Mission 4: Trap message fixed /missing tank message issue fixed / Migs adjusted.</li>
+    <li>Mission 5: Start time brought forward two hours to 16:10.</li>
+    <li>Mission 8: Height fail fixed / Missing ACLS added.</li>
+    <li>Mission 12: Missing ACLS added.</li>
+</ul>
+                <br/>
+                    <div class="row margin-top">
+    <div class="share-title col-xs-1 width-auto no-padding">Share:</div>
+	<div id="share-dialog1" class="col-xs-8 no-padding">
+		<ul class="list-inline no-margin-bottom"><li class="no-padding"><script>
+if (__function_exists('fbs_click') == false) 
+{
+function fbs_click(url, title) 
+{ 
+window.open('http://www.facebook.com/share.php?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'sharer','toolbar=0,status=0,width=626,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://www.facebook.com/share.php?u=https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/&t=DCS 2.8.2.35632 Open Beta" onclick="return fbs_click('https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/', 'DCS 2.8.2.35632 Open Beta');" target="_blank" class="post-fb-link" title="Facebook"></a>
+</li><li class="no-padding"><script>
+if (__function_exists('twitter_click_1') == false) 
+{
+function twitter_click_1(longUrl) 
+{ 
+window.open('http://twitter.com/home/?status='+encodeURIComponent(longUrl)+encodeURIComponent(' DCS 2.8.2.35632 Open Beta'),'sharer','toolbar=0,status=0,width=726,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://twitter.com/home/?status=https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/+DCS 2.8.2.35632 Open Beta" onclick="return twitter_click_1('https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/');" target="_blank" class="post-twitter-link" title="Twitter"></a>
+</li><li class="no-padding"><script>
+if (__function_exists('vk_click') == false) 
+{
+function vk_click(url) 
+{ 
+window.open('http://vkontakte.ru/share.php?url='+encodeURIComponent(url),'sharer','toolbar=0,status=0,width=626,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://vkontakte.ru/share.php?url=https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/" onclick="return vk_click('https://www.digitalcombatsimulator.com/en/news/changelog/openbeta/2.8.2.35632/');" target="_blank" class="post-vk-link" title="Vkontakte"></a>
+</li></ul>    </div>
+	</div>
+	            </div>
+</div>
+	</div>
+</div>
+</div>
+        <div id="social-buttons-block" class="row">
+        <div class="col-xs-12">
+            <div class="container">           
+    FOLLOW US
+    <ul id="follow-list">
+        <li>
+            <a href="https://www.facebook.com/eagle.dynamics" target="_blank">
+                <img src="/local/templates/dcs/images/facebook.png" alt="Facebook">
+            </a>
+        </li>
+        <li>
+            <a href="https://discord.gg/eagledynamics" target="_blank">
+                <img src="/local/templates/dcs/images/discord.png" alt="Discord">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/digitalcombatsimulator" target="_blank">
+                <img src="/local/templates/dcs/images/instagram.png" alt="Instagram">
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/eagledynamics" target="_blank">
+                <img src="/local/templates/dcs/images/twitter.png" alt="Twitter">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/user/eagledynamicstv" target="_blank">
+                <img src="/local/templates/dcs/images/youtube.png" alt="YouTube">
+            </a>
+        </li>
+    </ul>
+</div>        </div>
+    </div>
+        <div class="row" id="awards-block">
+        <div class="col-xs-12">
+                        <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic1.png" alt="IGN.COM Editors' Choice award" title="IGN.COM Editors' Choice award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic2.png" alt="Computer Active Buy It! 5 stars award" title="Computer Active Buy It! 5 stars award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic3.png" alt="PC Gamer Editor's Choice 5 stars award" title="PC Gamer Editor's Choice 5 stars award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic4.png" alt="'Tipp der Redaktion' from the German magazine FS Magazin" title="'Tipp der Redaktion' from the German magazine FS Magazin"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic5.png" alt="Eurogamer award" title="Eurogamer award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic6.png" alt="PC Pilot Classic Product award" title="PC Pilot Classic Product award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic7.png" alt="PC Pilot Platinum award" title="PC Pilot Platinum award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic8.png" alt="Microsim award" title="Microsim award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic9.png" alt="Swedish award" title="Swedish award"/>
+            </div>
+        </div>
+    </div> 
+        <footer>
+            <ul class="main-list">
+<li><div class="bottom-block">
+<p><a href="/en/products/">Products</a></p>
+<ul class="inner">
+<li><a href="/en/products/world/">DCS World</a></li>
+<li><a href="/en/products/planes/">Planes</a></li>
+<li><a href="/en/products/helicopters/">Helicopters</a></li>
+<li><a href="/en/products/terrains/">Terrains</a></li>
+<li><a href="/en/products/campaigns/">Campaigns</a></li>
+<li><a href="/en/products/other/">Other</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="/en/downloads/">Downloads</a></p>
+<ul class="inner">
+<li><a href="/en/downloads/world/">DCS World</a></li>
+<li><a href="/en/downloads/texture_templates/">Texture templates</a></li>
+<li><a href="/en/downloads/documentation/">Documentation</a></li>
+<li><a href="/en/downloads/screenshots/">Screenshots</a></li>
+<li><a href="/en/files/">User files</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="/en/support/">Support</a></p>
+<ul class="inner">
+<li><a href="/en/links/">Useful Links</a></li>
+<li><a href="/en/support/">Tickets</a></li>
+<li><a href="/en/support/faq">Technical questions</a></li>
+<li><a href="https://forum.dcs.world" target="_blank">Forums</a></li>
+<li><a href="/en/contacts">Contacts</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="/en/legal/">Legal</a></p>
+<ul class="inner">
+<li><a href="/en/legal/">Legal information</a></li>
+<li><a href="/en/legal/gdpr.php">Privacy policy EU</a></li>
+<li><a href="/en/legal/terms_of_service.php">Terms of service</a></li>
+<li><a href="/en/legal/privacy_policy.php">Privacy and cookie policy</a></li>
+</ul></div></li></ul> 
+        </footer>
+
+        
+        <div id="ground" class="row">
+            <div class="col-md-7 hidden-sm hidden-xs error"><small>Found a typo? Select it with your mouse and press Ctrl+Enter.</small></div>
+            <div class="col-sm-12 col-md-5 copyright"><small>&copy; 1991-2023, Eagle Dynamics SA</small></div>
+        </div>
+        <div id="bx-composite-banner"></div>
+        </body>
+</html><!--123d277d7a605de7058bbf88f92aed24-->

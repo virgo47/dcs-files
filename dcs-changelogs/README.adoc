@@ -1,0 +1,7 @@
+= DCS Changelogs
+
+These are the changelogs from this official site: https://www.digitalcombatsimulator.com/en/news/changelog/
+
+Around 2.9.2 the Open Beta was discontinued, so now only the stable changelogs are relevant.
+
+The content is ED's, of course, this is just a mirror/snapshot of these changelogs.

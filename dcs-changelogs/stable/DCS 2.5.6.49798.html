@@ -1,0 +1,1739 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>DCS 2.5.6.49798</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=0.7">
+        <link rel="icon" href="/images/favicon.ico">
+                                                		                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" data-skip-moving="true">(function(w, d) {var v = w.frameCacheVars = {'CACHE_MODE':'HTMLCACHE','storageBlocks':[],'dynamicBlocks':{'iIjGFB':'dab15db01d40','bx_cart_block':'007b8eda3031'},'AUTO_UPDATE':true,'AUTO_UPDATE_TTL':'120','version':'2'};var inv = false;if (v.AUTO_UPDATE === false){if (v.AUTO_UPDATE_TTL && v.AUTO_UPDATE_TTL > 0){var lm = Date.parse(d.lastModified);if (!isNaN(lm)){var td = new Date().getTime();if ((lm + v.AUTO_UPDATE_TTL * 1000) >= td){w.frameRequestStart = false;w.preventAutoUpdate = true;return;}inv = true;}}else{w.frameRequestStart = false;w.preventAutoUpdate = true;return;}}var r = w.XMLHttpRequest ? new XMLHttpRequest() : (w.ActiveXObject ? new w.ActiveXObject("Microsoft.XMLHTTP") : null);if (!r) { return; }w.frameRequestStart = true;var m = v.CACHE_MODE; var l = w.location; var x = new Date().getTime();var q = "?bxrand=" + x + (l.search.length > 0 ? "&" + l.search.substring(1) : "");var u = l.protocol + "//" + l.host + l.pathname + q;r.open("GET", u, true);r.setRequestHeader("BX-ACTION-TYPE", "get_dynamic");r.setRequestHeader("X-Bitrix-Composite", "get_dynamic");r.setRequestHeader("BX-CACHE-MODE", m);r.setRequestHeader("BX-CACHE-BLOCKS", v.dynamicBlocks ? JSON.stringify(v.dynamicBlocks) : "");if (inv){r.setRequestHeader("BX-INVALIDATE-CACHE", "Y");}try { r.setRequestHeader("BX-REF", d.referrer || "");} catch(e) {}if (m === "APPCACHE"){r.setRequestHeader("BX-APPCACHE-PARAMS", JSON.stringify(v.PARAMS));r.setRequestHeader("BX-APPCACHE-URL", v.PAGE_URL ? v.PAGE_URL : "");}r.onreadystatechange = function() {if (r.readyState != 4) { return; }var a = r.getResponseHeader("BX-RAND");var b = w.BX && w.BX.frameCache ? w.BX.frameCache : false;if (a != x || !((r.status >= 200 && r.status < 300) || r.status === 304 || r.status === 1223 || r.status === 0)){var f = {error:true, reason:a!=x?"bad_rand":"bad_status", url:u, xhr:r, status:r.status};if (w.BX && w.BX.ready && b){BX.ready(function() {setTimeout(function(){BX.onCustomEvent("onFrameDataRequestFail", [f]);}, 0);});}w.frameRequestFail = f;return;}if (b){b.onFrameDataReceived(r.responseText);if (!w.frameUpdateInvoked){b.update(false);}w.frameUpdateInvoked = true;}else{w.frameDataString = r.responseText;}};r.send();var p = w.performance;if (p && p.addEventListener && p.getEntries && p.setResourceTimingBufferSize){var e = 'resourcetimingbufferfull';var h = function() {if (w.BX && w.BX.frameCache && w.BX.frameCache.frameDataInserted){p.removeEventListener(e, h);}else {p.setResourceTimingBufferSize(p.getEntries().length + 50);}};p.addEventListener(e, h);}})(window, document);</script>
+
+
+<link href="/bitrix/js/ui/design-tokens/dist/ui.design-tokens.min.css?167752342322029" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/js/ui/fonts/opensans/ui.font.opensans.min.css?16680629542320" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/js/main/popup/dist/main.popup.bundle.min.css?168613151826598" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/js/altasib.errorsend/css/window.css?1686139095910" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/cache/css/s1/dcs/page_cd33235e9829984b508ed7dba5dd0de7/page_cd33235e9829984b508ed7dba5dd0de7_v1.css?16874127532005" type="text/css"  rel="stylesheet" />
+<link href="/bitrix/cache/css/s1/dcs/template_fb4b5da16366ed81a03abe09b013f17c/template_fb4b5da16366ed81a03abe09b013f17c_v1.css?1687451415145343" type="text/css"  data-template-style="true" rel="stylesheet" />
+<script type="text/javascript">if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess) {BX.message[i]=mess[i];} return true;}};</script>
+<script type="text/javascript">(window.BX||top.BX).message({'JS_CORE_LOADING':'Loading...','JS_CORE_WINDOW_CLOSE':'Close','JS_CORE_WINDOW_EXPAND':'Expand','JS_CORE_WINDOW_NARROW':'Restore','JS_CORE_WINDOW_SAVE':'Save','JS_CORE_WINDOW_CANCEL':'Cancel','JS_CORE_H':'h','JS_CORE_M':'m','JS_CORE_S':'s','JS_CORE_NO_DATA':'- No data -','JSADM_AI_HIDE_EXTRA':'Hide extra items','JSADM_AI_ALL_NOTIF':'All notifications','JSADM_AUTH_REQ':'Authentication is required!','JS_CORE_WINDOW_AUTH':'Log In','JS_CORE_IMAGE_FULL':'Full size','JS_CORE_WINDOW_CONTINUE':'Continue'});</script>
+
+<script type="text/javascript" src="/bitrix/js/main/core/core.min.js?1686131534219752"></script>
+
+<script>BX.setJSList(['/bitrix/js/main/core/core_ajax.js','/bitrix/js/main/core/core_promise.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/loadext/loadext.js','/bitrix/js/main/loadext/extension.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/includes/js/includes.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/ui/polyfill/closest/js/closest.js','/bitrix/js/main/polyfill/fill/main.polyfill.fill.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/core/core.js','/bitrix/js/main/polyfill/intersectionobserver/js/intersectionobserver.js','/bitrix/js/main/lazyload/dist/lazyload.bundle.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/parambag/dist/parambag.bundle.js']);
+</script>
+<script type="text/javascript">(window.BX||top.BX).message({'pull_server_enabled':'Y','pull_config_timestamp':'1626118451','pull_guest_mode':'N','pull_guest_user_id':'0'});(window.BX||top.BX).message({'PULL_OLD_REVISION':'This page must be reloaded to ensure proper site functioning and to continue work.'});</script>
+<script type="text/javascript">(window.BX||top.BX).message({'LANGUAGE_ID':'en','FORMAT_DATE':'MM/DD/YYYY','FORMAT_DATETIME':'MM/DD/YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'0','UTF_MODE':'Y','SITE_ID':'s1','SITE_DIR':'/'});</script>
+
+
+<script type="text/javascript"  src="/bitrix/cache/js/s1/dcs/kernel_main/kernel_main_v1.js?1687412578178399"></script>
+<script type="text/javascript" src="/bitrix/js/ui/dexie/dist/dexie3.bundle.min.js?166806295988295"></script>
+<script type="text/javascript" src="/bitrix/js/main/core/core_ls.min.js?14338437987365"></script>
+<script type="text/javascript" src="/bitrix/js/main/core/core_frame_cache.min.js?168613153411210"></script>
+<script type="text/javascript" src="/bitrix/js/pull/protobuf/protobuf.min.js?159586336176433"></script>
+<script type="text/javascript" src="/bitrix/js/pull/protobuf/model.min.js?159586336114190"></script>
+<script type="text/javascript" src="/bitrix/js/rest/client/rest.client.min.js?16025798699240"></script>
+<script type="text/javascript" src="/bitrix/js/pull/client/pull.client.min.js?168613147148309"></script>
+<script type="text/javascript" src="/bitrix/js/main/popup/dist/main.popup.bundle.min.js?168613150665670"></script>
+<script type="text/javascript">BX.setJSList(['/bitrix/js/main/core/core_fx.js','/bitrix/js/main/pageobject/pageobject.js','/bitrix/js/main/core/core_window.js','/bitrix/js/main/session.js','/bitrix/js/main/core/core_tooltip.js','/bitrix/js/main/core/core_uf.js','/bitrix/js/main/date/main.date.js','/bitrix/js/main/core/core_date.js','/bitrix/js/main/utils.js','/local/templates/dcs/components/bitrix/main.share/.default/script.js','/js/jquery.min.js','/js/fancybox/jquery.fancybox.js','/js/jquery.confirm.min.js','/local/templates/dcs/bootstrap/js/bootstrap.min.js','/js/jquery.debounce.js','/local/templates/dcs/components/bitrix/sale.basket.basket.line/.default/script.js','/bitrix/components/bitrix/search.title/script.js']);</script>
+<script type="text/javascript">BX.setCSSList(['/local/templates/dcs/components/bitrix/news/changelog/bitrix/news.list/index/style.css','/local/templates/dcs/components/bitrix/news/changelog/bitrix/news.detail/.default/style.css','/local/templates/dcs/components/bitrix/main.share/.default/style.css','/local/templates/dcs/bootstrap/css/bootstrap.min.css','/js/fancybox/jquery.fancybox.css','/local/modules/eagle/js/css/steam.css','/local/templates/dcs/components/bitrix/system.auth.form/login/style.css','/local/templates/dcs/components/bitrix/search.title/.default/style.css','/local/templates/dcs/styles.css','/local/templates/dcs/template_styles.css']);</script>
+<script type="text/javascript">
+					(function () {
+						"use strict";
+
+						var counter = function ()
+						{
+							var cookie = (function (name) {
+								var parts = ("; " + document.cookie).split("; " + name + "=");
+								if (parts.length == 2) {
+									try {return JSON.parse(decodeURIComponent(parts.pop().split(";").shift()));}
+									catch (e) {}
+								}
+							})("BITRIX_CONVERSION_CONTEXT_s1");
+
+							if (cookie && cookie.EXPIRE >= BX.message("SERVER_TIME"))
+								return;
+
+							var request = new XMLHttpRequest();
+							request.open("POST", "/bitrix/tools/conversion/ajax_counter.php", true);
+							request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+							request.send(
+								"SITE_ID="+encodeURIComponent("s1")+
+								"&sessid="+encodeURIComponent(BX.bitrix_sessid())+
+								"&HTTP_REFERER="+encodeURIComponent(document.referrer)
+							);
+						};
+
+						if (window.frameRequestStart === true)
+							BX.addCustomEvent("onFrameDataReceived", counter);
+						else
+							BX.ready(counter);
+					})();
+				</script>
+<link rel="alternate" href="/en/news/changelog/stable/2.5.6.49798/" hreflang="en" />
+<link rel="alternate" href="/ru/news/changelog/stable/2.5.6.49798/" hreflang="ru" />
+<link rel="alternate" href="/de/news/changelog/stable/2.5.6.49798/" hreflang="de" />
+<link rel="alternate" href="/cn/news/changelog/stable/2.5.6.49798/" hreflang="cn" />
+<link rel="alternate" href="/fr/news/changelog/stable/2.5.6.49798/" hreflang="fr" />
+<link rel="alternate" href="/it/news/changelog/stable/2.5.6.49798/" hreflang="it" />
+<link rel="alternate" href="/es/news/changelog/stable/2.5.6.49798/" hreflang="es" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/" />
+<meta property="og:title" content="DCS 2.5.6.49798" />
+<meta property="og:description" content="" />
+<script type="text/javascript">
+            var ALXerrorSendMessages={
+                'head':'You found an error in the text',
+                'footer':'Send error message',
+                'comment':'Comment (optional)',
+                'TitleForm':'The error message',
+                'ButtonSend':'Send',
+                'LongText':'Error! You selected too much text.',
+                'LongText2':'Please try again.',
+                'cancel':'Cancel',
+                'senderror':'Error sending message!',
+                'close':'Close',
+                'text_ok':'Message sent.',
+                'text_ok2':'Thank you for your attention!'
+            }
+            </script>
+<script type='text/javascript' async src='/bitrix/js/altasib.errorsend/error.js'></script>
+
+
+
+<script type="text/javascript"  src="/bitrix/cache/js/s1/dcs/template_a7d064f763f4ec15a3f07228ba8d06dc/template_a7d064f763f4ec15a3f07228ba8d06dc_v1.js?1687412459173867"></script>
+<script type="text/javascript"  src="/bitrix/cache/js/s1/dcs/page_a77389ec172796b7619a767e7d7943a2/page_a77389ec172796b7619a767e7d7943a2_v1.js?1687412628556"></script>
+<script type="text/javascript">var _ba = _ba || []; _ba.push(["aid", "ec4e610cef9504dc3ad737bd0300464f"]); _ba.push(["host", "www.digitalcombatsimulator.com"]); (function() {var ba = document.createElement("script"); ba.type = "text/javascript"; ba.async = true;ba.src = (document.location.protocol == "https:" ? "https://" : "http://") + "bitrix.info/ba.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ba, s);})();</script>
+
+
+        <!--[if lt IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".fancybox").fancybox({helpers:{overlay:{locked:false}}});
+                $(".confirm").confirm({
+                    post: true,
+                    confirmButtonClass: "btn btn-primary",
+                    cancelButtonClass: "btn btn-default"
+                });
+            });
+        </script>
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PEB8NMGB5"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-0PEB8NMGB5');
+            </script>
+                        <script src="https://www.googletagmanager.com/gtag/js?id=AW-1007522769"></script>
+            <script type="text/javascript">
+                window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1007522769');
+            </script>
+            <script type="text/javascript">
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-PWZLVB5');
+            </script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-648324159"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'AW-648324159');
+            </script>
+            </head>
+<body>
+    <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(20852101, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/20852101" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZLVB5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div id="panel"></div>
+    <div class="navbar navbar-inverse" role="navigation" id="roof">
+        <div class="container">
+            <a href="/en" class="navbar-brand"><img src="/images/dcs-world-logo.svg?v2" alt="Digital Combat Simulator World"></a>
+            <div class="pull-right navbar-lang"><a href="/en/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-en.png" alt="English"></a>
+<a href="/ru/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-ru.png" alt="Russian"></a>
+<a href="/de/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-de.png" alt="German"></a>
+<a href="/cn/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-cn.png" alt="Chinese"></a>
+<a href="/fr/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-fr.png" alt="French"></a>
+<a href="/it/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-it.png" alt="Italian"></a>
+<a href="/es/news/changelog/stable/2.5.6.49798/"><img src="/local/templates/dcs/images/lang-es.png" alt="Spanish"></a></div>
+            <div class="pull-right navbar-user">
+                <div id="bxdynamic_iIjGFB_start" style="display:none"></div><span id="login-line"> 
+<a href="javascript:void(0)" onclick="openAuthorizePopup()">Login</a>
+</span>
+<div id="bx_auth_popup_form" style="display:none;" class="bx_login_popup_form">
+<form class="form-horizontal bx_auth_form" name="system_auth_form" method="post" target="_top" action="/en/news/changelog/stable/2.5.6.49798/">
+    <input type="hidden" name="AUTH_FORM" value="Y" />
+    <input type="hidden" name="TYPE" value="AUTH" />
+        <input type="hidden" name="backurl" value="/en/news/changelog/stable/2.5.6.49798/" />
+            <div class="row">
+                <div class="form-group">
+            <label for="USER_LOGIN" class="col-xs-3 control-label">Login</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="USER_LOGIN" name="USER_LOGIN" maxlength="255">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="USER_PASSWORD" class="col-xs-3 control-label">Password</label>
+            <div class="col-xs-8">
+                <input type="password" class="form-control" id="USER_PASSWORD" name="USER_PASSWORD" maxlength="255">
+            </div>
+            <div class="col-xs-1" id="lock-icon">
+                            </div>
+        </div>
+                             <div class="form-group"><div class="col-xs-7 col-xs-offset-3"><input type="checkbox" id="AUTH_USER_REMEMBER" name="USER_REMEMBER" value="Y" checked/>&nbsp;<label for="AUTH_USER_REMEMBER">Remember me</label></div></div>
+            </div>
+    <div class="row text-center">
+        <div class="col-xs-6"><input type="submit" name="Login" class="btn btn-primary" value="Authorize" /></div>
+        <div class="col-xs-6">
+              <a href="/en/auth/?forgot_password=yes" rel="nofollow">Forgot your password?</a>
+              <a href="/en/auth/?register=yes" rel="nofollow">Register</a>
+        </div>
+    </div>
+</form></div>
+<script>
+function openAuthorizePopup()
+{
+    var obPopupWin = BX.PopupWindowManager.create("AuthorizePopup", null, {
+        autoHide: true,
+        offsetLeft: 0,
+        offsetTop: 0,
+        overlay : true,
+        closeByEsc: true,
+        titleBar: false,
+		closeIcon: {},
+		content:'<div style="width:500px;height:250px; text-align: center;"><span style="position:absolute;left:50%; top:50%"><img src="/local/templates/dcs/components/bitrix/system.auth.form/.default/images/wait.gif"/></span></div>'
+	});
+    obPopupWin.popupContainer.className = 'popup-window-login';
+    obPopupWin.setContent(BX("bx_auth_popup_form"));
+    obPopupWin.show();
+    document.system_auth_form.USER_LOGIN.focus();
+}
+</script>
+<div id="bxdynamic_iIjGFB_end" style="display:none"></div>                /
+                <script>
+    var obEshopBasket = new JSEshopBasket("/local/templates/dcs/components/bitrix/sale.basket.basket.line/.default/ajax.php", "s1", "en");
+</script>
+<span id="bx_cart_block">
+<a href="/en/personal/cart/">Cart</a>: <span id="bx_cart_num">empty</span></span>            </div>
+        </div>
+    </div>
+
+    <div class="navbar navbar-inverse" role="navigation" id="top-menu" >
+        <div class="container">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-list" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+<ul class="collapse navbar-collapse nav navbar-nav navbar-left" id="top-menu-list">
+<li><a href="/en/index.php">Home</a></li>
+<li class="dropdown active"><a href="/en/news/">News</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/news/changelog/">Changelog</a></li>
+<li class="dropdown"><a href="/en/news/newsletters/">Newsletters</a></li>
+</ul></li><li class="dropdown"><a href="/en/products/">Products</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/products/world/">DCS World</a></li>
+<li class="dropdown"><a href="/en/products/planes/">Planes</a></li>
+<li class="dropdown"><a href="/en/products/helicopters/">Helicopters</a></li>
+<li class="dropdown"><a href="/en/products/terrains/">Terrains</a></li>
+<li class="dropdown"><a href="/en/products/campaigns/">Campaigns</a></li>
+<li class="dropdown"><a href="/en/products/other/">Other</a></li>
+</ul></li><li class="dropdown"><a href="/en/downloads/">Downloads</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/downloads/world/">DCS World</a></li>
+<li class="dropdown"><a href="/en/downloads/texture_templates/">Texture templates</a></li>
+<li class="dropdown"><a href="/en/downloads/documentation/">Documentation</a></li>
+<li class="dropdown"><a href="/en/downloads/screenshots/">Screenshots</a></li>
+<li class="dropdown"><a href="/en/files/">User files</a></li>
+</ul></li><li class="dropdown"><a href="/en/shop/">E-Shop</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/shop/modules/">Modules</a></li>
+<li class="dropdown"><a href="/en/shop/terrains/">Terrains</a></li>
+<li class="dropdown"><a href="/en/shop/bundles/">Bundles</a></li>
+<li class="dropdown"><a href="/en/shop/campaigns/">Сampaigns</a></li>
+</ul></li><li class="dropdown"><a href="/en/support/">Support</a>
+<ul class="dropdown-menu" role="menu">
+<li class="dropdown"><a href="/en/links/">Useful Links</a></li>
+<li class="dropdown"><a href="/en/support/">User support</a></li>
+<li class="dropdown"><a href="/en/support/faq">Technical questions</a></li>
+<li class="dropdown"><a href="/en/support/miles_rules">Miles rules</a></li>
+<li class="dropdown"><a href="/en/support/license">License Agreement</a></li>
+</ul></li><li><a href="https://forum.dcs.world" target="_blank">Forums</a></li>
+</ul>
+<div class="menu-clear-left"></div>            	    <div id="title-search" class="search-box hidden-xs hidden-sm">
+    <form class="form-title-search" action="/en/search/">
+    <div class="input-group form-title-search">
+        <input id="title-search-input" type="text" name="q" value="" placeholder="Search here" size="20" maxlength="50" autocomplete="off" class="form-control" />
+        <span class="input-group-btn">
+        <input name="s" type="submit" value="Search" class="btn btn-search" />
+        </span>
+    </div>
+    </form>
+    </div>
+<script>
+   var jsControl = 
+        new JCTitleSearch({
+            'AJAX_PAGE' : '/en/news/changelog/stable/2.5.6.49798/',
+            'CONTAINER_ID': 'title-search',
+            'INPUT_ID': 'title-search-input',
+            'MIN_QUERY_LEN': 2
+        });
+</script>
+        </div>
+    </div>
+<div class="container">
+        <h1>DCS 2.5.6.49798</h1>
+        <div id="crumbs"><a href="/en/" title="Home">Home</a>&nbsp;&gt;&nbsp;<a href="/en/news/" title="News">News</a>&nbsp;&gt;&nbsp;<a href="/en/news/changelog/" title="Changelog">Changelog</a>&nbsp;&gt;&nbsp;<a href="/en/news/changelog/stable/" title="Stable changelog">Stable changelog</a>&nbsp;&gt;&nbsp;<span id="current">DCS 2.5.6.49798</span></div>    	<div class="row">
+	<div class="col-md-3" id="changelog-sidebar">
+		<div class="row">
+			<div class="col-xs-12">
+				    <div class="row margin-bottom">
+    <b><a href="/en/news/changelog/stable/">Stable changelog</a></b>
+	        <div>
+                        <a href="/en/news/changelog/stable/2.8.4.39731/">DCS 2.8.4.39731</a> - <i>05.05.2023</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.8.1.34667.2/">DCS 2.8.1.34667.2</a> - <i>27.12.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.18.30765/">DCS 2.7.18.30765</a> - <i>05.10.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.17.29493/">DCS 2.7.17.29493</a> - <i>08.09.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.16.28157/">DCS 2.7.16.28157</a> - <i>04.08.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.14.24228/">DCS 2.7.14.24228</a> - <i>27.05.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.11.22211/">DCS 2.7.11.22211</a> - <i>08.04.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.10.19473/">DCS 2.7.10.19473</a> - <i>09.02.2022</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.9.18080/">DCS 2.7.9.18080</a> - <i>30.12.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.7.15038/">DCS 2.7.7.15038</a> - <i>03.11.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.6.13436/">DCS 2.7.6.13436</a> - <i>01.10.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.5.10869/">DCS 2.7.5.10869</a> - <i>18.08.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.3.8494/">DCS 2.7.3.8494</a> - <i>14.07.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.2.8165.2/">DCS 2.7.2.8165.2</a> - <i>25.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.7.1.7139/">DCS 2.7.1.7139</a> - <i>11.06.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.6.61527.3/">DCS 2.5.6.61527.3</a> - <i>05.03.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.6.59625.1/">DCS 2.5.6.59625.1</a> - <i>04.01.2021</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.6.59625/">DCS 2.5.6.59625</a> - <i>25.12.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.6.55960/">DCS 2.5.6.55960</a> - <i>09.10.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.6.52437/">DCS 2.5.6.52437</a> - <i>24.07.2020</i>
+                    </div>
+        <div>
+            <u>            <a href="/en/news/changelog/stable/2.5.6.49798/">DCS 2.5.6.49798</a> - <i>28.05.2020</i>
+            </u>        </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.41371.1/">DCS 2.5.5.41371.1</a> - <i>12.04.2020</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.41371/">DCS 2.5.5.41371</a> - <i>23.12.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.39384/">DCS 2.5.5.39384</a> - <i>15.11.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.35461/">DCS 2.5.5.35461</a> - <i>10.09.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.34864/">DCS 2.5.5.34864</a> - <i>26.08.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.33184/">DCS 2.5.5.33184</a> - <i>10.07.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.5.32533/">DCS 2.5.5.32533</a> - <i>26.06.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.4.30386/">DCS 2.5.4.30386</a> - <i>15.05.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.4.29167/">DCS 2.5.4.29167</a> - <i>03.04.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.4.27430/">DCS 2.5.4.27430</a> - <i>20.02.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.4.26825/">DCS 2.5.4.26825</a> - <i>06.02.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.4.26552/">DCS 2.5.4.26552</a> - <i>25.01.2019</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.3.24984/">DCS 2.5.3.24984</a> - <i>12.12.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.3.23225/">DCS 2.5.3.23225</a> - <i>31.10.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.3.22877/">DCS 2.5.3.22877</a> - <i>17.10.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.3.22176/">DCS 2.5.3.22176</a> - <i>29.09.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.3.21708/">DCS 2.5.3.21708</a> - <i>19.09.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.2.20785/">DCS 2.5.2.20785</a> - <i>07.09.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.2.20601/">DCS 2.5.2.20601 Update 9</a> - <i>22.08.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.2.20143/">DCS 2.5.2.20143 Update </a> - <i>08.08.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.2.19682/">DCS 2.5.2.19682 Update 7</a> - <i>25.07.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.2.19273.411/">DCS 2.5.2.19273.411 Update 1</a> - <i>11.07.2018</i>
+                    </div>
+        <div>
+                        <a href="/en/news/changelog/stable/2.5.2.18736.400/">DCS 2.5.2.18736.400</a> - <i>27.06.2018</i>
+                    </div>
+    </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9" id="changelog-content">
+<div class="row well changelog">
+    <div class="col-xs-12">
+                    <h3>Main Features</h3>
+<ul>
+    <li><i>Available DCS: Supercarrier by ED with new Arleigh Burke class destroyer, updated Russian Kuznetsov carrier and Su-33 as bonus.</i></li>
+    <li><i>Available DCS: JF-17 by Deka Ironwork Simulations</i></li>
+    <li><i>DCS: Black Shark cockpit update. New 3D model of Ka-50 cockpit.</i></li>
+    <li><i>F-16 Viper and F/A-18C Hornet. Update of aircraft systems, sensors and weapons.</i></li>
+    <li><i>A lot of major and minor improvements for F-14 Tomcat and AJS Viggen by Heatblur, AV-8B N/A and M-2000C by RAZBAM, C-101 by AvioDev and a number of fixes for most other aircraft.</i></li>
+    <li><i>WWII stuff growth with new aircraft, ground vehicles and ships.</i></li>
+    <li><i>Some for terrain updates. Caucasus - trees and some visual improvements. Persian Gulf - night lighting, sea shoreline, PAPI lights on airdromes. Normandy - Spring and Fall textures, Airfields, unique buildings and structures and others.</i></li>
+    <li><i>A lot of improvements of DLC campaigns by Baltic Dragon, Mapple Flag, Reflected Simulations, Low-Level-Heaven Mission Development, Apache600.</i></li>
+    <li><i>Fixed several hundred bugs, added dozens of new features, improved stability of the game and multiplayer, as well as many, many minor fixes and improvements.</i></ul>
+</ul>
+
+<h3>DCS World</h3>
+<ul>
+    <li>Added AI short-range missile Scud-B launcher into ground units of some countries (Iran, Iraq and others). It can drive, but the missile is not yet functioning and does not launch. WIP</li>
+    <li>Western RWR:</li>
+    <li>LHA-1 Tarawa index '40', – same AN/SPS-40 as on Spruance.</li>
+    <li>KJ-2000 index 50.</li>
+    <li>JF-17 index JF.</li>
+    <li>HQ-7 LN SP index 7.</li>
+    <li>HQ-7 STR SP index HQ.</li>
+    <li>Fixed M249 AI Infantry poor response to enemy contact.</li>
+    <li>Fixed name liveries for DEN Leo2A5.</li>
+    <li>Fixed flight.dll crash on user track.</li>
+    <li>Fixed mistake in text pop-up in the Russian version of lesson 1 (flaps rising) for Su-25T tutorial.</li>
+    <li>China Asset Pack: added the 09III SSN AI submarine</li>
+    <li>ME: Focused and unfocused checkboxes will no longer look so similar</li>
+    <li>ME: TAB switch order on the weather panel has been corrected</li>
+    <li>ME. Text in the condition field on the group panel will not be memorized for the next mission</li>
+    <li>Static ships will now spawn at sea level</li>
+    <li>ME. Eliminated the same static names of units in the template</li>
+    <li>User with AI wingman on runway start Aborts take off - AI takes off and keeps going - fixed</li>
+    <li>Maps surface optimizations</li>
+    <li>Maps traffic optimizations</li>
+    <li>Increased night visibility distance of urban area lights</li>
+    <li>MP: Client and dedicated server instances now use common nicknames.lua file</li>
+    <li>Input. Joystick adjustment panel. Added possibility to type necessary digital values into user curve fields</li>
+    <li>MP: Static objects no longer spawn differently for server and clients</li>
+    <li>Input panel: Added new foldable view of the input list. This can be turned on and off via a special checkbox</li>
+    <li>Input panel. Help window added, new feature added (right mouse click to open pop-up menu), Categories menu added to device column header</li>
+    <li>AGM-154A-B: Corrected Radar Cross Section (RCS) value</li>
+    <li>A-10C, FC3 and BS2 modules migrated to ED DRM protection</li>
+    <li>Caucasus. Hovering cranes fixed</li>
+    <li>Missile exhaust fluctuations eliminated</li>
+    <li>MP. Speedboats spawned via scripting are invisible to clients - fixed</li>
+    <li>Added new User Manuals 2020 of DCS (EN, RU)</li>
+    <li>Crash on to many messages on screen - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=263507" target="_blank">Russian Static Object "outpost" does not render in the open beta</a> - fixed</li>
+    <li>LOD Issues on Units and Static objects - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=263353" target="_blank">Mission start trigger not working for some functions</a> - fixed</li>
+    <li><a href="https://forums.eagle.ru/showpost.php?p=4204283&postcount=11" target="_blank">DCS Hangs after playing user track</a> - fixed</li>
+    <li>Runway Spotlights vs Cockpit gauges - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=232968" target="_blank">Sea Flicker ( sometimes )</a> - fixed</li>
+    <li>Mission generator doesn't work - fixed</li>
+    <li>KC-130. LODs corrected</li>
+    <li>MP. DS. Sound errors spamming log - fixed</li>
+    <li>Crash at login without authorization data - fixed</li>
+    <li>Multiplayer memory leak on carrier - fixed</li>
+    <li>Updated Chinese localization (fixed crash on file dialog window opening)</li>
+    <li>MP. Dedicated Server. Static aircraft elevated from the ground - fixed</li>
+    <li>MP. Dedicated Server. Memory leak using stennis - fixed</li>
+    <li>MP. Dedicated Server. AAA and SAM will not engage targets until they have passed overhead - fixed</li>
+    <li>ME. Fixed a bug leading to unauthorized switching of a player’s aircraft to AI</li>
+    <li>Sound Options. Add "Play Audio While Minimized" option</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=264031" target="_blank">AI CH-47 not land in user mission</a> - fixed</li>
+    <li>HOLD not working at waypoint zero for units - fixed.</li>
+    <li>Input. Clear combination action raised error for axes in Foldable view - fixed</li>
+    <li>Chat and BDA panel configs moved to the user's folder for preventing crash in LUA script</li>
+    <li>Someone logged into your account on a different machine.</li>
+    <li>Hydra 70 rocket. Adjusted drag, corrected motor data. The rocket began to fly a little slower</li>
+    <li>MP. Stennis. Can't start from 3rd cat - fixed</li>
+    <li>AIM-7, AIM-120, R-27, R-77 missiles. Loft and HOJ trajectories on the net clients will be closer to the host (delivery aircraft) trajectory</li>
+    <li>Leader Vehicle. Move crash - fixed</li>
+    <li>Get Target State For Car crash - fixed</li>
+    <li>AIM-120. Fixed bug where loft trajectory was dependent on missile heading</li>
+    <li>MP. Fixed occasional crash at artillery fire</li>
+    <li>Some memory leaks in the terrain sources were fixed</li>
+    <li>Crash when AI helicopters collect troops - fixed</li>
+    <li>Wake turbulence damages aircraft on the ground - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=266186" target="_blank">Helicopter AI wingman taxi bug with script</a> - fixed</li>
+    <li>MP. Missiles flying underground & into Space - fixed</li>
+    <li>Aircraft repair under hard cover will not creates problem - fixed.</li>
+    <li>MP. <a href="https://forums.eagle.ru/showthread.php?t=263595" target="_blank">Fixed statistics</a>.</li>
+    <li>ME. Fixed Statics returning the 'Ammo' name in ME, name can now be set correctly</li>
+    <li>Fixed Scripting Engine bug causing Airports to return random ID's they have been pounded back into submission and will now have the correct id number for their actual position</li>
+    <li>ME. Adjusted Icons in ME and loadout screens to allow people to see which type of missile / ord they are loading easier when there are multiple versions of the same type</li>
+    <li>VR. <a href="https://forums.eagle.ru/showthread.php?t=265260" target="_blank">Medium water creates double vision for terrain</a> - fixed</li>
+    <li>VR. <a href="https://forums.eagle.ru/showthread.php?t=267998" target="_blank">Fixed automatic use of headset audio</a> for the outputs which are set to default device</li>
+    <li>Aircraft carrier. Ejected pilot fall through all decks - fixed</li>
+    <li>SCUD missile. Corrected skins</li>
+    <li>MP. Added support for <a href="https://forums.eagle.ru/showthread.php?t=254534" target="_blank">clients behind CG-NAT</a></li>
+    <li>MP. Added packet stats to Ctrl-Pause info (up/down traffic, ping, packet loss)</li>
+    <li>Sound. <a href="https://forums.eagle.ru/showthread.php?t=267560" target="_blank">Fixed theme music</a> for ED/BST modules</li>
+    <li>Sound. Added a <a href="https://forums.eagle.ru/showthread.php?t=98014" target="_blank">sound mod</a> example to Doc/Sounds</li>
+    <li>Added correct drag for PGU 20 mm family and fine tuned M56 family</li>
+    <li>Ingame rearm and refueling panel. Sliders disappear on the mouse cursor over it - fixed</li>
+    <li>RIM-7 missile. Added self destruction after losing target</li>
+    <li>Refactoring load images MM. Fix for some cases when user can't run DCS</li>
+    <li>Adjusted radio for Al Dhafra</li>
+    <li>AGM-88. Fixed crash that appeared in some conditions</li>
+    <li>AGM-88. Zero-lift drag decreased according to CFD research</li>
+    <li>SARH and ARH air-to-air missiles. Crash when a missile changes target - fixed.</li>
+    <li>Cruiser Moscow. Restored functionality of AK-630 30mm guns</li>
+    <li>If a player exits the game after ejecting he got a death in the logbook - fixed</li>
+    <li>Crash after landing on an airfield where there is no available parking - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?p=4273228#post4273228" target="_blank">Sound. Force stereo when drivers report 0 output channels</a></li>
+    <li>Sound. Recover from device disconnection (like hibernation or device unplug)</li>
+    <li>MP. Fixed a rare crash on client connection in busy missions</li>
+    <li>Fixed crash caused by a memory leak in clickable elements of cockpit</li>
+    <li>Added "engage air weapons" option for ships</li>
+    <li>Su-33 AI don't use AAR lights for refueling at night - fixed</li>
+    <li>Voice chat - added an option to block start of the voice chat on the server</li>
+    <li>MP. Added ability to see Time on Map in multiplayer lobby</li>
+    <li>MP. Added national flags to the server list</li>
+    <li>JTAC switching target caused crash - fixed</li>
+    <li>Black exhaust smoke from jet engines gets bright in moonlight - fixed</li>
+    <li>MP. Exhaust smoke in one flight, between multiple aircraft is synchronized - corrected</li>
+    <li>Vehicle not moving because of too steep elevation - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=265393" target="_blank">Host crash when player reloads vehicle ATGM and leaves the vehicle</a> - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=264956" target="_blank">Sometimes no sound when starting DCS</a> - fixed</li>
+    <li>AGM-84. <a href="https://forums.eagle.ru/showpost.php?p=4231237&postcount=1" target="_blank">Harpoon R/BL Skim ditch into the sea sometimes</a> - fixed</li>
+    <li>Graphic option window. Added Custom Graphic Preset buttons</li>
+    <li>Animated fences on ships stopped working - fixed</li>
+    <li>MP. Dedicated server unable to disable voice chat - fixed</li>
+    <li>Ejected Pilot falls through roofs - fixed</li>
+    <li>Reducing the CPU load when pathfinding a group of infantry.</li>
+    <li>Fix for liveries names of A-20G</li>
+    <li>Fixed crash at second landing.</li>
+    <li>General game performance increased</li>
+    <li>Unit health bars On could cause FPS drop - fixed</li>
+    <li>Mission Editor - Individual Ship Icons in a group will no longer disappear on zoom out</li>
+    <li>Mission Editor - Changing a FARP Country will no longer reset its position</li>
+    <li>Mission Editor - Dragging an aircraft on a carrier no longer resets parking to spot #1</li>
+    <li>Mission Editor - Template menu no longer returns to USA with previous countries template</li>
+    <li>Controls GUI corrupts when scrolling - fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?p=4280758#post4280758" target="_blank">WS ship defence not defending against AGM-65</a>. RCS limitation of CIWS Phalanx has been reduced</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=268609" target="_blank">BGM-109B. Engine and autopilot modified. Extended range to 1700km</a></li>
+    <li>The effect of tracer bullets has been restored</li>
+    <li>Eliminated <a href="https://forums.eagle.ru/showthread.php?t=270971" target="_blank">midnight light phenomenon</a></li>
+    <li>Browning guns sound update</li>
+    <li>AI ground units get stuck navigating around destroyed buildings - fixed</li>
+    <li>AI ground units refuse to move if the last WP is near a building - fixed</li>
+    <li>E-2D. Corrected collision mode and damage animation</li>
+    <li>AI aircraft unable to connect with the tanker while in a turn - fixed</li>
+    <li>Cannot move a point "Fire on point" and the similar points until you select the task in the panel of tasks - fixed</li>
+    <li>ME. Group renaming action has no immediate effect in the list - fixed</li>
+    <li>VR. Added option of the bloom effect and configure the MSAA mask</li>
+    <li>ME. Tab order on waypoint screen is out of order - fixed</li>
+    <li>Sound. No possibility to change sound devices in simulation - fixed</li>
+    <li>MP. Reduced warping and rubberbanding</li>
+    <li>MP. Improved deck landing and takeoff</li>
+    <li>MP. Improved time sync and timeout detection</li>
+    <li>MP. Added country flags to the server</li>
+    <li>MP. <a href="https://forums.eagle.ru/showthread.php?t=246542" target="_blank">Player's aircraft doesn't appear in multiplayer tracks if the server was paused during the connection</a> - fixed</li>
+    <li>MP. Dedicated server. Fill missing entries in options.lua with defaults at webgui start</li>
+    <li>MP. Favorite star in the server list disappears after refresh - fixed</li>
+    <li>MP. <a href="https://forums.eagle.ru/showthread.php?t=224444" target="_blank">Laser marks remain if user left server or switches slot</a> - fixed</li>
+    <li>MP. Fixed client desync when server was paused right in the moment of the client’s initialization</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=267685&page=5" target="_blank">Fixed a problem with shader lines of variable length</a>, doing constant vertices recalc</li>
+    <li>Cockpit panels illumination of AI wingmen from external F2 is not visible - fixed</li>
+    <li><a href="https://forums.eagle.ru/showpost.php?p=4329670&postcount=1666" target="_blank">S-25L missile disappears without explosion when hit the tree</a> - fixed</li>
+    <li>The scripting engine function Object.destroy() does nothing on scenery objects. The objects remain. Fixed</li>
+    <li>AI vehicles do not follow a simple off road route - fixed</li>
+    <li>MP. Dedicated Server. A server admin using the dedicated server GUI interface to send a message into the simulation will appear as white text in the simulation. A server message to all pilots will be orange</li>
+    <li>Static units can not be placed under hardcover - fixed</li>
+    <li>Rearming at a FARP causes a crash - fixed</li>
+    <li>MP. <a href="https://forums.eagle.ru/showthread.php?t=273908" target="_blank">Problem with empty server-list</a> - fixed</li>
+    <li>MP. Added support for systems with disabled IPv6</li>
+    <li>Added check for SSE 4.1 support</li>
+    <li>AV-8B spawned on the inside of other aircraft on deck - fixed</li>
+    <li>Add Portugal as a country to ME and Logbook</li>
+    <li>ME. Removed some non working effect presets from Effects Static Object</li>
+    <li>Fixed crash after destruction of leader vehicle, during execution command Following leader</li>
+    <li>F-14. Fix of AIM-7 missile that has broken guidance</li>
+    <li>WWII aircraft. <a href="https://forums.eagle.ru/showthread.php?t=274248" target="_blank">DCS hangs with black screen after player get certain damage</a> - fixed</li>
+    <li>MP. Corrected the wrong countries' flags for server table</li>
+</ul>
+
+<h3>DCS F-16C by ED</h3>
+<ul>
+    <li>Cockpit. MFD. Fixed wrong AG weapons number. Tuned lighting of navigation gauges and SAI.</li>
+    <li>Gap near canopy with head shift and mouse look - Fixed</li>
+    <li>LERX vortex effect corrected.</li>
+    <li>INS no longer tracks current coordinates in ATT mode.</li>
+    <li>No longer ALIGN indication in NARF.</li>
+    <li>Hydraulic flow corrected for JFS start procedure.</li>
+    <li>INS alignment resets when knob placed to NORM from STOR HDG.</li>
+    <li>INS coordinates should be confirmed by pilot on DED with enter.</li>
+    <li>INS coordinates fields on DED no longer limited to 5 or 6 digits.</li>
+    <li>INS coordinates confirm procedure added to autostart macro.</li>
+    <li>INS alignment now degraded in BATH mode.</li>
+    <li>AG TLL Line Points fixed.</li>
+    <li>Restored missing INS altitude correction from CADC data.</li>
+    <li>SAI pitch trim index animation corrected.</li>
+    <li>Fixed DED sub-pages switching.</li>
+    <li>Fixed AIM-120 reticle position on target</li>
+    <li>Added EEGS Level 5 gunsight and improved EEGS Level 2 - WIP (Dogfight HUD will come a bit later)</li>
+    <li>Semi Transparent screens in “HUD only” LAlt+F1 view will no lower cause issues for image</li>
+    <li>Removed OFF label from the TACAN knob</li>
+    <li>Input for DL switch and MAP switch</li>
+    <li>New open canopy sound</li>
+    <li>Corrected CTD when moving throttle from off to idle in Cold and Dark instant action</li>
+    <li>Corrected the HUD altitude not being affected by pressure adjustments</li>
+    <li>Added improved afterburner effect</li>
+    <li>Adjusted engine fuel flow (WIP)</li>
+    <li>Adjusted turn rate performance for CAT I (WIP)</li>
+    <li>Corrected AIM-9 cage command</li>
+    <li>Corrected ejection after use of safety lever engaged</li>
+    <li>Added AIM-9 SLAVE and BORE SMS selection from the Cursor Switch depress function</li>
+    <li>Voice messages now cease when the MAL & IND LTS button is released</li>
+    <li>Added weapon release delay for the AIM-120</li>
+    <li>Centered AIM-120 symbol within the TD box on the HUD</li>
+    <li>Added ILS declutter option by pressing the Cage/Uncage HOG button</li>
+    <li>Added INS velocity error due to incorrect initial coordinates</li>
+    <li>If an In Flight Alignment (IFA) is enabled with a non-aligned INS, an incorrect heading on the HUD will now result</li>
+    <li>The HUD FPM will now be removed if there is incorrect INS data alignment</li>
+    <li>IFA time has increased</li>
+    <li>Corrected the ALOW error</li>
+    <li>Tuned the ILS command steering being too sensitive and providing steering too late</li>
+    <li>Corrected the LINK 16 STN page</li>
+    <li>Corrected the LINK 16 TIMING</li>
+    <li>Fixed CNI COM 1 data entry</li>
+    <li>Fixed the A-A Tacan getting a frozen range when another client cycles their channel number</li>
+    <li>Corrected SAI caging</li>
+    <li>The TACAN volume knob now correctly controls TACAN power</li>
+    <li>Corrected keyboard commands for the Fuel Quantity Knob</li>
+    <li>Adjusted AIM-9 seeker reticle position on the HUD</li>
+    <li>Adjusted rotation on several cockpit control elements.</li>
+    <li>Added new F-16C training mission covering CCRP Bombing and CBUs.</li>
+    <li>Added new UFC training mission.</li>
+    <li>Updated TACAN DED Page information in Early Access Guide.</li>
+    <li>Fixed Dogfight Mode ( Redone Attitude Awareness Arc/Add DLZ for dogfight/Remove silence radar mode in dogfight switch/Correct ACM BORE HUD indication/Added MFD/Add DLZ on FCR page)</li>
+    <li>Search targets on FCR screen have velocity vectors instead of Hotlines - Fixed</li>
+    <li>Missing Lock Lines - Fixed</li>
+    <li>No LOFT for AIM-120 - Fixed</li>
+    <li>FCR AA Declutter toggles by short depressing COMM Sw inboard for less than 0.5 sec</li>
+    <li>Improved EEGS mode (Adjusted T symbol,1 and 9g pipper/Adjusted A/A gunsight funnel Level 3 to 4 transition dynamics (now a bit smoother)/T-symbol out-of-plane maneuver lines maximum length was limited)</li>
+    <li>Horizon line seems too high on Persian Gulf Map - Fixed</li>
+    <li>F-16 has no option to send flight to tanker in radio menu - Fixed</li>
+    <li>Add Canopy Color Option</li>
+    <li>Added canopy and MFD reflections options</li>
+    <li>UFC training mission inaccuracies - Fixed</li>
+    <li>Cockpit Warning lights material tuned</li>
+    <li>Add livery for FS - 13/14/22/23/55/77/79/179/480/522</li>
+    <li>Add bort number</li>
+    <li>Radar STT automatic range scale adjustment does not work if STT was entered from TWS</li>
+    <li>Lesson 4 - Added CN localization</li>
+    <li>Lesson 19 - Added DE Voice-Overs</li>
+    <li>Bort number problems - Fixed</li>
+    <li>CNI Errors (Wind data/Hack time added) - Fixed</li>
+    <li>Engine Is torching intermittent during startup - Fixed</li>
+    <li>Active (A) and Time to Impact (T) for AIM-120 Errors - Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=253133&page=2" target="_blank">FPS Loss at High AOA</a> - fixed. Radar altimeter calculations were modified to improve performance.</li>
+    <li>TGP rewrites point coordinates to first selected point coordinates - Fixed</li>
+    <li>Missing wheel chocks model and functionality - Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=251845" target="_blank">RWR keybindings are mapped wrong</a> - Fixed</li>
+    <li>In MP a contact can show as Hostile and Friendly at the same time - Fixed</li>
+    <li>Added Sound effects for throttle movements</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=268375" target="_blank">F-16 STBY Compass seems to be affected by acceleration a lot</a> - Fixed</li>
+    <li>Added a new fake afterburner sound</li>
+    <li>Canopy tint synced in MP</li>
+    <li>US marking missing on wings - Fixed</li>
+    <li>Update to Russian localization</li>
+    <li>Training. Lesson 4 - Added CN localization. Lesson 19 - Added DE Voice-Overs.</li>
+    <li>FPS dropped several times when gear UP on the ground - fixed.</li>
+    <li>Strobe light need to be brighter at night - Fixed</li>
+    <li>Anti collision light not seen on multiplayer servers - Fixed</li>
+    <li>LEF should be at 2° up during cold start.- Fixed</li>
+    <li>FCR Hostiles returning Friendly - Fixed</li>
+    <li>Highlight of the selected weapon is not removed after selective jettison - Fixed</li>
+    <li>SAI Arrow does not move with ball - Fixed</li>
+    <li>Fuel tanks weight is incorrect - Fixed</li>
+    <li>Training mission CCRP bombing is in game mode - Fixed</li>
+    <li>INS Alignment: STOR HDG alignment doesn't finish - Fixed</li>
+    <li>Interior lighting at minimum power has lower brightness then without lighting in day light - Fixed</li>
+    <li>Tail texture improvement</li>
+    <li>Self illumination materials edited</li>
+    <li>Typo. F-16C Inputs. Ru localization</li>
+    <li>Quick start and training missions cause abnormal DCS behavior</li>
+    <li>Added german Viper manual</li>
+</ul>
+
+<h3>DCS F-18C Hornet by ED</h3>
+<ul>
+    <li>Improved accuracy of gun funnel</li>
+    <li>Improved stabilization of radar-directed gun sight and gun accuracy</li>
+    <li>TGP added to the 4th station</li>
+    <li>CCIP bombing in AUTO mode always using high-drag configuration is fixed</li>
+    <li>Corrected instances of only one bomb from a dual rack being released</li>
+    <li>HUD and attack radar page Rmax values now match</li>
+    <li>Corrected JDAM and JSOW menu freezes</li>
+    <li>Pre-Planned mode skipping elevation has been fixed</li>
+    <li>Fixed AGM-65F count down after rearm if walleye is used with an air start</li>
+    <li>Fixed AGM-65F seeker continuing to slew after uncage</li>
+    <li>Fixed SAI caging and OFF flag</li>
+    <li>Fixed SAI cage knob clickability</li>
+    <li>Note: New Targeting pod pointing modes are in work, but were not ready for this update</li>
+    <li>Updated Flight Manual CN</li>
+    <li>AIM-120 Rapid fire crash - fixed</li>
+    <li>Added FLIR Pointing Modes (HUD Pointing Modes/Snowplow Pointing Mode/Velocity Vector Slaved (VVSLV) Mode)</li>
+    <li>Radar sometimes doesn't see targets in multiplayer - Fixed</li>
+    <li>Fixed A/A gunsight foresight cue/Adjusted A/A gunsight funnel</li>
+    <li>Port Side Navigation Light Stays on - Fixed</li>
+    <li>Added canopy and MFD reflections options</li>
+    <li>Major update of the German Hornet manual</li>
+    <li>Plane acts in a strange way and explode after multiple usage of RAlt+J - Fixed</li>
+    <li>Client aircraft doesn't show in MSI in radar page - Fixed</li>
+    <li>Mk5 Rockets not available for the inner wing stations - Fixed</li>
+    <li>Cage/uncage switch doesn't configure AMRAAM for Visual mode launch - Fixed</li>
+    <li>Flying without wings - Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=256004" target="_blank">Target Vector Stem Error</a> - Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=268055" target="_blank">Shoot Cue given by changing RADAR range</a> - Fixed</li>
+    <li>AGM-65E/F slew limits overflow - Fixed</li>
+    <li>Changing Laser Code for Weapon Changes D/L FREQ - Fixed</li>
+    <li>HAFU symbol in STT mode is always green - Fixed</li>
+    <li>RADAR page doesn't show flood indication if DATA button is pressed. - Fixed</li>
+    <li>Using Maverick and switching to A/A causes issues with the Maverick - Fixed</li>
+    <li>Add Update RWS DATA sub-level page</li>
+    <li>Can not select AUTO without selecting CCIP first - Fixed</li>
+    <li>Client aircraft doesn't show in MSI in radar page - Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=259120" target="_blank">RWR tracks on radar page should be below the dugout</a> - Fixed</li>
+    <li>Hornet cockpit lights dim - Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?p=4234537#post4234537" target="_blank">Harpoon R/BL Skim ditch into the sea sometimes</a> - Fixed</li>
+    <li>AGM-65E can not find JTAC laser but self TGP laser only - Fixed</li>
+    <li>Colour option on radar page does not affect ILS needle colour - Fixed</li>
+    <li>Bombs fall short if mode has not been selected by user Fixed</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=268005" target="_blank">Weapon data set while using ground power lost when engines start</a> - Fixed</li>
+    <li>The F/A-18C Chinese manual has been updated</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=267050" target="_blank">Fixed default switches position without TGP</a></li>
+    <li>2.75' Rockets M151 HE Typo in Hornet loadout - Fixed</li>
+    <li>Litening Pod:
+        <ul>
+            <li>Added Indication of the position of the aircraft (Attitude Indicator/AoA indicator/ASL/Steering Cue)</li>
+            <li>Added FLIR Laser Ranging Indication</li>
+            <li>Litening TPOD head no longer stows when in STBY or OFF (The Litening TPOD external model's head is not longer stowed when the FLIR power switch is moved to the STBY or OFF position) - Fixed</li>
+            <li>FLIR stow additional conditions (OPR status, LG down, RAlt less than 200ft/OPR status, WoW, Ground Speed more than 5kts) - Fixed</li>
+            <li>LTD/R switch should have 2 positions - Fixed</li>
+            <li>TGP has incorrect IR FOV angles - Fixed</li>
+            <li>TGP elevation should be tied to horizon line instead of aircraft boresight - Fixed</li>
+            <li><a href="https://forums.eagle.ru/showthread.php?t=267115" target="_blank">TGT and FLIR Square Misaligned</a> - Fixed</li>
+            <li><a href="https://forums.eagle.ru/showthread.php?t=267065" target="_blank">TGP still works even if removed during rearm</a> - Fixed</li>
+            <li>Zoom control indication occupies 2 pushbuttons when it should occupy 3 - Fixed</li>
+            <li>Added GRAY option</li>
+            <li>Added ALG option (Automatic Gain and Level control option)</li>
+        </ul></li>
+    <li>AGM-65F seeker LOS indication is not proper- Fixed</li>
+    <li>JDAM - (add: IZLAR/ Auto Mode for PP and TOO Mode / dynamic TOF /TOT -PP Cue - In-Zone / TOT cue on HUD/ heading is defined for IZLAR)</li>
+    <li>AIM-7 can be guided via LTWS - Fixed</li>
+    <li>AIM-120 can guide to a target even if the radar cannot see the target in TWS mode - Fixed</li>
+    <li>FPS issues on the SA page - Fixed</li>
+    <li>Radar trackfiles aging out very quickly - Fixed</li>
+    <li>Prog 2 ignored if undesignate is used in auto mode - Fixed</li>
+    <li>Uncaged AGM-65F does not slave to the same point as pod - Fixed</li>
+    <li>AI do not show cockpit light in F2 view - Fixed</li>
+    <li>Parked F-18 static model has wrong aileron position - Fixed</li>
+    <li>Bright AMPCD/HUD at Night - Fixed</li>
+    <li>Missiles launched in RWS after tracking in LTWS perform incorrect guidance - Fixed</li>
+    <li>F-18 radar does not provide data-link in TWS mode - Fixed</li>
+    <li>Reset scale on SA page for elements, set max position value for calculating symbols on SA page like on HSI page - Fixed</li>
+    <li>Cockpit SNSR panel texture edited</li>
+    <li>Missions to be re-saved for branch</li>
+    <li>Harpoon BOL HPTP Ignores waypoint and flies bearing immediately - Fixed</li>
+    <li>Laser Mav will not show LKD if targeting a building - Fixed</li>
+    <li>TGP. Added OFFSET cursor</li>
+    <li>TGP. Transferring TDC priority to the FLIR page changes the tracking mode - fixed</li>
+    <li>TGP. <a href="https://forums.eagle.ru/showthread.php?t=267709" target="_blank">SLAVE behaves different for JDAM PP / TOO</a> - fixed</li>
+</ul>
+
+<h3>DCS: F-14B by Heatblur Simulations</h3>
+<ul>
+    <li>Added Cage the Bear campaign COOP version, thank you Kaba!</li>
+    <li>Fixed Bone Strike mission for SP and COOP</li>
+    <li>Updated most SP missions to have mission goals enabled</li>
+    <li>Fix for datalink showing missiles</li>
+    <li>Fixed various initialization issues</li>
+    <li>Fix to nozzle logic during engine starts and shutdowns</li>
+    <li>Tweaked damage resistance for engines and wing tanks - direct missile hits will cause more damage</li>
+    <li>Aerodynamic damage improvements - direct missile hits will cause more damage</li>
+    <li>Fix for doubling of trim rate when using a FFB stick (also ignore vJoy as a FFB device)</li>
+    <li>Significantly improved drawcall efficiency of VDI and HUD - may boost FPS on drawcall/CPU constrained systems</li>
+    <li>Added default pilot bindings for the new VKB F-14 stick</li>
+    <li>Reduced audible range of exterior sounds</li>
+    <li>Added new compressor stall sounds</li>
+    <li>Fixed sound files paths for RWR, KY-28 and Walkman (2.5.6 compatibility)</li>
+    <li>Added lubber line to Whiskey Compass</li>
+    <li>Fixed gaps in weapons selector on pilot’s stick</li>
+    <li>Added RIO white floodlights</li>
+    <li>Added CAP category knob CW/CCW keybindings</li>
+    <li>Multiple low speed and ground effect handling qualities improvements in pitch axis</li>
+    <li>Slightly Increased Stab Power (also in ground effect)</li>
+    <li>Additional MIL and AB thrust tweaks for performance following stores drag improvements</li>
+    <li>Tweaked drag while maneuvering above mach 1.2</li>
+    <li>Reduced landing gear pitch moment</li>
+    <li>Removed glass from collision model</li>
+    <li>Fixed custom cockpit livery not registering (Thanks uboats!)</li>
+    <li>Use INS for radar stabilization instead of real-time DCS values</li>
+    <li>Fixed regression in angle limits of radar stabilization that caused contact/track loss in RWS/TWS at large pitch angles</li>
+    <li>Fixed the transponder panel code ranges: M1 00-73 (5 bit octal), M3 0000-7777 (12bit octal)</li>
+    <li>Fixed regressions caused by SDK mismatch:</li>
+    <li>Fixed debriefing window not appearing</li>
+    <li>Fixed trim not working</li>
+    <li>Fixed debriefing window not appearing</li>
+    <li>Fixed AIM-9 SEAM/Lock</li>
+    <li>Mission starting in F10 view</li>
+    <li>NEW! Added TID AVIA page (displaying AoA, Vertical velocity, ILS and ACLS), enabling the RIO to closely monitor landing procedures and assist the pilot with pattern work</li>
+    <li>Fix for radar ground stabilization at high roll angles</li>
+    <li>Fix for radar range scale reverting to 200NM during P-SEARCH HCU acquisition in multicrew</li>
+    <li>Fix for RWS contacts on TID timing out too soon in a 1-bar scan</li>
+    <li>Added COMM1_FREQ and COMM2_FREQ params exported to lua scripts for ARC-159 and ARC-182 radios (for example to be used with “cockpit param” in mission editor)</li>
+    <li>Fix for AB lighting at too high of a throttle position</li>
+    <li>Improvements to pilot stick travel animation</li>
+    <li>Added afterburner markers on controls indicator</li>
+    <li>Removed debug carrier glideslope on controls indicator</li>
+    <li>Added FFB trim checkbox option for more realistic trim operation feel while using a FFB joystick (works if ANY non-vJoy FFB device is detected!)</li>
+    <li>More realistic FFB travel with trim actuator movement</li>
+    <li>Adjusted compressor stall spool dynamics</li>
+    <li>Fine tuning of pitch axis handling qualities</li>
+    <li>NEW! Introducing TWS-Auto for the AWG-9</li>
+    <li>Updated tutorial mission “Carrier based take off”</li>
+    <li>Added keybinds for seat adjustment</li>
+    <li>Added Jester keybinds for BVR</li>
+    <li>Disabled AI kneeling (for supercarrier)</li>
+    <li>Added holdback bar (for supercarrier)</li>
+    <li>Added salute command (for supercarrier)</li>
+    <li>Supercarrier compatibility added for client/player</li>
+    <li>WIP: F-14B AI compatibility for supercarrier</li>
+    <li>Fixed VIS FIX updating delta continuously</li>
+    <li>Fix VDI range bar scale value not being shown</li>
+    <li>Fixed Track Hold green light</li>
+    <li>Adjusted pitch rate damper</li>
+    <li>Updated Cage the Bear Campaign, including two new missions - thank you Kaba!</li>
+    <li>NEW: Added 8 new missions for DCS: Supercarrier, 6x Quickstart Case 1, Case 3 and Carrier Quals for Caucasus and Persian Gulf, 2x COOP 2 to 8 Carrier Quals for both Caucasus and Persian Gulf</li>
+    <li>Correlate datalink targets on TID to sensor targets</li>
+    <li>Tweaked hostile/friendly/unknown TID symbol sizes</li>
+    <li>Fixed Jester TWS-A /TWS-M endless loop with phoenix in air and player commands during TWS-A</li>
+    <li>Fixed jester switching to RWS with scan ranges set to < 100 nm</li>
+    <li>Fixed HUD steering tee in TWS-A</li>
+    <li>Tweaks to reduce TWS ghost track formation</li>
+    <li>Reset TID tracks on PGM RESTART (“soft purge”)</li>
+    <li>Fixed HUD/VDI to use AHRS instead of INS heading</li>
+    <li>Fixed HUD glow showing without power</li>
+    <li>Major overhaul of exterior night lighting:
+        <ul>
+            <li>Lights are now brighter</li>
+            <li>Lights now cast glow</li>
+            <li>Some lights now dynamically illuminate the aircraft and environment</li>
+            <li>All lights are now visible at much greater view distances</li>
+        </ul>
+    </li>
+    <li>Lowered intensity of landing light</li>
+    <li>Anti-collision and shoulder formation lights now cast dynamic lighting on the ground and other surfaces</li>
+    <li>Fixed afterburner spotlight light direction</li>
+    <li>Added salute option to comms for consistency between modules (won't trigger animation for now - Supercarrier)</li>
+    <li>Added radio comms for “Tomcat Ball” (Supercarrier)</li>
+    <li>Added keybind for “Tomcat Ball” (Supercarrier)</li>
+    <li>Fixed AI wingsweep not working on ground (Supercarrier)</li>
+    <li>Fix to comms commands for ground crew launch</li>
+    <li>Added CVN-71, CVN-72 and CVN-73 to RWR threat library (Supercarrier)</li>
+    <li>Fixed datalink connections with supercarrier. (Note: ACLS is currently off glideslope, we will fix it asap. ICLS is working as intended)</li>
+    <li>Fixed nose wheel steering scaling and initialization</li>
+    <li>Removed vJoy FFB check (Brunner stick should work now)</li>
+    <li>Reduced flap pitch moment and adjusted it vs. airspeed</li>
+    <li>Tweak to F110 fuel controller to reduce fuel flow overshoots</li>
+    <li>Probable fix to engine not re-lighting after damage or death</li>
+    <li>Adjusted flap lift and drag at speeds above deploy speed limit</li>
+    <li>Adjusted default starting pitch trim</li>
+    <li>Fixed issue where ground spoilers would deploy regardless of flap lever position with throttle at IDLE</li>
+    <li>Fixed kneel switch solenoid (no longer need to hold switch to kneel nosegear)</li>
+</ul>
+
+<h3>DCS AJS-37 by Heatblur Simulations</h3>
+<ul>
+    <li>Added active stores display activated when in TAKT/Out, just pressed IRRB FRAMSTEGN (unless in IDNR) and when UNSAFED (unless in IDNR).</li>
+    <li>Fixed minus-sign on CK37 thanks to user outbaxx.</li>
+    <li>Fixed fading-effect of CK37 panel display.</li>
+    <li>Improved accuracy of low-drag bombs.</li>
+    <li>Time-to-waypoint is now zero when landing gears are extended or in landing-mode, before it was just frozen.</li>
+    <li>Fix to IFF IDENT CTD.</li>
+    <li>Fixed issues with sidewinder step (IRRB FRAMSTEGN) button.</li>
+    <li>NEW!:Added Red Flag 16-2 Nevada Campaign free for all Viggen owners!</li>
+    <li>Fix to CTD related to firing last sidewinder</li>
+    <li>Fix to CTD when mission plan has more than 11 waypoints</li>
+    <li>Fix to Ignition Coil and RADAR/EL Maintenance test CTDs</li>
+    <li>Fixes to Wrath Of Thunder Campaign, including fixed AI wingman take-off on first five missions</li>
+    <li>Restart button (Återstart) fixed</li>
+    <li>Fixed the RWR / Master volume knob repeating, tweaked gain on rotation</li>
+    <li>Update Rb75 series FM to AFM</li>
+    <li>Fixed so Rb15 search modes SKORT and STRAK prioritize targets closest to middle of search cone instead of closest to missile</li>
+    <li>Added new shadow-blocking geometry to avoid light shining through cockpit tub</li>
+    <li>Fixed sound loop errors in cockpit engine sounds</li>
+    <li>Radar elevation axis mapping added (was left out of the last change log)</li>
+    <li>Magnetic declination knob (KURSKORR) animation corrected</li>
+    <li>Fixed issue where RAT-generator would retract on no weight on wheels instead of gear up.</li>
+    <li>Fixed duplicate Restart mapping.</li>
+    <li>Fixed ctd when pressing IRRBFRAMSTEGN (missile step) or IR-SNABBVAL (fast select) when not carrying sidewinders. Also fixed issue when turning off IRRBFRAMSTEGN it would perform another missile-step.</li>
+    <li>Integrated custom bomb ballistics solver.</li>
+    <li>Fixed issue where air density was hardcoded but should be calibrated by groundcrew.</li>
+    <li>Fixed animation of magnetic declination knob.</li>
+    <li>Fixed radar screen brightness setting not having any effect in B-scope mode</li>
+    <li>Wrath of Thunder mission 6: fixed mission complete logic</li>
+    <li>Fixed RAT sync in multiplayer</li>
+    <li>Tweaked engine smokiness</li>
+    <li>Tweaked zero alpha pitch moment at slower speeds</li>
+    <li>Fix to Sidewinder model / smoke</li>
+    <li>Fixed Master mode switch sound when using keyboard/joystick</li>
+    <li>Fixed intermittent keyboard mapping bug</li>
+    <li>Rb04 radar altimeter now works over terrain</li>
+    <li>Fix a small issue where Rb04s wouldn't fly in parallel but instead eventually converge</li>
+    <li>Fixed issue where only one bomb would be released per trigger press in DIRECT mode</li>
+    <li>Fix to Emergency pitch trim clicking nose up not working</li>
+    <li>Fixed issue where RUTA-beam would stay on the radar screen after another waypoint has been selected</li>
+    <li>Fixed that FACKLSL warning would stay on even after reload when having only one KB-pod loaded</li>
+    <li>Corrected amount of chaff and flares carried in KB-pods</li>
+    <li>Fixed issue where not all chaffs would be released</li>
+    <li>Fix to lysbomb not releasing after rearm</li>
+    <li>Auto start/stop feature added</li>
+    <li>Probable fix to NaN warning in DCS.log</li>
+    <li>Fix to airbase names sometimes corrupting kneeboard flight plan</li>
+    <li>Fix to "unknown weapon type" warning in log</li>
+    <li>Fix so two RWR-lights are on when the emitter is between coverage of the two antennas</li>
+    <li>Fix for last signal time in ELINT-analysis</li>
+    <li>F10 markings map is now grouped by author so you can select either your own flight plan or someone else’s. Markings now also display time of creation</li>
+    <li>Improved track-replay consistency, especially for taxiing</li>
+</ul>
+
+<h3>DCS AV-8B by RAZBAM</h3>
+<ul>
+    <li>CAS page update, you can now edit and delete records</li>
+    <li>Fixed cockpit texture text issue</li>
+    <li>Fixed bomb release order</li>
+    <li>Fixed CTD after alignment when selecting DATA page</li>
+    <li>Fixed Flashing letters in HUD</li>
+    <li>Fixed TACAN offset symbol position in the MPCD</li>
+    <li>Fixed VVM HUD position will now remain on the same horizontal plane with the GVM</li>
+    <li>Changed the gun pod ammo to PGU-32/U SAPHEI-T 25 mm rounds</li>
+    <li>Fixed issue with invisible KC-130 Tanker</li>
+    <li>NSEQ routing now enabled</li>
+    <li>EHSD Overlay 1: Air refueling zones enabled (max 3)</li>
+    <li>EHSD Overlay 2: Flight plan route display enabled</li>
+    <li>ILV cockpit files updated</li>
+    <li>Fixed issue with the guns firing with a Nozzle angle less than 30 Degrees</li>
+    <li>Fixed fuel pump keybind issue</li>
+    <li>Improved nose wheel steering logic</li>
+    <li>Updated exterior models - fixed tail code number</li>
+    <li>Updated Training Mission 9 (LHA) - TACAN changed so there is no conflict with Kobuleti</li>
+    <li>GPWS "Pull Up" rules rework to make it less sensitive</li>
+    <li>TPOD now stows when placed in Standby</li>
+    <li>Sidewinder SEAM mode is enabled</li>
+    <li>Sidewinder firing when not in AA mode bug fix</li>
+    <li>Sidearm firing when not in AG mode bug fix</li>
+    <li>MPCD + HUD Night mode update</li>
+    <li>EMERG Page with Emergency procedures is enabled</li>
+    <li>Various WCA and Auditory Cue Corrections</li>
+    <li>Corrected issue causing infinite sound bug</li>
+    <li>Improved delays of auditory cues to when the fault occurs</li>
+    <li>Improved prioritization of auditory cues based on fault priority</li>
+    <li>Fixed GEAR WCA light and auditory cue logic</li>
+    <li>Fixed errant CAUTION, CAUTION auditory alert when starting mission</li>
+    <li>Further improvements to GPWS auditory tone logic as well as corrected rules for determining GPWS alert conditions</li>
+    <li>Fixed CAUTION, CAUTION not allowed to replay for a minimum of 5 seconds if already played</li>
+</ul>
+
+<h3>DCS M-2000C by RAZBAM</h3>
+<ul>
+    <li>Added High Res cockpit pilot body with animations</li>
+    <li>Added Pilot patches with different uniform colors</li>
+    <li>Updated training mission 1 for Caucasus and NTTR to reflect changes in the module</li>
+    <li>Fixed bugs in Coup d'Etat mission 2 and 3 by Baltic Dragon</li>
+    <li>Added multiplayer version of the Coup d'Etat campaign (to be found under single missions)</li>
+    <li>Updated manual (version 1.1.0)</li>
+    <li>Fixed auto-start not continuing past FBW test due to cover condition not being open for switch to activate</li>
+    <li>Adjustment seat - Corrected travel to align with actual seat and body movement, Corrected seat/body animation calculation so it goes full extent</li>
+    <li>Adjusted VTB for new eye point view when added VR pilot</li>
+    <li>M-2000C Caucasus Campaign:
+        <ul>
+            <li>M05: Flight Lead now waits for player before taxiing</li>
+            <li>M05: Flight Lead now waits for player before taxiing</li>
+            <li>M05: Flight Lead now waits for player before taxiing</li>
+            <li>M02: fixed issue with F-5s not engaging friendly helos</li>
+            <li>M02: if F5 crashes into the hills before Iranian attack, the mission will no longer fail</li>
+        </ul></li>
+    <li>Training missions (Caucasus and NTTR): updates to reflect changes to the module</li>
+    <li>Added kneeboard pages with instructions to each mission</li>
+    <li>ILV cockpit files updated</li>
+    <li>Seat height range adjusted</li>
+    <li>Fixed issue with INS Panel not working after using JVN Switch</li>
+    <li>Added Head to VR Pilot's Shadow</li>
+    <li>Keybinds:
+        <ul>
+            <li>Radar HOTAS "TDC CENTER" changed to "TDC DEPRESS (Lock Target)". Its unique function is to lock AA targets</li>
+            <li>Radar HOTAS "STT/TWS Toggle (Target Lock)" changed to "STT/TWS Toggle"</li>
+            <li>With a locked AA target: toggles between STT/TWS tracking modes (same as before)</li>
+            <li>With the radar on SCAN and no locked AA target, it selects the default lock mode for AA targets: STT or TWS. The default lock mode can be overridden by the toggle switch but upon target unlock will go back to its default</li>
+            <li>Guns default firing mode: TOT and PAR either in AA or CAS. Mode will reset to default when deselecting the weapon</li>
+            <li>Rockets default firing mode: TOT. Mode will reset to default when deselecting the weapon</li>
+            <li>S530D Salvo mode is disabled</li>
+            <li>Default switches position when starting in the air:<br>
+Radar Altimeter is active (Switches in M and H respectively)<br>
+Radar is on EM mode<br>
+                DDM is OFF (if it is mounted)</li>
+            <li>DDM (IR Missile detector) is now unmounted and OFF by default</li>
+            <li>FBW "too slow" sound logic updated</li>
+            <li>AP "Gong" Sound logic updated</li>
+            <li>AP Roll limit updated</li>
+            <li>AP Track Index behavior fixed</li>
+        </ul>
+    </li>
+    <li>Display Changes:
+        <ul>
+            <li>S530D SVI Brackets have been deleted. They do not exist in the M-2000C</li>
+            <li>S530D G and D are now circled all the time. They indicate that the missile seeker head is locked on the target</li>
+            <li>Radar TDC is now available in SIL and EM modes</li>
+            <li>TWS/STT (PID/PIC) lock mode legend is now visible at all times in both SIL and EM modes. It indicates the radar default lock mode (with no locked target) or the current target lock mode</li>
+            <li>CCRP Target cross "+" has been deleted. This is a M-2000D feature only</li>
+        </ul>
+    </li>
+    <li>RWR contact display logic</li>
+    <li>RWR Brightness enabled</li>
+    <li>Magic MAV search enabled. It includes HUD TD updates</li>
+    <li>Close Combat Mode Vertical Scan bug fix</li>
+    <li>IP Bombing release bug fix</li>
+    <li>Manual updated with Magic MAV search</li>
+    <li>M-2000C campaign: Mission 05: Chevy 11 blocked by humvee which refused to move - FIXED. Mission 12: Messages play at the beginning of the mission - FIXED.</li>
+    <li>CNM logic fix. Approved and Finalized</li>
+    <li>MAG/MAV search logic update. Approved and FInalized</li>
+    <li>Selective Jettison CTD bug fix</li>
+    <li>INS: BAD Rho/Theta entry modified from KM/Deg to NM/Deg</li>
+    <li>Radar lost contact memory (DO) enabled</li>
+    <li>PCA updated: RDO Button enables/disables DO for manual unlock</li>
+    <li>Special Options update:
+        <ul><li>Show the AOA in the HUD: fixed</li>
+            <li>TDC Gate Aperture for PPI Mode: Added (modificator for radar TDC in PPI mode)</li>
+            <li>TDC Keyboard Precision: Added (modificator for TDC speed when using keyboard)</li>
+        </ul>
+    </li>
+    <li>Updated cockpit model - Corrected map chart holder not stowed</li>
+</ul>
+
+<h3>DCS: C-101 by AvioDev</h3>
+<ul>
+    <li>Several engine sound updates (Still WIP)</li>
+    <li>Modified binaries structure</li>
+    <li>Upgraded external and cockpit textures using PBR (Still WIP)</li>
+    <li>Fixed "floating" harness in rear cockpit of external model when flying solo</li>
+    <li>Engine correctly shuts down now after 20 sec timeout if startup was attempted with fuel valve switch in the OFF position</li>
+    <li>Fixed flowmeter indication when CB's are pulled, both EB and CC: No fuel flow, fuel used counting or FF indication when pressing test, if corresponding CB is pulled</li>
+    <li>Added pitch trim sound when using airbrake.</li>
+    <li>Both EB and CC pitch trim control systems were reworked:<br>
+        Pitch trim indicator light (located on the Emergency Trim Panel) now is ON when the stabilizer actuactor was energized by the signals sum from either main, emergency or airbrake compensating trim systems. The signal is determined as a concurrent sum from both cockpits and can be zero (the light will be OFF) if the resulting sum of commands is zero.</li>
+    <li>Twilight cockpit light issue solved. Now cockpit lights are on or off on hot start based on solar altitude (sun zenith angle) instead of day hour.</li>
+    <li>Several external model, textures and liveries updates, including PBR.</li>
+    <li>Added kneeboard to external pilot. (Known bug: kneeboard is now visible in cockpit view when pilot is not present. Will be fixed in next version).</li>
+    <li>Updated bump of shoulder patches of external pilot model.</li>
+    <li>Added normal bump to GPU.</li>
+    <li>Kneeboard is now not visible in the internal view when the pilot is not present.</li>
+    <li>Moving the front cockpit air diffuser will not hide/show the control stick.</li>
+    <li>Updated Caucasus cold start QS mission. (Replaced AI C-130 by Yak-52 since it was too large for the parking positions at that airport).</li>
+    <li>Seat movement sound correctly stops now when reaching max position, if moving it from one end to the other</li>
+    <li>Adjusted reset speed of accelerometer needles according to real behaviour</li>
+    <li>Implemented safety pin of canopy fracturing handle</li>
+    <li>Modified fracturing handle</li>
+    <li>Ejection mode selection lever is now functional: by default, it ejects instructor and then pilot, but can be switched off to allow for independent ejection</li>
+    <li>Fixed ejection pin state initialization at cold start</li>
+    <li>Both ejection seat handle pin and canopy fracturing handle pin store now in their corresponding compartment, map box or soft Velcro case</li>
+    <li>Fixed erroneous cabin pressure value at altitude. Behaviour for large differences of pressure is also modified</li>
+    <li>1020 Hz radio test tone is heard now again</li>
+    <li>Fixed external lights initialization</li>
+    <li>Added Ejection Seat Priority Lever ON/OFF control input</li>
+    <li>Clickable cockpit is now conforming to DCS standards. Both C-101 EB and C-101CC</li>
+    <li>Corrected Generator OFF position when using control input, it now correctly sets to OFF</li>
+    <li>Solved longitudinal stability problems. The airplane now behaves correctly in flight (good stability) and during takeoff and landing. No more issues with nose down tendency after landing and nose up "jumping" after takeoff</li>
+    <li>Left console interior red light in the rear cockpit does not deploy the emergency gear extension handle any more</li>
+    <li>Fixed emergency fuel korry button light that was not illuminating when pressed</li>
+    <li>Fixed C-101CC trim. It now has a correct range of +6.5 and -2.0</li>
+    <li>Landing lights will now be in taxi position when starting on runway</li>
+    <li>Dimmers brightness decreases now when rotating clockwise, when rotated completely the light will go off</li>
+    <li>Removed Mk-84 from the C-101CC inventory and removed BR-500 from center pylons, those weapons exceed the maximum authorized weight that may be carried by the underwing pylons</li>
+    <li>Improvement of console lights visibility in external view</li>
+    <li>Improvement of stairs external and internal model</li>
+    <li>Several improvements in C-101CC cockpit textures</li>
+    <li>Change from white smoke to smoke with colorant and vice-versa is now continuous, without any gap</li>
+    <li>Improved rudder pedals adjustment mechanism. It now works in the following manner: pull handle and adjust rudder pedals distance while keeping the handle pulled, then release handle. Using keyboard or joystick commands also works correctly now</li>
+    <li>Added backlight to FD front cockpit buttons that are not activated</li>
+    <li>Added smoke command to communications menu</li>
+    <li>Deleted attack commands from comms menu of C-101EB</li>
+    <li>Changed 3D model of cockpit mirror</li>
+    <li>Harnesses are now correctly displayed when control stick is hidden</li>
+    <li>Updated EN and ES localizations</li>
+    <li>Fixed oxygen consumption at oxygen pressures less than approx 150 psi</li>
+    <li>Corrected oxygen consumption to take into account 2 pilots (it was consuming two times what it should), and improved timing of oxygen consumption as well</li>
+    <li>Optimized Collision model, reducing number of polygons to improve FPS</li>
+    <li>Improved ejection seat 3D model and added new textures</li>
+    <li>Added common bindings to EB and CC joystick profiles. Flashlight can now be assigned to joystick button</li>
+    <li>Added Airmix-100% oxygen control. Oxygen consumption works correctly on both 100% and Airmix positions. Pilot's oxygen starvation works correctly on both 100% and Airmix positions</li>
+    <li>Updated EN and ES localizations</li>
+    <li>Fixed some discrepancies in control inputs</li>
+    <li>Fixed typo in EN Flight Director training mission</li>
+    <li>Control inputs reorganization</li>
+    <li>Fixed rudder trim control input binding</li>
+    <li>Added Throttle Idle Detent - Idle and Throttle Idle Detent - Stop input commands. Previously there was only Throttle Idle Detent Toggle</li>
+    <li>Fixed throttle idle-cutoff control animation</li>
+    <li>Added Wheel Brakes axis cheat (braking both wheels at the same time) to C-101 EB and C-101 CC</li>
+    <li>Fixed missing rear cockpit pilot kill event</li>
+    <li>Oxygen breathing indicator now doesn't work if the pilot is dead or not present in the cockpit</li>
+    <li>Added PBR to stairs textures of cockpit model and external model</li>
+    <li>Antiskid is now functional</li>
+    <li>Added antiskid failure. It can now be selected in Mission Editor</li>
+    <li>Added antiskid fail due to gear damage</li>
+    <li>Added "Allow Smoke On Ground" option to Mission Editor</li>
+    <li>Smoke system of C-101EB is now not possible to activate on ground if Mission Editor option "Allow Smoke On Ground" is not ticked</li>
+    <li>Trim tone and light will go off now when reaching trimming limits</li>
+    <li>Fixed several errors in dcs.log</li>
+    <li>Added RAD TEST switch - OUT position in IFF panel to control input bindings</li>
+    <li>Sight does not change now when depressing the trigger if guard is closed</li>
+    <li>Fixed weapons switch, it starts now in the off position at mission start</li>
+    <li>Fixed roll angle marks in ADI. They now show bank angle precisely</li>
+    <li>Added 45 degrees marks to HSI</li>
+    <li>Added aft lubber line to HSI</li>
+    <li>Fixed vertical deviation scale of HSI: replaced center dot by center line</li>
+    <li>Fixed heading bug of HSI. It doesn’t overlap now fore lubber line</li>
+    <li>Mark in turn and slip indicator shows now a 3°/sec standard turn rate</li>
+    <li>Added smooth movement to turn and slip indicator needle</li>
+</ul>
+
+<h3>DCS: A-10C Warthog by ED</h3>
+<ul>
+    <li>Custom cockpit options updated to correspond with the new model name.</li>
+    <li>Added strip on windshield glass by outer edges.</li>
+    <li>Canopy still present in F1 view after jettison - fixed.</li>
+    <li>Glued strip antenna added to the top of canopy.</li>
+    <li>BRT DIM Switch has no effect - fixed.</li>
+    <li>New cockpit caution panel APU GEN not illuminated - fixed.</li>
+    <li>ADI pointer not illuminated - fixed.</li>
+    <li>Emergency Chute Safety pin Should be removed for flight</li>
+    <li>Incorrect binding of left throttle button (see pos. 6, fig. 70, Flight manual English) if user connects TM Hotas Warthog Throttle - fixed</li>
+    <li>It is not possible to command ground crew after starting one or both engines. They respond that the throttles must be moved to IDLE for them to do stuff even though engines are at idle. Fixed</li>
+    <li>Unable to connect or disconnect GPU with engines on - fixed</li>
+    <li>Some improvements in cockpit PBR textures (much WIP, expect large improvements in further updates).</li>
+    <li>Fixed landing light beam direction.</li>
+    <li>The cockpit flood and storm lights do not illuminate now the tarmac / runway below the cockpit.</li>
+    <li>Repainted Ejection Seat Safety Pin.</li>
+    <li>Fixed functionality of Ejection Seat Handle and Ejection Seat Handle Safety Pin. Added corresponding commands and modified clickable action.</li>
+    <li>The Ejection Seat Handle will not move now if the safety pin is installed.</li>
+    <li>Triple E (Eject) keyboard command is disabled by the corresponding Ejection Safety Pin now.</li>
+    <li>The batteries will not heat anymore when isolated from the bus.</li>
+    <li>Taxi lights fixed.</li>
+    <li>Fixed waypoint names for three A-10C instant action missions</li>
+    <li>Fixed french WP names in MESSAGE TO ALL Triggers</li>
+    <li>Gun GAU-8 dispersion corrected</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=260129" target="_blank">Corrected circuit breaker panel</a></li>
+    <li><a href="https://forums.eagle.ru/showthread.php?p=4175187#post4175187" target="_blank">The DUMP lettering is restored</a></li>
+    <li>Corrected Single Player Missions by MadDog-IC. Added all localizations EN, RU, CN, CS, ES, DE, FR to missions where appropriate. Moved all Units out of trees</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=271304" target="_blank">Text above G-meter backlit</a> - fixed</li>
+    <li>If player was hit by missile when in cockpit view, dcs frozen - fixed</li>
+</ul>
+
+<h3>DCS MiG-21bis by Magnitude 3 LLC</h3>
+<ul>
+    <li>Longitudinal stability model improved</li>
+    <li>Suspension model improved</li>
+    <li>AI aircraft SFM model improved to more closely comply with “human” model, most notably in terms of previous AoA differences for comparative performances</li>
+    <li>Positions of fire and smoke effects corrected to comply with visual damage</li>
+    <li>Some audio-visual effects fixes, such are corrected F2 RPM indication for afterburner regimes, IR signature on afterburner, etc</li>
+    <li>First stage of code cleanup: part of the code optimized for faster execution and less memory use. Next stage in progress</li>
+    <li>Corrected inverted animation of PRMG localizer needle on NPP instrument</li>
+</ul>
+
+<h3>DCS F-5E Tiger II by ED</h3>
+<ul>
+    <li>Added German Voice-Overs to training missions.</li>
+    <li>The color of the sight reticle lightened</li>
+    <li>The color of the radar indication lightened</li>
+    <li>Corrected cockpit lighting</li>
+    <li>Cut electrical lights on damage</li>
+</ul>
+
+<h3>DCS F-86F Sabre by ED</h3>
+<ul>
+    <li>Cut electrical lights on damage</li>
+</ul>
+
+<h3>DCS L-39 Albatros by ED</h3>
+<ul><li>L-39 hangs and then crashes after all power - fixed</li>
+    <li>In the case when the aircraft is controlled by a player in the back seat and is thrown out of the server for some reason, control passes to the first player</li>
+    <li>Fixed training missions for L-39. Mission "GS-23 Gun": fixed typo in English localization. Mission "PK-3 Gun Pods": 4 Gun Pods are used</li>
+</ul>
+
+<h3>Flaming Cliffs 3 by ED</h3>
+<ul><li>Su-27. Multiplayer data link ghost contacts - fixed</li>
+    <li>F-15C. Instant Action Persian Gulf F15C Free flight over West Dubai. Increased start speed to 0.8M to prevent stall conditions</li>
+    <li>Multiplayer data link ghost contacts eliminated</li>
+    <li>A-10A. Gun GAU-8 dispersion corrected</li>
+    <li>MiG-29. Corrected reflections on the HUD</li>
+    <li>Su-25. Corrected reflections on the HUD</li>
+    <li>Su-25T. When you start the right engine you see the animation of the left engine - corrected.</li>
+    <li>Su-33. If the player requests repair on the deck, his plane should be moved to a free parking place</li>
+    <li>Su-25. NAV lights do not cast shadows</li></ul>
+
+<h3>DCS Mi-8MTV2 by ED</h3>
+<ul><li>Fixed broken view position of door gunner at the second mission run.</li>
+    <li>GUI. Fixed white bar issue in the training section</li>
+    <li>Mi-8 Spring Tension Campaign. Mi-28 suddenly explodes in mission 12 - fixed</li>
+    <li>Added direct controls to pod selector.</li>
+    <li>Spring Tension Campaign. No progress in mission 12 - fixed.</li>
+    <li>Cockpit red flood lights corrected</li>
+    <li><a href="https://forums.eagle.ru/showpost.php?p=4258930&postcount=467" target="_blank">Mi-8 Spring Tension - no progress in mission 11</a> - fixed</li>
+    <li>Cut electric lights on damage</li>
+    <li>Animation of the weapon light on the overhead corrected</li>
+    <li>Cockpit illumination tuned</li>
+    <li>Corrected rotor of cockpit cooling ventilator</li></ul>
+
+<h3>DCS UH-1H Huey by ED</h3>
+<ul><li>Fixed broken view position of door gunner at the second mission run.</li>
+    <li>UN Pilot campaign. Mission 3 and 5 corrected.</li>
+    <li>First training mission. Localization reverted back to the Russian language.</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=264824" target="_blank">UH-1H RPM Increase input not working correctly</a> - fixed.</li>
+    <li>UN Pilot campaign. <a href="https://forums.eagle.ru/showpost.php?p=4306093&postcount=24" target="_blank">Player and wingman spawn in one place</a> - fixed</li></ul>
+
+<h3>DCS Black Shark 2 by ED</h3>
+<ul><li>Introducing the new 3D cockpit.</li>
+    <li>Ka-50 can't spawn at Kuznetsov - fixed.</li>
+    <li>IT-23 now can't be adjusted without electric power.</li>
+    <li>Georgian Oil War - Grand Campaign - mission ATO-A-P4.2. Added tigger with removing trees action for tank platoon "G Tank 1".</li>
+    <li>Tuned autostart script that could not start the second engine at an air temperature above +30 Celsius.</li>
+    <li>The L-140 panel behind the right shoulder has been restored.</li>
+    <li>Corrected EGT needles color.</li>
+    <li>Connector of the laser standby switch will be linked with this switch. No need to click the void space.</li>
+    <li>Corrected engine levers LH RH text.</li>
+    <li>Auto-man switch animation - fixed.</li>
+    <li>Weapon panel lamps color - fixed.</li>
+    <li>Increased time to idle working of first engine for correct start second engine in the cold conditions</li>
+    <li>Fixed a bug that broke the display of the message "AIRCRAFT READY"</li>
+    <li>Corrected mirror images inside the cockpit</li>
+    <li>The Standby Compass (the one on the overhead) fails to show directions from 180° to 360° - fixed</li>
+    <li>Corrected flight manual. Added descriptions of switches of PPR-800 panel</li>
+    <li>Dead Valley mission, вugfix. Ka-50 born on the perking with MiG-27 - fixed. Ka-50 group assigned to correct parkings. Removed forest on the SPG Msta position.</li>
+    <li>Added the mirrors toggles commands</li>
+    <li>Georgian Oil War Campaign to DCS 2.5x Compatibility done by MadDog-IC</li>
+    <li>Georgian Oil War - Grand Campaign - mission ATO-A-P4.2 Added trigger with removing trees action for tank platoon "G Tank 1"</li>
+    <li>Corrected single missions by MadDog-IC</li>
+    <li>Clear Tkvarcheli.miz corrected. A player will not be spawn with his wingman on the same site</li>
+    <li>Added option to hide cyclic / stick in cockpit</li>
+    <li>ABRIS. Change date in setup menu caused DCS crash - fixed</li>
+    <li>Broken Anti-collision light repaired</li>
+</ul>
+
+<h3>DCS SA342 Gazelle by Polychop Simulations</h3>
+<ul><li>Fixed gun alignment</li>
+    <li>Added combat mix (3 HE - 1AP)</li>
+    <li>Added SNEB68 smoke marker rockets</li></ul>
+
+<h3>DCS Fw 190 A-8 by ED</h3>
+<ul><li>Gear indicator lights failing or not working correctly - fixed.</li>
+    <li>SZKK4 controls (knobs and switches) clickable zone increased.</li>
+    <li>Added priming to the autostart sequence</li>
+    <li>Major updates for cooling and oil systems</li>
+    <li>Start-up procedures and priming were tuned for proper use in different weather conditions</li>
+    <li>Fixes for propeller governor</li>
+    <li>Engine sounds update</li>
+    <li>Destroyed tail no longer has multiple tails</li>
+    <li>Training missions update
+    <ul><li>Training with bombs is added</li>
+        <li>Update for start-up and take-off training</li></ul></li>
+    <li>Added W.Gr.21 rockets and corresponding control panel in the cockpit</li>
+    <li>Added all currently existing german bombs to the arsenal<ul>
+    <li>AB 250 cluster bomb with SD 10A submunition</li>
+    <li>AB 250 cluster bomb with SD 2 submunition</li>
+    <li>AB 500 cluster bomb with SD 10A submunition</li>
+    <li>SC 50</li>
+    <li>SC 250 J</li>
+    <li>SC 250 L2</li>
+    <li>SC 500 J</li>
+    <li>SC 500 L2</li>
+    <li>SD 250 Stg</li>
+        <li>SD 500 A</li></ul>
+    </li>
+    <li>Added provision for the fuel tank<ul>
+        <li>300 liters fuel tank added</li></ul></li>
+    <li>Windscreen glass color edited</li>
+    <li>New skins added to the game</li>
+    <li>Manual update with information about bombs and rockets</li>
+    <li>Bombs added to the next missions:
+        <ul><li>Nevada - Range Target Strike.miz</li>
+            <li>Normandy - Airfield Attack.miz</li>
+            <li>Persian Gulf - Anti-Shipping Strike.miz</li></ul></li>
+    <li>Payloads drag for FW 190 A8 - fixed</li>
+    <li>Geometry of propeller edited in 2-4 LODs for better FPS performance</li>
+    <li>Wing payload drag and mass fixed</li>
+</ul>
+
+<h3>DCS Fw 190 D-9 by ED</h3>
+<ul><li>Clickable zone increased for cockpit controls: FuG 16 radio selectors, Landing Gear and Flaps Controls pushbuttons, Rocket control switches, Fuel gauge switch, ReVi altitude selector (rotary I)</li>
+    <li>ReVi altitude selector rotary II is fixed at "63"</li>
+    <li>Added priming to the autostart sequence</li>
+    <li>W.Gr.21 rockets were remade as separate models so they could be ripped off while hitting the ground</li>
+    <li>R4M is incorrectly located on pylons and hangs in the air - fixed</li>
+    <li>Corrected the instruments lighting in the cockpit</li></ul>
+
+<h3>DCS Spitfire IX by ED</h3>
+<ul><li>Corrected rudder keyboard commands.</li>
+    <li>Fixed extra wind sound when the pilot rotates the camera to the rear view.</li>
+    <li>Added correct ammo for Spitfire, adjusted dispersion</li>
+    <li>Fixes for arguments for proper visualisation of battle damage</li></ul>
+
+<h3>DCS Bf 109K-4 by ED</h3>
+<ul><li>Major sounds update</li>
+    <li>Added controls for new FyG 25 knob</li>
+    <li>Cut electrical lights on damage</li></ul>
+
+<h3>DCS P-51 Mustang by ED</h3>
+<ul><li>Ammo belts for P-51 - corrected</li>
+    <li>Cut electrical lights on damage</li>
+    <li>Piston engine sound dropped - fixed</li></ul>
+
+<h3>DCS Combined Arms by ED</h3>
+<ul><li>Mouse click will no longer fire weapon when ingame debriefing window is open.</li>
+    <li>Crash in campaign CA Frontlines Georgia - fixed</li>
+    <li>Fixed for WW2 unit incorrect sound idle run, accelerate, synchronized engine sound with transmission</li>
+    <li>Fixed saving gearbox type in tracks</li>
+    <li>Fixed loop sounds for some MG</li>
+    <li>Fixed time for reloading and rearming for some units</li>
+    <li>Increased ship CIWS efficiency (Phalanx and AK-630)</li>
+    <li>Fixed the continuation of AC tracking after destruction of the radar in Ticonderoga type of cruisers</li>
+    <li>Fixed position and animation of protective doors for Ticonderoga type of cruisers</li>
+    <li>Fixed SAM Rapier, now for the Rapier work requires LN + Blindfire and / or optical</li>
+    <li>Improved AI movement when controlling on F10 map.</li>
+    <li>Fixed the problem with the insufficient turn of TD on target</li>
+    <li>Fixed armor SPG M12</li>
+    <li>M163 Vulcan was invulnerable to HE rockets - fixed</li>
+    <li>Missile blows up right after launch on player-controlled SA-15 - fixed</li>
+    <li>Fixed position of Driver camera on Sd.Kfz.234/2</li>
+    <li>Animation of AT-3 Sagger fixed on barrel elevation of BMP-1 and BMD-1</li>
+    <li>Barrel visibility issues fixed on SPTD “Msta” while zooming out</li>
+    <li>Effective altitude of “Tunguska” SA-19 missiles is now limited to 3500 metres</li>
+    <li><a href="https://forums.eagle.ru/showthread.php?t=265318" target="_blank">Combined Arms Aircraft ignore speed if not set by slider</a> - fixed</li>
+    <li>Opel Blitz Embark not working - fixed</li>
+    <li>Fixed CA crash in case of no CA module and user tries to take vehicle</li>
+</ul>
+
+<h3>DCS WWII Asset Pack by ED</h3>
+<ul>
+    <li>New AI units added to the module:
+    <ul><li>Ju 88A-4 - torpedo bomber aircraft</li>
+        <li>A-20 - medium bomber aircraft</li>
+        <li>Stug III - assault gun</li>
+        <li>M10 - tank destroyer</li>
+        <li>Mk VIII Centaur IV - cruiser tank</li>
+        <li>Elefant - heavy tank destroyer</li>
+        <li>Mk IV Churchill VII - infantry tank</li>
+        <li>M8 Greyhound - armored car</li>
+        <li>8.8 cm Flak 41 - anti aircraft gun</li>
+        <li>Flakscheinwerfer 37 - searchlight</li>
+        <li>V-1 and launching ramp as static object</li>
+        <li>Shnellboot S-100 class</li>
+        <li>U-boat Type VII</li>
+    </ul>
+</li>
+    <li>LS Samuel Chase damage model corrected</li>
+    <li>APC and HE shells added for M10</li>
+    <li>Churchill & Cromwell IV Hull Guns now function correctly with Combined Arms</li>
+    <li>Opel Blitz Embarking Fixed</li>
+    <li>Embark for Kubelwagen 82 missing - fixed</li>
+</ul>
+
+<h3>DCS Persian Gulf Map by ED</h3>
+<ul><li>New light sources with increased visibility range</li>
+    <li>Higher accuracy and resolution of seabed to meet new water requirements</li>
+    <li>Improved sea shoreline</li>
+    <li>More accurate trees lod transition</li>
+    <li>Fixed PAPI lights on airfields</li>
+</ul>
+
+<h3>DCS: Normandy 1944</h3>
+<ul><li>Spring and Fall textures are updated</li>
+    <li>Spring and Fall trees are also updated</li>
+    <li>Coastal line artifacts are removed</li>
+    <li>Landscape artifacts are removed</li>
+    <li>Multiple airfield parkings and taxiways fixes</li>
+    <li>Airfields are refined with new scenery</li>
+    <li>Fortification scenery improved</li>
+    <li>Unique buildings and structures improved</li>
+    <li>Pegasus Bridge and Chateau de Falez were added</li>
+</ul>
+
+<h3>DCS Caucasus by ED</h3>
+<ul><li>Trees restored to original visualization.</li>
+    <li>Trees removed from roads in some locations.</li>
+    <li>Mozdok 08 runway broken lights fixed.</li>
+    <li>Improved a scene on the Gudauta airfield.</li>
+    <li>Larger aircraft can not use the taxiway. Fixed</li>
+    <li>Some minor visual improvements.</li>
+</ul>
+
+<h3>Voice Chat</h3>
+<ul><li>Clients could not talk to each other - fixed</li>
+    <li>Game log flooded by debug messages - fixed</li>
+    <li>Servers do not need a separate port for voice chat anymore</li>
+    <li>Known issue: VC availability is controlled by client’s setting only, ignoring server options</li>
+</ul>
+
+<h3>DCS Campaigns</h3>
+
+<p>Enemy Within 3.0 campaign by Baltic Dragon:</p>
+<ul>
+    <li>Mission 2. Fixed missing encounters / chatter in Zone Delta if player didn't stop the convoy in Charlie. Added safeguard allowing players to skip the mission in case of bugs (AI ground units pathfinding problems).</li>
+    <li>Mission 5. Fixed rare issue where damaged Mi-8 (first target) would take off thus breaking the mission.</li>
+    <li>Mission 7. Helipad and insurgent camp is no longer covered by the trees.</li>
+    <li>Mission 8. Removed landing flight of A-10s that got stuck at the end of runway, preventing Player's wingman from taxiing.</li>
+    <li>Mission 9. Minor changes to AI wingman target reporting. Fixed rare instance where several different messages with the attack outcome would play.</li>
+    <li>Mission 10. Updated behaviour of Falcons engaging targets at the range, they should now use 3 missiles instead of 4.</li>
+    <li>Mission 13. Fixed rare issue when briefing at WP1 wouldn't start. Fixed issue with Special Forces exiting target building refusing to move. Fixed issue with enemy MANPADs not moving after spawning and staying too close to the target building.</li>
+    <li>Mission 14. Fixed issue with F-16s not engaging bandits.</li>
+    <li>Mission 16. Updated triggers so that chances of saving HVA are higher. Minor fixes to VO timings.</li>
+    <li>Mission 17. Fixed issue with show of force by player having no effect on the CLA troops on the ground. Fixed problem with the convoy carrying HVA refusing to move</li>
+    <li>Mission 21. Updated Predator's callsign (Popeye instead of Pontiac in remarks page)</li>
+</ul>
+
+<p>F-86F Hunters over the Yalu Campaign by Reflected Simulations:</p>
+<ul><li>Corrected F-86 livery folder name for displaying of custom liveries.</li>
+    <li>Wake turbulence off enforced</li>
+    <li>Player's flight engages the primary target</li>
+    <li>Updated F-86F custom skins</li>
+</ul>
+
+<p>UH-1H Worlds Apart - Spring 2025 Campaign by Low-Level-Heaven Mission Development:</p>
+<ul><li>Added DE documentation</li>
+    <li>Mission 1: F10 Map Marker added. Score system changed. Skip Mission function available at the second task (final score 55). Fíxed vehicle spawn points.</li>
+    <li>Mission 2: F10 Map Marker added. Score system changed. Al landing points slightly changed. Tasks 1 to 3 – When cargo is destroyed, these facts and options are displayed. Task 2 - Information about the time limit added. Many knew voice-overs during cargo transport added. WOLF 1 no longer slides into the water. The mission will continue in time. Skip Mission function available before the third task (final score 55). Cargo changed – Container doesn’t flip over and gets destroyed that easy anymore</li>
+    <li>Mission 3: F10 Map Marker added. Score system changed. Many Voice-Overs improved. More immersion - Mi-8 at Tango bravo now on the radio talking and announcing their current position (voice-overs added). Task two / recapture the outpost, adopted. Skip Mission function available before the second task (final score 55). Deleted broken trigger (Pilot dead)</li>
+    <li>Campaign English and German Documentation added.</li>
+    <li>Mission 5-2: Many new voice-overs, F-10 Map marker added, Score system adjusted, Skip Mission function available at the second task (final score 55)</li>
+</ul>
+
+<p>Spitfire IX The Big Show Campaign by Reflected Simulations:</p>
+<ul><li>Campaign updated for the new Normandy map. Wake turbulence off enforced. Player's flight engages the primary target.</li>
+    <li>Corrected parkings.</li>
+    <li>Bomber formation performance optimizations</li>
+    <li>Revised Spawning points</li>
+    <li>Updated P-51D Mustang skins</li>
+    <li>New WWII assets added to the missions</li>
+    <li>"Remove units for better performance" option optimized in high unit count missions</li>
+</ul>
+
+<p>Spitfire Operation Epsom Campaign by Banyap.</p>
+<ul><li>Corrected parkings.</li></ul>
+
+
+<p>Bf 109 K-4 Jagdflieger Campaign by Reflected Simulations:</p>
+<ul><li>Campaign updated for the new Normandy map. Wake turbulence off enforced. Player's flight engages the primary target.</li>
+    <li>Mission 12 - corrected parkings.</li>
+    <li>Bomber formation performance optimizations</li>
+    <li>Revised Spawning points</li>
+    <li>Updated P-51D Mustang skins</li>
+    <li>New WWII assets added to the missions</li>
+    <li>"Remove units for better performance" option optimized in high unit count missions</li></ul>
+
+<p>F-86F Hunters over the Yalu Campaign by Reflected Simulations:</p>
+<ul><li>Wake turbulence off enforced. Player's flight engages the primary target. Updated F-86F custom skins.</li></ul>
+
+<p>M-2000C Red Flag Campaign by Baltic Dragon:</p>
+<ul><li>Mission 7: small tweaks to F-15E behaviour.</li>
+    <li>Mission 15: fixed missing "fox 1 and 2" calls from flight members, fixed an issue. where Max would not fight with the Gazelles.</li>
+    <li>Mission 3: Updated Metal flight behaviour to engage quicker. Fixed bug with other flights not returning to base.</li>
+    <li>Mission 5: removed a truck that refused to move and blocked Chevy 12</li>
+    <li>Mission 9: fixed an issue with B1 that stops taxiing to the active</li>
+    <li>​Mission ​14: intercepted F-16 will now land much quicker</li>
+    <li>Mission 4: fixed bug with wingmen not responding to player</li>
+</ul>
+
+<p>L-39 Kursant Campaign by ED:</p>
+<ul><li>Corrected voice over and subtitles of first massage.</li></ul>
+
+<p>P-51D Operation Charnwood Campaign by Banyap:</p>
+<ul><li>Corrected parkings.</li></ul>
+
+<p>P-51D Mustang Blue Nosed Bastards of Bodney by Reflected Simulations:</p>
+<ul><li>Corrected parkings.</li>
+    <li>Bomber formation performance optimizations</li>
+    <li>Revised Spawning points</li>
+    <li>Revised climbing waypoints</li>
+    <li>Updated P-51D Mustang skins</li>
+    <li>Campaign updated for the new Normandy map</li>
+    <li>Wake turbulence off enforced</li>
+    <li>Player's flight engages the primary target</li>
+    <li>Campaign updated for the new Normandy map. Wake turbulence off enforced. Player's flight engages the primary target.</li>
+    <li>New WWII assets added to the missions</li>
+    <li>"Remove units for better performance" option optimized in high unit count missions</li>
+</ul>
+
+<p>F-5E Aggressors BFM Campaign, F-5E Aggressors ACM Campaign, F-15C Aggressors BFM Campaign and F/A-18C Aggressors BFM Campaign by Mapple Flag:</p>
+<ul><li>Updated some units to current models</li>
+    <li>Removed unused units and replaced them with static models</li>
+    <li>Corrected parking positions to match 2.5.6 changes</li>
+    <li>Practice missions now placed in their own campaign</li>
+    <li>Minor updates to the briefing text in all missions</li>
+</ul>
+
+<p>F-5E Aggressors BFM Campaign by Mapple Flag</p>
+<ul><li>Mission BFM04: Updated skin for AI aircraft</li></ul>
+
+<p>A-10C Advanced Aircraft Training Qualification Campaign by Maple Flag:</p>
+<ul><li>AFT05 missions: Corrected altitude triggers for flare drop.</li>
+    <li>Practice missions now placed in their own campaign</li>
+</ul>
+
+    <p>A-10C TTQ Campaigns by Maple Flag:</p>
+    <ul><li>Practice missions now placed in their own campaign</li>
+    </ul>
+
+<p>A-10C The Enemy Within Campaign by Baltic Dragon</p>
+    <ul><li>Mission 12: fixed issue with ground units (Raider) refusing to move</li>
+        <li>Mission 13: updated triggers for second briefing</li></ul>
+
+
+<p>DCS BS2 Republic Campaign:</p>
+    <ul><li>Minor changes in missions Despair, Party, Cleanup</li></ul>
+
+    <p>The Museum Relic Campaign by Apache600:</p>
+    <ul><li>Every mission, in both campaigns, has been updated in some manner. (either to address bugs, unit placement due to trees and other factors, trigger issues, etc)</li>
+        <li>NDB morse code has been corrected on numerous briefing and kneeboard pages</li>
+        <li>Grammatical errors fixed in briefing pages (though I'm sure some still exist)</li>
+        <li>Mission 8.6 for MiG-15 and F-86: Fail safe helo F10 radio operations fixed, and missing radio comms restored</li>
+    </ul>
+
+    <p>Combined Arms: Frontlines Georgia Campaign:</p>
+    <ul><li>Adjusted missions with new Hidden on Planner Option for better Fog of War</li>
+        <li>Adjusted unit death requirements for advancement</li>
+        <li>Other minor fixes and tweaks with all missions</li>
+    </ul>
+
+    <p>F-15C The Georgian War campaign by Baltic Dragon</p>
+    <ul><li>M8: silenced Georgian EWRs, adjusted F-16 behavior</li>
+        <li>M10: silenced Georgian EWRs</li>
+        <li>M11: Added AI AI Georgian GCI during combat</li>
+        <li>M12: Added AI Georgian GCI during combat. Removed truck blocking the taxiway</li>
+        <li>M13: Added AI Georgian GCI during combat</li>
+    </ul>                <br/>
+                    <div class="row margin-top">
+    <div class="share-title col-xs-1 width-auto no-padding">Share:</div>
+	<div id="share-dialog1" class="col-xs-8 no-padding">
+		<ul class="list-inline no-margin-bottom"><li class="no-padding"><script>
+if (__function_exists('fbs_click') == false) 
+{
+function fbs_click(url, title) 
+{ 
+window.open('http://www.facebook.com/share.php?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'sharer','toolbar=0,status=0,width=626,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://www.facebook.com/share.php?u=https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/&t=DCS 2.5.6.49798" onclick="return fbs_click('https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/', 'DCS 2.5.6.49798');" target="_blank" class="post-fb-link" title="Facebook"></a>
+</li><li class="no-padding"><script>
+if (__function_exists('twitter_click_1') == false) 
+{
+function twitter_click_1(longUrl) 
+{ 
+window.open('http://twitter.com/home/?status='+encodeURIComponent(longUrl)+encodeURIComponent(' DCS 2.5.6.49798'),'sharer','toolbar=0,status=0,width=726,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://twitter.com/home/?status=https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/+DCS 2.5.6.49798" onclick="return twitter_click_1('https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/');" target="_blank" class="post-twitter-link" title="Twitter"></a>
+</li><li class="no-padding"><script>
+if (__function_exists('vk_click') == false) 
+{
+function vk_click(url) 
+{ 
+window.open('http://vkontakte.ru/share.php?url='+encodeURIComponent(url),'sharer','toolbar=0,status=0,width=626,height=436'); 
+return false; 
+} 
+}
+</script>
+<a href="http://vkontakte.ru/share.php?url=https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/" onclick="return vk_click('https://www.digitalcombatsimulator.com/en/news/changelog/stable/2.5.6.49798/');" target="_blank" class="post-vk-link" title="Vkontakte"></a>
+</li></ul>    </div>
+	</div>
+	            </div>
+</div>
+	</div>
+</div>
+</div>
+        <div id="social-buttons-block" class="row">
+        <div class="col-xs-12">
+            <div class="container">           
+    FOLLOW US
+    <ul id="follow-list">
+        <li>
+            <a href="https://www.facebook.com/eagle.dynamics" target="_blank">
+                <img src="/local/templates/dcs/images/facebook.png" alt="Facebook">
+            </a>
+        </li>
+        <li>
+            <a href="https://discord.gg/eagledynamics" target="_blank">
+                <img src="/local/templates/dcs/images/discord.png" alt="Discord">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/digitalcombatsimulator" target="_blank">
+                <img src="/local/templates/dcs/images/instagram.png" alt="Instagram">
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/eagledynamics" target="_blank">
+                <img src="/local/templates/dcs/images/twitter.png" alt="Twitter">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/user/eagledynamicstv" target="_blank">
+                <img src="/local/templates/dcs/images/youtube.png" alt="YouTube">
+            </a>
+        </li>
+    </ul>
+</div>        </div>
+    </div>
+        <div class="row" id="awards-block">
+        <div class="col-xs-12">
+                        <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic1.png" alt="IGN.COM Editors' Choice award" title="IGN.COM Editors' Choice award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic2.png" alt="Computer Active Buy It! 5 stars award" title="Computer Active Buy It! 5 stars award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic3.png" alt="PC Gamer Editor's Choice 5 stars award" title="PC Gamer Editor's Choice 5 stars award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic4.png" alt="'Tipp der Redaktion' from the German magazine FS Magazin" title="'Tipp der Redaktion' from the German magazine FS Magazin"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic5.png" alt="Eurogamer award" title="Eurogamer award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic6.png" alt="PC Pilot Classic Product award" title="PC Pilot Classic Product award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic7.png" alt="PC Pilot Platinum award" title="PC Pilot Platinum award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic8.png" alt="Microsim award" title="Microsim award"/>
+            </div>
+            <div class="img-link">
+                <img src="/local/templates/dcs/images/button/pic9.png" alt="Swedish award" title="Swedish award"/>
+            </div>
+        </div>
+    </div> 
+        <footer>
+            <ul class="main-list">
+<li><div class="bottom-block">
+<p><a href="/en/products/">Products</a></p>
+<ul class="inner">
+<li><a href="/en/products/world/">DCS World</a></li>
+<li><a href="/en/products/planes/">Planes</a></li>
+<li><a href="/en/products/helicopters/">Helicopters</a></li>
+<li><a href="/en/products/terrains/">Terrains</a></li>
+<li><a href="/en/products/campaigns/">Campaigns</a></li>
+<li><a href="/en/products/other/">Other</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="/en/downloads/">Downloads</a></p>
+<ul class="inner">
+<li><a href="/en/downloads/world/">DCS World</a></li>
+<li><a href="/en/downloads/texture_templates/">Texture templates</a></li>
+<li><a href="/en/downloads/documentation/">Documentation</a></li>
+<li><a href="/en/downloads/screenshots/">Screenshots</a></li>
+<li><a href="/en/files/">User files</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="/en/support/">Support</a></p>
+<ul class="inner">
+<li><a href="/en/links/">Useful Links</a></li>
+<li><a href="/en/support/">Tickets</a></li>
+<li><a href="/en/support/faq">Technical questions</a></li>
+<li><a href="https://forum.dcs.world" target="_blank">Forums</a></li>
+<li><a href="/en/contacts">Contacts</a></li>
+</ul></div></li><li><div class="bottom-block">
+<p><a href="/en/legal/">Legal</a></p>
+<ul class="inner">
+<li><a href="/en/legal/">Legal information</a></li>
+<li><a href="/en/legal/gdpr.php">Privacy policy EU</a></li>
+<li><a href="/en/legal/terms_of_service.php">Terms of service</a></li>
+<li><a href="/en/legal/privacy_policy.php">Privacy and cookie policy</a></li>
+</ul></div></li></ul> 
+        </footer>
+
+        <div id="cookies" class="row hidden">
+	<script type="text/javascript">function closeCookies(){$("#cookies").addClass("hidden")}function applyCookies(){closeCookies();var e=new Date((new Date).getTime()+31536e6);document.cookie="APPLY_COOKIES=Y; path=/; expires="+e.toUTCString()}function getCookie(e){var o=document.cookie.match(new RegExp("(?:^|; )"+e.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g,"\\$1")+"=([^;]*)"));return o?decodeURIComponent(o[1]):void 0}$(document).ready(function(){"Y"!=getCookie("APPLY_COOKIES")&&$("#cookies").removeClass("hidden")});</script>
+    <div class="pull-right padding-left">
+        <button type="button" class="close" onclick="return applyCookies(this);" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="container">
+        <span>We use cookies to provide you with a better onsite experience. By continuing to browse the site you are agreeing to our use of cookies in accordance with our <a href="/en/legal/privacy_policy.php">Cookie Policy</a>.</span>
+    </div>
+</div>
+        <div id="ground" class="row">
+            <div class="col-md-7 hidden-sm hidden-xs error"><small>Found a typo? Select it with your mouse and press Ctrl+Enter.</small></div>
+            <div class="col-sm-12 col-md-5 copyright"><small>&copy; 1991-2023, Eagle Dynamics SA</small></div>
+        </div>
+        <div id="bx-composite-banner"></div>
+        </body>
+</html><!--4319549cb4c33ae2ee6d087106b1fae0-->
