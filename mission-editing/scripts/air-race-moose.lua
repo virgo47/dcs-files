@@ -1,90 +1,57 @@
 -- Script by 'Virgo' / Member of the Black Angels
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
--- Uses MOOSE
+-- Uses MOOSE for convenience, but not for events as it proved buggy in multi-player server environments.
+--
+-- Do not forget to load script with dunlibRacingConfig table first!
 
--- INITIAL SETUP, this is the stuff you can configure
-
-local debugLog = true -- debug info to log file
-local debugMessages = false -- debug messages to all players
-local debugMenu = true -- Race Debug F10 menu items
-local logFinishResults = true -- Logs every finished race to dcs.log
-local logTailSize = 30 -- number of last log messages that can be shown via F10 debug item
-if debugLog then
+local cfg = dunlibRacingConfig -- just abbreviation
+if cfg.debugLog then
     env.info("RACE Script start")
 end
 
-local racingZone = ZONE:FindByName("racetrack")
-local racerGroupPrefix = "AirRace-"
--- Following prefixes are used in MOOSE set FilterPrefixes() and use Lua pattern matching, which means:
--- Use % (escape character) before any of the following chars: -.%^$()[]*+?
--- Because FilterPrefixes actually filters any substring, use ^ at the start of the prefix.
-local racingCheckZonePrefix = "^race%-check%-"
-local killZonePrefix = "^Kill%-"
 
--- Kill zone behavior: 1 = kill, 2 = disqualify, any other value = no behavior
-local killZoneBehavior = 2
-local warningAboveAGL = 21
-local killAboveAGL = 31 -- kill or disqualify, this follows killZoneBehavior setting
+-- DATA STRUCTURES, INITIALIZATION
 
--- Keep the sound files in some unused trigger, e.g. "resource-files-holder" so they are note removed from the mission!
--- To make the trigger unused, add condition FLAG IS TRUE with some "NEVER" flag. Add SOUND TO ALL with all the files.
--- If any of this is nil, or the file is not found, the sound will not be played.
-local enterRaceSound = "A10_AutopilotEngage.ogg"
-local finishRaceSound = "520200__latranz__industrial-alarm-EINZELN.ogg"
-local checkZoneSound = "Passed-checkpoi.ogg"
-local killSound = "ThiesZonk.ogg"
-local aglWarningSound = "altitude-warn.ogg"
+-- Table storing only live racers, inside or out of the zone. Map clientId -> racer table.
+-- Structure of the racer table:
+-- * playerName (string)
+-- * groupName (string)
+-- * unit (MOOSE UNIT wrapper)
+-- * startTs (number, based on timer.getAbsTime())
+-- * disqualified (boolean, used when killZoneBehavior is set to 2)
+-- * zoneCheck (table of ZONE->boolean, registering the entered check zones)
+-- * lastTs ("now" from previous racing loop, based on timer.getAbsTime())
+-- * lastPos (result of unit:GetPointVec3())
+local currentRacers = {}
 
--- Reference points 1000m from the start/end line - OPTIONAL, comment out if not desired.
--- Easiest way how to find it is to use the ruler in ME and read out CCS coordinates when 1000m away.
--- Don't forget the right signs!
-local startRefPoint = {x = -314063, z = 895054}
-local endRefPoint = {x = -313904, z = 895206}
-local refDistance = 1000 -- use the same value for both points
--- "Time preciser" will be true only if all three above are set:
-local timePreciser = (startRefPoint and endRefPoint and refDistance) ~= nil
-
-local spectatorsWarningAgl = killAboveAGL * 2 -- in meters
--- Reported warning altitude is rounded to tens ft up (conversion factor is divided by 10 already):
-local spectatorsWarningReportedAglRoundedFeet = math.ceil(spectatorsWarningAgl * 0.328084) * 10
-local spectatorsWarningMessage = "Spectators should stay at least " .. spectatorsWarningReportedAglRoundedFeet .. " feet above the course to avoid disturbing the participants."
-
--- Restart support requires a trigger in the ME and a restart zone:
-local restartZone = ZONE:FindByName("restart-zone")
-local restartTimeoutSeconds = 10
--- add ONCE trigger with FLAG IS TRUE for this flag name with action END MISSION, winner NEUTRAL
-local restartTriggerFlag = "restart"
-local restartTriggered = false
-
--- -------------------------------------------------------------------
--- DON'T CHANGE FROM HERE BELOW, UNLESS YOU KNOW WHAT YOU'RE DOING :-)
--- ADDITIONAL SETUP
-
-local currentRacers = {} -- table storing only live racers, inside or out of the zone
 local ladder = {}
 local spectators = {}
+
+local racingZone = ZONE:FindByName(cfg.racingZoneName)
 
 local racingCheckZones = {}
 -- Lua pattern matching requires % escape character before -.
 -- Using ^ assures prefix behavior, otherwise any substring is matched.
-SET_ZONE:New():FilterPrefixes(racingCheckZonePrefix):FilterOnce():ForEachZone(function(zone)
+SET_ZONE:New():FilterPrefixes(cfg.racingCheckZonePrefix):FilterOnce():ForEachZone(function(zone)
     table.insert(racingCheckZones, zone)
-    if debugLog then
+    if cfg.debugLog then
         env.info("Adding check zone: " .. zone:GetName())
     end
 end)
 local killZones = {}
-SET_ZONE:New():FilterPrefixes(killZonePrefix):FilterOnce():ForEachZone(function(zone)
+SET_ZONE:New():FilterPrefixes(cfg.killZonePrefix):FilterOnce():ForEachZone(function(zone)
     table.insert(killZones, zone)
-    if debugLog then
+    if cfg.debugLog then
         env.info("Adding kill zone: " .. zone:GetName())
     end
 end)
 
 local lastRaceLoopTs -- updated on every main race loop function for debug purposes
 
+local restartZone = cfg.restartZoneName and ZONE:FindByName(cfg.restartZoneName) -- optional
 local restartTs -- used by "restart voting", see usages lower
+local restartTriggered = false
 
 -- COMMON FUNCTIONS
 
@@ -93,7 +60,7 @@ local logTail = {}
 
 function addLogTail(log)
     table.insert(logTail, tostring(timer.getAbsTime()) .. ": " .. log)
-    if #logTail > logTailSize then
+    if #logTail > cfg.logTailSize then
         table.remove(logTail, 1)
     end
 end
@@ -109,10 +76,10 @@ end
 -- Prints debug message to log or as a message to all, depending on the debug flags above.
 local function raceDebug(message)
     message = "RACE " .. tostring(message)
-    if debugLog then
+    if cfg.debugLog then
         env.info(message)
     end
-    if debugMessages then
+    if cfg.debugMessages then
         MESSAGE:New(message, 5):ToAll()
     end
     addLogTail(message)
@@ -121,9 +88,9 @@ end
 local function leaderboardText()
     local resultText = "RACE RESULTS"
     for unitType, results in pairs(ladder) do
-        resultText = resultText .. "\n\nCategory " .. unitType .. ":\n---------------------------------------------------------------------------------------\n"
+        resultText = resultText .. "\n\nCategory " .. unitType .. ":\n----------------------------------------------------------\n"
         for i, result in ipairs(results) do
-            local formattedTime = timePreciser and string.format("%.2f", result.time) or tostring(result.time)
+            local formattedTime = cfg.timePreciser and string.format("%.2f", result.time) or tostring(result.time)
             resultText = resultText .. "  " .. tostring(i) .. ". " .. result.player .. " ... " .. formattedTime .. " s\n"
         end
     end
@@ -151,14 +118,14 @@ local function mapSize(map)
 end
 
 local function showDebugMessage(group)
-    local resultText = "DEBUG:\n\nkillZoneBehavior = " .. tostring(killZoneBehavior)
-            .. "\nracerGroupPrefix = " .. tostring(racerGroupPrefix)
-            .. "\ntimePreciser = " .. tostring(timePreciser)
+    local resultText = "DEBUG:\n\nkillZoneBehavior = " .. tostring(cfg.killZoneBehavior)
+            .. "\nracerGroupPrefix = " .. tostring(cfg.racerGroupPrefix)
+            .. "\ntimePreciser = " .. tostring(cfg.timePreciser)
             .. "\n# of racingCheckZones = " .. tostring(racingCheckZones and #racingCheckZones)
             .. "\n# of killZones = " .. tostring(killZones and #killZones)
             .. "\n# of spectators = " .. tostring(mapSize(spectators))
-            .. "\nspectator warning AGL = " .. tostring(spectatorsWarningAgl) .. " m => ~" .. tostring(spectatorsWarningReportedAglRoundedFeet) .. " ft"
-            .. "\nlast race loop check/now = " .. tostring(lastRaceLoopTs) .. "/" .. tostring(timer.getAbsTime()) .. ") s"
+            .. "\nspectator warning AGL = " .. tostring(cfg.spectatorsWarningAgl) .. " m => ~" .. tostring(cfg.spectatorsWarningReportedAglRoundedFeet) .. " ft"
+            .. "\nlast race loop check/now = " .. tostring(lastRaceLoopTs) .. "/" .. tostring(timer.getAbsTime()) .. " s"
             .. "\n\nPLAYERS:"
     for _, racerData in pairs(currentRacers) do
         resultText = resultText .. "\n\nID: " .. tostring(_)
@@ -173,11 +140,6 @@ local function showDebugMessage(group)
     MESSAGE:New(resultText .. "\n", 20, nil, true):ToGroup(group)
 end
 
-local function changeKillZoneBehavior(newKillZoneBehavior, group)
-    killZoneBehavior = newKillZoneBehavior
-    showDebugMessage(group)
-end
-
 -- Calculates purely planar distance for x and z coordinates of both structures.
 local function pointDistance(point3d, point2d)
     local dx = point3d.x - point2d.x
@@ -187,91 +149,107 @@ end
 
 -- EVENT SETUP
 
--- On MP servers this seems to include non-client slots as well, we will handle it in event handlers.
-local clientSet = SET_CLIENT:New():FilterOnce() -- FilterStart() doesn't seem to make a difference
+-- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
+local eventHandler = {}
 
--- Enable handling of the events on the client set
-clientSet:HandleEvent(EVENTS.PlayerEnterUnit) -- this one is for single-player (or multi-player host)
-clientSet:HandleEvent(EVENTS.Birth) -- this one works for multi-player
-clientSet:HandleEvent(EVENTS.PlayerLeaveUnit) -- this one works fine for both environments
-clientSet:HandleEvent(EVENTS.Dead) -- to cover dedicated MP
-clientSet:HandleEvent(EVENTS.Crash) -- to cover dedicated MP
+-- some events are used for single-player, some for multi-player, it's a mess
+local allowedEvents = {
+    [world.event.S_EVENT_BIRTH] = "Birth",
+    [world.event.S_EVENT_PLAYER_ENTER_UNIT] = "Player Enter Unit",
+    [world.event.S_EVENT_CRASH] = "Crash",
+    [world.event.S_EVENT_DEAD] = "Dead",
+    [world.event.S_EVENT_PLAYER_LEAVE_UNIT] = "Player Leave Unit",
+}
 
--- Define what happens when a player enters a unit (or birth in MP)
-function clientSet:OnEventBirth(eventData)
-    self:OnEventPlayerEnterUnit(eventData)
-end
+local changeKillZoneBehavior -- function defined later, used in the handler
 
-function clientSet:OnEventPlayerEnterUnit(eventData)
-    local playerName = eventData.IniPlayerName
-    -- On MP servers this may be called for non-client slots as well, we just ignore it.
-    if not playerName then
+function eventHandler:onEvent(event)
+    if not event or not allowedEvents[event.id] then
         return
     end
-    local unit = eventData.IniUnit
-    local group = eventData.IniGroup
-    local groupName = eventData.IniGroupName
-    local clientId = eventData.IniPlayerUCID or playerName
 
-    raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. eventData.id .. ")")
-
-    -- Check if the group name starts with the desired prefix
-    if groupName and string.sub(groupName, 1, #racerGroupPrefix) == racerGroupPrefix then
-        -- Initialize data structure for the client/unit - this is used in mainRaceLoop function.
-        currentRacers[clientId] = {
-            playerName = playerName,
-            groupName = groupName,
-            unit = unit,
-        }
-    else
-        spectators[clientId] = {
-            playerName = playerName,
-            groupName = groupName,
-            unit = unit,
-        }
-    end
-
-    -- Menu for checking leaderboard is added to any group when the client joins.
-    -- There seems to be no similar functionality on the unit level, so it's best to have 1 unit in each group.
-    MENU_GROUP_COMMAND:New(group, "Race Leaderboard", nil, showRaceLeaderboard, group)
-    if debugMenu then
-        MENU_GROUP_COMMAND:New(group, "Race Debug", nil, showDebugMessage, group)
-        MENU_GROUP_COMMAND:New(group, "Kill zones: disable", nil, changeKillZoneBehavior, nil, group)
-        MENU_GROUP_COMMAND:New(group, "Kill zones: set to kill", nil, changeKillZoneBehavior, 1, group)
-        MENU_GROUP_COMMAND:New(group, "Kill zones: set to disqualify", nil, changeKillZoneBehavior, 2, group)
-        MENU_GROUP_COMMAND:New(group, "Race debug log tail", nil, displayLogTail, group)
-    end
-end
-
-function clientSet:OnEventDead(eventData)
-    self:OnEventPlayerLeaveUnit(eventData)
-end
-
-function clientSet:OnEventCrash(eventData)
-    self:OnEventPlayerLeaveUnit(eventData)
-end
-
--- Define what happens when a player leaves a unit
-function clientSet:OnEventPlayerLeaveUnit(eventData)
-    local playerName = eventData.IniPlayerName
-    -- On MP servers this may be called for non-client slots as well, we just ignore it.
+    local initiatorUnit = event.initiator
+    local playerName = initiatorUnit and initiatorUnit.getPlayerName and initiatorUnit:getPlayerName()
     if not playerName then
+        raceDebug("EVENT IGNORED " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown")
+                .. ": initiatorUnit " .. tostring(initiatorUnit) .. ", playerName " .. tostring(playerName))
         return
     end
-    local clientId = eventData.IniPlayerUCID or playerName
 
-    raceDebug("Player leave: " .. tostring(playerName) .. " (event.id: " .. eventData.id .. ")")
-
-    -- This can be nil, especially because this leave event is triggered twice for whatever reason.
-    racerData = currentRacers[clientId]
-
-    if racerData then
-        if racerData.startTs then
-            raceDebug("Sadly, player " .. tostring(playerName) .. " left during the race...")
+    local playerId
+    local playerList = net.get_player_list()
+    for _, id in ipairs(playerList) do
+        if net.get_player_info(id, "name") == playerName then
+            playerId = id
+            break
         end
-        currentRacers[clientId] = nil
+    end
+
+    local unitName = initiatorUnit and initiatorUnit.getName and initiatorUnit:getName()
+    local typeInfo = initiatorUnit.getTypeName and tostring(initiatorUnit:getTypeName()) or ("class " .. tostring(initiatorUnit.className_))
+    local ucid = playerId and net.get_player_info(playerId, "ucid")
+    local clientId = ucid or playerName
+    if not initiatorUnit or not unitName or not clientId then
+        raceDebug("EVENT IGNORED " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown")
+                .. ": playerName " .. tostring(playerName)
+                .. ", UCID " .. tostring(ucid)
+                .. ", unitName " .. tostring(unitName)
+                .. ", typeInfo " .. tostring(typeInfo))
+        return
+    end
+
+    -- All the ignored cases should be handled by now...
+    local client = CLIENT:FindByName(unitName)
+    local unit = client:GetClientGroupUnit()
+    local group = client:GetGroup()
+    local groupName = client:GetClientGroupName()
+
+    if event.id == world.event.S_EVENT_BIRTH or event.id == world.event.S_EVENT_PLAYER_ENTER_UNIT then
+        raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. event.id .. ")")
+
+        -- Check if the group name starts with the desired prefix
+        if groupName and string.sub(groupName, 1, #cfg.racerGroupPrefix) == cfg.racerGroupPrefix then
+            -- Initialize data structure for the client/unit - this is used in mainRaceLoop function.
+            currentRacers[clientId] = {
+                playerName = playerName,
+                groupName = groupName,
+                unit = unit,
+            }
+        else
+            spectators[clientId] = {
+                playerName = playerName,
+                groupName = groupName,
+                unit = unit,
+            }
+        end
+
+        -- Menu for checking leaderboard is added to any group when the client joins.
+        -- There seems to be no similar functionality on the unit level, so it's best to have 1 unit in each group.
+        MENU_GROUP_COMMAND:New(group, "Race Leaderboard", nil, showRaceLeaderboard, group)
+        if cfg.debugMenu then
+            MENU_GROUP_COMMAND:New(group, "Race Debug", nil, showDebugMessage, group)
+            MENU_GROUP_COMMAND:New(group, "Kill zones: disable", nil, changeKillZoneBehavior, nil, group)
+            MENU_GROUP_COMMAND:New(group, "Kill zones: set to kill", nil, changeKillZoneBehavior, 1, group)
+            MENU_GROUP_COMMAND:New(group, "Kill zones: set to disqualify", nil, changeKillZoneBehavior, 2, group)
+            MENU_GROUP_COMMAND:New(group, "Race debug log tail", nil, displayLogTail, group)
+        end
+    else
+        -- exit events branch
+        raceDebug("Player leave: " .. tostring(playerName) .. " (event.id: " .. event.id .. ")")
+
+        -- This can be nil, especially because this leave event is triggered twice for whatever reason.
+        racerData = currentRacers[clientId]
+
+        if racerData then
+            if racerData.startTs then
+                raceDebug("Sadly, player " .. tostring(playerName) .. " left during the race...")
+            end
+            currentRacers[clientId] = nil
+        end
     end
 end
+
+world.addEventHandler(eventHandler)
 
 -- REPEATED CHECKS and related functions
 
@@ -322,11 +300,26 @@ end
 local function disqualify(racerData)
     racerData.disqualified = true
     racerData.startTs = nil
-    if killSound then
-        USERSOUND:New(killSound):ToUnit(racerData.unit)
+    if cfg.killSound then
+        USERSOUND:New(cfg.killSound):ToUnit(racerData.unit)
     end
-    if killZoneBehavior == 1 then
+    if cfg.killZoneBehavior == 1 then
         racerData.unit:Explode(10)
+    end
+end
+
+-- declared as local previously
+changeKillZoneBehavior = function(newKillZoneBehavior, group)
+    cfg.killZoneBehavior = newKillZoneBehavior
+    showDebugMessage(group)
+
+    -- We have to cancel any race in progress if kill zones are disabled:
+    if newKillZoneBehavior == nil then
+        for _, racerData in pairs(currentRacers) do
+            if racerData.startTs and not racerData.disqualified then
+                disqualify(racerData)
+            end
+        end
     end
 end
 
@@ -338,14 +331,14 @@ local function approximateTimeBetween(lastTs, lastPosRefDistance, now, currentRe
         -- Enable only when debugging approximation, otherwise we don't want it in the log:
         --raceDebug("approximateTimeBetween - small distance difference, using NOW")
         return now
-    elseif (currentRefDistance > refDistance) == (lastPosRefDistance > refDistance) then
+    elseif (currentRefDistance > cfg.refDistance) == (lastPosRefDistance > cfg.refDistance) then
         -- Enable only when debugging approximation, otherwise we don't want it in the log:
         --raceDebug("No reference line crossing detected - unexpected entry position, using NOW")
         return now
     end
 
     local timeDiff = now - lastTs
-    local distFractionAfterLine = math.abs(currentRefDistance - refDistance) / distanceDiff
+    local distFractionAfterLine = math.abs(currentRefDistance - cfg.refDistance) / distanceDiff
     -- Enable only when debugging approximation, otherwise we don't want it in the log:
     --raceDebug("approximateTimeBetween: timeDiff=" .. tostring(timeDiff) .. ", lastPosRefDistance=" .. tostring(lastPosRefDistance)
     --        .. ", currentRefDistance=" .. tostring(currentRefDistance) .. ", distFractionAfterLine=" .. tostring(distFractionAfterLine))
@@ -381,8 +374,8 @@ local function mainRaceLoop()
                             if not racerData.zoneCheck[checkZone] then
                                 raceDebug("Player " .. racerData.playerName .. " entered the check zone " .. checkZone:GetName())
                                 racerData.zoneCheck[checkZone] = true
-                                if checkZoneSound then
-                                    USERSOUND:New(checkZoneSound):ToUnit(unit)
+                                if cfg.checkZoneSound then
+                                    USERSOUND:New(cfg.checkZoneSound):ToUnit(unit)
                                     checkZoneSoundPlayed = true
                                 end
                             end
@@ -390,26 +383,26 @@ local function mainRaceLoop()
                     end
                 else
                     MESSAGE:New(racerData.playerName .. " (of " .. racerData.groupName .. ") entered the race!", 10):ToAll()
-                    if timePreciser then
+                    if cfg.timePreciser then
                         racerData.startTs = approximateTimeBetween(
-                                racerData.lastTs, pointDistance(racerData.lastPos, startRefPoint),
-                                now, pointDistance(unitPos, startRefPoint))
+                                racerData.lastTs, pointDistance(racerData.lastPos, cfg.startRefPoint),
+                                now, pointDistance(unitPos, cfg.startRefPoint))
                     else
                         racerData.startTs = now
                     end
-                    USERSOUND:New(enterRaceSound):ToUnit(unit)
+                    USERSOUND:New(cfg.enterRaceSound):ToUnit(unit)
                     racerData.zoneCheck = {}
                 end
 
                 -- Altitude warning and disqualification
-                if killZoneBehavior == 1 or killZoneBehavior == 2 then
-                    if killAboveAGL and unit:GetAltitude(true) > killAboveAGL then
+                if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
+                    if cfg.killAboveAGL and unit:GetAltitude(true) > cfg.killAboveAGL then
                         MESSAGE:New(racerData.playerName .. " (of " .. racerData.groupName .. ") flew too high and was disqualified!", 15):ToAll()
                         disqualify(racerData)
-                    elseif warningAboveAGL and unit:GetAltitude(true) > warningAboveAGL then
+                    elseif cfg.warningAboveAGL and unit:GetAltitude(true) > cfg.warningAboveAGL then
                         MESSAGE:New("WARNING: Reduce your altitude immediately!", 2, nil, true):ToUnit(unit)
-                        if aglWarningSound and not checkZoneSoundPlayed then
-                            USERSOUND:New(aglWarningSound):ToUnit(unit)
+                        if cfg.aglWarningSound and not checkZoneSoundPlayed then
+                            USERSOUND:New(cfg.aglWarningSound):ToUnit(unit)
                         end
                     end
                 end
@@ -419,23 +412,24 @@ local function mainRaceLoop()
             if racerData.startTs and unit:IsAlive() then
                 -- the unit is NOT in zone, but has startTs - this means it's just left the zone
                 if hasEnteredAllZones(racerData.zoneCheck) then
-                    if timePreciser then
+                    if cfg.timePreciser then
                         local correctedNow = approximateTimeBetween(
-                                racerData.lastTs, pointDistance(racerData.lastPos, endRefPoint),
-                                now, pointDistance(unitPos, endRefPoint))
+                                racerData.lastTs, pointDistance(racerData.lastPos, cfg.endRefPoint),
+                                now, pointDistance(unitPos, cfg.endRefPoint))
                         timeInsideSeconds = correctedNow - racerData.startTs
                         formattedTime = string.format("%.2f", timeInsideSeconds)
                     end
                     local finishMessage = racerData.playerName .. " (of " .. racerData.groupName .. ") finished in: " .. formattedTime .. " seconds"
-                    if killZoneBehavior ~= 1 then
-                        finishMessage = finishMessage .. ", killZoneBehavior=" .. tostring(killZoneBehavior)
+                    if cfg.killZoneBehavior ~= 1 then
+                        finishMessage = finishMessage .. ", killZoneBehavior=" .. tostring(cfg.killZoneBehavior)
                     end
                     MESSAGE:New(finishMessage, 20):ToAll()
-                    USERSOUND:New(finishRaceSound):ToUnit(unit)
+                    USERSOUND:New(cfg.finishRaceSound):ToUnit(unit)
 
                     -- We only update log/leaderboard if the kill zone behavior is one of the competitive ones:
-                    if killZoneBehavior == 1 or killZoneBehavior == 2 then
-                        if logFinishResults then
+                    if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
+                        if cfg.logFinishResults then
+                            -- TODO change to CSV and add cfg.raceIdentifier as well
                             env.info("RACE FINISH: player " .. racerData.playerName .. ", type " .. unit:GetTypeName() .. " (group " .. racerData.groupName .. "): " .. formattedTime .. " s")
                         end
                         addResultToLadder(unit:GetTypeName(), {
@@ -457,11 +451,11 @@ local function mainRaceLoop()
 
         -- We check kill-zones after the racing zone, so we can rely on the updated value of "startTs" (or lack thereof).
         if not racerData.disqualified then
-            if killZoneBehavior == 1 or killZoneBehavior == 2 then
+            if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
                 for _, zone in ipairs(killZones) do
                     if unit:IsInZone(zone) then
                         --raceDebug("Player " .. racerData.playerName .. " in kill zone " .. zone:GetName()) -- pollutes the log
-                        if not insideRacingZone and killZoneBehavior == 2 then
+                        if not insideRacingZone and cfg.killZoneBehavior == 2 then
                             MESSAGE:New("You are inside a kill zone (outside the racing area)...", 2, nil, true):ToUnit(unit)
                         else
                             disqualify(racerData)
@@ -474,20 +468,20 @@ local function mainRaceLoop()
     end
 
     -- Printing warning to spectators potentially disturbing the racers:
-    if spectatorsWarningAgl and spectatorsWarningMessage then
+    if cfg.spectatorsWarningAgl and cfg.spectatorsWarningMessage then
         for _, spectator in pairs(spectators) do
             local unit = spectator.unit
-            if unit:IsInZone(racingZone) and unit:GetAltitude(true) < spectatorsWarningAgl then
-                MESSAGE:New(spectatorsWarningMessage, 2, nil, true):ToUnit(unit)
-                if aglWarningSound then
-                    USERSOUND:New(aglWarningSound):ToUnit(unit)
+            if unit:IsInZone(racingZone) and unit:GetAltitude(true) < cfg.spectatorsWarningAgl then
+                MESSAGE:New(cfg.spectatorsWarningMessage, 2, nil, true):ToUnit(unit)
+                if cfg.aglWarningSound then
+                    USERSOUND:New(cfg.aglWarningSound):ToUnit(unit)
                 end
             end
         end
     end
 
     -- if restart "voting" is enabled/set-up properly
-    if restartTimeoutSeconds and restartZone and restartTriggerFlag then
+    if cfg.restartTimeoutSeconds and restartZone and cfg.restartTriggerFlag then
         local racersTotal = 0
         local racersInRestartZone = 0
         for _, racerData in pairs(currentRacers) do
@@ -502,11 +496,11 @@ local function mainRaceLoop()
         -- ~3/5 quorum of active racers (not spectators) is needed for restart
         if racersTotal > 0 and racersInRestartZone / racersTotal > 0.59 then
             if not restartTs then
-                restartTs = now + restartTimeoutSeconds
+                restartTs = now + cfg.restartTimeoutSeconds
             elseif now > restartTs then
                 env.info("RACE RESTARTING - dumping leaderboard:\n" .. leaderboardText())
                 MESSAGE:New("Restart imminent!", 10):ToAll()
-                trigger.action.setUserFlag(restartTriggerFlag, true)
+                trigger.action.setUserFlag(cfg.restartTriggerFlag, true)
                 restartTriggered = true
             else
                 MESSAGE:New("Restarting in " .. math.ceil(restartTs - now) .. " seconds!", 2):ToAll()
@@ -523,57 +517,6 @@ end
 -- This starts a scheduler that will call the function every second.
 SCHEDULER:New(nil, mainRaceLoop, {}, 0, 1)
 
-if debugLog then
+if cfg.debugLog then
     env.info("RACE Script end")
 end
-
--- TODO remove when not needed
--- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
-local eventHandler = {}
-
--- some events are used for single-player, some for multi-player, it's a mess
-local allowedEvents = {
-    [world.event.S_EVENT_BIRTH] = "Birth",
-    [world.event.S_EVENT_PLAYER_ENTER_UNIT] = "Player Enter Unit",
-    [world.event.S_EVENT_CRASH] = "Crash",
-    [world.event.S_EVENT_DEAD] = "Dead",
-    [world.event.S_EVENT_PLAYER_LEAVE_UNIT] = "Player Leave Unit",
-}
-
-function eventHandler:onEvent(event)
-    if not event or not allowedEvents[event.id] then
-        return
-    end
-
-    local initiatorUnit = event.initiator
-    local playerName = initiatorUnit and initiatorUnit.getPlayerName and initiatorUnit:getPlayerName()
-    local playerId
-
-    if playerName then
-        local playerList = net.get_player_list()
-        for _, id in ipairs(playerList) do
-            if net.get_player_info(id, "name") == playerName then
-                playerId = id
-                break
-            end
-        end
-    end
-
-    local msg = "EVENT " .. tostring(event and event.id) .. "/" .. (allowedEvents[event.id] or "Unknown") .. ": "
-    if initiatorUnit then
-        local typeInfo = initiatorUnit.getTypeName and tostring(initiatorUnit:getTypeName()) or ("class " .. tostring(initiatorUnit.className_))
-        local unitName = initiatorUnit and initiatorUnit.getName and initiatorUnit:getName()
-        msg = msg .. "player " .. tostring(playerName)
-                .. ", type " .. typeInfo
-                .. ", unit " .. tostring(unitName)
-                .. ", UCID " .. tostring(playerId and net.get_player_info(playerId, "ucid"))
-        if unitName then
-            msg = msg .. ", CLIENT: " .. tostring(CLIENT:FindByName(unitName))
-        end
-    else
-        msg = msg .. "initiator nil!"
-    end
-    raceDebug(msg)
-end
-
-world.addEventHandler(eventHandler)
