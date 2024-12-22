@@ -1,0 +1,8 @@
+= Race script
+
+TODO
+
+Log example from completed race:
+----
+2024-12-22 13:37:49.456 INFO    SCRIPTING (Main): RACE FINISH|'BA_WarbirdBatumi_v2'|'<ucid-or-empty>'|'Virgo47'|'TF-51D'|'AirRace-TF51 AirStart One'|112.64
+----

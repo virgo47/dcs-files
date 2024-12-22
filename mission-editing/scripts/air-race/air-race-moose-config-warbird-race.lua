@@ -1,4 +1,4 @@
--- (CONFIG) Script by 'Virgo' / Member of the Black Angels
+-- RACE CONFIG Script by 'Virgo' / Member of the Black Angels (Public Domain, see https://unlicense.org)
 --
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
@@ -7,14 +7,25 @@
 -- This separates the parts related to the mission (this config) from the script itself.
 
 -- config table
+
 local c = {
     debugLog = true, -- debug info to log file
     debugMessages = false, -- debug messages to all players
-    debugMenu = true, -- Race Debug F10 menu items
+    debugMenuForAll = false, -- Race Debug F10 menu items, this makes them available for everyone
+    debugMenuFor = {
+        -- Format of entries is: ["hashed-ucid"] = true OR ["hashed-ucid"] = "player-name"
+        -- Leave empty for no admins, or add UCID hashed with simpleHash function from the script.
+        -- Try to use https://onecompiler.com/lua/433srfw6x to hash the UCID online (if still available).
+        -- NOTE that this does NOT work for single player! Use debugMenuForAll there.
+        ["1f2291ae"] = "Virgo47"
+    },
     logFinishResults = true, -- Logs every finished race to dcs.log in a format for further processing
-    raceIdentifier = "BA_HeloLochini_v4_9a", -- used in logged structure to identify the race (can be a mission name or shortcut)
     logTailSize = 30, -- number of last log messages that can be shown via F10 debug item
 
+    -- Race identifier is used in logged structure to identify the race (can be a mission name or shortcut).
+    -- It doesn't have to change if only minor changes are made to the mission (e.g. script fixes),
+    -- but should be changed if significant changes are made, e.g. track changes, kill zone changes, etc.
+    raceIdentifier = "BA_WarbirdBatumi_v2",
     racingZoneName = "racetrack",
     racerGroupPrefix = "AirRace-",
     -- Following prefixes are used in MOOSE set FilterPrefixes() and use Lua pattern matching, which means:
@@ -25,23 +36,23 @@ local c = {
 
     -- Kill zone behavior: 1 = kill, 2 = disqualify, any other value = no behavior
     killZoneBehavior = 2,
-    warningAboveAGL = 21,
-    killAboveAGL = 31, -- kill or disqualify, this follows killZoneBehavior setting
+    warningAboveAGL = 100,
+    killAboveAGL = 150, -- kill or disqualify, this follows killZoneBehavior setting
 
     -- Keep the sound files in some unused trigger, e.g. "resource-files-holder" so they are note removed from the mission!
     -- To make the trigger unused, add condition FLAG IS TRUE with some "NEVER" flag. Add SOUND TO ALL with all the files.
     -- If any of this is nil, or the file is not found, the sound will not be played.
     enterRaceSound = "A10_AutopilotEngage.ogg",
     finishRaceSound = "520200__latranz__industrial-alarm-EINZELN.ogg",
-    checkZoneSound = "Passed-checkpoi.ogg",
+    checkZoneSound = "radiobeep.ogg",
     killSound = "ThiesZonk.ogg",
     aglWarningSound = "altitude-warn.ogg",
 
     -- Reference points 1000m from the start/end line - OPTIONAL, comment out if not desired.
     -- Easiest way how to find it is to use the ruler in ME and read out CCS coordinates when 1000m away.
     -- Don't forget the right signs!
-    startRefPoint = {x = -314063, z = 895054},
-    endRefPoint = {x = -313904, z = 895206},
+    startRefPoint = {x = -352812, z = 612463},
+    endRefPoint = {x = -354948, z = 616105},
     refDistance = 1000, -- use the same value for both points
 
     -- Restart support requires a trigger in the ME and a restart zone:

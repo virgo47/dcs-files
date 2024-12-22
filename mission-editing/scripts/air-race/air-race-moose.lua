@@ -1,4 +1,5 @@
--- Script by 'Virgo' / Member of the Black Angels
+-- RACE Script by 'Virgo' / Member of the Black Angels (Public Domain, see https://unlicense.org)
+--
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
 -- Uses MOOSE for convenience, but not for events as it proved buggy in multi-player server environments.
@@ -9,7 +10,6 @@ local cfg = dunlibRacingConfig -- just abbreviation
 if cfg.debugLog then
     env.info("RACE Script start")
 end
-
 
 -- DATA STRUCTURES, INITIALIZATION
 
@@ -147,6 +147,34 @@ local function pointDistance(point3d, point2d)
     return math.sqrt(dx * dx + dz * dz)
 end
 
+-- Simple hash used for UCIDs in debugMenuFor (config).
+local function simpleHash(input)
+    local hash = 0
+    for i = 1, #input do
+        local char = input:byte(i)
+        hash = ((hash * 32) - hash) + char -- << not supported by DCS Lua
+        hash = hash % 0x100000000 -- & not supported by DCS Lua
+    end
+    return string.format("%08x", hash)
+end
+
+local function debugMenuAvailableFor(ucid, playerName)
+    if not ucid or next(cfg.debugMenuFor) == nil then
+        return false
+    end
+
+    local entry = cfg.debugMenuFor[simpleHash(ucid)]
+    if entry and (entry == true or entry == playerName) then
+        return true
+    end
+
+    return false
+end
+
+local function escapeString(str)
+    return str and tostring(str:gsub("([\\'])", "\\%1")) or "" -- always produce a string
+end
+
 -- EVENT SETUP
 
 -- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
@@ -205,7 +233,7 @@ function eventHandler:onEvent(event)
     local groupName = client:GetClientGroupName()
 
     if event.id == world.event.S_EVENT_BIRTH or event.id == world.event.S_EVENT_PLAYER_ENTER_UNIT then
-        raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. " (event.id: " .. event.id .. ")")
+        raceDebug("Player enter: " .. tostring(playerName) .. ", group " .. groupName .. ", UCID " .. tostring(ucid) .. " (event.id: " .. event.id .. ")")
 
         -- Check if the group name starts with the desired prefix
         if groupName and string.sub(groupName, 1, #cfg.racerGroupPrefix) == cfg.racerGroupPrefix then
@@ -226,7 +254,7 @@ function eventHandler:onEvent(event)
         -- Menu for checking leaderboard is added to any group when the client joins.
         -- There seems to be no similar functionality on the unit level, so it's best to have 1 unit in each group.
         MENU_GROUP_COMMAND:New(group, "Race Leaderboard", nil, showRaceLeaderboard, group)
-        if cfg.debugMenu then
+        if cfg.debugMenuForAll or debugMenuAvailableFor(ucid, playerName) then
             MENU_GROUP_COMMAND:New(group, "Race Debug", nil, showDebugMessage, group)
             MENU_GROUP_COMMAND:New(group, "Kill zones: disable", nil, changeKillZoneBehavior, nil, group)
             MENU_GROUP_COMMAND:New(group, "Kill zones: set to kill", nil, changeKillZoneBehavior, 1, group)
@@ -429,8 +457,9 @@ local function mainRaceLoop()
                     -- We only update log/leaderboard if the kill zone behavior is one of the competitive ones:
                     if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
                         if cfg.logFinishResults then
-                            -- TODO change to CSV and add cfg.raceIdentifier as well
-                            env.info("RACE FINISH: player " .. racerData.playerName .. ", type " .. unit:GetTypeName() .. " (group " .. racerData.groupName .. "): " .. formattedTime .. " s")
+                            env.info("RACE FINISH|'" .. escapeString(cfg.raceIdentifier) .. "'|'" .. (ucid or "")
+                                    .. "'|'" .. escapeString(racerData.playerName) .. "'|'" .. escapeString(unit:GetTypeName())
+                                    .. "'|'" .. escapeString(racerData.groupName) .. "'|" .. formattedTime)
                         end
                         addResultToLadder(unit:GetTypeName(), {
                             player = racerData.playerName,

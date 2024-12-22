@@ -304,7 +304,8 @@ Now you can leave the plane...
 cm.messageTable["P-51D-30-NA"] = cm.messageTable["P-51D"]
 
 cm.defaultMessage = [[ 
-Sorry, no instructions for #{typeName}.\nGet it down somehow...
+Sorry, no instructions for #{typeName}.
+Get it down somehow...
 ]]
 function cm:onEvent(event)
     -- it works with PLAYER event, but not with S_EVENT_BIRTH (yet), why?

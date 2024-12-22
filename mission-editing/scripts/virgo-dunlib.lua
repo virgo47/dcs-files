@@ -142,7 +142,7 @@ end
 function dunlib.interpolate(string, replacements)
     -- https://www.lua.org/manual/5.3/manual.html#6.4
     -- parentheses to return only the first value, not both return values
-    return (string:gsub("\\\n", ""):gsub("#{(.-)}", replacements))
+    return (string:gsub("\\\n", ""):gsub("#{(.-)}", tostring(replacements)))
 end
 
 -- Log functions, including print override hack
