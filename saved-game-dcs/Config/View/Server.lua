@@ -33,21 +33,9 @@ function default_fighter_player(t)
 	return res
 end
 
-function fulcrum()
-	return {
-		Cockpit = {
-			default_fighter_player({CockpitLocalPoint = {4.71,1.28,0.000000}})
-		},
-		Chase   = {
-			LocalPoint      = {1.220000,3.750000,0.000000},
-			AnglesDefault   = {180.000000,-8.000000},
-		}, -- Chase
-		Arcade = {
-			LocalPoint      = {-15.080000,6.350000,0.000000},
-			AnglesDefault   = {0.000000,-8.000000},
-		}, -- Arcade
-	}
-end
+-----------------------------------------------------------------------------------
+-- Custom view settings overriding defaults from other planes
+-- Axis mapping minus-to-plus: x - back-to-front, y - down-to-up, z - left-to-right
 
 ViewSettings = {}
 ViewSettings["A-10A"] = {
@@ -68,6 +56,52 @@ ViewSettings["A-10A"] = {
 		AnglesDefault   = {0.000000,-12.000000},
 	}, -- Arcade
 }
+
+ViewSettings["Christen Eagle II"] = {
+	Cockpit	=	{
+		[1]	=	{ --playerslot1
+			CockpitLocalPoint			=	{ -1.350,	0.220,	0.000 },
+			CameraViewAngleLimits		=	{ 30.0,	120.0 },
+			CameraAngleRestriction		=	{ false,	90.0,	0.50 },
+			CameraAngleLimits			=	{ 200.0,	-90.0,	90.0 },
+			EyePoint					=	{ 0.00,	0.00,	0.00 },
+			ShoulderSize				=	0.100,
+			Allow360rotation			=	false,
+			limits_6DOF					=	{
+				x	=	{ -0.050,	1.200 },
+				y	=	{ -0.300,	0.300 },
+				z	=	{ -0.300,	0.300 },
+				roll	=	45.0
+			},
+		},
+		[2]	=	{ --playerslot2
+			CockpitLocalPoint			=	{ -0.650,	0.170,	0.000 },
+			CameraViewAngleLimits		=	{ 50.0,	130.0 },
+			CameraAngleRestriction		=	{ false,	90.0,	0.50 },
+			CameraAngleLimits			=	{ 200.0,	-90.0,	90.0 },
+			EyePoint					=	{ 0.00,	0.00,	0.00 },
+			ShoulderSize				=	0.100,
+			Allow360rotation			=	false,
+			limits_6DOF					=	{
+				x	=	{ -0.100,	0.300 },
+				y	=	{ -0.300,	0.300 },
+				z	=	{ -0.300,	0.300 },
+				roll	=	45.0
+			},
+		},
+	},	--Cockpit
+	Chase	=	{
+		LocalPoint			=	{0.13,	0.50,	0.00 },
+		AnglesDefault		=	{ 180.00,	-15.00 },
+
+
+	},	--Chase
+	Arcade	=	{
+		LocalPoint			=	{ -15.0,	3.0,	0.0 },
+		AnglesDefault		=	{ 0.00,	-3.00 },
+	},	--Arcade
+}
+
 ViewSettings["F-15C"] = {
 	Cockpit = {
 	[1] = default_fighter_player({CockpitLocalPoint      = {6.210000,1.204000,0.000000}})-- player slot 1
@@ -81,6 +115,45 @@ ViewSettings["F-15C"] = {
 		AnglesDefault   = {0.000000,-8.000000},
 	}, -- Arcade
 }
+
+ViewSettings["MiG-19P"] = {
+	Cockpit = {
+		[1] = {-- player slot 1
+			CockpitLocalPoint         = {1.00,0.000,0.000},
+			CameraViewAngleLimits     = {20.0000,140.0000},
+			CameraAngleRestriction    = {false,90.000000,0.500000},
+			CameraAngleLimits         = {200,-90.000000,90.000000},
+			EyePoint                  = {0.000000,0.000000,0.000000},
+			ShoulderSize             = 0.25,
+			Allow360rotation        = false,
+			limits_6DOF             = {x = {-0.100000,0.40000},y ={-0.400000,0.200000},z = {-0.30000,0.30000},roll = 90.000000},
+		},
+	}, -- Cockpit
+	Chase = {
+		LocalPoint      = {-10.0,1.0,3.0},
+		AnglesDefault   = {0.000000, 0.000000},
+	}, -- Chase
+	Arcade = {
+		LocalPoint      = {-21.500000,6.618000,0.000000},
+		AnglesDefault   = {0.000000,-8.000000},
+	}, -- Arcade
+}
+
+function fulcrum()
+	return {
+		Cockpit = {
+			default_fighter_player({CockpitLocalPoint = {4.71,1.28,0.000000}})
+		},
+		Chase   = {
+			LocalPoint      = {1.220000,3.750000,0.000000},
+			AnglesDefault   = {180.000000,-8.000000},
+		}, -- Chase
+		Arcade = {
+			LocalPoint      = {-15.080000,6.350000,0.000000},
+			AnglesDefault   = {0.000000,-8.000000},
+		}, -- Arcade
+	}
+end
 
 ViewSettings["MiG-29A"] 	= fulcrum()
 ViewSettings["MiG-29G"] 	= fulcrum()
@@ -131,8 +204,6 @@ ViewSettings["Su-27"] = {
 
 ViewSettings["Su-33"] = ViewSettings["Su-27"]
 
------------------------------------------------------------------------------------
--- Custom view settings overriding defaults from other planes
 -- Axis mapping minus-to-plus: x - back-to-front, y - down-to-up, z - left-to-right
 
 ViewSettings["UH-1H"] = {
@@ -212,7 +283,7 @@ ViewSettings["F-5E-3"] = {
 		EyePoint               = {0.05000,0.100000,0.000000},
 		ShoulderSize		   = 0.25,
 		Allow360rotation	   = false,
-		limits_6DOF            = {x = {-0.05,0.21},y ={-0.10,0.08},z = {-0.19,0.19},roll = 90.000000},
+		limits_6DOF            = {x = {-0.1,0.3},y ={-0.30,0.08},z = {-0.3,0.3},roll = 90.000000},
 	},
 	}, -- Cockpit
 	Chase = {

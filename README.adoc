@@ -61,6 +61,7 @@ The following table shows the type and ME names of the playable aircraft ordered
 | DCS: Mi-24P Hind 2+| Mi-24P |
 | DCS: MiG-15bis by Belsimtek 2+| MiG-15bis |
 | MiG-15bis Flaming Cliffs | MiG-15bis_FC | MiG-15bis FC | Part of FC2024
+| DCS: MiG-19P Farmer by RAZBAM 2+| MiG-19P |
 | DCS: MiG-21bis by Magnitude 3 LLC 2+| MiG-21Bis |
 .3+| MiG-29 for DCS World 2+| MiG-29A .3+| Also in FC3
 2+| MiG-29G
