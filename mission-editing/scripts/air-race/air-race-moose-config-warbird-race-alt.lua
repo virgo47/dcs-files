@@ -6,6 +6,8 @@
 -- CONFIGURATION - load this BEFORE the main "air-race-moose.lua" script!
 -- This separates the parts related to the mission (this config) from the script itself.
 
+-- This is an alternative version with ignoreCheckZoneAboveWarningAltitude and kill altitude lifted from 150 to 200 meters.
+
 -- config table
 local c = {
     debugLog = true, -- debug info to log file
@@ -37,8 +39,8 @@ local c = {
     -- Kill zone behavior: 1 = kill, 2 = disqualify, any other value = no behavior
     killZoneBehavior = 2,
     warningAboveAGL = 100,
-    killAboveAGL = 150, -- kill or disqualify, this follows killZoneBehavior setting
-    ignoreCheckZoneAboveWarningAltitude = false, -- if true, player must be below warning altitude at least for one race loop (~1s) in the check zone
+    killAboveAGL = 200, -- kill or disqualify, this follows killZoneBehavior setting
+    ignoreCheckZoneAboveWarningAltitude = true, -- if true, player must be below warning altitude at least for one race loop (~1s) in the check zone
 
     -- Keep the sound files in some unused trigger, e.g. "resource-files-holder" so they are note removed from the mission!
     -- To make the trigger unused, add condition FLAG IS TRUE with some "NEVER" flag. Add SOUND TO ALL with all the files.

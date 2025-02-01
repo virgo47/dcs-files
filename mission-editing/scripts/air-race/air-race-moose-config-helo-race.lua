@@ -16,7 +16,8 @@ local c = {
         -- Leave empty for no admins, or add UCID hashed with simpleHash function from the script.
         -- Try to use https://onecompiler.com/lua/433srfw6x to hash the UCID online (if still available).
         -- NOTE that this does NOT work for single player! Use debugMenuForAll there.
-        ["1f2291ae"] = "Virgo47"
+        ["1f2291ae"] = true, -- Virgo
+        ["cbe551c0"] = true, -- Sarge
     },
     logFinishResults = true, -- Logs every finished race to dcs.log in a format for further processing
     logTailSize = 30, -- number of last log messages that can be shown via F10 debug item
@@ -35,8 +36,9 @@ local c = {
 
     -- Kill zone behavior: 1 = kill, 2 = disqualify, any other value = no behavior
     killZoneBehavior = 2,
-    warningAboveAGL = 21,
+    warningAboveAGL = 21, -- AGL in meters
     killAboveAGL = 31, -- kill or disqualify, this follows killZoneBehavior setting
+    ignoreCheckZoneAboveWarningAltitude = false, -- if true, player must be below warning altitude at least for one race loop (~1s) in the check zone
 
     -- Keep the sound files in some unused trigger, e.g. "resource-files-holder" so they are note removed from the mission!
     -- To make the trigger unused, add condition FLAG IS TRUE with some "NEVER" flag. Add SOUND TO ALL with all the files.
@@ -56,6 +58,7 @@ local c = {
 
     -- Restart support requires a trigger in the ME and a restart zone:
     restartZoneName = "restart-zone", -- leave nil if not supported
+    restartQuorum = 0.6, -- in 0-1 range 0.6 is 60% or 3/5 of players
     restartTimeoutSeconds = 10,
     -- add ONCE trigger with FLAG IS TRUE for this flag name with action END MISSION, winner NEUTRAL
     restartTriggerFlag = "restart",

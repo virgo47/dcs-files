@@ -124,6 +124,8 @@ local function showDebugMessage(group)
             .. "\n# of racingCheckZones = " .. tostring(racingCheckZones and #racingCheckZones)
             .. "\n# of killZones = " .. tostring(killZones and #killZones)
             .. "\n# of spectators = " .. tostring(mapSize(spectators))
+            .. "\nwarning AGL/kill AGL = " .. tostring(cfg.warningAboveAGL) .. "/" .. tostring(cfg.killAboveAGL) .. " m"
+            .. "\nignoreCheckZoneAboveWarningAltitude  = " .. tostring(cfg.ignoreCheckZoneAboveWarningAltitude)
             .. "\nspectator warning AGL = " .. tostring(cfg.spectatorsWarningAgl) .. " m => ~" .. tostring(cfg.spectatorsWarningReportedAglRoundedFeet) .. " ft"
             .. "\nlast race loop check/now = " .. tostring(lastRaceLoopTs) .. "/" .. tostring(timer.getAbsTime()) .. " s"
             .. "\n\nPLAYERS:"
@@ -159,7 +161,7 @@ local function simpleHash(input)
 end
 
 local function debugMenuAvailableFor(ucid, playerName)
-    if not ucid or next(cfg.debugMenuFor) == nil then
+    if not ucid or not cfg.debugMenuFor or next(cfg.debugMenuFor) == nil then
         return false
     end
 
@@ -189,7 +191,10 @@ local allowedEvents = {
     [world.event.S_EVENT_PLAYER_LEAVE_UNIT] = "Player Leave Unit",
 }
 
-local changeKillZoneBehavior -- function defined later, used in the handler
+local function changeKillZoneBehavior(newKillZoneBehavior, group)
+    cfg.killZoneBehavior = newKillZoneBehavior
+    showDebugMessage(group)
+end
 
 function eventHandler:onEvent(event)
     if not event or not allowedEvents[event.id] then
@@ -331,23 +336,8 @@ local function disqualify(racerData)
     if cfg.killSound then
         USERSOUND:New(cfg.killSound):ToUnit(racerData.unit)
     end
-    if cfg.killZoneBehavior == 1 then
+    if racerData.killZoneBehavior == 1 then
         racerData.unit:Explode(10)
-    end
-end
-
--- declared as local previously
-changeKillZoneBehavior = function(newKillZoneBehavior, group)
-    cfg.killZoneBehavior = newKillZoneBehavior
-    showDebugMessage(group)
-
-    -- We have to cancel any race in progress if kill zones are disabled:
-    if newKillZoneBehavior == nil then
-        for _, racerData in pairs(currentRacers) do
-            if racerData.startTs and not racerData.disqualified then
-                disqualify(racerData)
-            end
-        end
     end
 end
 
@@ -398,14 +388,14 @@ local function mainRaceLoop()
 
                     -- Check the intermediate zones
                     for _, checkZone in ipairs(racingCheckZones) do
-                        if unit:IsInZone(checkZone) then
-                            if not racerData.zoneCheck[checkZone] then
-                                raceDebug("Player " .. racerData.playerName .. " entered the check zone " .. checkZone:GetName())
-                                racerData.zoneCheck[checkZone] = true
-                                if cfg.checkZoneSound then
-                                    USERSOUND:New(cfg.checkZoneSound):ToUnit(unit)
-                                    checkZoneSoundPlayed = true
-                                end
+                        if unit:IsInZone(checkZone) and not racerData.zoneCheck[checkZone]
+                                and (not cfg.ignoreCheckZoneAboveWarningAltitude or unit:GetAltitude(true) < cfg.warningAboveAGL)
+                        then
+                            raceDebug("Player " .. racerData.playerName .. " entered the check zone " .. checkZone:GetName())
+                            racerData.zoneCheck[checkZone] = true
+                            if cfg.checkZoneSound then
+                                USERSOUND:New(cfg.checkZoneSound):ToUnit(unit)
+                                checkZoneSoundPlayed = true
                             end
                         end
                     end
@@ -420,10 +410,12 @@ local function mainRaceLoop()
                     end
                     USERSOUND:New(cfg.enterRaceSound):ToUnit(unit)
                     racerData.zoneCheck = {}
+                    -- We will save current behavior for this race, it will be used even if the config changes (via debug menu).
+                    racerData.killZoneBehavior = cfg.killZoneBehavior
                 end
 
                 -- Altitude warning and disqualification
-                if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
+                if racerData.killZoneBehavior == 1 or racerData.killZoneBehavior == 2 then
                     if cfg.killAboveAGL and unit:GetAltitude(true) > cfg.killAboveAGL then
                         MESSAGE:New(racerData.playerName .. " (of " .. racerData.groupName .. ") flew too high and was disqualified!", 15):ToAll()
                         disqualify(racerData)
@@ -448,14 +440,11 @@ local function mainRaceLoop()
                         formattedTime = string.format("%.2f", timeInsideSeconds)
                     end
                     local finishMessage = racerData.playerName .. " (of " .. racerData.groupName .. ") finished in: " .. formattedTime .. " seconds"
-                    if cfg.killZoneBehavior ~= 1 then
-                        finishMessage = finishMessage .. ", killZoneBehavior=" .. tostring(cfg.killZoneBehavior)
-                    end
                     MESSAGE:New(finishMessage, 20):ToAll()
                     USERSOUND:New(cfg.finishRaceSound):ToUnit(unit)
 
                     -- We only update log/leaderboard if the kill zone behavior is one of the competitive ones:
-                    if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
+                    if racerData.killZoneBehavior == 1 or racerData.killZoneBehavior == 2 then
                         if cfg.logFinishResults then
                             env.info("RACE FINISH|'" .. escapeString(cfg.raceIdentifier) .. "'|'" .. (ucid or "")
                                     .. "'|'" .. escapeString(racerData.playerName) .. "'|'" .. escapeString(unit:GetTypeName())
@@ -480,11 +469,11 @@ local function mainRaceLoop()
 
         -- We check kill-zones after the racing zone, so we can rely on the updated value of "startTs" (or lack thereof).
         if not racerData.disqualified then
-            if cfg.killZoneBehavior == 1 or cfg.killZoneBehavior == 2 then
+            if racerData.killZoneBehavior == 1 or racerData.killZoneBehavior == 2 then
                 for _, zone in ipairs(killZones) do
                     if unit:IsInZone(zone) then
                         --raceDebug("Player " .. racerData.playerName .. " in kill zone " .. zone:GetName()) -- pollutes the log
-                        if not insideRacingZone and cfg.killZoneBehavior == 2 then
+                        if not insideRacingZone and racerData.killZoneBehavior == 2 then
                             MESSAGE:New("You are inside a kill zone (outside the racing area)...", 2, nil, true):ToUnit(unit)
                         else
                             disqualify(racerData)
@@ -522,8 +511,8 @@ local function mainRaceLoop()
                 MESSAGE:New("You feel something strange around here...", 2, nil, true):ToUnit(unit)
             end
         end
-        -- ~3/5 quorum of active racers (not spectators) is needed for restart
-        if racersTotal > 0 and racersInRestartZone / racersTotal > 0.59 then
+        -- by default ~3/5 quorum of active racers (not spectators) is needed for restart
+        if racersTotal > 0 and racersInRestartZone / racersTotal >= (cfg.restartQuorum or 0.6) then
             if not restartTs then
                 restartTs = now + cfg.restartTimeoutSeconds
             elseif now > restartTs then
