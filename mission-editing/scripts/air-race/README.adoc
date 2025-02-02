@@ -4,7 +4,7 @@ Lua script for easier creation of air race missions.
 It supports scaling the mission with more racers without any triggers at all (except for the ones loading the scripts).
 
 The script powers the missions on DCS servers "[TM] Black Angels - Air Race Helicopters" and "[TM] Black Angels - Air Race Warbirds".
-You can check the race results on the https://dcs-air-race.e[DCS Air Race] site.
+You can check the race results on the https://dcs-air-race.eu[DCS Air Race] site.
 
 == How to use it
 
@@ -52,7 +52,7 @@ Otherwise, DCS does not know that the sounds are used by the script, and they wo
 Create a "1 ONCE" trigger, name it "resource-holder", add a condition (middle section) of type "FLAG IS TRUE" but use a FLAG that is never used, e.g. "never" - otherwise you'd hear the sounds at the start of the mission.
 Then add an action for all the sounds that are configured.
 You can use "SOUND TO ALL" (because the trigger does not run anyway) and load each file in a separate action.
-The process is shown in https://youtu.be/ltUu53y4f5s?622s[this video segment].
+The process is shown in https://youtu.be/ltUu53y4f5s?t=622s[this video segment].
 * Set up the "time preciser" for sub-second time approximation.
 This is a bit more involved, but https://youtu.be/ltUu53y4f5s?t=667s[this video segment] should make it clear enough.
 
@@ -84,4 +84,4 @@ This allows to construct different leaderboards for different types.
 . Time in seconds with optional two decimal places with `.` as a decimal separator.
 Decimals are shown only if the "time preciser" is configured, otherwise an integer number is used.
 
-To obtain only the lines of interest, the solution should scan the log file for lines containing `RACE FINISH|'.
+To obtain only the lines of interest, the solution should scan the log file for lines containing `RACE FINISH|`.
