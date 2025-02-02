@@ -118,6 +118,11 @@ local function mapSize(map)
 end
 
 local function showDebugMessage(group)
+    if not racingZone then
+        MESSAGE:New("DEBUG:\n\nERROR - no racing zone! Fix the name in config.", 10, nil, true):ToGroup(group)
+        return
+    end
+
     local resultText = "DEBUG:\n\nkillZoneBehavior = " .. tostring(cfg.killZoneBehavior)
             .. "\nracerGroupPrefix = " .. tostring(cfg.racerGroupPrefix)
             .. "\ntimePreciser = " .. tostring(cfg.timePreciser)
@@ -286,13 +291,16 @@ world.addEventHandler(eventHandler)
 
 -- REPEATED CHECKS and related functions
 
-local function hasEnteredAllZones(enteredZones)
+local function checkZones(enteredZones)
+    local passed = 0
+
     for _, zone in ipairs(racingCheckZones) do
-        if not enteredZones[zone] then
-            return false
+        if enteredZones[zone] then
+            passed = passed + 1
         end
     end
-    return true
+
+    return passed, #racingCheckZones
 end
 
 local function addResultToLadder(unitType, result)
@@ -376,7 +384,7 @@ local function mainRaceLoop()
         local unit = racerData.unit
         local unitPos = unit:GetPointVec3()
         local formattedTime = tostring(timeInsideSeconds)
-        local checkZoneSoundPlayed = false -- this var ensures that the check zone sound plays at least for one cycle
+        local importantEventSoundPlayed = false -- this var ensures that the important sounds (start, check zone...) are played even in warning altitudes
 
         local insideRacingZone = unit:IsInZone(racingZone)
         if insideRacingZone then
@@ -395,7 +403,7 @@ local function mainRaceLoop()
                             racerData.zoneCheck[checkZone] = true
                             if cfg.checkZoneSound then
                                 USERSOUND:New(cfg.checkZoneSound):ToUnit(unit)
-                                checkZoneSoundPlayed = true
+                                importantEventSoundPlayed = true
                             end
                         end
                     end
@@ -409,6 +417,7 @@ local function mainRaceLoop()
                         racerData.startTs = now
                     end
                     USERSOUND:New(cfg.enterRaceSound):ToUnit(unit)
+                    importantEventSoundPlayed = true
                     racerData.zoneCheck = {}
                     -- We will save current behavior for this race, it will be used even if the config changes (via debug menu).
                     racerData.killZoneBehavior = cfg.killZoneBehavior
@@ -421,7 +430,7 @@ local function mainRaceLoop()
                         disqualify(racerData)
                     elseif cfg.warningAboveAGL and unit:GetAltitude(true) > cfg.warningAboveAGL then
                         MESSAGE:New("WARNING: Reduce your altitude immediately!", 2, nil, true):ToUnit(unit)
-                        if cfg.aglWarningSound and not checkZoneSoundPlayed then
+                        if cfg.aglWarningSound and not importantEventSoundPlayed then
                             USERSOUND:New(cfg.aglWarningSound):ToUnit(unit)
                         end
                     end
@@ -431,7 +440,8 @@ local function mainRaceLoop()
             -- not insideRacingZone
             if racerData.startTs and unit:IsAlive() then
                 -- the unit is NOT in zone, but has startTs - this means it's just left the zone
-                if hasEnteredAllZones(racerData.zoneCheck) then
+                local passed, total = checkZones(racerData.zoneCheck)
+                if passed == total then
                     if cfg.timePreciser then
                         local correctedNow = approximateTimeBetween(
                                 racerData.lastTs, pointDistance(racerData.lastPos, cfg.endRefPoint),
@@ -456,7 +466,8 @@ local function mainRaceLoop()
                         })
                     end
                 else
-                    MESSAGE:New("You didn't go through the whole course, this attempt does not count.", 6, nil, true):ToUnit(unit)
+                    MESSAGE:New("You didn't go through the whole course (" .. passed .. " of " .. total .. "), this attempt does not count.", 6, nil, true):ToUnit(unit)
+                    USERSOUND:New(cfg.unfinishedRaceSound):ToUnit(unit)
                 end
             end
 
@@ -533,7 +544,11 @@ local function mainRaceLoop()
 end
 
 -- This starts a scheduler that will call the function every second.
-SCHEDULER:New(nil, mainRaceLoop, {}, 0, 1)
+if racingZone then
+    SCHEDULER:New(nil, mainRaceLoop, {}, 0, 1)
+else
+    env.warning("RACE no racing zone, main loop disabled!")
+end
 
 if cfg.debugLog then
     env.info("RACE Script end")

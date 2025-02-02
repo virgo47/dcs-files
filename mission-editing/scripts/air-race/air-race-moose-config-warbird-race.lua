@@ -28,7 +28,7 @@ local c = {
     raceIdentifier = "BA_WarbirdBatumi_v2",
     racingZoneName = "racetrack",
     racerGroupPrefix = "AirRace-",
-    -- Following prefixes are used in MOOSE set FilterPrefixes() and use Lua pattern matching, which means:
+    -- Following prefixes use Lua pattern matching, which means:
     -- Use % (escape character) before any of the following chars: -.%^$()[]*+?
     -- Because FilterPrefixes actually filters any substring, use ^ at the start of the prefix.
     racingCheckZonePrefix = "^race%-check%-",

@@ -1,8 +1,87 @@
-= Race script
+= DCS Air Race script
 
-TODO
+Lua script for easier creation of air race missions.
+It supports scaling the mission with more racers without any triggers at all (except for the ones loading the scripts).
 
-Log example from completed race:
+The script powers the missions on DCS servers "[TM] Black Angels - Air Race Helicopters" and "[TM] Black Angels - Air Race Warbirds".
+You can check the race results on the https://dcs-air-race.e[DCS Air Race] site.
+
+== How to use it
+
+You can see this tutorial video about the script: https://youtu.be/ltUu53y4f5s[DCS 2.9 | Racing Mission Lua Scripting]
+
+The process of creating a minimal racing mission goes roughly like this:
+
+* Create a racing zone (trigger zone), name it distinctly, you will use the name later.
+* Add a group (helicopter or plane) with a distinct prefix, e.g. `racer-huey-1` (prefix `racer-`).
+It is important to use this for the Group name; Pilot name is ignored by the script.
+Set the skill to *Client*.
+Decide whether the aircraft starts on the ground or in the air, consider what will be the race limitation for your race.
+Keep the unit count for the group at 1.
+Script expects single-unit group for each player because DCS doesn't support some necessary functions for individual units, only for groups.
+* Add necessary scripts:
+** Go to triggers ("Set rules for trigger" button), in the Triggers section, add a new trigger of type "4 MISSION START", name it "scripts".
+** First, the current version of the script requires the MOOSE script library, you can download it from https://github.com/FlightControl-Master/MOOSE/releases[here].
+From the Assets (at the end of the most recent version), download the smaller script with the underscore called `Moose_.lua`.
+After the download, it's a good idea to rename it to include the version, just to be sure which one it is, e.g. `Moose_2.9.10.lua`.
+** In the Actions section (the third column), add a new action "DO SCRIPT FILE" and select (open) the Moose file you've downloaded.
+** Next two scripts will be the racing configuration and racing script itself.
+It's up to you, whether you'll use "DO SCRIPT FILE" or "DO SCRIPT" actions.
+I like "DO SCRIPT" a bit more as it is easier to make small adjustments right in the Mission editor without reopening the file.
+Put the script configuration (e.g. `air-race-config-minimal.lua`) into the first of these two actions.
+Then enter the main script (`air-race-moose.lua`) into the other action.
+For both, simply copy and paste the script into the Text field.
+You can also expand the text field to see more of it, which is convenient especially for editing.
++
+[NOTE]
+With "DO SCRIPT FILE", if you just change the file on disk, it will not be updated in the mission file.
+For that you have to reload it by using the *Open* button again.
+
+Now you can test the minimal mission.
+There is no sound, no real course - you just fly through the zone and you're done.
+Or you can start adding more features:
+
+* Try to add a kill zone - check the configuration file for the necessary prefix, e.g. `kill-` for the `air-race-config-minimal.lua`.
+* Try to add check zones - the racer must go through all the zones (order does not matter) in order to finish the race successfully.
+Use the prefix from the configuration, e.g. `race-check-`.
+* Adjust the `killAboveAGL` and `warningAboveAGL` - or disable them altogether (comment them out with `--`).
+Arguably, it is much more fun to have some altitude limitations.
+* Add the sounds.
+This requires a trick with an additional trigger that preserves the sound files in the mission.
+Otherwise, DCS does not know that the sounds are used by the script, and they would not be available.
+Create a "1 ONCE" trigger, name it "resource-holder", add a condition (middle section) of type "FLAG IS TRUE" but use a FLAG that is never used, e.g. "never" - otherwise you'd hear the sounds at the start of the mission.
+Then add an action for all the sounds that are configured.
+You can use "SOUND TO ALL" (because the trigger does not run anyway) and load each file in a separate action.
+The process is shown in https://youtu.be/ltUu53y4f5s?622s[this video segment].
+* Set up the "time preciser" for sub-second time approximation.
+This is a bit more involved, but https://youtu.be/ltUu53y4f5s?t=667s[this video segment] should make it clear enough.
+
+There is much more that can be set up, e.g. if you want to blow ut the player instead of just "gently" disqualify them... just go through the config file and read the comments.
+Or study the script, it's heavily commented, and it is not that complex after all.
+
+== CSV from completed races
+
+The script itself does not persist the results in any way, a separate solution must be used for that.
+To make it easier, every time the race ends successfully, the result is written to `dcs.log` as a CSV record.
+
+Log example for a completed race:
 ----
 2024-12-22 13:37:49.456 INFO    SCRIPTING (Main): RACE FINISH|'BA_WarbirdBatumi_v2'|'<ucid-or-empty>'|'Virgo47'|'TF-51D'|'AirRace-TF51 AirStart One'|112.64
 ----
+
+The format of the line is CSV with `|` separator and `'` quoting character with `\` used to escape either `'` or `|` characters inside any of the quoted strings.
+For example, if the name of the player is `++Very'fancy\name++` it would appear in the line as `++...|'Very\'fancy\\name'|...++`.
+
+The fields of the CSV line are:
+
+. DCS log preamble, ignore.
+. Name of the race (can be set in the script config as `raceIdentifier`).
+. Player's UCID or nothing - there should be UCID present when run on a dedicated multiplayer server.
+. Player's name.
+. Unit's type name (`unit:GetTypeName()` in MOOSE).
+This allows to construct different leaderboards for different types.
+. Unit's group name.
+. Time in seconds with optional two decimal places with `.` as a decimal separator.
+Decimals are shown only if the "time preciser" is configured, otherwise an integer number is used.
+
+To obtain only the lines of interest, the solution should scan the log file for lines containing `RACE FINISH|'.
