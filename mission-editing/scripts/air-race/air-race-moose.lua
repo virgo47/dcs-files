@@ -303,11 +303,14 @@ local function checkZones(enteredZones)
     return passed, #racingCheckZones
 end
 
-local function addResultToLadder(unitType, result)
-    local unitResults = ladder[unitType]
+local function addResultToLadder(unitTypeName, result)
+    if cfg.singleLeaderboardForAllTypes then
+        unitTypeName = "ALL"
+    end
+    local unitResults = ladder[unitTypeName]
     if not unitResults then
         unitResults = {}
-        ladder[unitType] = unitResults
+        ladder[unitTypeName] = unitResults
     end
 
     local playerExists = false
@@ -416,7 +419,9 @@ local function mainRaceLoop()
                     else
                         racerData.startTs = now
                     end
-                    USERSOUND:New(cfg.enterRaceSound):ToUnit(unit)
+                    if cfg.enterRaceSound then
+                        USERSOUND:New(cfg.enterRaceSound):ToUnit(unit)
+                    end
                     importantEventSoundPlayed = true
                     racerData.zoneCheck = {}
                     -- We will save current behavior for this race, it will be used even if the config changes (via debug menu).
@@ -451,7 +456,9 @@ local function mainRaceLoop()
                     end
                     local finishMessage = racerData.playerName .. " (of " .. racerData.groupName .. ") finished in: " .. formattedTime .. " seconds"
                     MESSAGE:New(finishMessage, 20):ToAll()
-                    USERSOUND:New(cfg.finishRaceSound):ToUnit(unit)
+                    if cfg.finishRaceSound then
+                        USERSOUND:New(cfg.finishRaceSound):ToUnit(unit)
+                    end
 
                     -- We only update log/leaderboard if the kill zone behavior is one of the competitive ones:
                     if racerData.killZoneBehavior == 1 or racerData.killZoneBehavior == 2 then
@@ -467,7 +474,9 @@ local function mainRaceLoop()
                     end
                 else
                     MESSAGE:New("You didn't go through the whole course (" .. passed .. " of " .. total .. "), this attempt does not count.", 6, nil, true):ToUnit(unit)
-                    USERSOUND:New(cfg.unfinishedRaceSound):ToUnit(unit)
+                    if cfg.unfinishedRaceSound then
+                        USERSOUND:New(cfg.unfinishedRaceSound):ToUnit(unit)
+                    end
                 end
             end
 

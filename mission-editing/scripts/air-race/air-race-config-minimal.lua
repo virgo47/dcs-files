@@ -32,6 +32,8 @@ local c = {
     -- Because FilterPrefixes actually filters any substring, use ^ at the start of the prefix.
     racingCheckZonePrefix = "^race%-check%-",
     killZonePrefix = "^kill%-",
+    -- This shows just one ALL category in F10 leaderboard, but log entries still contain the type name.
+    --singleLeaderboardForAllTypes = true,
 
     -- Kill zone behavior: 1 = kill, 2 = disqualify, any other value = no behavior
     killZoneBehavior = 2,
