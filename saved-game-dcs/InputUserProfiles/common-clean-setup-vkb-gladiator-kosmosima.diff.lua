@@ -6,9 +6,9 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.20,
+							[1] = 0.15,
 						},
-						["deadzone"] = 0.01,
+						["deadzone"] = 0,
 						["hardwareDetent"] = false,
 						["hardwareDetentAB"] = 0,
 						["hardwareDetentMax"] = 0,
@@ -27,9 +27,9 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.20,
+							[1] = 0.15,
 						},
-						["deadzone"] = 0.01,
+						["deadzone"] = 0,
 						["hardwareDetent"] = false,
 						["hardwareDetentAB"] = 0,
 						["hardwareDetentMax"] = 0,
@@ -66,6 +66,14 @@ local diff = {
 			["name"] = "Rudder",
 		},
 ]]
+		["a2003cdnil"] = {
+			["name"] = "Rudder",
+			["removed"] = {
+				[1] = {
+					["key"] = "JOY_RZ",
+				},
+			},
+		},
 		["a2004cdnil"] = {
 			["name"] = "Thrust",
 			["removed"] = {
