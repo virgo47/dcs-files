@@ -222,13 +222,13 @@ ViewSettings["UH-1H"] = {
 
 	[2] = {-- player slot 2
 		CockpitLocalPoint      = {2.34, 0.37 , 0.0},
-		CameraViewAngleLimits  = {60.000000,140.000000},
+		CameraViewAngleLimits  = {20.000000,140.000000},
 		CameraAngleRestriction = {false,90.000000,0.400000},
 		CameraAngleLimits      = {140.000000,-65.000000,90.000000},
 		EyePoint               = {0.090000,0.000000,0.000000},
 		limits_6DOF            = {x = {-0.100000,0.500000},
 								  y = {-0.200000,0.350000},
-								  z = {-0.750000,0.500000},
+								  z = {-0.900000,0.700000},
 								  roll = 90.000000},
 	},
 

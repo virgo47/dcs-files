@@ -2891,12 +2891,12 @@ SnapViews["Christen Eagle II"] = {
 		cockpit_version	= 0,
 	},
 	[6] = {--LWin + Num5 : Snap View 5
-		viewAngle		= 109.832611,--FOV
-		viewAngleVertical= 77.378342,--VFOV
+		viewAngle		= 30.000000,--FOV
+		viewAngleVertical= 17.142370,--VFOV
 		hAngle			= 0.000000,
 		vAngle			= 0.000000,
-		x_trans			= 0.949722,
-		y_trans			= 0.100692,
+		x_trans			= 0.673125,
+		y_trans			= 0.103275,
 		z_trans			= 0.000000,
 		rollAngle		= 0.000000,
 		cockpit_version	= 0,
@@ -3147,6 +3147,322 @@ SnapViews["Christen Eagle II"] = {
 	},
 },
 }
+SnapViews["E-3A"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
+SnapViews["F-14B"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
 SnapViews["F-15C"] = {
 [1] = {-- player slot 1
 	[1] = {--LWin + Num0 : Snap View 0
@@ -3282,8 +3598,8 @@ SnapViews["F-15C"] = {
 		cockpit_version	= 0,
 	},
 	[13] = {--default view
-		viewAngle		= 107.725830,--FOV
-		viewAngleVertical= 75.216423,--VFOV
+		viewAngle		= 107.725809,--FOV
+		viewAngleVertical= 75.216404,--VFOV
 		hAngle			= 0.000000,
 		vAngle			= -18.741451,
 		x_trans			= 0.266828,
@@ -3457,6 +3773,164 @@ SnapViews["F-16C_50"] = {
 		vAngle			= -7.000000,
 		x_trans			= 0.130000,
 		y_trans			= 0.083000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
+SnapViews["F-4E-45MC"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
 		z_trans			= 0.000000,
 		rollAngle		= 0.000000,
 		cockpit_version	= 0,
@@ -4230,23 +4704,23 @@ SnapViews["FA-18C_hornet"] = {
 		cockpit_version	= 0,
 	},
 	[13] = {--default view
-		viewAngle		= 103.003540,--FOV
-		viewAngleVertical= 0.000000,--VFOV
+		viewAngle		= 100.181885,--FOV
+		viewAngleVertical= 67.843734,--VFOV
 		hAngle			= 0.000000,
-		vAngle			= -14.504784,
-		x_trans			= 0.111728,
-		y_trans			= -0.019057,
+		vAngle			= -7.800893,
+		x_trans			= 0.117041,
+		y_trans			= -0.020886,
 		z_trans			= 0.000000,
 		rollAngle		= 0.000000,
 		cockpit_version	= 0,
 	},
 	[14] = {--default view - VR
-		viewAngle		= 103.003540,--FOV
-		viewAngleVertical= 0.000000,--VFOV
+		viewAngle		= 100.181885,--FOV
+		viewAngleVertical= 67.843734,--VFOV
 		hAngle			= 0.000000,
-		vAngle			= -14.504784,
-		x_trans			= 0.130000,
-		y_trans			= -0.008300,
+		vAngle			= -7.800893,
+		x_trans			= 0.117041,
+		y_trans			= -0.020886,
 		z_trans			= 0.000000,
 		rollAngle		= 0.000000,
 		cockpit_version	= 0,
@@ -4885,6 +5359,322 @@ SnapViews["Falcon_Gyrocopter"] = {
 	},
 },
 }
+SnapViews["Forrestal"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
+SnapViews["HEMTT TFFT"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
 SnapViews["I-16"] = {
 [1] = {-- player slot 1
 	[1] = {--LWin + Num0 : Snap View 0
@@ -5354,6 +6144,322 @@ SnapViews["JF-17"] = {
 		x_trans			= 0.000000,
 		y_trans			= 0.015877,
 		z_trans			= -0.003428,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
+SnapViews["KC-135"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
+SnapViews["KC135MPRS"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
 		rollAngle		= 0.000000,
 		cockpit_version	= 0,
 	},
@@ -10717,6 +11823,164 @@ SnapViews["P-51D-30-NA"] = {
 	},
 },
 }
+SnapViews["PERRY"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
 SnapViews["S-3B Tanker"] = {
 [1] = {-- player slot 1
 	[1] = {--LWin + Num0 : Snap View 0
@@ -12601,6 +13865,164 @@ SnapViews["SpitfireLFMkIXCW"] = {
 	},
 },
 }
+SnapViews["Stennis"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
 SnapViews["Su-25"] = {
 [1] = {-- player slot 1
 	[1] = {--LWin + Num0 : Snap View 0
@@ -13707,6 +15129,164 @@ SnapViews["TF-51D"] = {
 	},
 },
 }
+SnapViews["TICONDEROG"] = {
+[1] = {-- player slot 1
+	[1] = {--LWin + Num0 : Snap View 0
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[2] = {--LWin + Num1 : Snap View 1
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[3] = {--LWin + Num2 : Snap View 2
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[4] = {--LWin + Num3 : Snap View 3
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[5] = {--LWin + Num4 : Snap View 4
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[6] = {--LWin + Num5 : Snap View 5
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[7] = {--LWin + Num6 : Snap View 6
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[8] = {--LWin + Num7 : Snap View 7
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[9] = {--LWin + Num8 : Snap View 8
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[10] = {--LWin + Num9 : Snap View 9
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[11] = {--look at left  mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[12] = {--look at right mirror
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[13] = {--default view
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+	[14] = {--default view - VR
+		viewAngle		= 60.000000,--FOV
+		viewAngleVertical= 0.000000,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= 0.000000,
+		x_trans			= 0.000000,
+		y_trans			= 0.000000,
+		z_trans			= 0.000000,
+		rollAngle		= 0.000000,
+		cockpit_version	= 0,
+	},
+},
+}
 SnapViews["UH-1H"] = {
 [1] = {-- player slot 1
 	[1] = {--LWin + Num0 : Snap View 0
@@ -13787,9 +15367,9 @@ SnapViews["UH-1H"] = {
 		cockpit_version	= 0,
 	},
 	[8] = {--LWin + Num7 : Snap View 7
-		viewAngle		= 128.127558,--FOV
-		viewAngleVertical= 98.304510,--VFOV
-		hAngle			= 87.571307,
+		viewAngle		= 128.127563,--FOV
+		viewAngleVertical= 98.304512,--VFOV
+		hAngle			= 87.571304,
 		vAngle			= -13.413866,
 		x_trans			= 0.035515,
 		y_trans			= 0.000000,
@@ -13866,10 +15446,10 @@ SnapViews["UH-1H"] = {
 },
 [2] = {-- player slot 2
 	[1] = {--LWin + Num0 : Snap View 0
-		viewAngle		= 63.589908,--FOV
-		viewAngleVertical= 38.446933,--VFOV
+		viewAngle		= 63.589909,--FOV
+		viewAngleVertical= 38.446934,--VFOV
 		hAngle			= -9.756576,
-		vAngle			= -23.284038,
+		vAngle			= -23.284039,
 		x_trans			= 0.035515,
 		y_trans			= -0.200000,
 		z_trans			= 0.354485,
@@ -13877,10 +15457,10 @@ SnapViews["UH-1H"] = {
 		cockpit_version	= 0,
 	},
 	[2] = {--LWin + Num1 : Snap View 1
-		viewAngle		= 73.971108,--FOV
-		viewAngleVertical= 45.920061,--VFOV
+		viewAngle		= 73.971107,--FOV
+		viewAngleVertical= 45.920059,--VFOV
 		hAngle			= 0.000000,
-		vAngle			= -47.915641,
+		vAngle			= -47.915642,
 		x_trans			= 0.035515,
 		y_trans			= 0.021938,
 		z_trans			= 0.000000,
@@ -13910,10 +15490,10 @@ SnapViews["UH-1H"] = {
 		cockpit_version	= 0,
 	},
 	[5] = {--LWin + Num4 : Snap View 4
-		viewAngle		= 80.154858,--FOV
-		viewAngleVertical= 50.655481,--VFOV
+		viewAngle		= 80.154861,--FOV
+		viewAngleVertical= 50.655479,--VFOV
 		hAngle			= 0.000000,
-		vAngle			= -76.521857,
+		vAngle			= -76.521858,
 		x_trans			= 0.245114,
 		y_trans			= -0.046325,
 		z_trans			= 0.447223,
@@ -13932,13 +15512,13 @@ SnapViews["UH-1H"] = {
 		cockpit_version	= 0,
 	},
 	[7] = {--LWin + Num6 : Snap View 6
-		viewAngle		= 91.348198,--FOV
-		viewAngleVertical= 0.000000,--VFOV
-		hAngle			= -108.852020,
-		vAngle			= 0.085984,
-		x_trans			= 0.190306,
-		y_trans			= 0.044778,
-		z_trans			= 0.139404,
+		viewAngle		= 37.518410,--FOV
+		viewAngleVertical= 21.631351,--VFOV
+		hAngle			= 0.000000,
+		vAngle			= -19.078838,
+		x_trans			= 0.035515,
+		y_trans			= -0.200000,
+		z_trans			= 0.332545,
 		rollAngle		= 0.000000,
 		cockpit_version	= 0,
 	},
@@ -13955,9 +15535,9 @@ SnapViews["UH-1H"] = {
 	},
 	[9] = {--LWin + Num8 : Snap View 8
 		viewAngle		= 140.000000,--FOV
-		viewAngleVertical= 114.189543,--VFOV
+		viewAngleVertical= 114.189545,--VFOV
 		hAngle			= 0.000000,
-		vAngle			= 42.935129,
+		vAngle			= 42.935127,
 		x_trans			= 0.405520,
 		y_trans			= -0.200000,
 		z_trans			= 0.463555,
@@ -13965,9 +15545,9 @@ SnapViews["UH-1H"] = {
 		cockpit_version	= 0,
 	},
 	[10] = {--LWin + Num9 : Snap View 9
-		viewAngle		= 128.127558,--FOV
-		viewAngleVertical= 98.304510,--VFOV
-		hAngle			= -87.571307,
+		viewAngle		= 128.127563,--FOV
+		viewAngleVertical= 98.304512,--VFOV
+		hAngle			= -87.571304,
 		vAngle			= -13.413866,
 		x_trans			= 0.035515,
 		y_trans			= 0.000000,
