@@ -278,6 +278,9 @@ local diff = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_L",
+				},
+				[2] = {
+					["key"] = "JOY_BTN_POV1_L",
 					["reformers"] = {
 						[1] = "CapsLock",
 					},
@@ -288,6 +291,9 @@ local diff = {
 		["dnilp33u214cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
+					["key"] = "JOY_BTN_POV1_R",
+				},
+				[2] = {
 					["key"] = "JOY_BTN_POV1_R",
 					["reformers"] = {
 						[1] = "CapsLock",

@@ -393,6 +393,25 @@ local diff = {
 				},
 			},
 		},
+		["d1560pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "A",
+					["reformers"] = {
+						[1] = "RWin",
+					},
+				},
+			},
+			["name"] = "Rearming and Refueling Window",
+			["removed"] = {
+				[1] = {
+					["key"] = "'",
+					["reformers"] = {
+						[1] = "LAlt",
+					},
+				},
+			},
+		},
 	},
 }
 return diff
