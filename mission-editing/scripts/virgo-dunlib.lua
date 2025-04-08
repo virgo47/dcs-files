@@ -77,12 +77,18 @@ function dunlib.debugTable(obj, maxLevel, indent, includeMetatables, functionInf
     maxLevel = maxLevel or 1
     indent = indent or 0
 
-    -- we will sort keys for better readability, but numeric keys will be sorted alphabetically
+    -- we will sort keys for better readability
     local sortedKeys = {}
     for k in pairs(obj) do
-        table.insert(sortedKeys, tostring(k))
+        table.insert(sortedKeys, k)
     end
-    table.sort(sortedKeys)
+    table.sort(sortedKeys, function(a, b)
+        if type(a) == type(b) then
+            return a < b
+        else
+            return tostring(a) < tostring(b)
+        end
+    end)
 
     local res = ""
     if includeMetatables then
@@ -233,6 +239,61 @@ function dunlib.debugFlags(...)
     end
 
     return res
+end
+--endregion
+
+--region ZONES
+-- Helper function checking if the point is in the polygon.
+-- This uses ray casting algorithm and works fine for any polygon, including concave ones.
+function dunlib._pointInPolygon(px, pz, vertices)
+    local inside = false
+    local j = #vertices
+    for i = 1, #vertices do
+        local xi, zi = vertices[i].x, vertices[i].y
+        local xj, zj = vertices[j].x, vertices[j].y
+        if ((zi > pz) ~= (zj > pz)) and
+                (px < (xj - xi) * (pz - zi) / (zj - zi + 0.00001) + xi) then
+            inside = not inside
+        end
+        j = i
+    end
+    return inside
+end
+
+-- Checks if the unit is in any of the provided zones (vararg, second and following args).
+-- Returns the zone the unit is in (truthy) or nil (falsy).
+function dunlib.inZone(unit, ...)
+    if not unit or not unit:isExist() then return nil end
+
+    local pos = unit:getPoint()
+    local px, pz = pos.x, pos.z
+
+    -- Loop through all the zones passed as arguments
+    for _, zone in ipairs({...}) do
+        if not zone then
+            return nil -- unlikely, just to be sure
+        end
+
+        -- Check the zone type
+        if zone.type == 0 then
+            -- Circular zone
+            local dx = px - zone.x
+            local dz = pz - zone.y
+            if (dx * dx + dz * dz) <= (zone.radius * zone.radius) then
+                return zone
+            end
+        elseif zone.type == 2 and zone.verticies then
+            -- Polygonal zone
+            if dunlib._pointInPolygon(px, pz, zone.verticies) then
+                return zone
+            end
+        else
+            -- Unsupported or malformed zone
+            return nil
+        end
+    end
+
+    return nil
 end
 --endregion
 
