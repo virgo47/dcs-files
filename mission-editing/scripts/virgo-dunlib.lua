@@ -252,7 +252,8 @@ function dunlib._pointInPolygon(px, pz, vertices)
         local xi, zi = vertices[i].x, vertices[i].y
         local xj, zj = vertices[j].x, vertices[j].y
         if ((zi > pz) ~= (zj > pz)) and
-                (px < (xj - xi) * (pz - zi) / (zj - zi + 0.00001) + xi) then
+                -- Here, zj and zi are on the other side of the unit, no risk of division by 0.
+                (px < (xj - xi) * (pz - zi) / (zj - zi) + xi) then
             inside = not inside
         end
         j = i
@@ -263,7 +264,9 @@ end
 -- Checks if the unit is in any of the provided zones (vararg, second and following args).
 -- Returns the zone the unit is in (truthy) or nil (falsy).
 function dunlib.inZone(unit, ...)
-    if not unit or not unit:isExist() then return nil end
+    if not unit or not unit:isExist() then
+        return nil
+    end
 
     local pos = unit:getPoint()
     local px, pz = pos.x, pos.z
@@ -295,6 +298,17 @@ function dunlib.inZone(unit, ...)
 
     return nil
 end
+
+-- Executes callback function for all the zones matching the namePattern.
+-- See https://www.lua.org/pil/20.2.html for Lua string patterns.
+function dunlib.forEachZoneMatching(namePattern, callback)
+    for _, zone in pairs(env.mission.triggers.zones) do
+        if string.match(zone.name, namePattern) then
+            callback(zone)
+        end
+    end
+end
+
 --endregion
 
 --region VARIOUS
