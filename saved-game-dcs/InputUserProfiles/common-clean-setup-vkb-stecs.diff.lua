@@ -40,7 +40,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.06,
+							[1] = 0,
 						},
 						["deadzone"] = 0.02,
 						["hardwareDetent"] = false,
@@ -61,7 +61,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.06,
+							[1] = 0,
 						},
 						["deadzone"] = 0.02,
 						["hardwareDetent"] = false,
