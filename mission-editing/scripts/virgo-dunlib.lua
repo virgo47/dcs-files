@@ -10,7 +10,7 @@ function dunlib.clearMessagesUnit(unit)
     trigger.action.outTextForUnit(unitId, "", 0, true)
 end
 
--- duration in seconds
+-- message to all; duration in seconds
 function dunlib.messageAll(text, duration, clearView)
     trigger.action.outText(text or "Undefined message!", duration or 10, clearView or false)
 end
@@ -22,7 +22,7 @@ function dunlib.messageAllDelayed(text, delay, duration, clearView)
     end, {}, timer.getTime() + (delay or 2))
 end
 
--- duration in seconds
+-- message for a unit; duration in seconds
 function dunlib.messageUnit(unit, text, duration, clearView)
     local unitId = unit.className_ == "Unit" and unit:getID() or unit
     trigger.action.outTextForUnit(unitId, text or "Undefined message!", duration or 10, clearView or false)
@@ -36,6 +36,12 @@ function dunlib.messageUnitDelayed(unit, text, delay, duration, clearView)
             dunlib.messageUnit(unit, text, duration, clearView)
         end
     end, {}, timer.getTime() + (delay or 2))
+end
+
+-- message for a group; duration in seconds
+function dunlib.messageGroup(group, text, duration, clearView)
+    local groupId = group.className_ == "Group" and group:getID() or group
+    trigger.action.outTextForGroup(groupId, text or "Undefined message!", duration or 10, clearView or false)
 end
 --endregion
 
