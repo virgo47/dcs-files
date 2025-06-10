@@ -315,9 +315,22 @@ function dunlib.forEachZoneMatching(namePattern, callback)
     end
 end
 
+function dunlib.zoneByName(zoneName)
+    local zones = env.mission and env.mission.triggers and env.mission.triggers.zones
+    if not zones then
+        env.error('env.mission.triggers.zones is not defined! (at this moment?)')
+        return nil
+    end
+
+    for _, zone in pairs(zones) do
+        if zone.name == zoneName then
+            return zone
+        end
+    end
+end
 --endregion
 
---region VARIOUS
+--region VARIOUS DCS
 ----------------------------------------------------------------------------------------------------
 -- HIGHER LEVEL HELPER/DEBUG FUNCTIONS, mostly unit related:
 
@@ -377,5 +390,36 @@ function dunlib.fuelInfo(params)
         end
         timer.scheduleFunction(dunlib.fuelInfo, params, timer.getTime() + params.messageRepeatSec)
     end
+end
+--endregion
+
+--region VARIOUS low-level
+function dunlib.typeof(obj)
+    if obj == nil then
+        return "nil"
+    end
+
+    local baseType = type(obj)
+    if baseType ~= "table" and baseType ~= "userdata" then
+        return baseType
+    end
+
+    -- DCS/MOOSE specific className_ check
+    if type(obj.className_) == "string" then
+        return obj.className_  -- e.g., "Group", "Unit", etc.
+    end
+
+    -- __name in metatable (common in Lua class libraries)
+    local mt = getmetatable(obj)
+    if mt then
+        if type(mt.__name) == "string" then
+            return mt.__name
+        elseif type(mt.__index) == "table" and type(mt.__index.__name) == "string" then
+            return mt.__index.__name
+        end
+    end
+
+    -- Fallback: report as table/userdata
+    return baseType
 end
 --endregion

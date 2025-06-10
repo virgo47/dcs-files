@@ -20,7 +20,7 @@ end
 -- * unit (MOOSE UNIT wrapper)
 -- * startTs (number, based on timer.getAbsTime())
 -- * disqualified (boolean, used when killZoneBehavior is set to 2)
--- * zoneCheck (table of ZONE->boolean, registering the entered check zones)
+-- * zoneCheck (table of DCS zone->boolean, registering the entered check zones)
 -- * lastTs ("now" from previous racing loop, based on timer.getAbsTime())
 -- * lastPos (result of unit:GetPointVec3())
 local currentRacers = {}
@@ -28,8 +28,8 @@ local currentRacers = {}
 local ladder = {}
 local spectators = {}
 
--- TODO
-local racingZone = ZONE:FindByName(cfg.racingZoneName)
+local mracingZone = ZONE:FindByName(cfg.racingZoneName) -- TODO remove
+local racingZone = dunlib.zoneByName(cfg.racingZoneName)
 
 local racingCheckZones = {}
 -- Lua pattern matching requires % escape character before -.
@@ -244,7 +244,8 @@ function eventHandler:onEvent(event)
 
     -- All the ignored cases should be handled by now...
     local client = CLIENT:FindByName(unitName)
-    local unit = client:GetClientGroupUnit()
+    local munit = client:GetClientGroupUnit()
+    local unit = munit:GetDCSObject()
     local group = client:GetGroup()
     local groupName = client:GetClientGroupName()
 
@@ -257,13 +258,15 @@ function eventHandler:onEvent(event)
             currentRacers[clientId] = {
                 playerName = playerName,
                 groupName = groupName,
-                unit = unit,
+                munit = munit,
+                unit = initiatorUnit,
             }
         else
             spectators[clientId] = {
                 playerName = playerName,
                 groupName = groupName,
-                unit = unit,
+                munit = munit,
+                unit = initiatorUnit,
             }
         end
 
@@ -351,10 +354,10 @@ local function disqualify(racerData)
     racerData.disqualified = true
     racerData.startTs = nil
     if cfg.killSound then
-        USERSOUND:New(cfg.killSound):ToUnit(racerData.unit)
+        trigger.action.outSoundForUnit(racerData.unit:getID(), cfg.killSound)
     end
     if racerData.killZoneBehavior == 1 then
-        racerData.unit:Explode(10)
+        racerData.munit:Explode(10)
     end
 end
 
@@ -385,35 +388,39 @@ end
 local function mainRaceLoop()
     local now = timer.getAbsTime()
     lastRaceLoopTs = now
+    env.info("mainRaceLoop: " .. tostring(now))
 
     for _, racerData in pairs(currentRacers) do
         -- If startTs is initialized we compute the approximate time inside the zone.
         -- The default time without "time preciser" is rounded to seconds - this is also printed to the player every cycle.
         local timeInsideSeconds = racerData.startTs and math.floor(now - racerData.startTs + 0.5)
+        local munit = racerData.munit -- TODO remove MOOSE unit, only use .unit
         local unit = racerData.unit
-        local unitPos = unit:GetPointVec3()
+        local unitPos = munit:GetPointVec3()
         local formattedTime = tostring(timeInsideSeconds)
         local importantEventSoundPlayed = false -- this var ensures that the important sounds (start, check zone...) are played even in warning altitudes
 
-        local insideRacingZone = unit:IsInZone(racingZone)
+        env.info("unit type " .. dunlib.typeof(unit) .. ", munit type " .. dunlib.typeof(munit) .. ", racingZone type " .. tostring(dunlib.typeof(racingZone)))
+        local insideRacingZone = dunlib.inZone(unit, racingZone)
+        env.info("INSIDE: " .. tostring(insideRacingZone))
         if insideRacingZone then
             if racerData.disqualified then
-                MESSAGE:New("You're disqualified, leave the race track area!", 2, nil, true):ToUnit(unit)
+                MESSAGE:New("You're disqualified, leave the race track area!", 2, nil, true):ToUnit(munit)
             else
                 if timeInsideSeconds then
-                    MESSAGE:New("Time inside: " .. formattedTime .. " seconds", 2, nil, true):ToUnit(unit)
+                    MESSAGE:New("Time inside: " .. formattedTime .. " seconds", 2, nil, true):ToUnit(munit)
 
                     -- Check the intermediate zones
                     for _, checkZone in ipairs(racingCheckZones) do
                         -- TODO fix to vanilla zones
-                        checkZone = ZONE:New(checkZone.name)
-                        if unit:IsInZone(checkZone) and not racerData.zoneCheck[checkZone]
-                                and (not cfg.ignoreCheckZoneAboveWarningAltitude or unit:GetAltitude(true) < cfg.warningAboveAGL)
+                        --checkZone = ZONE:New(checkZone.name)
+                        if dunlib.inZone(unit, checkZone) and not racerData.zoneCheck[checkZone]
+                                and (not cfg.ignoreCheckZoneAboveWarningAltitude or munit:GetAltitude(true) < cfg.warningAboveAGL)
                         then
-                            raceDebug("Player " .. racerData.playerName .. " entered the check zone " .. checkZone:GetName())
+                            raceDebug("Player " .. racerData.playerName .. " entered the check zone " .. checkZone.name)
                             racerData.zoneCheck[checkZone] = true
                             if cfg.checkZoneSound then
-                                USERSOUND:New(cfg.checkZoneSound):ToUnit(unit)
+                                USERSOUND:New(cfg.checkZoneSound):ToUnit(munit)
                                 importantEventSoundPlayed = true
                             end
                         end
@@ -428,7 +435,7 @@ local function mainRaceLoop()
                         racerData.startTs = now
                     end
                     if cfg.enterRaceSound then
-                        USERSOUND:New(cfg.enterRaceSound):ToUnit(unit)
+                        USERSOUND:New(cfg.enterRaceSound):ToUnit(munit)
                     end
                     importantEventSoundPlayed = true
                     racerData.zoneCheck = {}
@@ -438,21 +445,20 @@ local function mainRaceLoop()
 
                 -- Altitude warning and disqualification
                 if racerData.killZoneBehavior == 1 or racerData.killZoneBehavior == 2 then
-                    if cfg.killAboveAGL and unit:GetAltitude(true) > cfg.killAboveAGL then
+                    if cfg.killAboveAGL and munit:GetAltitude(true) > cfg.killAboveAGL then
                         dunlib.messageAll(racerData.playerName .. " (of " .. racerData.groupName .. ") flew too high and was disqualified!", 15)
                         disqualify(racerData)
-                    elseif cfg.warningAboveAGL and unit:GetAltitude(true) > cfg.warningAboveAGL then
-                        local dcsUnit = unit.GetDCSObject and unit:GetDCSObject() or unit -- TODO remove MOOSE sanity check when finished
-                        dunlib.messageUnit(dcsUnit, "WARNING: Reduce your altitude immediately!", 2, true)
+                    elseif cfg.warningAboveAGL and munit:GetAltitude(true) > cfg.warningAboveAGL then
+                        dunlib.messageUnit(unit, "WARNING: Reduce your altitude immediately!", 2, true)
                         if cfg.aglWarningSound and not importantEventSoundPlayed then
-                            USERSOUND:New(cfg.aglWarningSound):ToUnit(unit)
+                            USERSOUND:New(cfg.aglWarningSound):ToUnit(munit)
                         end
                     end
                 end
             end
         else
             -- not insideRacingZone
-            if racerData.startTs and unit:IsAlive() then
+            if racerData.startTs and munit:IsAlive() then
                 -- the unit is NOT in zone, but has startTs - this means it's just left the zone
                 local passed, total = checkZones(racerData.zoneCheck)
                 if passed == total then
@@ -466,25 +472,25 @@ local function mainRaceLoop()
                     local finishMessage = racerData.playerName .. " (of " .. racerData.groupName .. ") finished in: " .. formattedTime .. " seconds"
                     dunlib.messageAll(finishMessage, 20)
                     if cfg.finishRaceSound then
-                        USERSOUND:New(cfg.finishRaceSound):ToUnit(unit)
+                        USERSOUND:New(cfg.finishRaceSound):ToUnit(munit)
                     end
 
                     -- We only update log/leaderboard if the kill zone behavior is one of the competitive ones:
                     if racerData.killZoneBehavior == 1 or racerData.killZoneBehavior == 2 then
                         if cfg.logFinishResults then
                             env.info("RACE FINISH|'" .. escapeString(cfg.raceIdentifier) .. "'|'" .. (ucid or "")
-                                    .. "'|'" .. escapeString(racerData.playerName) .. "'|'" .. escapeString(unit:GetTypeName())
+                                    .. "'|'" .. escapeString(racerData.playerName) .. "'|'" .. escapeString(munit:GetTypeName())
                                     .. "'|'" .. escapeString(racerData.groupName) .. "'|" .. formattedTime)
                         end
-                        addResultToLadder(unit:GetTypeName(), {
+                        addResultToLadder(munit:GetTypeName(), {
                             player = racerData.playerName,
                             time = timeInsideSeconds,
                         })
                     end
                 else
-                    MESSAGE:New("You didn't go through the whole course (" .. passed .. " of " .. total .. "), this attempt does not count.", 6, nil, true):ToUnit(unit)
+                    MESSAGE:New("You didn't go through the whole course (" .. passed .. " of " .. total .. "), this attempt does not count.", 6, nil, true):ToUnit(munit)
                     if cfg.unfinishedRaceSound then
-                        USERSOUND:New(cfg.unfinishedRaceSound):ToUnit(unit)
+                        USERSOUND:New(cfg.unfinishedRaceSound):ToUnit(munit)
                     end
                 end
             end
@@ -502,10 +508,10 @@ local function mainRaceLoop()
                 for _, zone in ipairs(killZones) do
                     -- TODO fix to vanilla zones
                     zone = ZONE:New(zone.name)
-                    if unit:IsInZone(zone) then
+                    if munit:IsInZone(zone) then
                         --raceDebug("Player " .. racerData.playerName .. " in kill zone " .. zone:GetName()) -- pollutes the log
                         if not insideRacingZone and racerData.killZoneBehavior == 2 then
-                            MESSAGE:New("You are inside a kill zone (outside the racing area)...", 2, nil, true):ToUnit(unit)
+                            MESSAGE:New("You are inside a kill zone (outside the racing area)...", 2, nil, true):ToUnit(munit)
                         else
                             disqualify(racerData)
                             dunlib.messageAll(racerData.playerName .. " (of " .. racerData.groupName .. ") has left the course and was disqualified!", 15)
@@ -519,8 +525,8 @@ local function mainRaceLoop()
     -- Printing warning to spectators potentially disturbing the racers:
     if cfg.spectatorsWarningAgl and cfg.spectatorsWarningMessage then
         for _, spectator in pairs(spectators) do
-            local unit = spectator.unit
-            if unit:IsInZone(racingZone) and unit:GetAltitude(true) < cfg.spectatorsWarningAgl then
+            local unit = spectator.munit
+            if unit:IsInZone(mracingZone) and unit:GetAltitude(true) < cfg.spectatorsWarningAgl then
                 MESSAGE:New(cfg.spectatorsWarningMessage, 2, nil, true):ToUnit(unit)
                 if cfg.aglWarningSound then
                     USERSOUND:New(cfg.aglWarningSound):ToUnit(unit)
@@ -536,7 +542,7 @@ local function mainRaceLoop()
         for _, racerData in pairs(currentRacers) do
             racersTotal = racersTotal + 1
 
-            local unit = racerData.unit
+            local unit = racerData.munit
             if unit:IsInZone(restartZone) then
                 racersInRestartZone = racersInRestartZone + 1
                 MESSAGE:New("You feel something strange around here...", 2, nil, true):ToUnit(unit)
