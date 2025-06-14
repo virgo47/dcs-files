@@ -1,34 +1,57 @@
--- DCS Unscripted Library
+-- DCS Unscripted Library (Public Domain, see https://unlicense.org)
 -- You may include it with DO SCRIPT FILE command, or simply paste it (or parts of it) to DO SCRIPT.
 -- Always start with "library" creation if not present - the next line:
 dunlib = dunlib or {}
 
+--region SCHEDULER UTILS RELATIVE FROM NOW
+
+-- Schedules a function with args to run after a specified number of seconds (default one, or "next tick").
+function dunlib.scheduleOnce(fun, args, delay)
+    timer.scheduleFunction(fun, args, timer.getTime() + (delay or 1))
+end
+
+-- Schedules a repeated call to a function with args table, first after delay (3rd param), then each repeatAfter (4th param), in seconds.
+-- Both delay and repeatAfter default to 1.
+-- Function is expected to accept one args table (1st param) and currentTime; its return is ignored.
+function dunlib.scheduleRepeated(fun, args, delay, repeatAfter)
+    local repeated = function()
+        local now = timer.getTime()
+        fun(args, now)
+        return now + (repeatAfter or 1) -- this tells the scheduler when to call it again
+    end
+    -- First schedule
+    timer.scheduleFunction(repeated, {}, timer.getTime() + (delay or 1))
+end
+--endregion
+
 --region MESSAGES
--- For all message related functions, unit can be Unit object or unitId (number).
+-- For all message related functions, unit can be Unit object or unitId (number). The same for group, etc.
+
+-- Clears messages for a unit (Unit object or ID).
 function dunlib.clearMessagesUnit(unit)
     local unitId = unit.className_ == "Unit" and unit:getID() or unit
     trigger.action.outTextForUnit(unitId, "", 0, true)
 end
 
--- message to all; duration in seconds
+-- Shows a message to all; duration in seconds.
 function dunlib.messageAll(text, duration, clearView)
     trigger.action.outText(text or "Undefined message!", duration or 10, clearView or false)
 end
 
--- delay and duration in seconds
+-- Shows a message to all after a delay in seconds; duration in seconds.
 function dunlib.messageAllDelayed(text, delay, duration, clearView)
-    timer.scheduleFunction(function()
+    dunlib.scheduleOnce(function()
         dunlib.messageAll(text, duration, clearView)
-    end, {}, timer.getTime() + (delay or 2))
+    end, {}, delay or 2)
 end
 
--- message for a unit; duration in seconds
+-- Shows a message to a unit (Unit object or ID); duration in seconds.
 function dunlib.messageUnit(unit, text, duration, clearView)
     local unitId = unit.className_ == "Unit" and unit:getID() or unit
     trigger.action.outTextForUnit(unitId, text or "Undefined message!", duration or 10, clearView or false)
 end
 
--- delay and duration in seconds
+-- Shows a message to a unit (Unit object or ID) after a delay in seconds; duration in seconds.
 function dunlib.messageUnitDelayed(unit, text, delay, duration, clearView)
     timer.scheduleFunction(function()
         -- exists check just in case the unit disappeared during the timer delay
@@ -38,10 +61,18 @@ function dunlib.messageUnitDelayed(unit, text, delay, duration, clearView)
     end, {}, timer.getTime() + (delay or 2))
 end
 
--- message for a group; duration in seconds
+-- Shows a message to a group (Group object or ID); duration in seconds.
 function dunlib.messageGroup(group, text, duration, clearView)
     local groupId = group.className_ == "Group" and group:getID() or group
     trigger.action.outTextForGroup(groupId, text or "Undefined message!", duration or 10, clearView or false)
+end
+--endregion
+
+--region SOUNDS
+-- Plays a sound to a unit (Unit object or ID).
+function dunlib.soundUnit(unit, soundFileName)
+    local unitId = unit.className_ == "Unit" and unit:getID() or unit
+    trigger.action.outSoundForUnit(unitId, soundFileName)
 end
 --endregion
 
@@ -201,7 +232,7 @@ function print(str, inGameToAll)
         dunlib.messageAll(str, #str / REASONABLE_CPS)
     end
 
-    -- TODO if lfs/io stuff
+    -- TODO if lfs/io stuff dunlib.log (low priority)
     if #str < MAX_LOG_LEN then
         env.info(str)
     else
@@ -248,7 +279,134 @@ function dunlib.debugFlags(...)
 end
 --endregion
 
+--region GEOMETRY, POINTS, LINES
+-- These functions generally use DCS main coordinate system, where x and z are used on the map plane,
+-- and y is altitude (all in meters).
+-- NOTE: Some things (land module, triggers.zones.vertices) use x,y for plane and z for altitude,
+-- conversion would be necessary if used as input of these functions.
+
+-- Returns intersection point if segments (p1,p2) and (q1,q2) intersect or nil.
+-- Nil is returned even if collinear and overlapping with possibly infinite number of intersections.
+-- All points are in DCS x,y,z; x,z is used, y (altitude) is ignored.
+function dunlib.intersectSegments(p1, p2, q1, q2)
+    local function subtract(a, b)
+        return {x = a.x - b.x, z = a.z - b.z}
+    end
+    local function cross(a, b)
+        return a.x * b.z - a.z * b.x
+    end
+
+    local r = subtract(p2, p1)
+    local s = subtract(q2, q1)
+    local rxs = cross(r, s)
+    local qp = subtract(q1, p1)
+
+    if rxs == 0 then
+        return nil -- parallel or collinear
+    end
+
+    local t = cross(qp, s) / rxs
+    local u = cross(qp, r) / rxs
+
+    if t >= 0 and t <= 1 and u >= 0 and u <= 1 then
+        return {x = p1.x + t * r.x, z = p1.z + t * r.z} -- intersection point
+    end
+
+    return nil
+end
+
+-- Returns the first intersection point (if any) between segment (p1, p2) and a circle.
+-- Circle is defined by center (cx, cz) and radius r.
+-- Returns nil if no intersection.
+function dunlib.intersectSegmentCircle(p1, p2, cx, cz, r)
+    local dx = p2.x - p1.x
+    local dz = p2.z - p1.z
+    local fx = p1.x - cx
+    local fz = p1.z - cz
+
+    local a = dx * dx + dz * dz
+    local b = 2 * (fx * dx + fz * dz)
+    local c = (fx * fx + fz * fz) - r * r
+
+    local discriminant = b * b - 4 * a * c
+    if discriminant < 0 then
+        return nil
+    end
+
+    local sqrtD = math.sqrt(discriminant)
+    local t1 = (-b - sqrtD) / (2 * a)
+    local t2 = (-b + sqrtD) / (2 * a)
+
+    local t = (t1 >= 0 and t1 <= 1) and t1 or ((t2 >= 0 and t2 <= 1) and t2 or nil)
+    if not t then
+        return nil
+    end
+
+    return {
+        x = p1.x + t * dx,
+        z = p1.z + t * dz
+    }
+end
+
+
+-- Returns linear interpolation of numbers n1 and n2 associated with points p1 and p2
+-- and an intersection point between the points (e.g. calculated with dunlib.intersectSegments).
+-- For example, this can approximate time of intersection if you know time before and after (n1, n2)
+-- for points p1 and p2.
+function dunlib.linearInterpolationAtIntersection(p1, p2, n1, n2, intersection)
+    local dx = p2.x - p1.x
+    local dz = p2.z - p1.z
+    local dt = n2 - n1
+    local ratio
+
+    if math.abs(dx) > math.abs(dz) and dx ~= 0 then
+        ratio = (intersection.x - p1.x) / dx
+    elseif dz ~= 0 then
+        ratio = (intersection.z - p1.z) / dz
+    else
+        return n2 -- fallback: degenerate segment, return current time
+    end
+
+    return n1 + dt * ratio
+end
+--endregion
+
 --region ZONES
+dunlib.ZONE_TYPE = {
+    CIRCLE = 0,
+    POLYGON = 2
+}
+
+--[[
+Returns zone structure for provided zone name.
+Example zone structure (see "mission" file, search for ["zones"] = for more examples):
+{
+  name = "zone-name",
+  type = 2, -- 0 = circle, 2 = polygon
+  x = ..., -- for circle zone
+  y = ..., -- for circle zone, corresponds with z component in unit:getPoint() (DCS world coords)
+  radius = ..., -- for circle zone
+  verticies = { ... }, -- for polygon zone, nil for circular zone, array of {x, y} coordinates (y~z)
+  zoneId = ...,
+  hidden = true/false,
+  color = { ... }, -- array with RGB and alpha, all 0-1
+  ...properties, heading
+}
+]]
+function dunlib.zoneByName(zoneName)
+    local zones = env.mission and env.mission.triggers and env.mission.triggers.zones
+    if not zones then
+        env.error('env.mission.triggers.zones is not defined! (at this moment?)')
+        return nil
+    end
+
+    for _, zone in pairs(zones) do
+        if zone.name == zoneName then
+            return zone
+        end
+    end
+end
+
 -- Helper function checking if the point is in the polygon.
 -- This uses ray casting algorithm and works fine for any polygon, including concave ones.
 function dunlib._pointInPolygon(px, pz, vertices)
@@ -284,14 +442,14 @@ function dunlib.inZone(unit, ...)
         end
 
         -- Check the zone type
-        if zone.type == 0 then
+        if zone.type == dunlib.ZONE_TYPE.CIRCLE then
             -- Circular zone
             local dx = px - zone.x
             local dz = pz - zone.y
             if (dx * dx + dz * dz) <= (zone.radius * zone.radius) then
                 return zone
             end
-        elseif zone.type == 2 and zone.verticies then
+        elseif zone.type == dunlib.ZONE_TYPE.POLYGON and zone.verticies then
             -- Polygonal zone
             if dunlib._pointInPolygon(px, pz, zone.verticies) then
                 return zone
@@ -315,18 +473,47 @@ function dunlib.forEachZoneMatching(namePattern, callback)
     end
 end
 
-function dunlib.zoneByName(zoneName)
-    local zones = env.mission and env.mission.triggers and env.mission.triggers.zones
-    if not zones then
-        env.error('env.mission.triggers.zones is not defined! (at this moment?)')
-        return nil
-    end
+-- Linearly interpolate the approximate time the unit entered the zone.
+-- Handles both circular and polygon zones.
+function dunlib.interpolateZoneEntryTime(lastTime, lastPos, currentTime, currentPos, zone)
+    if zone.type == dunlib.ZONE_TYPE.CIRCLE then
+        local cx, cz = zone.x, zone.y
+        local r = zone.radius
 
-    for _, zone in pairs(zones) do
-        if zone.name == zoneName then
-            return zone
+        local intersection = dunlib.intersectSegmentCircle(lastPos, currentPos, cx, cz, r)
+        if intersection then
+            return dunlib.linearInterpolationAtIntersection(lastPos, currentPos, lastTime, currentTime, intersection)
+        end
+
+        return currentTime
+    elseif zone.type == dunlib.ZONE_TYPE.POLYGON then
+        local verts = zone.verticies
+        for i = 1, #verts do
+            local a = verts[i]
+            local b = verts[i % #verts + 1]
+            -- vertices in zones use x,y for the map plane, but we need "DCS world" x,z for intersectSegments
+            local intersection = dunlib.intersectSegments(lastPos, currentPos, {x = a.x, z = a.y}, {x = b.x, z = b.y})
+            if intersection then
+                return dunlib.linearInterpolationAtIntersection(lastPos, currentPos, lastTime, currentTime, intersection)
+            end
         end
     end
+    return currentTime
+end
+--endregion
+
+--region POSITION
+-- Returns altitude in meters for a unit object.
+-- If agl is true, returns altitude above ground level, otherwise above sea level.
+function dunlib.getAltitude(unit, agl)
+    local point = unit:getPoint()
+    local altitude = point.y
+    if agl then
+        -- NOTE: land module uses z as height, while DCS units use y as altitude
+        local land = land.getHeight({x = point.x, y = point.z}) or 0
+        altitude = altitude - land
+    end
+    return altitude
 end
 --endregion
 
@@ -335,7 +522,7 @@ end
 -- HIGHER LEVEL HELPER/DEBUG FUNCTIONS, mostly unit related:
 
 --[[
-Prints fuel information for the params.unit, the rest of params is optional:
+Prints fuel information for the params.unit, the rest of params is optional.
 Example params:
 {
     unit = world.getPlayer(), -- player unit for single-player mission

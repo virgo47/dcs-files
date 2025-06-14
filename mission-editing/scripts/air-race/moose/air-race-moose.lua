@@ -184,7 +184,7 @@ end
 
 -- EVENT SETUP
 
--- Temporary DCS vanilla event handler to compare with the events in MOOSE handlers.
+-- DCS vanilla event handler, MOOSE handlers were not reliable.
 local eventHandler = {}
 
 -- some events are used for single-player, some for multi-player, it's a mess
