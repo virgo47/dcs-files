@@ -3,7 +3,7 @@
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
 --
--- CONFIGURATION - load this BEFORE the main "air-race-moose.lua" script!
+-- CONFIGURATION - load this BEFORE the main "air-race-zones.lua" script!
 -- This separates the parts related to the mission (this config) from the script itself.
 
 -- config table
@@ -27,7 +27,7 @@ local c = {
     raceIdentifier = "TEST",
     racingZoneName = "race-track",
     racerGroupPrefix = "racer-",
-    -- Following prefixes are used in MOOSE set FilterPrefixes() and use Lua pattern matching, which means:
+    -- Following prefixes use Lua pattern matching, which means:
     -- Use % (escape character) before any of the following chars: -.%^$()[]*+?
     -- Because FilterPrefixes actually filters any substring, use ^ at the start of the prefix.
     racingCheckZonePrefix = "^race%-check%-",
@@ -51,13 +51,6 @@ local c = {
     killSound = "race-disqualify.ogg",
     aglWarningSound = "race-warning.ogg",
 
-    -- Reference points 1000m from the start/end line - OPTIONAL, comment out if not desired.
-    -- Easiest way how to find it is to use the ruler in ME and read out CCS coordinates when 1000m away.
-    -- Don't forget the right signs!
-    --DISABLED: startRefPoint = {x = -314063, z = 895054},
-    endRefPoint = {x = -313904, z = 895206},
-    refDistance = 1000, -- use the same value for both points
-
     -- Restart support requires a trigger in the ME and a restart zone:
     --DISABLED: restartZoneName = "restart-zone", -- leave nil if not supported
     restartQuorum = 0.6, -- in 0-1 range 0.6 is 60% or 3/5 of players
@@ -75,9 +68,6 @@ if c.killAboveAGL then
     c.spectatorsWarningMessage = "Spectators should stay at least " .. c.spectatorsWarningReportedAglRoundedFeet
             .. " feet above the course to avoid disturbing the participants."
 end
-
--- "Time preciser" will be true only if all three above are set:
-c.timePreciser = (c.startRefPoint and c.endRefPoint and c.refDistance) ~= nil
 
 -- Longer name is used for the global variable used to communicate this to the main script:
 dunlibRacingConfig = c

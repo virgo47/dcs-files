@@ -7,7 +7,7 @@ The script powers the missions on DCS servers "[TM] Black Angels - Air Race Heli
 You can check the race results on the https://dcs-air-race.eu[DCS Air Race] site.
 
 // TODO rework to dunlib, later to vanilla
-NOTE: This README describes MOOSE version of the script, now placed link:moose[moose] folder.
+NOTE: This README describes MOOSE version of the script, now placed link:classic-moose[moose] folder.
 
 == How to use it
 

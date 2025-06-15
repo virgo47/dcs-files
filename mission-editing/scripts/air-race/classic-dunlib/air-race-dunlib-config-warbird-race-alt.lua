@@ -3,8 +3,10 @@
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
 --
--- CONFIGURATION - load this BEFORE the main "air-race-dunlib.lua" script!
+-- CONFIGURATION - load this BEFORE the main "air-race-classic-dunlib.lua" script!
 -- This separates the parts related to the mission (this config) from the script itself.
+
+-- This is an alternative version with ignoreCheckZoneAboveWarningAltitude and kill altitude lifted from 150 to 200 meters.
 
 -- config table
 local c = {
@@ -25,7 +27,7 @@ local c = {
     -- Race identifier is used in logged structure to identify the race (can be a mission name or shortcut).
     -- It doesn't have to change if only minor changes are made to the mission (e.g. script fixes),
     -- but should be changed if significant changes are made, e.g. track changes, kill zone changes, etc.
-    raceIdentifier = "BA_HeloLochini_v2",
+    raceIdentifier = "BA_WarbirdBatumi_v2",
     racingZoneName = "racetrack",
     racerGroupPrefix = "AirRace-",
     -- Following prefixes use Lua pattern matching, which means:
@@ -36,16 +38,16 @@ local c = {
 
     -- Kill zone behavior: 1 = kill, 2 = disqualify, any other value = no behavior
     killZoneBehavior = 2,
-    warningAboveAGL = 21, -- AGL in meters
-    killAboveAGL = 31, -- kill or disqualify, this follows killZoneBehavior setting
-    ignoreCheckZoneAboveWarningAltitude = false, -- if true, player must be below warning altitude at least for one race loop (~1s) in the check zone
+    warningAboveAGL = 100,
+    killAboveAGL = 200, -- kill or disqualify, this follows killZoneBehavior setting
+    ignoreCheckZoneAboveWarningAltitude = true, -- if true, player must be below warning altitude at least for one race loop (~1s) in the check zone
 
     -- Keep the sound files in some unused trigger, e.g. "resource-files-holder" so they are note removed from the mission!
     -- To make the trigger unused, add condition FLAG IS TRUE with some "NEVER" flag. Add SOUND TO ALL with all the files.
     -- If any of this is nil, or the file is not found, the sound will not be played.
     enterRaceSound = "A10_AutopilotEngage.ogg",
     finishRaceSound = "520200__latranz__industrial-alarm-EINZELN.ogg",
-    checkZoneSound = "Passed-checkpoi.ogg",
+    checkZoneSound = "radiobeep.ogg",
     killSound = "ThiesZonk.ogg",
     aglWarningSound = "altitude-warn.ogg",
 

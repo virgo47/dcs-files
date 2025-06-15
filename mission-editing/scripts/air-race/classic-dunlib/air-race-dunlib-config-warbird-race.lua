@@ -3,7 +3,7 @@
 -- Race support script, measuring time inside the racing zone, and providing leaderboard in F10 menu.
 -- Additional check zones that must be crossed by the racer can be added (any number, including none).
 --
--- CONFIGURATION - load this BEFORE the main "air-race-dunlib.lua" script!
+-- CONFIGURATION - load this BEFORE the main "air-race-classic-dunlib.lua" script!
 -- This separates the parts related to the mission (this config) from the script itself.
 
 -- config table
