@@ -1,5 +1,5 @@
 -- Tests for some math-style stuff in "dunlib".
--- Run this with lua*.exe (whatever version you've got), e.g.: lua
+-- Run this with lua*.exe (whatever version you've got), e.g.: lua5.1.exe dunlib-dcs-unscripted-library-tests.lua
 -- If it doesn't print anything, all is well! :-)
 
 --region FACTORY/SUPPORT
@@ -34,16 +34,16 @@ end
 
 local function almostEqual(a, b, epsilon)
     if not a or not b then
-        print "PROVIDE TESTED and EXPECTED VALUE for almostEqual!"
+        print("PROVIDE TESTED and EXPECTED VALUE for almostEqual!\nTESTED: " .. tostring(a) .. "\nEXPECTED: " .. tostring(b))
     end
     epsilon = epsilon or 1e-7
     local diff = math.abs(a - b)
     if diff <= epsilon then
-    return true
+        return true
     end
     -- relative tolerance:
     return diff <= epsilon * math.max(math.abs(a), math.abs(b))
-    end
+end
 --endregion
 
 -- We save and restore print, because dunlib redefines it globally for convenience.
@@ -85,21 +85,25 @@ assert(dunlib.inZone(createUnit("unit1", 7, 100, 12), zonePoly, zoneCircle) == n
 
 -- line intersection
 rv = dunlib.intersectSegments(
-        {x = 0, y = 0, z = 0}, {x = 10, y = 0, z = 10},
+        {x = 0, z = 0}, {x = 10, y = 0, z = 10},
         {x = 0, y = 0, z = 10}, {x = 10, y = 0, z = 0})
 assert(almostEqual(rv.x, 5))
 assert(almostEqual(rv.z, 5))
+assert(rv.y == nil) -- y components were not provided for both p1 and p2
+assert(almostEqual(rv.dir, 1)) -- 0,10 was on the left side of the second vector (CCW)
 -- No intersection (parallel lines)
 assert(not dunlib.intersectSegments(
         {x = 0, y = 0, z = 0}, {x = 10, y = 0, z = 0},
         {x = 0, y = 0, z = 5}, {x = 10, y = 0, z = 5}))
 -- Touch at endpoint
 rv = dunlib.intersectSegments(
-        {x = 0, y = 0, z = 0}, {x = 5, y = 0, z = 5},
-        {x = 5, y = 0, z = 5}, {x = 10, y = 0, z = 0})
+        {x = 0, y = 1, z = 0}, {x = 5, y = 2, z = 5},
+        {x = 5, y = 0, z = 5}, {x = 0, y = 0, z = 10})
 assert(almostEqual(rv.x, 5))
 assert(almostEqual(rv.z, 5))
--- Overlapping but colinear segments (should return nil)
+assert(almostEqual(rv.y, 2)) -- altitude at the endpoint
+assert(almostEqual(rv.dir, -1)) -- 5,5 was on the right (CW)
+-- Overlapping but collinear segments (should return nil)
 assert(not dunlib.intersectSegments(
         {x = 0, y = 0, z = 0}, {x = 10, y = 0, z = 0},
         {x = 5, y = 0, z = 0}, {x = 15, y = 0, z = 0}))
@@ -109,10 +113,39 @@ assert(not dunlib.intersectSegments(
         {x = 3, y = 0, z = -1}, {x = 3, y = 0, z = 1}))
 
 -- time approximation test
-assert(almostEqual(dunlib.interpolateZoneEntryTime(10, {x=5, z=6}, 20, {x=5, z=10}, zoneCircle), 15)) -- the same time out and in
-assert(almostEqual(dunlib.interpolateZoneEntryTime(10, {x=5, z=8}, 20, {x=5, z=10}, zoneCircle), 10)) -- on the edge when the time interval started
-assert(almostEqual(dunlib.interpolateZoneEntryTime(10, {x=5, z=0}, 20, {x=5, z=8}, zoneCircle), 20)) -- just touched the edge at the end of interval (=> now)
-assert(almostEqual(dunlib.interpolateZoneEntryTime(10, {x=5, z=6}, 20, {x=5, z=7}, zoneCircle), 20)) -- for future crossing, it returns "now" as fallback
+rv = dunlib.intersectSegmentZone({x = 5, z = 6}, {x = 5, z = 10}, zoneCircle)
+assert(almostEqual(rv.x, 5))
+assert(not rv.y) -- y not specified for both entry points
+assert(almostEqual(rv.z, 8))
+assert(almostEqual(rv.t, 0.5)) -- this can mean "the same time out and in"
 
-assert(almostEqual(dunlib.interpolateZoneEntryTime(10, {x=-4, z=5}, 20, {x=0, z=1}, zonePoly), 17.5)) -- 75% of time outside
-assert(almostEqual(dunlib.interpolateZoneEntryTime(10, {x=-3, z=-2}, 20, {x=0, z=1}, zonePoly), 13.333333)) -- 66% of time inside
+rv = dunlib.intersectSegmentZone({x = 5, y = 10, z = 8}, {x = 5, y = 16, z = 10}, zoneCircle)
+assert(almostEqual(rv.x, 5))
+assert(almostEqual(rv.y, 10))
+assert(almostEqual(rv.z, 8))
+assert(almostEqual(rv.t, 0)) -- this correlates with the start of the segment
+
+rv = dunlib.intersectSegmentZone({x = 5, z = 0}, {x = 5, z = 8}, zoneCircle)
+assert(almostEqual(rv.x, 5))
+assert(almostEqual(rv.z, 8))
+assert(almostEqual(rv.t, 1)) -- end of interval/segment
+
+assert(not dunlib.intersectSegmentZone({x = 5, z = 6}, {x = 5, z = 7}, zoneCircle)) -- no intersection
+
+rv = dunlib.intersectSegmentZone({x = -4, z = 5}, {x = 0, y = 0, z = 1}, zonePoly)
+assert(almostEqual(rv.x, -1))
+assert(not rv.y) -- y not specified for both entry points
+assert(almostEqual(rv.z, 2))
+assert(almostEqual(rv.t, 0.75))
+
+rv = dunlib.intersectSegmentZone({x = -3, y = 1, z = -2}, {x = 0, y = 4, z = 1}, zonePoly)
+assert(almostEqual(rv.x, -2))
+assert(almostEqual(rv.y, 2))
+assert(almostEqual(rv.z, -1))
+assert(almostEqual(rv.t, 0.3333333))
+
+-- checking if poly-zone intersection works also for the edge between the first and last vertex
+rv = dunlib.intersectSegmentZone({x = -4, y = 1, z = 0}, {x = -1, y = 4, z = 0}, zonePoly)
+assert(almostEqual(rv.x, -2))
+assert(almostEqual(rv.y, 3))
+assert(almostEqual(rv.z, 0))

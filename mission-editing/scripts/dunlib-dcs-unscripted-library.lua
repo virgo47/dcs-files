@@ -286,8 +286,13 @@ end
 -- conversion would be necessary if used as input of these functions.
 
 -- Returns intersection point if segments (p1,p2) and (q1,q2) intersect or nil.
--- Nil is returned even if collinear and overlapping with possibly infinite number of intersections.
--- All points are in DCS x,y,z; x,z is used, y (altitude) is ignored.
+-- For example, p1->p2 can be previous/current position of a unit, q1-q2 is a gate or a zone edge.
+-- Intersection calculation only uses x and z components, ignoring y (altitude), considering q1-q2 being a vertical plane.
+-- If p1 and p2 have the y (altitude) component, interpolated value at the intersection point is returned.
+-- Intersection returned has format {x, y*, z, t, dir = 1/-1} where:
+-- * t is the fractional distance between p1 and p2 at the intersection point (0 to 1)
+-- * dir is the crossing direction: 1 means p1->p2 crossed with q1 on left, -1 means q1 was on right
+-- Returns nil even if collinear and overlapping with possibly infinite number of intersections.
 function dunlib.intersectSegments(p1, p2, q1, q2)
     local function subtract(a, b)
         return {x = a.x - b.x, z = a.z - b.z}
@@ -309,7 +314,13 @@ function dunlib.intersectSegments(p1, p2, q1, q2)
     local u = cross(qp, r) / rxs
 
     if t >= 0 and t <= 1 and u >= 0 and u <= 1 then
-        return {x = p1.x + t * r.x, z = p1.z + t * r.z} -- intersection point
+        return {
+            x = p1.x + t * r.x,
+            y = (p1.y and p2.y) and (p1.y + t * (p2.y - p1.y)) or nil, -- optional altitude at the intersection point
+            z = p1.z + t * r.z,
+            t = t, -- fractional distance at the intersection point [0;1]
+            dir = (rxs < 0 and 1) or -1, -- 0 here is not an option
+        }
     end
 
     return nil
@@ -317,6 +328,9 @@ end
 
 -- Returns the first intersection point (if any) between segment (p1, p2) and a circle.
 -- Circle is defined by center (cx, cz) and radius r.
+-- For example, this calculates where a unit crossed the circular zone on its way from p1 to p2.
+-- If p1 and p2 have the y (altitude) component, interpolated value at the intersection point is returned.
+-- Intersection returned has format {x, y*, z, t}, t is the fractional distance between p1 and p2 at the intersection point (0 to 1).
 -- Returns nil if no intersection.
 function dunlib.intersectSegmentCircle(p1, p2, cx, cz, r)
     local dx = p2.x - p1.x
@@ -344,30 +358,10 @@ function dunlib.intersectSegmentCircle(p1, p2, cx, cz, r)
 
     return {
         x = p1.x + t * dx,
-        z = p1.z + t * dz
+        y = (p1.y and p2.y) and (p1.y + t * (p2.y - p1.y)) or nil, -- optional altitude at the intersection point
+        z = p1.z + t * dz,
+        t = t -- fractional distance at the intersection point [0;1]
     }
-end
-
-
--- Returns linear interpolation of numbers n1 and n2 associated with points p1 and p2
--- and an intersection point between the points (e.g. calculated with dunlib.intersectSegments).
--- For example, this can approximate time of intersection if you know time before and after (n1, n2)
--- for points p1 and p2.
-function dunlib.linearInterpolationAtIntersection(p1, p2, n1, n2, intersection)
-    local dx = p2.x - p1.x
-    local dz = p2.z - p1.z
-    local dt = n2 - n1
-    local ratio
-
-    if math.abs(dx) > math.abs(dz) and dx ~= 0 then
-        ratio = (intersection.x - p1.x) / dx
-    elseif dz ~= 0 then
-        ratio = (intersection.z - p1.z) / dz
-    else
-        return n2 -- fallback: degenerate segment, return current time
-    end
-
-    return n1 + dt * ratio
 end
 --endregion
 
@@ -473,32 +467,37 @@ function dunlib.forEachZoneMatching(namePattern, callback)
     end
 end
 
--- Linearly interpolate the approximate time the unit entered the zone.
--- Handles both circular and polygon zones.
-function dunlib.interpolateZoneEntryTime(lastTime, lastPos, currentTime, currentPos, zone)
+--[[
+Finds an intersection between a segment (e.g. a unit movement from p1 to p2) and a zone perimeter.
+Supports both circular and polygon zones.
+Intersection returned has format {x, y*, z, t, dir = 1/-1} where:
+- y* is optional altitude of the zone entry/exit, if p1 and p2 have y-component (linear approximation)
+- t is the fractional distance between p1 and p2 at the intersection point (0 to 1)
+  This can be used for linear approximation of the exact time when the zone perimeter was crossed.
+- dir is the crossing direction: 1 means p1->p2 crossed with q1 on left, -1 means q1 was on right
+Returns nil if there is no intersection.
+If multiple poly-zone edges are crossed, it returns the first from the zone definition.
+This is typically used after the inZone check when it toggles from true to false or vice versa.
+]]
+function dunlib.intersectSegmentZone(p1, p2, zone)
     if zone.type == dunlib.ZONE_TYPE.CIRCLE then
         local cx, cz = zone.x, zone.y
         local r = zone.radius
 
-        local intersection = dunlib.intersectSegmentCircle(lastPos, currentPos, cx, cz, r)
-        if intersection then
-            return dunlib.linearInterpolationAtIntersection(lastPos, currentPos, lastTime, currentTime, intersection)
-        end
-
-        return currentTime
+        return dunlib.intersectSegmentCircle(p1, p2, cx, cz, r)
     elseif zone.type == dunlib.ZONE_TYPE.POLYGON then
         local verts = zone.verticies
         for i = 1, #verts do
             local a = verts[i]
             local b = verts[i % #verts + 1]
             -- vertices in zones use x,y for the map plane, but we need "DCS world" x,z for intersectSegments
-            local intersection = dunlib.intersectSegments(lastPos, currentPos, {x = a.x, z = a.y}, {x = b.x, z = b.y})
+            local intersection =  dunlib.intersectSegments(p1, p2, {x = a.x, z = a.y}, {x = b.x, z = b.y})
             if intersection then
-                return dunlib.linearInterpolationAtIntersection(lastPos, currentPos, lastTime, currentTime, intersection)
+                return intersection
             end
         end
     end
-    return currentTime
+    return nil
 end
 --endregion
 
