@@ -522,6 +522,7 @@ end
 
 --[[
 Prints fuel information for the params.unit, the rest of params is optional.
+If the unit does not exist anymore, the print will stop, including any repetition.
 Example params:
 {
     unit = world.getPlayer(), -- player unit for single-player mission
@@ -558,14 +559,15 @@ function dunlib.fuelInfo(params)
     end
 
     local fuelRatio = params.unit:getFuel()
-    local fuelPercent = math.floor(fuelRatio * 100 + 0.5)
+    --local fuelPercent = math.floor(fuelRatio * 100 + 0.5)
+    local fuelPercent = fuelRatio * 100
 
     local msg
     if params.fullFuelAmount then
-        msg = string.format("%02d:%02d:%02d - FUEL: %.2f %s (%d%%)",
+        msg = string.format("%02d:%02d:%02d - FUEL: %.2f %s (%.2f%%)",
                 hours, minutes, seconds, params.fullFuelAmount * fuelRatio, params.fuelUnits or "?", fuelPercent)
     else
-        msg = string.format("%02d:%02d:%02d - FUEL: %d%%", hours, minutes, seconds, fuelPercent)
+        msg = string.format("%02d:%02d:%02d - FUEL: %.2f%%", hours, minutes, seconds, fuelPercent)
     end
     dunlib.messageUnit(params.unit, msg, duration)
 
