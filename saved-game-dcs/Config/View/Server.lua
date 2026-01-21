@@ -116,6 +116,63 @@ ViewSettings["F-15C"] = {
 	}, -- Arcade
 }
 
+ViewSettings["Mi-8MT"] = {
+	Cockpit = {
+		[1] = {-- player slot 1
+			CockpitLocalPoint      = {3.916, -0.11 , 0.0},
+			CameraViewAngleLimits  = {20.000000,160.000000},
+			CameraAngleRestriction = {false,90.000000,0.400000},
+			CameraAngleLimits      = {140.000000,-65.000000,90.000000},
+			EyePoint               = {0.090000,0.000000,0.000000},
+			ShoulderSize           = 0.100,
+			Allow360rotation	   = false,
+			limits_6DOF            = {x = {-0.200000,1.500000},y ={-0.300000,0.30000},z = {-1.0000,1.0},roll = 90.000000},
+		},
+
+		[2] = {-- player slot 2
+			CockpitLocalPoint      = {3.916, -0.11 , 0.0},
+			CameraViewAngleLimits  = {20.000000,160.000000},
+			CameraAngleRestriction = {false,90.000000,0.400000},
+			CameraAngleLimits      = {140.000000,-65.000000,90.000000},
+			EyePoint               = {0.090000,0.000000,0.000000},
+			Allow360rotation	   = false,
+			limits_6DOF            = {x = {-0.200000,1.500000},y ={-0.300000,0.30000},z = {-1.0000,1.0},roll = 90.000000},
+		},
+
+		[3] = {-- player slot 3
+			CockpitLocalPoint      = {3.916, -0.11 , 0.0},
+			CameraViewAngleLimits  = {20.000000,160.000000},
+			CameraAngleRestriction = {false,90.000000,0.400000},
+			CameraAngleLimits      = {140.000000,-65.000000,90.000000},
+			EyePoint               = {0.090000,0.000000,0.000000},
+			Allow360rotation	   = false,
+			limits_6DOF            = {x = {-4.500000,0.400000},y ={-0.200000,0.30000},z = {-0.400000,0.4},roll = 90.000000},
+		},
+
+		[4] = {-- player slot 4
+			CockpitLocalPoint      = {4.35, -0.11 , -1.1},
+			CockpitLocalPointAzimuth  = 90,
+			CameraViewAngleLimits  = {20.000000,135.000000},
+			CameraAngleRestriction = {false,60.000000,0.400000},
+			CameraAngleLimits      = {90,-45.000000,60.000000},
+			EyePoint               = {0.090000,0.000000,0.000000},
+			Allow360rotation	   = false,
+			limits_6DOF            = {x 	= {-2.2, 0.2},
+									  y 	= {-0.6,0.5},
+									  z 	= {-1.1,0.25},
+									  roll  = 45.000000},
+		},
+	}, -- Cockpit
+	Chase = {
+		LocalPoint      = {-5.700000,1.400000,-3},
+		AnglesDefault   = {0,-8.000000},
+	}, -- Chase
+	Arcade = {
+		LocalPoint      = {-20.000000,5.000000,0.000000},
+		AnglesDefault   = {0.000000,-8.000000},
+	}, -- Arcade
+}
+
 ViewSettings["MiG-19P"] = {
 	Cockpit = {
 		[1] = {-- player slot 1
