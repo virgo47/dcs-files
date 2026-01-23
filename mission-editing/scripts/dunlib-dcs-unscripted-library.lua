@@ -523,18 +523,22 @@ end
 --[[
 Prints fuel information for the params.unit, the rest of params is optional.
 If the unit does not exist anymore, the print will stop, including any repetition.
+The config is sub-table so it can be easily reused without being modified at runtime,
+even if multiple units use the same type (and hence the same configuration).
 Example params:
 {
     unit = world.getPlayer(), -- player unit for single-player mission
-    fullFuelAmount = 184 + 85, -- full internal fuel for P-51D
-    fuelUnits = "US gal",
-    messageRepeatSec = 10, -- if omitted, it will be one time message
-    maxRepetitions = 5, -- if present, repeated message stops after this count
-    messageDuration = 60, -- all durations in sec
-    interMessageEach = 60, -- in message count, not secs
-    interMessageDuration = 3600,
-    longMessageEach = 360, -- in message count, not secs
-    longMessageDuration = 18000
+    config = {
+        fullFuelAmount = 184 + 85, -- full internal fuel for P-51D
+        fuelUnits = "US gal",
+        messageRepeatSec = 10, -- if omitted, it will be one time message
+        maxRepetitions = 5, -- if present, repeated message stops after this count
+        messageDuration = 60, -- all durations in sec
+        interMessageEach = 60, -- in message count, not secs
+        interMessageDuration = 3600,
+        longMessageEach = 360, -- in message count, not secs
+        longMessageDuration = 18000
+    }
 }
 ]]
 function dunlib.fuelInfo(params)
@@ -542,6 +546,7 @@ function dunlib.fuelInfo(params)
         return -- no more printing for this guy
     end
 
+    local config = params.config or {}
     params.counter = params.counter or 0
 
     local secsInDay = timer.getAbsTime()
@@ -549,34 +554,33 @@ function dunlib.fuelInfo(params)
     local minutes = math.floor((secsInDay % 3600) / 60)
     local seconds = secsInDay % 60
 
-    local duration = params.messageDuration or 20 -- default 20s if not provided
-    if params.longMessageEach and params.longMessageDuration
-            and params.counter % params.longMessageEach == 0 then
-        duration = params.longMessageDuration
-    elseif params.interMessageEach and params.interMessageDuration
-            and params.counter % params.interMessageEach == 0 then
-        duration = params.interMessageDuration
+    local duration = config.messageDuration or 20 -- default 20s if not provided
+    if config.longMessageEach and config.longMessageDuration
+            and params.counter % config.longMessageEach == 0 then
+        duration = config.longMessageDuration
+    elseif config.interMessageEach and config.interMessageDuration
+            and params.counter % config.interMessageEach == 0 then
+        duration = config.interMessageDuration
     end
 
     local fuelRatio = params.unit:getFuel()
-    --local fuelPercent = math.floor(fuelRatio * 100 + 0.5)
     local fuelPercent = fuelRatio * 100
 
     local msg
-    if params.fullFuelAmount then
+    if config.fullFuelAmount then
         msg = string.format("%02d:%02d:%02d - FUEL: %.2f %s (%.2f%%)",
-                hours, minutes, seconds, params.fullFuelAmount * fuelRatio, params.fuelUnits or "?", fuelPercent)
+                hours, minutes, seconds, config.fullFuelAmount * fuelRatio, config.fuelUnits or "?", fuelPercent)
     else
         msg = string.format("%02d:%02d:%02d - FUEL: %.2f%%", hours, minutes, seconds, fuelPercent)
     end
     dunlib.messageUnit(params.unit, msg, duration)
 
-    if params.messageRepeatSec then
+    if config.messageRepeatSec then
         params.counter = params.counter + 1
-        if params.maxRepetitions and params.counter >= params.maxRepetitions then
+        if config.maxRepetitions and params.counter >= config.maxRepetitions then
             return -- no more scheduling
         end
-        timer.scheduleFunction(dunlib.fuelInfo, params, timer.getTime() + params.messageRepeatSec)
+        timer.scheduleFunction(dunlib.fuelInfo, params, timer.getTime() + config.messageRepeatSec)
     end
 end
 --endregion

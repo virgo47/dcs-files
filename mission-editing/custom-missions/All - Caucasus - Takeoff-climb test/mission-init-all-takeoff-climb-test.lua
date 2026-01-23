@@ -34,31 +34,32 @@ end
 -- cm = current mission
 cm = {}
 
-cm.fuelSetupTable = {}
+cm.fuelConfigTable = {}
 -- provide fullFuelAmount and fuelUnits for each plane, times/repetitions are set in the event handler
---cm.fuelSetupTable["F-15C"] = {
+--cm.fuelConfigTable["F-15C"] = {
 --}
 
-cm.fuelSetupTable["L-39C"] = {
+cm.fuelConfigTable["L-39C"] = {
     -- fuel can be specified in litres (used here) or kgs (in cockpit indicators), 1100 l = 825 kg
     -- 5 fuselage tanks + 2*100l in wingtips (~84% without wingtips); 1300 l = 100%.
     -- Note that the default 84% fuel load shows 1092 l instead of 1100 due to round/floor-ing.
     fullFuelAmount = 1100 + 200,
     fuelUnits = "l"
 }
-cm.fuelSetupTable["L-39ZA"] = cm.fuelSetupTable["L-39C"]
+cm.fuelConfigTable["L-39ZA"] = cm.fuelConfigTable["L-39C"]
 
-cm.fuelSetupTable["P-51D"] = {
+cm.fuelConfigTable["P-51D"] = {
     -- both wings + fuselage, 100% is full internal without drop tanks
     -- with both drop tanks the fuel returned by unit:getFuel() is > 1
     fullFuelAmount = 184 + 85,
     fuelUnits = "US gal"
 }
-cm.fuelSetupTable["P-51D-30-NA"] = cm.fuelSetupTable["P-51D"]
+cm.fuelConfigTable["P-51D-30-NA"] = cm.fuelConfigTable["P-51D"]
 
 function cm:onEvent(event)
     -- it works with PLAYER event, but not with S_EVENT_BIRTH (yet), why?
-    if event.id ~= world.event.S_EVENT_BIRTH then --and event.id ~= world.event.S_EVENT_PLAYER_ENTER_UNIT then
+    if event.id ~= world.event.S_EVENT_BIRTH then
+        --and event.id ~= world.event.S_EVENT_PLAYER_ENTER_UNIT then
         return
     end
 
@@ -76,17 +77,20 @@ function cm:onEvent(event)
     end -- not a player/client
 
     local typeName = event.initiator:getTypeName()
-    local fuelSetup = cm.fuelSetupTable[typeName] or {}
-    fuelSetup.unit = initiatorUnit
+    local fuelConfig = cm.fuelConfigTable[typeName]
 
-    fuelSetup.messageRepeatSec = 10
-    fuelSetup.messageDuration = 60
-    fuelSetup.interMessageEach = 60
-    fuelSetup.interMessageDuration = 3600
-    fuelSetup.longMessageEach = 360 -- in message count, not secs
-    fuelSetup.longMessageDuration = 18000
+    -- setting defaults for the mission if not provided per plane
+    fuelConfig.messageRepeatSec = fuelConfig.messageRepeatSec or 10
+    fuelConfig.messageDuration = fuelConfig.messageDuration or 60
+    fuelConfig.interMessageEach = fuelConfig.interMessageEach or 60 -- in message count, not secs
+    fuelConfig.interMessageDuration = fuelConfig.interMessageDuration or 3600
+    fuelConfig.longMessageEach = fuelConfig.longMessageEach or 360 -- in message count, not secs
+    fuelConfig.longMessageDuration = fuelConfig.longMessageDuration or 18000
 
-    dunlib.fuelInfo(fuelSetup)
+    dunlib.fuelInfo({
+        unit = initiatorUnit,
+        config = fuelConfig
+    })
 end
 
 world.addEventHandler(cm)
