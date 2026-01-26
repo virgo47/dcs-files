@@ -63,9 +63,6 @@ function cm:onEvent(event)
         return
     end
 
-    --local eventInfo = "event " .. dunlib.debug(event) .. "\ninitiator: " .. tostring(event.initiator)
-    --print(eventInfo)
-
     local initiatorUnit = event.initiator
     if not initiatorUnit then
         return
@@ -87,6 +84,7 @@ function cm:onEvent(event)
     fuelConfig.longMessageEach = fuelConfig.longMessageEach or 360 -- in message count, not secs
     fuelConfig.longMessageDuration = fuelConfig.longMessageDuration or 18000
 
+    dunlib.messageUnit(initiatorUnit, "Starting flight for " .. initiatorUnit:getGroup():getName(), 15, true)
     dunlib.fuelInfo({
         unit = initiatorUnit,
         config = fuelConfig
