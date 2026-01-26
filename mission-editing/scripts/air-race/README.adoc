@@ -7,7 +7,7 @@ The script powers the missions on DCS servers "[TM] Black Angels - Air Race Heli
 You can check the race results on the https://dcs-air-race.eu[DCS Air Race] site.
 
 // TODO rework to dunlib, later to vanilla
-NOTE: This README describes MOOSE version of the script, now placed link:classic-moose[moose] folder.
+NOTE: This README describes MOOSE version of the script, now placed link:classic-moose[classic-moose] folder.
 
 == How to use it
 
@@ -15,7 +15,7 @@ You can see this tutorial video about the script: https://youtu.be/ltUu53y4f5s[D
 
 The process of creating a minimal racing mission goes roughly like this:
 
-* Create a racing zone (trigger zone), name it distinctly, you will use the name later.
+* Create a racing zone (trigger zone), name it distinctly, you will use the name later, e.g. `racezone-01`.
 * Add a group (helicopter or plane) with a distinct prefix, e.g. `racer-huey-1` (prefix `racer-`).
 It is important to use this for the Group name; Pilot name is ignored by the script.
 Set the skill to *Client*.
