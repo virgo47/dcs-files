@@ -1,0 +1,42 @@
+= Adana Rescue
+
+Based on https://www.digitalcombatsimulator.com/en/files/3313334/[Rescue 1-1. Huey training mission. (Syria)] by AndrewCTS.
+
+The mission required some trigger fixes to work properly.
+
+I added a script to add load of 200 kg on each site and remove all of it at the hospital.
+
+== User file info
+
+* Link: https://www.digitalcombatsimulator.com/en/files/3348832/
+* Name: UH-1H - Adana Rescue - Syria - reload
+* File type: Single mission
+* Game: DCS World 2.9
+* Unit: UH-1H Huey
+* Language: English
+* License: Freeware - Free version, Unlimited distribution
+* Map: Syria
+* Summary:
++
+Rehash of "Rescue 1-1. Huey training mission. (Syria)" by AndrewCTS with trigger fixes and cargo weight changes. Fly a rescue Huey helicopter to save the day in Adana.
+
+* Description:
++
+====
+Original description: Go to the smokes and land. Then come back to the hospital to transport the wounded. There are 5 accidents.
+
+Kudos to AndrewCTS for the original mission you can find here: https://www.digitalcombatsimulator.com/en/files/3313334/
+
+I enjoyed the mission a lot and in this file you find two changes:
+
+1. Fixed zone triggers - there were some copy/paste errors.
+2. I added a little script that adds 200 kg cargo at each rescue site and unloads all of it at the hospital. On each site, you'll see the message with the current cargo mass after the wounded are loaded.
+
+In theory, you should fly to the rescue zone and then back to the hospital - this is how the original mission is voiced. But you can also pick everything in one go, it's up to you, but with cargo, you will now have up to 1000 kg load!
+
+Note, that you don't have to land - which is especially hard near the Park Adana/Burda Mall accident site. You can hover instead, just keep your hover stable to get the next trigger.
+
+Enjoy - and thanks to AndrewCTS for the original mission!
+====
+
+* Tags: UH-1H, Huey, Adana, rescue, helicopter, accident, training, Syria, Turkey, Türkiye, mission
